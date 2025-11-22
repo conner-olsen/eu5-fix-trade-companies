@@ -1,0 +1,11 @@
+﻿{
+	"name":	"Fix Trade Companies",
+	"id":	"fix.trade.companies",
+	"version":	"0.1",
+	"supported_game_version":	"1.0.*",
+	"short_description":	"Fix Trade Companies.",
+	"tags":	["Fixes", "Gameplay", "Trade and Economics"],
+	"relationships":	[],
+	"game_custom_data":	{
+}
+}
