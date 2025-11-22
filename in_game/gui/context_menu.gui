@@ -129,7 +129,7 @@
 			}
 			
 			ContextMenuEntry = {
-				visible = "[Or(CanPlayerRenameCountry(Country.Self), EqualTo_string(Country.GetDiplomacy.GetSubjectType.GetNameWithNoTooltip, 'Trade Company'))]"
+				visible = "[CanPlayerRenameCountry(Country.Self)]"
 			
 				blockoverride "click_action" {
 					title = "RENAME_COUNTRY"
