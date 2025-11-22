@@ -1,0 +1,563 @@
+﻿trade_company_headquarters = {
+	is_foreign = yes
+	max_levels = trade_company_headquarters_max_level
+	pop_type = burghers
+	own_or_overlord_relation_needed = trade_access
+	category = fixed_trade_category
+	employment_size = huge_foreign_trade_employment
+	rural_settlement = yes
+	town = yes
+	city = yes
+	expensive = yes
+	country_potential = {
+		total_effective_building_levels:trade_company_headquarters < 1
+		
+		custom_tooltip = {
+			text = building_trade_hq_only_one
+			NOT = { has_variable = building_trade_hq }
+		}
+		
+		num_relations_above_limit <= 0
+		
+	}
+	
+	
+	allow = {
+		market = { in_trade_range_of = scope:actor }
+		scope:actor = {
+			OR = {
+				NOT = { has_variable_list = trade_company_regions }
+				NOT = {
+					is_target_in_variable_list = {
+						name = trade_company_regions
+						target = root.region
+					}
+				}
+			}
+		}
+	}
+	build_time = trade_company_headquarters_time
+	unique_production_methods = {
+		trade_company_headquarters_requirements = {
+			paper = 0.1
+			category = building_maintenance
+		}
+	}
+	modifier = {
+		merchant_capacity_from_building = 0.2
+		building_owner_maritime_presence = 0.02
+		scaled_gold_to_building_owner = 0.2
+		building_owner_overlord_maritime_presence = 0.05
+		scaled_gold_to_building_owner_overlord = 0.5
+		local_crown_estate_power = -0.2
+		root = {
+			number_of_satellite_trade_buildings = 4
+		}
+		overlord = {
+			number_of_satellite_trade_buildings = 5
+		}
+		overlord ?= {
+			number_of_satellite_trade_buildings = 6
+		}
+		every_overlord_or_above = {
+			number_of_satellite_trade_buildings = 7
+		}
+		top_overlord = {
+			number_of_satellite_trade_buildings = 8
+		}
+		scope:overlord = {
+			number_of_satellite_trade_buildings = 9
+		}
+		overlord_modifier = {
+			number_of_satellite_trade_buildings = 10
+		}
+		scope:actor.overlord = {
+			number_of_satellite_trade_buildings = 11
+		}
+		number_of_satellite_trade_buildings = 2
+	}
+	overlord_modifier = {
+		number_of_satellite_trade_buildings = 12
+	}
+	capital_country_modifier = {
+		number_of_satellite_trade_buildings = 2
+	}
+	raw_modifier = {
+		local_monthly_development = 0.01
+		local_monthly_prosperity = 0.001
+		local_build_buildings_cost = -0.1
+	}
+	custom_tags = { trade_company_building }
+	
+	on_construction_started = {
+		owner = {
+			set_variable = {
+				name = building_trade_hq
+				value = 1
+			}
+			modifier = {
+				number_of_satellite_trade_buildings = 13
+			}
+			number_of_satellite_trade_buildings = 14
+		}
+	}
+	
+	on_construction_ended = {
+		owner = {
+			remove_variable = building_trade_hq
+		}
+	}
+	
+	
+	on_built = {
+		owner = { save_scope_as = overlord }
+		location = {
+			save_scope_as = capital
+			create_building_country_in_location = {
+				reforms = {
+					banking_country
+				}
+				save_scope_as = trade_company_tag
+
+				hidden_effect = {
+					change_heir_selection = heir_selection:bank_selection
+					change_government_type = government_type:republic
+					make_subject_of = {
+						target = scope:overlord
+						type = subject_type:trade_company
+					}
+				}
+			}
+			if = {
+				limit = { exists = scope:trade_company_tag }
+				root = { change_building_owner = scope:trade_company_tag }
+				scope:trade_company_tag = {
+					set_capital = scope:capital
+					set_variable = { name = trade_company_home_region value = scope:capital.region }
+					if = {
+						limit = {
+							OR = {
+								NOT = { has_variable_list = trade_company_regions }
+								NOT = {
+									is_target_in_variable_list = {
+										name = trade_company_regions
+										target = root.region
+									}
+								}
+							}
+						}
+						add_to_variable_list = {
+							name = trade_company_regions
+							target = scope:capital.region
+						}
+					}
+					unlock_advance_effect = { type = trade_companies_advance }
+					research_advance = advance_type:trade_companies_advance
+				}
+			}
+		}
+		scope:overlord = {
+			if = {
+				limit = {
+					exists = scope:capital
+					exists = scope:trade_company_tag
+					OR = {
+						NOT = { has_variable_list = trade_company_regions }
+						is_target_in_variable_list = {
+							name = trade_company_regions
+							target = scope:capital.region
+						}
+					}
+				}
+				add_to_variable_list = {
+					name = trade_company_regions
+					target = scope:capital.region
+				}
+				add_to_variable_list = {
+					name = trade_company_subjects
+					target = scope:trade_company_tag
+				}
+			}
+		}
+	}
+}
+
+trade_company_garrison = {
+	is_foreign = yes
+	max_levels = trade_company_building_max_level
+	pop_type = burghers
+	category = trade_category
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+	employment_size = large_foreign_trade_employment
+	rural_settlement = yes
+	town = yes
+	city = yes
+	build_time = trade_company_build_time
+	possible_production_methods = {
+		satellite_trade_building_requirements
+	}
+	location_potential = {
+		scope:actor = {
+			has_variable_list = trade_company_regions
+			is_target_in_variable_list = {
+				name = trade_company_regions
+				target = root.region
+			}
+		}
+	}
+	country_potential = {
+		OR = {
+			total_effective_building_levels:trade_company_headquarters > 0
+			any_subject = {
+				total_effective_building_levels:trade_company_headquarters > 0
+			}
+		}
+	}
+	allow = {
+		market = { in_trade_range_of = scope:actor }
+	}
+	custom_tags = { trade_company_building satellite_trade_building }
+	modifier = {
+		local_defensive = 0.25
+		local_garrison_size = 0.5
+		merchant_capacity_from_building = 10
+		building_owner_maritime_presence = 0.05
+		merchant_power_from_building = 0.2
+	}
+	on_built = {
+		owner = {
+			if = {
+				limit = { NOT = { has_variable = trade_company_home_region } }
+				save_temporary_scope_as = owner_scope
+				random_in_list = {
+					variable = trade_company_subjects
+					limit = {
+						has_variable = trade_company_home_region
+						var:trade_company_home_region = {
+							save_temporary_scope_as = target_region
+						}
+						scope:owner_scope = {
+							is_target_in_variable_list = {
+								name = trade_company_regions
+								target = scope:target_region
+							}
+						}
+					}
+					save_scope_as = trade_company_country
+				}
+				if = {
+					limit = { exists = scope:trade_company_country }
+					root = { change_building_owner = scope:trade_company_country }
+				}
+				else = {
+					root.location = { destroy_building = root }
+				}
+			}
+		}
+	}
+}
+
+trade_company_harbor = {
+	is_foreign = yes
+	max_levels = trade_company_building_max_level
+	pop_type = burghers
+	category = trade_category
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+	employment_size = large_foreign_trade_employment
+	rural_settlement = yes
+	town = yes
+	city = yes
+	build_time = trade_company_build_time
+	possible_production_methods = {
+		satellite_trade_building_requirements
+	}
+	location_potential = {
+		scope:actor = {
+			has_variable_list = trade_company_regions
+			is_target_in_variable_list = {
+				name = trade_company_regions
+				target = root.region
+			}
+		}
+	}
+	country_potential = {
+		OR = {
+			total_effective_building_levels:trade_company_headquarters > 0
+			any_subject = {
+				total_effective_building_levels:trade_company_headquarters > 0
+			}
+		}
+	}
+	allow = {
+		is_port = yes
+		market = { in_trade_range_of = scope:actor }
+	}
+	custom_tags = { trade_company_building satellite_trade_building }
+	modifier = {
+		merchant_power_from_building = 0.5
+		building_owner_maritime_presence = 0.05
+		building_owner_overlord_maritime_presence = 0.02
+		merchant_capacity_from_building = 10
+	}
+	on_built = {
+		owner = {
+			if = {
+				limit = { NOT = { has_variable = trade_company_home_region } }
+				save_temporary_scope_as = owner_scope
+				random_in_list = {
+					variable = trade_company_subjects
+					limit = {
+						has_variable = trade_company_home_region
+						var:trade_company_home_region = {
+							save_temporary_scope_as = target_region
+						}
+						scope:owner_scope = {
+							is_target_in_variable_list = {
+								name = trade_company_regions
+								target = scope:target_region
+							}
+						}
+					}
+					save_scope_as = trade_company_country
+				}
+				if = {
+					limit = { exists = scope:trade_company_country }
+					root = { change_building_owner = scope:trade_company_country }
+				}
+				else = {
+					root.location = { destroy_building = root }
+				}
+			}
+		}
+	}
+}
+
+trade_company_local_venture = {
+	is_foreign = yes
+	max_levels = trade_company_building_max_level
+	pop_type = burghers
+	category = trade_category
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+	employment_size = large_foreign_trade_employment
+	rural_settlement = yes
+	town = yes
+	city = yes
+	build_time = trade_company_build_time
+	possible_production_methods = {
+		satellite_trade_building_requirements
+	}
+	location_potential = {
+		scope:actor = {
+			has_variable_list = trade_company_regions
+			is_target_in_variable_list = {
+				name = trade_company_regions
+				target = root.region
+			}
+		}
+	}
+	country_potential = {
+		OR = {
+			total_effective_building_levels:trade_company_headquarters > 0
+			any_subject = {
+				total_effective_building_levels:trade_company_headquarters > 0
+			}
+		}
+	}
+	allow = {
+		market = { in_trade_range_of = scope:actor }
+	}
+	custom_tags = { trade_company_building satellite_trade_building }
+	modifier = {
+		local_raw_material_output = 0.33
+		merchant_capacity_from_building = 10
+		building_owner_maritime_presence = 0.05
+		merchant_power_from_building = 0.2
+	}
+	on_built = {
+		owner = {
+			if = {
+				limit = { NOT = { has_variable = trade_company_home_region } }
+				save_temporary_scope_as = owner_scope
+				random_in_list = {
+					variable = trade_company_subjects
+					limit = {
+						has_variable = trade_company_home_region
+						var:trade_company_home_region = {
+							save_temporary_scope_as = target_region
+						}
+						scope:owner_scope = {
+							is_target_in_variable_list = {
+								name = trade_company_regions
+								target = scope:target_region
+							}
+						}
+					}
+					save_scope_as = trade_company_country
+				}
+				if = {
+					limit = { exists = scope:trade_company_country }
+					root = { change_building_owner = scope:trade_company_country }
+				}
+				else = {
+					root.location = { destroy_building = root }
+				}
+			}
+		}
+	}
+}
+
+trade_company_foreign_influence = {
+	is_foreign = yes
+	max_levels = trade_company_building_max_level
+	pop_type = burghers
+	category = trade_category
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+	employment_size = large_foreign_trade_employment
+	rural_settlement = yes
+	town = yes
+	city = yes
+	build_time = trade_company_build_time
+	possible_production_methods = {
+		satellite_trade_building_requirements
+	}
+	location_potential = {
+		scope:actor = {
+			has_variable_list = trade_company_regions
+			is_target_in_variable_list = {
+				name = trade_company_regions
+				target = root.region
+			}
+		}
+	}
+	country_potential = {
+		OR = {
+			total_effective_building_levels:trade_company_headquarters > 0
+			any_subject = {
+				total_effective_building_levels:trade_company_headquarters > 0
+			}
+		}
+	}
+	allow = {
+		market = { in_trade_range_of = scope:actor }
+	}
+	custom_tags = { trade_company_building satellite_trade_building }
+	modifier = {
+		local_monthly_development = 0.005
+		local_max_control = 0.05
+		merchant_capacity_from_building = 10
+		building_owner_maritime_presence = 0.05
+		merchant_power_from_building = 0.2
+	}
+	on_built = {
+		owner = {
+			if = {
+				limit = { NOT = { has_variable = trade_company_home_region } }
+				save_temporary_scope_as = owner_scope
+				random_in_list = {
+					variable = trade_company_subjects
+					limit = {
+						has_variable = trade_company_home_region
+						var:trade_company_home_region = {
+							save_temporary_scope_as = target_region
+						}
+						scope:owner_scope = {
+							is_target_in_variable_list = {
+								name = trade_company_regions
+								target = scope:target_region
+							}
+						}
+					}
+					save_scope_as = trade_company_country
+				}
+				if = {
+					limit = { exists = scope:trade_company_country }
+					root = { change_building_owner = scope:trade_company_country }
+				}
+				else = {
+					root.location = { destroy_building = root }
+				}
+			}
+		}
+	}
+}
+
+trade_company_governance = {
+	is_foreign = yes
+	max_levels = trade_company_building_max_level
+	pop_type = burghers
+	category = trade_category
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+	employment_size = large_foreign_trade_employment
+	rural_settlement = yes
+	town = yes
+	city = yes
+	build_time = trade_company_build_time
+	possible_production_methods = {
+		satellite_trade_building_requirements
+	}
+	location_potential = {
+		scope:actor = {
+			has_variable_list = trade_company_regions
+			is_target_in_variable_list = {
+				name = trade_company_regions
+				target = root.region
+			}
+		}
+	}
+	country_potential = {
+		OR = {
+			total_effective_building_levels:trade_company_headquarters > 0
+			any_subject = {
+				total_effective_building_levels:trade_company_headquarters > 0
+			}
+		}
+	}
+	allow = {
+		market = { in_trade_range_of = scope:actor }
+	}
+	custom_tags = { trade_company_building satellite_trade_building }
+	modifier = {
+		manpower_to_building_owner = 0.003
+		sailors_to_building_owner = 0.005
+		can_recruit_regiment_in_this_location = yes
+		merchant_capacity_from_building = 10
+		building_owner_maritime_presence = 0.05
+		merchant_power_from_building = 0.2
+	}
+	on_built = {
+		owner = {
+			if = {
+				limit = { NOT = { has_variable = trade_company_home_region } }
+				save_temporary_scope_as = owner_scope
+				random_in_list = {
+					variable = trade_company_subjects
+					limit = {
+						has_variable = trade_company_home_region
+						var:trade_company_home_region = {
+							save_temporary_scope_as = target_region
+						}
+						scope:owner_scope = {
+							is_target_in_variable_list = {
+								name = trade_company_regions
+								target = scope:target_region
+							}
+						}
+					}
+					save_scope_as = trade_company_country
+				}
+				if = {
+					limit = { exists = scope:trade_company_country }
+					root = { change_building_owner = scope:trade_company_country }
+				}
+				else = {
+					root.location = { destroy_building = root }
+				}
+			}
+		}
+	}
+}

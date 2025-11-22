@@ -1,0 +1,9 @@
+satellite_trade_building_requirements = {
+	paper = 0
+	category = building_maintenance
+	
+	produced = silver
+	output = 1.0
+
+	debug_max_profit = 1
+}
