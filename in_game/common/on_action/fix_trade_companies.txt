@@ -1,0 +1,24 @@
+monthly_country_pulse = {
+    on_actions = {
+        ftc_trade_company_advance_sweeper
+    }
+}
+
+ftc_trade_company_advance_sweeper = {
+    trigger = {
+        NOT = { has_global_variable = ftc_trade_company_sweep_done }
+    }
+
+    effect = {
+        set_global_variable = ftc_trade_company_sweep_done
+
+        every_country = {
+            limit = { is_subject_type = trade_company }
+
+            if = {
+                limit = { NOT = { has_advance = trade_companies_advance } }
+                research_advance = advance_type:trade_companies_advance
+            }
+        }
+    }
+}

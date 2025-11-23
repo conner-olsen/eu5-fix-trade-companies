@@ -117,6 +117,7 @@
 							target = scope:capital.region
 						}
 					}
+					research_advance = advance_type:trade_companies_advance
 				}
 			}
 		}
