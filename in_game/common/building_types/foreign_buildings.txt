@@ -1,7 +1,7 @@
 # Circumvents the pop check by replacing the pop_type with a non-existent pop, so when the game checks for
 #  existing pops, they are never found
 
-trade_office = {
+trade_office_temp = {
     is_foreign = yes
     stronger_power_projection = no
     max_levels = guild_max_level
@@ -45,7 +45,7 @@ trade_office = {
         owner = { save_temporary_scope_as = builder }
         location = {
             construct_building = {
-                building_type = building_type:trade_office_proper
+                building_type = building_type:trade_office
                 instant = yes
                 cost_multiplier = 0
                 cost_multiplier_reason = "game_concept_temp_foreign_building"
@@ -55,7 +55,7 @@ trade_office = {
     }
 }
 
-trade_office_proper = {
+trade_office = {
     is_foreign = yes
     stronger_power_projection = no
     max_levels = guild_max_level
@@ -98,7 +98,7 @@ trade_office_proper = {
     # upon construction completion, destroy the temporary building, and delete the temporary pops
     on_built = {
         location = {
-            destroy_all_buildings_of_type = building_type:trade_office
+            destroy_all_buildings_of_type = building_type:trade_office_temp
             every_pop = {
                 limit = {
                     pop_type = pop_type:temp
@@ -109,7 +109,7 @@ trade_office_proper = {
     }
 }
 
-embassy = {
+embassy_temp = {
 	is_foreign = yes
 	stronger_power_projection = no
 	max_levels = 1
@@ -168,7 +168,7 @@ embassy = {
 	
 }
 
-embassy_proper = {
+embassy = {
 	is_foreign = yes
 	stronger_power_projection = no
 	max_levels = 1
@@ -244,7 +244,7 @@ embassy_proper = {
     }
 }
 
-missionary_building = {
+missionary_building_temp = {
 	in_empty = empty
 	is_foreign = yes
 	max_levels = 1
@@ -299,7 +299,7 @@ missionary_building = {
     }
 }
 
-missionary_building_proper = {
+missionary_building = {
 	in_empty = empty
 	is_foreign = yes
 	max_levels = 1
@@ -362,7 +362,7 @@ missionary_building_proper = {
     }
 }
 
-slave_center = {
+slave_center_temp = {
 	in_empty = any
 	is_foreign = yes
 	stronger_power_projection = yes
@@ -433,7 +433,7 @@ slave_center = {
     }
 }
 
-slave_center_proper = {
+slave_center = {
 	in_empty = any
 	is_foreign = yes
 	stronger_power_projection = yes
@@ -512,7 +512,7 @@ slave_center_proper = {
     }
 }
 
-overseas_trading_post = {
+overseas_trading_post_temp = {
 	in_empty = any
 	is_foreign = yes
 	max_levels = 1
@@ -570,7 +570,7 @@ overseas_trading_post = {
     }
 }
 
-overseas_trading_post_proper = {
+overseas_trading_post = {
 	in_empty = any
 	is_foreign = yes
 	max_levels = 1
