@@ -254,9 +254,9 @@ trade_company_garrison = {
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
+			total_effective_building_levels:trade_company_headquarters_proper > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
+				total_effective_building_levels:trade_company_headquarters_proper > 0
 			}
 		}
 	}
@@ -391,9 +391,9 @@ trade_company_harbor = {
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
+			total_effective_building_levels:trade_company_headquarters_proper > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
+				total_effective_building_levels:trade_company_headquarters_proper > 0
 			}
 		}
 	}
@@ -448,9 +448,9 @@ trade_company_harbor_proper = {
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
+			total_effective_building_levels:trade_company_headquarters_proper > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
+				total_effective_building_levels:trade_company_headquarters_proper > 0
 			}
 		}
 	}
@@ -533,9 +533,9 @@ trade_company_local_venture = {
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
+			total_effective_building_levels:trade_company_headquarters_proper > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
+				total_effective_building_levels:trade_company_headquarters_proper > 0
 			}
 		}
 	}
@@ -587,9 +587,9 @@ trade_company_local_venture_proper = {
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
+			total_effective_building_levels:trade_company_headquarters_proper > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
+				total_effective_building_levels:trade_company_headquarters_proper > 0
 			}
 		}
 	}
@@ -669,9 +669,9 @@ trade_company_foreign_influence = {
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
+			total_effective_building_levels:trade_company_headquarters_proper > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
+				total_effective_building_levels:trade_company_headquarters_proper > 0
 			}
 		}
 	}
@@ -724,9 +724,9 @@ trade_company_foreign_influence_proper = {
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
+			total_effective_building_levels:trade_company_headquarters_proper > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
+				total_effective_building_levels:trade_company_headquarters_proper > 0
 			}
 		}
 	}
@@ -807,9 +807,9 @@ trade_company_governance = {
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
+			total_effective_building_levels:trade_company_headquarters_proper > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
+				total_effective_building_levels:trade_company_headquarters_proper > 0
 			}
 		}
 	}
@@ -863,9 +863,9 @@ trade_company_governance_proper = {
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
+			total_effective_building_levels:trade_company_headquarters_proper > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
+				total_effective_building_levels:trade_company_headquarters_proper > 0
 			}
 		}
 	}
