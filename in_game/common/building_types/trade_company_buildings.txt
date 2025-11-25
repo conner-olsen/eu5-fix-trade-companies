@@ -1,7 +1,7 @@
 ﻿trade_company_headquarters = {
 	is_foreign = yes
 	max_levels = trade_company_headquarters_max_level
-	pop_type = burghers
+	pop_type = temp
 	own_or_overlord_relation_needed = trade_company_rights
 	category = trade_category
 	employment_size = huge_foreign_trade_employment
@@ -74,10 +74,90 @@
 		}
 	}
 	
+	# when construction is complete, replace the temporary building with the proper building at no cost
+    # (since the cost has already been paid with the construction of the temporary building)
+	on_built = {
+		owner = { save_temporary_scope_as = builder }
+        location = {
+            construct_building = {
+                building_type = building_type:trade_company_headquarters_proper
+                instant = yes
+                cost_multiplier = 0
+                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                owner = scope:builder
+            }
+        }
+	}
+}
+
+trade_company_headquarters_proper = {
+	is_foreign = yes
+	max_levels = trade_company_headquarters_max_level
+	pop_type = burghers
+	own_or_overlord_relation_needed = trade_company_rights
+	category = trade_category
+	employment_size = huge_foreign_trade_employment
+	rural_settlement = yes
+	town = yes
+	city = yes
+	expensive = yes
+	
+	build_time = trade_company_headquarters_time
+	unique_production_methods = {
+		trade_company_headquarters_requirements = {
+			paper = 0.1
+			category = building_maintenance
+		}
+	}
+	modifier = {
+		merchant_capacity_from_building = 0.2
+		building_owner_maritime_presence = 0.02
+		scaled_gold_to_building_owner = 0.2
+		building_owner_overlord_maritime_presence = 0.05
+		scaled_gold_to_building_owner_overlord = 0.5
+		local_crown_estate_power = -0.2
+		number_of_satellite_trade_buildings = 3
+	}
+	raw_modifier = {
+		local_monthly_development = 0.01
+		local_monthly_prosperity = 0.001
+		local_build_buildings_cost = -0.1
+	}
+	custom_tags = { trade_company_building }
+	
+	on_construction_started = {
+		owner = {
+			set_variable = {
+				name = building_trade_hq
+				value = 1
+			}
+		}
+	}
+	
+	on_construction_ended = {
+		owner = {
+			remove_variable = building_trade_hq
+		}
+	}
+	
+	country_potential = {
+		always = no
+	}
+	
+	allow = {
+		always = no
+	}
 	
 	on_built = {
 		owner = { save_scope_as = overlord }
 		location = {
+			destroy_all_buildings_of_type = building_type:trade_company_headquarters
+            every_pop = {
+                limit = {
+                    pop_type = pop_type:temp
+                }
+                destroy_pop = this
+            }
 			save_scope_as = capital
 			create_building_country_in_location = {
 				reforms = {
@@ -188,7 +268,70 @@ trade_company_garrison = {
 		local_defensive = 0.25
 		local_garrison_size = 0.5
 	}
+	
 	on_built = {
+		owner = { save_temporary_scope_as = builder }
+        location = {
+            construct_building = {
+                building_type = building_type:trade_company_garrison_proper
+                instant = yes
+                cost_multiplier = 0
+                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                owner = scope:builder
+            }
+        }
+	}
+}
+
+trade_company_garrison_proper = {
+	is_foreign = yes
+	max_levels = trade_company_building_max_level
+	own_or_overlord_relation_needed = trade_company_rights
+	pop_type = burghers
+	category = trade_category
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+	employment_size = large_foreign_trade_employment
+	rural_settlement = yes
+	town = yes
+	city = yes
+	build_time = trade_company_build_time
+	possible_production_methods = {
+		satellite_trade_building_requirements
+	}
+	location_potential = {
+		scope:actor = {
+			has_variable_list = trade_company_regions
+			is_target_in_variable_list = {
+				name = trade_company_regions
+				target = root.region
+			}
+		}
+	}
+	custom_tags = { trade_company_building satellite_trade_building }
+	modifier = {
+		local_defensive = 0.25
+		local_garrison_size = 0.5
+	}
+
+	country_potential = {
+		always = no
+	}
+	
+	allow = {
+		always = no
+	}
+
+	on_built = {
+		location = {
+            destroy_all_buildings_of_type = building_type:trade_company_garrison
+            every_pop = {
+                limit = {
+                    pop_type = pop_type:temp
+                }
+                destroy_pop = this
+            }
+        }
 		owner = {
 			if = {
 				limit = { NOT = { has_variable = trade_company_home_region } }
@@ -265,6 +408,72 @@ trade_company_harbor = {
 		building_owner_overlord_maritime_presence = 0.02
 	}
 	on_built = {
+        owner = { save_temporary_scope_as = builder }
+        location = {
+            construct_building = {
+                building_type = building_type:company_harbor_proper
+                instant = yes
+                cost_multiplier = 0
+                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                owner = scope:builder
+            }
+        }
+	}
+}
+
+trade_company_harbor_proper = {
+	is_foreign = yes
+	max_levels = trade_company_building_max_level
+	own_or_overlord_relation_needed = trade_company_rights
+	pop_type = burghers
+	category = trade_category
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+	employment_size = large_foreign_trade_employment
+	rural_settlement = yes
+	town = yes
+	city = yes
+	build_time = trade_company_build_time
+	possible_production_methods = {
+		satellite_trade_building_requirements
+	}
+	location_potential = {
+		scope:actor = {
+			has_variable_list = trade_company_regions
+			is_target_in_variable_list = {
+				name = trade_company_regions
+				target = root.region
+			}
+		}
+	}
+	country_potential = {
+		OR = {
+			total_effective_building_levels:trade_company_headquarters > 0
+			any_subject = {
+				total_effective_building_levels:trade_company_headquarters > 0
+			}
+		}
+	}
+	allow = {
+		is_port = yes
+		market = { in_trade_range_of = scope:actor }
+	}
+	custom_tags = { trade_company_building satellite_trade_building }
+	modifier = {
+		merchant_power_from_building = 0.5
+		building_owner_maritime_presence = 0.01
+		building_owner_overlord_maritime_presence = 0.02
+	}
+	on_built = {
+		location = {
+            destroy_all_buildings_of_type = building_type:trade_company_harbor
+            every_pop = {
+                limit = {
+                    pop_type = pop_type:temp
+                }
+                destroy_pop = this
+            }
+        }
 		owner = {
 			if = {
 				limit = { NOT = { has_variable = trade_company_home_region } }
@@ -338,6 +547,69 @@ trade_company_local_venture = {
 		local_raw_material_output = 0.33
 	}
 	on_built = {
+		owner = { save_temporary_scope_as = builder }
+        location = {
+            construct_building = {
+                building_type = building_type:trade_company_local_venture_proper
+                instant = yes
+                cost_multiplier = 0
+                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                owner = scope:builder
+            }
+        }
+	}
+}
+
+trade_company_local_venture_proper = {
+	is_foreign = yes
+	max_levels = trade_company_building_max_level
+	own_or_overlord_relation_needed = trade_company_rights
+	pop_type = burghers
+	category = trade_category
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+	employment_size = large_foreign_trade_employment
+	rural_settlement = yes
+	town = yes
+	city = yes
+	build_time = trade_company_build_time
+	possible_production_methods = {
+		satellite_trade_building_requirements
+	}
+	location_potential = {
+		scope:actor = {
+			has_variable_list = trade_company_regions
+			is_target_in_variable_list = {
+				name = trade_company_regions
+				target = root.region
+			}
+		}
+	}
+	country_potential = {
+		OR = {
+			total_effective_building_levels:trade_company_headquarters > 0
+			any_subject = {
+				total_effective_building_levels:trade_company_headquarters > 0
+			}
+		}
+	}
+	allow = {
+		market = { in_trade_range_of = scope:actor }
+	}
+	custom_tags = { trade_company_building satellite_trade_building }
+	modifier = {
+		local_raw_material_output = 0.33
+	}
+	on_built = {
+		location = {
+            destroy_all_buildings_of_type = building_type:trade_company_local_venture
+            every_pop = {
+                limit = {
+                    pop_type = pop_type:temp
+                }
+                destroy_pop = this
+            }
+        }
 		owner = {
 			if = {
 				limit = { NOT = { has_variable = trade_company_home_region } }
@@ -412,6 +684,70 @@ trade_company_foreign_influence = {
 		local_max_control = 0.05
 	}
 	on_built = {
+        owner = { save_temporary_scope_as = builder }
+        location = {
+            construct_building = {
+                building_type = building_type:trade_company_foreign_influence_proper
+                instant = yes
+                cost_multiplier = 0
+                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                owner = scope:builder
+            }
+        }
+	}
+}
+
+trade_company_foreign_influence_proper = {
+	is_foreign = yes
+	max_levels = trade_company_building_max_level
+	own_or_overlord_relation_needed = trade_company_rights
+	pop_type = burghers
+	category = trade_category
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+	employment_size = large_foreign_trade_employment
+	rural_settlement = yes
+	town = yes
+	city = yes
+	build_time = trade_company_build_time
+	possible_production_methods = {
+		satellite_trade_building_requirements
+	}
+	location_potential = {
+		scope:actor = {
+			has_variable_list = trade_company_regions
+			is_target_in_variable_list = {
+				name = trade_company_regions
+				target = root.region
+			}
+		}
+	}
+	country_potential = {
+		OR = {
+			total_effective_building_levels:trade_company_headquarters > 0
+			any_subject = {
+				total_effective_building_levels:trade_company_headquarters > 0
+			}
+		}
+	}
+	allow = {
+		market = { in_trade_range_of = scope:actor }
+	}
+	custom_tags = { trade_company_building satellite_trade_building }
+	modifier = {
+		local_monthly_development = 0.005
+		local_max_control = 0.05
+	}
+	on_built = {
+		location = {
+            destroy_all_buildings_of_type = building_type:trade_company_foreign_influence
+            every_pop = {
+                limit = {
+                    pop_type = pop_type:temp
+                }
+                destroy_pop = this
+            }
+        }
 		owner = {
 			if = {
 				limit = { NOT = { has_variable = trade_company_home_region } }
@@ -487,6 +823,71 @@ trade_company_governance = {
 		can_recruit_regiment_in_this_location = yes
 	}
 	on_built = {
+        owner = { save_temporary_scope_as = builder }
+        location = {
+            construct_building = {
+                building_type = building_type:trade_company_governance_proper
+                instant = yes
+                cost_multiplier = 0
+                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                owner = scope:builder
+            }
+        }
+	}
+}
+
+trade_company_governance_proper = {
+	is_foreign = yes
+	max_levels = trade_company_building_max_level
+	own_or_overlord_relation_needed = trade_company_rights
+	pop_type = burghers
+	category = trade_category
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+	employment_size = large_foreign_trade_employment
+	rural_settlement = yes
+	town = yes
+	city = yes
+	build_time = trade_company_build_time
+	possible_production_methods = {
+		satellite_trade_building_requirements
+	}
+	location_potential = {
+		scope:actor = {
+			has_variable_list = trade_company_regions
+			is_target_in_variable_list = {
+				name = trade_company_regions
+				target = root.region
+			}
+		}
+	}
+	country_potential = {
+		OR = {
+			total_effective_building_levels:trade_company_headquarters > 0
+			any_subject = {
+				total_effective_building_levels:trade_company_headquarters > 0
+			}
+		}
+	}
+	allow = {
+		market = { in_trade_range_of = scope:actor }
+	}
+	custom_tags = { trade_company_building satellite_trade_building }
+	modifier = {
+		manpower_to_building_owner = 0.003
+		sailors_to_building_owner = 0.005
+		can_recruit_regiment_in_this_location = yes
+	}
+	on_built = {
+		location = {
+            destroy_all_buildings_of_type = building_type:trade_company_governance
+            every_pop = {
+                limit = {
+                    pop_type = pop_type:temp
+                }
+                destroy_pop = this
+            }
+        }
 		owner = {
 			if = {
 				limit = { NOT = { has_variable = trade_company_home_region } }

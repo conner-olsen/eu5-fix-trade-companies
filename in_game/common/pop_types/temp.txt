@@ -1,0 +1,26 @@
+temp = {
+	colo pop_clergy
+
+	editor = 0.05
+	
+	assimilation_conversion_factor = 0.05
+
+	pop_food_consumption = 20.0
+
+	city_graphics = 1.0
+	
+	dhimmi_estate = { is_dhimmi = yes }
+	tribes_estate = { is_gaelic_clans = yes }
+	nobles_estate = {}
+	
+	
+	promotion_factor = 0.1
+	
+	upper = yes
+	has_cap = yes
+	
+	literacy_impact = {
+		local_cultural_tradition = 0.2
+		local_monthly_control = 0.01
+	}
+}
