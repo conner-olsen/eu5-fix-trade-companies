@@ -22,6 +22,9 @@ trade_office_temp = {
         market = { in_trade_range_of = scope:actor }
     }
 
+	location_allow = {
+		NOT = { has_building = building_type:trade_office }
+	}
 
     build_time = trade_post_build_time
 
@@ -128,11 +131,14 @@ embassy_temp = {
 		is_capital = yes
 		scope:actor.country_rank_level <= owner.country_rank_level
 	}
+
+	location_allow = {
+		NOT = { has_building = building_type:embassy }
+	}
+
 	remove_if = {
 		location = { is_capital = no }
 	}
-	
-	
 	
 	build_time = trade_post_build_time
 	
@@ -269,6 +275,10 @@ missionary_building_temp = {
 		NOT = { dominant_religion = scope:actor.religion }
 	}
 
+	location_allow = {
+		NOT = { has_building = building_type:missionary_building }
+	}
+
 	possible_production_methods = {
 		colony_maintenance
 	}
@@ -384,7 +394,11 @@ slave_center_temp = {
 		NOT = { dominant_religion.group = scope:actor.religion.group }
 		owner ?= { religion != scope:actor.religion }
 	}
-	
+
+	location_allow = {
+		NOT = { has_building = building_type:slave_center }
+	}
+
 	allow = {
 		OR = {
 			sub_continent = sub_continent:west_africa
@@ -533,7 +547,12 @@ overseas_trading_post_temp = {
 
 	location_potential = {
 		NOT = { continent = scope:actor.capital.continent }
-	}	
+	}
+
+	location_allow = {
+		NOT = { has_building = building_type:overseas_trading_post }
+	}
+
 	allow = {
 		OR = { 
 			is_coastal_within_range = yes
