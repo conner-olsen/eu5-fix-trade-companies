@@ -223,6 +223,16 @@ trade_company_headquarters_proper = {
 					target = scope:trade_company_tag
 				}
 			}
+			every_owned_foreign_building = {
+				limit = {
+					location = {
+						region = scope:capital.region
+					}
+				}
+				order_by = building_level
+				change_building_owner = scope:trade_company_tag
+				
+			}
 		}
 	}
 }
