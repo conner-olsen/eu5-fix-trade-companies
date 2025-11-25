@@ -1,7 +1,7 @@
 # Circumvents the pop check by replacing the pop_type with a non-existent pop, so when the game checks for
 #  existing pops, they are never found
 
-trade_office_temp = {
+trade_office = {
     is_foreign = yes
     stronger_power_projection = no
     max_levels = guild_max_level
@@ -45,20 +45,20 @@ trade_office_temp = {
     # when construction is complete, replace the temporary building with the proper building at no cost
     # (since the cost has already been paid with the construction of the temporary building)
     on_built = {
-        owner = { save_temporary_scope_as = builder }
+        owner = { saveorary_scope_as = builder }
         location = {
             construct_building = {
-                building_type = building_type:trade_office
+                building_type = building_type:trade_office_permanent
                 instant = yes
                 cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                cost_multiplier_reason = "game_concept_foreign_building"
                 owner = scope:builder
             }
         }
     }
 }
 
-trade_office = {
+trade_office_permanent = {
     is_foreign = yes
     stronger_power_projection = no
     max_levels = guild_max_level
@@ -101,7 +101,7 @@ trade_office = {
     # upon construction completion, destroy the temporary building, and delete the temporary pops
     on_built = {
         location = {
-            destroy_all_buildings_of_type = building_type:trade_office_temp
+            destroy_all_buildings_of_type = building_type:trade_office
             every_pop = {
                 limit = {
                     pop_type = pop_type:temp
@@ -112,7 +112,7 @@ trade_office = {
     }
 }
 
-embassy_temp = {
+embassy = {
 	is_foreign = yes
 	stronger_power_projection = no
 	max_levels = 1
@@ -160,13 +160,13 @@ embassy_temp = {
 	# when construction is complete, replace the temporary building with the proper building at no cost
     # (since the cost has already been paid with the construction of the temporary building)
 	on_built = {
-        owner = { save_temporary_scope_as = builder }
+        owner = { saveorary_scope_as = builder }
         location = {
             construct_building = {
-                building_type = building_type:embassy_proper
+                building_type = building_type:embassy_permanent
                 instant = yes
                 cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                cost_multiplier_reason = "game_concept_foreign_building"
                 owner = scope:builder
             }
         }
@@ -174,7 +174,7 @@ embassy_temp = {
 	
 }
 
-embassy = {
+embassy_permanent = {
 	is_foreign = yes
 	stronger_power_projection = no
 	max_levels = 1
@@ -250,7 +250,7 @@ embassy = {
     }
 }
 
-missionary_building_temp = {
+missionary_building = {
 	in_empty = empty
 	is_foreign = yes
 	max_levels = 1
@@ -296,20 +296,20 @@ missionary_building_temp = {
 	# when construction is complete, replace the temporary building with the proper building at no cost
     # (since the cost has already been paid with the construction of the temporary building)
 	on_built = {
-        owner = { save_temporary_scope_as = builder }
+        owner = { saveorary_scope_as = builder }
         location = {
             construct_building = {
-                building_type = building_type:missionary_building_proper
+                building_type = building_type:missionary_building_permanent
                 instant = yes
                 cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                cost_multiplier_reason = "game_concept_foreign_building"
                 owner = scope:builder
             }
         }
     }
 }
 
-missionary_building = {
+missionary_building_permanent = {
 	in_empty = empty
 	is_foreign = yes
 	max_levels = 1
@@ -372,7 +372,7 @@ missionary_building = {
     }
 }
 
-slave_center_temp = {
+slave_center = {
 	in_empty = any
 	is_foreign = yes
 	stronger_power_projection = yes
@@ -434,20 +434,20 @@ slave_center_temp = {
 	# when construction is complete, replace the temporary building with the proper building at no cost
     # (since the cost has already been paid with the construction of the temporary building)
 	on_built = {
-        owner = { save_temporary_scope_as = builder }
+        owner = { saveorary_scope_as = builder }
         location = {
             construct_building = {
-                building_type = building_type:slave_center_proper
+                building_type = building_type:slave_center_permanent
                 instant = yes
                 cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                cost_multiplier_reason = "game_concept_foreign_building"
                 owner = scope:builder
             }
         }
     }
 }
 
-slave_center = {
+slave_center_permanent = {
 	in_empty = any
 	is_foreign = yes
 	stronger_power_projection = yes
@@ -526,7 +526,7 @@ slave_center = {
     }
 }
 
-overseas_trading_post_temp = {
+overseas_trading_post = {
 	in_empty = any
 	is_foreign = yes
 	max_levels = 1
@@ -576,20 +576,20 @@ overseas_trading_post_temp = {
 	# when construction is complete, replace the temporary building with the proper building at no cost
     # (since the cost has already been paid with the construction of the temporary building)
 	on_built = {
-        owner = { save_temporary_scope_as = builder }
+        owner = { saveorary_scope_as = builder }
         location = {
             construct_building = {
-                building_type = building_type:overseas_trading_post_proper
+                building_type = building_type:overseas_trading_post_permanent
                 instant = yes
                 cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                cost_multiplier_reason = "game_concept_foreign_building"
                 owner = scope:builder
             }
         }
     }
 }
 
-overseas_trading_post = {
+overseas_trading_post_permanent = {
 	in_empty = any
 	is_foreign = yes
 	max_levels = 1

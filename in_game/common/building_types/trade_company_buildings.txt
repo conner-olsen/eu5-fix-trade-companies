@@ -1,4 +1,4 @@
-﻿trade_company_headquarters_temp = {
+﻿trade_company_headquarters = {
 	is_foreign = yes
 	max_levels = trade_company_headquarters_max_level
 	pop_type = temp
@@ -77,20 +77,20 @@
 	# when construction is complete, replace the temporary building with the proper building at no cost
     # (since the cost has already been paid with the construction of the temporary building)
 	on_built = {
-		owner = { save_temporary_scope_as = builder }
+		owner = { saveorary_scope_as = builder }
         location = {
             construct_building = {
                 building_type = building_type:trade_company_headquarters
                 instant = yes
                 cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                cost_multiplier_reason = "game_concept_foreign_building"
                 owner = scope:builder
             }
         }
 	}
 }
 
-trade_company_headquarters = {
+trade_company_headquarters_permanent = {
 	is_foreign = yes
 	max_levels = trade_company_headquarters_max_level
 	pop_type = burghers
@@ -237,7 +237,7 @@ trade_company_headquarters = {
 	}
 }
 
-trade_company_garrison_temp = {
+trade_company_garrison = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -283,20 +283,20 @@ trade_company_garrison_temp = {
 	}
 	
 	on_built = {
-		owner = { save_temporary_scope_as = builder }
+		owner = { saveorary_scope_as = builder }
         location = {
             construct_building = {
-                building_type = building_type:trade_company_garrison
+                building_type = building_type:trade_company_garrison_permanent
                 instant = yes
                 cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                cost_multiplier_reason = "game_concept_foreign_building"
                 owner = scope:builder
             }
         }
 	}
 }
 
-trade_company_garrison = {
+trade_company_garrison_permanent = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -348,13 +348,13 @@ trade_company_garrison = {
 		owner = {
 			if = {
 				limit = { NOT = { has_variable = trade_company_home_region } }
-				save_temporary_scope_as = owner_scope
+				saveorary_scope_as = owner_scope
 				random_in_list = {
 					variable = trade_company_subjects
 					limit = {
 						has_variable = trade_company_home_region
 						var:trade_company_home_region = {
-							save_temporary_scope_as = target_region
+							saveorary_scope_as = target_region
 						}
 						scope:owner_scope = {
 							is_target_in_variable_list = {
@@ -377,7 +377,7 @@ trade_company_garrison = {
 	}
 }
 
-trade_company_harbor_temp = {
+trade_company_harbor = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -424,20 +424,20 @@ trade_company_harbor_temp = {
 		building_owner_overlord_maritime_presence = 0.02
 	}
 	on_built = {
-        owner = { save_temporary_scope_as = builder }
+        owner = { saveorary_scope_as = builder }
         location = {
             construct_building = {
-                building_type = building_type:company_harbor
+                building_type = building_type:company_harbor_permanent
                 instant = yes
                 cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                cost_multiplier_reason = "game_concept_foreign_building"
                 owner = scope:builder
             }
         }
 	}
 }
 
-trade_company_harbor = {
+trade_company_harbor_permanent = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -487,13 +487,13 @@ trade_company_harbor = {
 		owner = {
 			if = {
 				limit = { NOT = { has_variable = trade_company_home_region } }
-				save_temporary_scope_as = owner_scope
+				saveorary_scope_as = owner_scope
 				random_in_list = {
 					variable = trade_company_subjects
 					limit = {
 						has_variable = trade_company_home_region
 						var:trade_company_home_region = {
-							save_temporary_scope_as = target_region
+							saveorary_scope_as = target_region
 						}
 						scope:owner_scope = {
 							is_target_in_variable_list = {
@@ -516,7 +516,7 @@ trade_company_harbor = {
 	}
 }
 
-trade_company_local_venture_temp = {
+trade_company_local_venture = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -560,20 +560,20 @@ trade_company_local_venture_temp = {
 		local_raw_material_output = 0.33
 	}
 	on_built = {
-		owner = { save_temporary_scope_as = builder }
+		owner = { saveorary_scope_as = builder }
         location = {
             construct_building = {
-                building_type = building_type:trade_company_local_venture
+                building_type = building_type:trade_company_local_venture_permanent
                 instant = yes
                 cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                cost_multiplier_reason = "game_concept_foreign_building"
                 owner = scope:builder
             }
         }
 	}
 }
 
-trade_company_local_venture = {
+trade_company_local_venture_permanent = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -622,13 +622,13 @@ trade_company_local_venture = {
 		owner = {
 			if = {
 				limit = { NOT = { has_variable = trade_company_home_region } }
-				save_temporary_scope_as = owner_scope
+				saveorary_scope_as = owner_scope
 				random_in_list = {
 					variable = trade_company_subjects
 					limit = {
 						has_variable = trade_company_home_region
 						var:trade_company_home_region = {
-							save_temporary_scope_as = target_region
+							saveorary_scope_as = target_region
 						}
 						scope:owner_scope = {
 							is_target_in_variable_list = {
@@ -651,7 +651,7 @@ trade_company_local_venture = {
 	}
 }
 
-trade_company_foreign_influence_temp = {
+trade_company_foreign_influence = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -696,20 +696,20 @@ trade_company_foreign_influence_temp = {
 		local_max_control = 0.05
 	}
 	on_built = {
-        owner = { save_temporary_scope_as = builder }
+        owner = { saveorary_scope_as = builder }
         location = {
             construct_building = {
-                building_type = building_type:trade_company_foreign_influence
+                building_type = building_type:trade_company_foreign_influence_permanent
                 instant = yes
                 cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                cost_multiplier_reason = "game_concept_foreign_building"
                 owner = scope:builder
             }
         }
 	}
 }
 
-trade_company_foreign_influence = {
+trade_company_foreign_influence_permanent = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -758,13 +758,13 @@ trade_company_foreign_influence = {
 		owner = {
 			if = {
 				limit = { NOT = { has_variable = trade_company_home_region } }
-				save_temporary_scope_as = owner_scope
+				saveorary_scope_as = owner_scope
 				random_in_list = {
 					variable = trade_company_subjects
 					limit = {
 						has_variable = trade_company_home_region
 						var:trade_company_home_region = {
-							save_temporary_scope_as = target_region
+							saveorary_scope_as = target_region
 						}
 						scope:owner_scope = {
 							is_target_in_variable_list = {
@@ -787,7 +787,7 @@ trade_company_foreign_influence = {
 	}
 }
 
-trade_company_governance_temp = {
+trade_company_governance = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -833,20 +833,20 @@ trade_company_governance_temp = {
 		can_recruit_regiment_in_this_location = yes
 	}
 	on_built = {
-        owner = { save_temporary_scope_as = builder }
+        owner = { saveorary_scope_as = builder }
         location = {
             construct_building = {
-                building_type = building_type:trade_company_governance
+                building_type = building_type:trade_company_governance_permanent
                 instant = yes
                 cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_temp_foreign_building"
+                cost_multiplier_reason = "game_concept_foreign_building"
                 owner = scope:builder
             }
         }
 	}
 }
 
-trade_company_governance = {
+trade_company_governance_permanent = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -897,13 +897,13 @@ trade_company_governance = {
 		owner = {
 			if = {
 				limit = { NOT = { has_variable = trade_company_home_region } }
-				save_temporary_scope_as = owner_scope
+				saveorary_scope_as = owner_scope
 				random_in_list = {
 					variable = trade_company_subjects
 					limit = {
 						has_variable = trade_company_home_region
 						var:trade_company_home_region = {
-							save_temporary_scope_as = target_region
+							saveorary_scope_as = target_region
 						}
 						scope:owner_scope = {
 							is_target_in_variable_list = {
