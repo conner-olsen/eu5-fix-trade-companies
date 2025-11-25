@@ -1,0 +1,5 @@
+﻿l_english:
+ diplomatic_status_gives_trade_company_rights_name: "Granting Trade Company Rights"
+ diplomatic_status_gives_trade_company_rights_tooltip: "#T Granting Trade Company Rights#!\nThis country is granting [trade_company_rights|E] to these [countries|e]"
+ diplomatic_status_has_trade_company_rights_name: "Allowed Trade Company Rights"
+ diplomatic_status_has_trade_company_rights_tooltip: "#T Granting Trade Company Rights#!\nThis country is allowed [trade_company_rights|E] by these [countries|e]"
