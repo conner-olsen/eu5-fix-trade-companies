@@ -446,18 +446,12 @@ trade_company_harbor_proper = {
 			}
 		}
 	}
-	country_potential = {
-		OR = {
-			total_effective_building_levels:trade_company_headquarters_proper > 0
-			any_subject = {
-				total_effective_building_levels:trade_company_headquarters_proper > 0
-			}
-		}
-	}
 	allow = {
-		is_port = yes
-		market = { in_trade_range_of = scope:actor }
-	}
+        always = no
+    }
+	country_potential = {
+        always = no
+    }
 	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
 		merchant_power_from_building = 0.5
@@ -585,17 +579,13 @@ trade_company_local_venture_proper = {
 			}
 		}
 	}
-	country_potential = {
-		OR = {
-			total_effective_building_levels:trade_company_headquarters_proper > 0
-			any_subject = {
-				total_effective_building_levels:trade_company_headquarters_proper > 0
-			}
-		}
-	}
 	allow = {
-		market = { in_trade_range_of = scope:actor }
-	}
+        always = no
+    }
+
+	country_potential = {
+        always = no
+    }
 	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
 		local_raw_material_output = 0.33
@@ -722,17 +712,13 @@ trade_company_foreign_influence_proper = {
 			}
 		}
 	}
-	country_potential = {
-		OR = {
-			total_effective_building_levels:trade_company_headquarters_proper > 0
-			any_subject = {
-				total_effective_building_levels:trade_company_headquarters_proper > 0
-			}
-		}
-	}
 	allow = {
-		market = { in_trade_range_of = scope:actor }
-	}
+        always = no
+    }
+
+	country_potential = {
+        always = no
+    }
 	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
 		local_monthly_development = 0.005
@@ -861,17 +847,13 @@ trade_company_governance_proper = {
 			}
 		}
 	}
-	country_potential = {
-		OR = {
-			total_effective_building_levels:trade_company_headquarters_proper > 0
-			any_subject = {
-				total_effective_building_levels:trade_company_headquarters_proper > 0
-			}
-		}
-	}
 	allow = {
-		market = { in_trade_range_of = scope:actor }
-	}
+        always = no
+    }
+
+	country_potential = {
+        always = no
+    }
 	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
 		manpower_to_building_owner = 0.003
