@@ -42,20 +42,9 @@ trade_office = {
         merchant_power_from_building = 0.2
     }
 
-    # when construction is complete, replace the temporary building with the proper building at no cost
-    # (since the cost has already been paid with the construction of the temporary building)
-    on_built = {
-        owner = { saveorary_scope_as = builder }
-        location = {
-            construct_building = {
-                building_type = building_type:trade_office_permanent
-                instant = yes
-                cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_foreign_building"
-                owner = scope:builder
-            }
-        }
-    }
+	on_built = {
+		tcf_built_temp = { building = trade_office }
+	}
 }
 
 trade_office_permanent = {
@@ -98,18 +87,9 @@ trade_office_permanent = {
         always = no
     }
 
-    # upon construction completion, destroy the temporary building, and delete the temporary pops
-    on_built = {
-        location = {
-            destroy_all_buildings_of_type = building_type:trade_office
-            every_pop = {
-                limit = {
-                    pop_type = pop_type:temp
-                }
-                destroy_pop = this
-            }
-        }
-    }
+	on_built = {
+		tcf_built_permanent = { building = trade_office }
+	}
 }
 
 embassy = {
@@ -156,22 +136,10 @@ embassy = {
 	foreign_country_modifier = {
 		diplomatic_capacity = 0.1
 	}
-	
-	# when construction is complete, replace the temporary building with the proper building at no cost
-    # (since the cost has already been paid with the construction of the temporary building)
+
 	on_built = {
-        owner = { saveorary_scope_as = builder }
-        location = {
-            construct_building = {
-                building_type = building_type:embassy_permanent
-                instant = yes
-                cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_foreign_building"
-                owner = scope:builder
-            }
-        }
-    }
-	
+		tcf_built_temp = { building = embassy }
+	}
 }
 
 embassy_permanent = {
@@ -213,18 +181,6 @@ embassy_permanent = {
 	foreign_country_modifier = {
 		diplomatic_capacity = 0.1
 	}
-	
-	on_built = {
-        location = {
-            destroy_all_buildings_of_type = building_type:embassy
-            every_pop = {
-                limit = {
-                    pop_type = pop_type:temp
-                }
-                destroy_pop = this
-            }
-        }
-    }
 
 	# disallow the user from building this directly
 	allow = {
@@ -238,15 +194,7 @@ embassy_permanent = {
 
     # upon construction completion, destroy the temporary building, and delete the temporary pops
     on_built = {
-        location = {
-            destroy_all_buildings_of_type = building_type:embassy
-            every_pop = {
-                limit = {
-                    pop_type = pop_type:temp
-                }
-                destroy_pop = this
-            }
-        }
+		tcf_built_permanent = { building = embassy }
     }
 }
 
@@ -293,20 +241,9 @@ missionary_building = {
 		local_disease_resistance = 0.05
 	}
 
-	# when construction is complete, replace the temporary building with the proper building at no cost
-    # (since the cost has already been paid with the construction of the temporary building)
-	on_built = {
-        owner = { saveorary_scope_as = builder }
-        location = {
-            construct_building = {
-                building_type = building_type:missionary_building_permanent
-                instant = yes
-                cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_foreign_building"
-                owner = scope:builder
-            }
-        }
-    }
+	on_built = { 
+		tcf_built_temp = { building = missionary_building }
+	}
 }
 
 missionary_building_permanent = {
@@ -358,18 +295,9 @@ missionary_building_permanent = {
         always = no
     }
 
-    # upon construction completion, destroy the temporary building, and delete the temporary pops
-    on_built = {
-        location = {
-            destroy_all_buildings_of_type = building_type:missionary_building
-            every_pop = {
-                limit = {
-                    pop_type = pop_type:temp
-                }
-                destroy_pop = this
-            }
-        }
-    }
+	on_built = { 
+		tcf_built_permanent = { building = missionary_building }
+	}
 }
 
 slave_center = {
@@ -431,20 +359,9 @@ slave_center = {
 		building_enslavement_power = 0.050
 	}
 
-	# when construction is complete, replace the temporary building with the proper building at no cost
-    # (since the cost has already been paid with the construction of the temporary building)
 	on_built = {
-        owner = { saveorary_scope_as = builder }
-        location = {
-            construct_building = {
-                building_type = building_type:slave_center_permanent
-                instant = yes
-                cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_foreign_building"
-                owner = scope:builder
-            }
-        }
-    }
+		tcf_built_temp = { building = slave_center }
+	}
 }
 
 slave_center_permanent = {
@@ -512,18 +429,9 @@ slave_center_permanent = {
         always = no
     }
 
-    # upon construction completion, destroy the temporary building, and delete the temporary pops
-    on_built = {
-        location = {
-            destroy_all_buildings_of_type = building_type:slave_center
-            every_pop = {
-                limit = {
-                    pop_type = pop_type:temp
-                }
-                destroy_pop = this
-            }
-        }
-    }
+	on_built = {
+		tcf_built_permanent = { building = slave_center }
+	}
 }
 
 overseas_trading_post = {
@@ -572,21 +480,10 @@ overseas_trading_post = {
 		merchant_capacity_from_building = 0.1
 		merchant_power_from_building = 0.2
 	}
-	
-	# when construction is complete, replace the temporary building with the proper building at no cost
-    # (since the cost has already been paid with the construction of the temporary building)
+
 	on_built = {
-        owner = { saveorary_scope_as = builder }
-        location = {
-            construct_building = {
-                building_type = building_type:overseas_trading_post_permanent
-                instant = yes
-                cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_foreign_building"
-                owner = scope:builder
-            }
-        }
-    }
+		tcf_built_temp = { building = overseas_trading_post }
+	}
 }
 
 overseas_trading_post_permanent = {
@@ -643,16 +540,7 @@ overseas_trading_post_permanent = {
         always = no
     }
 
-    # upon construction completion, destroy the temporary building, and delete the temporary pops
-    on_built = {
-        location = {
-            destroy_all_buildings_of_type = building_type:overseas_trading_post
-            every_pop = {
-                limit = {
-                    pop_type = pop_type:temp
-                }
-                destroy_pop = this
-            }
-        }
-    }
+	on_built = { 
+		tcf_built_permanent = { building = overseas_trading_post }
+	}
 }

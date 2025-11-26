@@ -73,20 +73,9 @@
 			remove_variable = building_trade_hq
 		}
 	}
-	
-	# when construction is complete, replace the temporary building with the proper building at no cost
-    # (since the cost has already been paid with the construction of the temporary building)
+
 	on_built = {
-		owner = { saveorary_scope_as = builder }
-        location = {
-            construct_building = {
-                building_type = building_type:trade_company_headquarters
-                instant = yes
-                cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_foreign_building"
-                owner = scope:builder
-            }
-        }
+		tcf_built_temp = { building = trade_company_headquarters }
 	}
 }
 
@@ -283,16 +272,7 @@ trade_company_garrison = {
 	}
 	
 	on_built = {
-		owner = { saveorary_scope_as = builder }
-        location = {
-            construct_building = {
-                building_type = building_type:trade_company_garrison_permanent
-                instant = yes
-                cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_foreign_building"
-                owner = scope:builder
-            }
-        }
+		tcf_built_temp = { building = trade_company_garrison }
 	}
 }
 
@@ -336,44 +316,7 @@ trade_company_garrison_permanent = {
 	}
 
 	on_built = {
-		location = {
-            destroy_all_buildings_of_type = building_type:trade_company_garrison
-            every_pop = {
-                limit = {
-                    pop_type = pop_type:temp
-                }
-                destroy_pop = this
-            }
-        }
-		owner = {
-			if = {
-				limit = { NOT = { has_variable = trade_company_home_region } }
-				saveorary_scope_as = owner_scope
-				random_in_list = {
-					variable = trade_company_subjects
-					limit = {
-						has_variable = trade_company_home_region
-						var:trade_company_home_region = {
-							saveorary_scope_as = target_region
-						}
-						scope:owner_scope = {
-							is_target_in_variable_list = {
-								name = trade_company_regions
-								target = scope:target_region
-							}
-						}
-					}
-					save_scope_as = trade_company_country
-				}
-				if = {
-					limit = { exists = scope:trade_company_country }
-					root = { change_building_owner = scope:trade_company_country }
-				}
-				else = {
-					root.location = { destroy_building = root }
-				}
-			}
-		}
+		tcf_built_permanent_tc = { building = trade_company_garrison }
 	}
 }
 
@@ -424,16 +367,7 @@ trade_company_harbor = {
 		building_owner_overlord_maritime_presence = 0.02
 	}
 	on_built = {
-        owner = { saveorary_scope_as = builder }
-        location = {
-            construct_building = {
-                building_type = building_type:company_harbor_permanent
-                instant = yes
-                cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_foreign_building"
-                owner = scope:builder
-            }
-        }
+		tcf_built_temp = { building = trade_company_harbor }
 	}
 }
 
@@ -475,44 +409,7 @@ trade_company_harbor_permanent = {
 		building_owner_overlord_maritime_presence = 0.02
 	}
 	on_built = {
-		location = {
-            destroy_all_buildings_of_type = building_type:trade_company_harbor
-            every_pop = {
-                limit = {
-                    pop_type = pop_type:temp
-                }
-                destroy_pop = this
-            }
-        }
-		owner = {
-			if = {
-				limit = { NOT = { has_variable = trade_company_home_region } }
-				saveorary_scope_as = owner_scope
-				random_in_list = {
-					variable = trade_company_subjects
-					limit = {
-						has_variable = trade_company_home_region
-						var:trade_company_home_region = {
-							saveorary_scope_as = target_region
-						}
-						scope:owner_scope = {
-							is_target_in_variable_list = {
-								name = trade_company_regions
-								target = scope:target_region
-							}
-						}
-					}
-					save_scope_as = trade_company_country
-				}
-				if = {
-					limit = { exists = scope:trade_company_country }
-					root = { change_building_owner = scope:trade_company_country }
-				}
-				else = {
-					root.location = { destroy_building = root }
-				}
-			}
-		}
+		tcf_built_permanent_tc = { building = trade_company_harbor }
 	}
 }
 
@@ -560,16 +457,7 @@ trade_company_local_venture = {
 		local_raw_material_output = 0.33
 	}
 	on_built = {
-		owner = { saveorary_scope_as = builder }
-        location = {
-            construct_building = {
-                building_type = building_type:trade_company_local_venture_permanent
-                instant = yes
-                cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_foreign_building"
-                owner = scope:builder
-            }
-        }
+		tcf_built_temp = { building = trade_company_local_venture }
 	}
 }
 
@@ -610,44 +498,7 @@ trade_company_local_venture_permanent = {
 		local_raw_material_output = 0.33
 	}
 	on_built = {
-		location = {
-            destroy_all_buildings_of_type = building_type:trade_company_local_venture
-            every_pop = {
-                limit = {
-                    pop_type = pop_type:temp
-                }
-                destroy_pop = this
-            }
-        }
-		owner = {
-			if = {
-				limit = { NOT = { has_variable = trade_company_home_region } }
-				saveorary_scope_as = owner_scope
-				random_in_list = {
-					variable = trade_company_subjects
-					limit = {
-						has_variable = trade_company_home_region
-						var:trade_company_home_region = {
-							saveorary_scope_as = target_region
-						}
-						scope:owner_scope = {
-							is_target_in_variable_list = {
-								name = trade_company_regions
-								target = scope:target_region
-							}
-						}
-					}
-					save_scope_as = trade_company_country
-				}
-				if = {
-					limit = { exists = scope:trade_company_country }
-					root = { change_building_owner = scope:trade_company_country }
-				}
-				else = {
-					root.location = { destroy_building = root }
-				}
-			}
-		}
+		tcf_built_permanent_tc = { building = trade_company_local_venture }
 	}
 }
 
@@ -696,16 +547,7 @@ trade_company_foreign_influence = {
 		local_max_control = 0.05
 	}
 	on_built = {
-        owner = { saveorary_scope_as = builder }
-        location = {
-            construct_building = {
-                building_type = building_type:trade_company_foreign_influence_permanent
-                instant = yes
-                cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_foreign_building"
-                owner = scope:builder
-            }
-        }
+		tcf_built_temp = { building = trade_company_foreign_influence }
 	}
 }
 
@@ -746,44 +588,7 @@ trade_company_foreign_influence_permanent = {
 		local_max_control = 0.05
 	}
 	on_built = {
-		location = {
-            destroy_all_buildings_of_type = building_type:trade_company_foreign_influence
-            every_pop = {
-                limit = {
-                    pop_type = pop_type:temp
-                }
-                destroy_pop = this
-            }
-        }
-		owner = {
-			if = {
-				limit = { NOT = { has_variable = trade_company_home_region } }
-				saveorary_scope_as = owner_scope
-				random_in_list = {
-					variable = trade_company_subjects
-					limit = {
-						has_variable = trade_company_home_region
-						var:trade_company_home_region = {
-							saveorary_scope_as = target_region
-						}
-						scope:owner_scope = {
-							is_target_in_variable_list = {
-								name = trade_company_regions
-								target = scope:target_region
-							}
-						}
-					}
-					save_scope_as = trade_company_country
-				}
-				if = {
-					limit = { exists = scope:trade_company_country }
-					root = { change_building_owner = scope:trade_company_country }
-				}
-				else = {
-					root.location = { destroy_building = root }
-				}
-			}
-		}
+		tcf_built_permanent_tc = { building = trade_company_foreign_influence }
 	}
 }
 
@@ -833,16 +638,7 @@ trade_company_governance = {
 		can_recruit_regiment_in_this_location = yes
 	}
 	on_built = {
-        owner = { saveorary_scope_as = builder }
-        location = {
-            construct_building = {
-                building_type = building_type:trade_company_governance_permanent
-                instant = yes
-                cost_multiplier = 0
-                cost_multiplier_reason = "game_concept_foreign_building"
-                owner = scope:builder
-            }
-        }
+		tcf_built_temp = { building = trade_company_governance }
 	}
 }
 
@@ -885,43 +681,6 @@ trade_company_governance_permanent = {
 		can_recruit_regiment_in_this_location = yes
 	}
 	on_built = {
-		location = {
-            destroy_all_buildings_of_type = building_type:trade_company_governance
-            every_pop = {
-                limit = {
-                    pop_type = pop_type:temp
-                }
-                destroy_pop = this
-            }
-        }
-		owner = {
-			if = {
-				limit = { NOT = { has_variable = trade_company_home_region } }
-				saveorary_scope_as = owner_scope
-				random_in_list = {
-					variable = trade_company_subjects
-					limit = {
-						has_variable = trade_company_home_region
-						var:trade_company_home_region = {
-							saveorary_scope_as = target_region
-						}
-						scope:owner_scope = {
-							is_target_in_variable_list = {
-								name = trade_company_regions
-								target = scope:target_region
-							}
-						}
-					}
-					save_scope_as = trade_company_country
-				}
-				if = {
-					limit = { exists = scope:trade_company_country }
-					root = { change_building_owner = scope:trade_company_country }
-				}
-				else = {
-					root.location = { destroy_building = root }
-				}
-			}
-		}
+		tcf_built_permanent_tc = { building = trade_company_governance }
 	}
 }

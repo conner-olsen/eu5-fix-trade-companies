@@ -1,0 +1,64 @@
+# Transfers the ownership of all foreign buildings in a location to the trade company if one 
+#  exists in the region
+# call from scope of country that constructed building
+# target_location: location to check for foreign buildings and their ownership
+# builder_country: country that built the building
+
+tcf_built_temp = {
+	owner = { save_temporary_scope_as = owner_scope }
+	location = {
+		construct_building = {
+			building_type = building_type:$building$_permanent
+			instant = yes
+			cost_multiplier = 0
+			cost_multiplier_reason = "game_concept_foreign_building"
+			owner = scope:owner_scope
+		}
+	}
+}
+
+tcf_built_permanent = {
+	location = {
+		destroy_all_buildings_of_type = building_type:$building$
+		every_pop = {
+			limit = {
+				pop_type = pop_type:temp
+			}
+			destroy_pop = this
+		}
+	}
+}
+
+tcf_built_permanent_tc = {
+	tcf_built_permanent = { building = $building$ }
+
+	owner = {
+		if = {
+			limit = { NOT = { has_variable = trade_company_home_region } }
+			save_temporary_scope_as = owner_scope
+			random_in_list = {
+				variable = trade_company_subjects
+				limit = {
+					has_variable = trade_company_home_region
+					var:trade_company_home_region = {
+						save_temporary_scope_as = target_region
+					}
+					scope:owner_scope = {
+						is_target_in_variable_list = {
+							name = trade_company_regions
+							target = scope:target_region
+						}
+					}
+				}
+				save_scope_as = trade_company_country
+			}
+			if = {
+				limit = { exists = scope:trade_company_country }
+				root = { change_building_owner = scope:trade_company_country }
+			}
+			else = {
+				root.location = { destroy_building = root }
+			}
+		}
+	}
+}
