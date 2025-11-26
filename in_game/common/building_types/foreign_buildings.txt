@@ -10,7 +10,7 @@ trade_office = {
 
     category = trade_category
 
-    employment_size = foreign_trade_employment
+    employment_size = 0
 
     rural_settlement = no
     town = yes
@@ -101,7 +101,7 @@ embassy = {
 	
 	category = government_category
 	
-	employment_size = minor_noble_employment
+	employment_size = 0
 	
 	rural_settlement = no
 	town = yes
@@ -207,9 +207,9 @@ missionary_building = {
 	
 	category = colonial_category
 	
-	employment_size = religious_building_employment
+	employment_size = 0
 	
-	pop_size_created = religious_building_employment
+	pop_size_created = 0
 	
 	rural_settlement = yes
 	town = no
@@ -310,9 +310,9 @@ slave_center = {
 	category = colonial_category
 	
 	
-	employment_size = foreign_trade_employment
+	employment_size = 0
 	
-	pop_size_created = foreign_trade_employment
+	pop_size_created = 0
 	
 	rural_settlement = yes
 	town = yes
@@ -441,9 +441,9 @@ overseas_trading_post = {
 	
 	category = colonial_category
 
-	employment_size = foreign_trade_employment
+	employment_size = 0
 	
-	pop_size_created = foreign_trade_employment
+	pop_size_created = 0
 	
 	rural_settlement = yes
 	town = no
