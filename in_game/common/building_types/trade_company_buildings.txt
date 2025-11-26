@@ -21,7 +21,12 @@
 		
 	}
 	
-	
+	location_potential = {
+		NOT = {
+			owner = { is_subject_of = scope:actor } 
+		}
+	}
+
 	allow = {
 		market = { in_trade_range_of = scope:actor }
 		scope:actor = {
@@ -36,7 +41,7 @@
 			}
 		}
 	}
-	build_time = trade_company_headquarters_time
+	build_time = trade_company_headquarters_time`
 	unique_production_methods = {
 		trade_company_headquarters_requirements = {
 			paper = 0.1
