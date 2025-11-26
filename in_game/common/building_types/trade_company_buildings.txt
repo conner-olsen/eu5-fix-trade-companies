@@ -188,6 +188,7 @@ trade_company_headquarters_permanent = {
 			}
 		}
 		scope:overlord = {
+			culture = { save_temporary_scope_as = overlord_culture }
 			if = {
 				limit = {
 					exists = scope:capital
@@ -219,6 +220,9 @@ trade_company_headquarters_permanent = {
 				change_building_owner = scope:trade_company_tag
 				
 			}
+		}
+		scope:trade_company_tag = {
+			change_culture = scope:overlord_culture
 		}
 	}
 }
