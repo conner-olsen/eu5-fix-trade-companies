@@ -22,8 +22,8 @@ trade_office = {
         market = { in_trade_range_of = scope:actor }
     }
 
-	location_allow = {
-		NOT = { has_building = building_type:trade_office }
+	location_potential = {
+		NOT = { has_building = building_type:trade_office_permanent }
 	}
 
     build_time = trade_post_build_time
@@ -112,8 +112,8 @@ embassy = {
 		scope:actor.country_rank_level <= owner.country_rank_level
 	}
 
-	location_allow = {
-		NOT = { has_building = building_type:embassy }
+	location_potential = {
+		NOT = { has_building = building_type:embassy_permanent }
 	}
 
 	remove_if = {
@@ -223,8 +223,8 @@ missionary_building = {
 		NOT = { dominant_religion = scope:actor.religion }
 	}
 
-	location_allow = {
-		NOT = { has_building = building_type:missionary_building }
+	location_potential = {
+		NOT = { has_building = building_type:missionary_building_permanent }
 	}
 
 	possible_production_methods = {
@@ -321,10 +321,7 @@ slave_center = {
 	location_potential = {
 		NOT = { dominant_religion.group = scope:actor.religion.group }
 		owner ?= { religion != scope:actor.religion }
-	}
-
-	location_allow = {
-		NOT = { has_building = building_type:slave_center }
+		NOT = { has_building = building_type:slave_center_permanent }
 	}
 
 	allow = {
@@ -455,10 +452,7 @@ overseas_trading_post = {
 
 	location_potential = {
 		NOT = { continent = scope:actor.capital.continent }
-	}
-
-	location_allow = {
-		NOT = { has_building = building_type:overseas_trading_post }
+		NOT = { has_building = building_type:overseas_trading_post_permanent }
 	}
 
 	allow = {
