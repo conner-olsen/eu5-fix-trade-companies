@@ -1,9 +1,27 @@
 # Transfers the ownership of all foreign buildings in a location to the trade company if one 
 #  exists in the region
-# call from scope of country that constructed building
-# target_location: location to check for foreign buildings and their ownership
-# builder_country: country that built the building
+# owner_scope: scope of the country that built the building: ex. scope:owner_scope
+# location_scope: scope of the location where the building was constructed: ex. scope:location_scope
+tcf_transfer_foreign_buildings = {
+	$owner_scope$ = {
+		every_subject = {
+			limit = {
+				has_variable = trade_company_home_region
+				var:trade_company_home_region = $location_scope$.region
+			}
+			save_temporary_scope_as = trade_company
+			$location_scope$ = {
+				every_buildings_in_location = {
+					limit = { owner = $owner_scope$ }
+					change_building_owner = scope:trade_company
+				}
+			}
+		}
+	}
+}
 
+# Constructs the permanent version of a building after the temporary one is built
+# building: the building type of the temporary building constructed: ex. trade_office
 tcf_built_temp = {
 	owner = { save_temporary_scope_as = owner_scope }
 	location = {
@@ -17,8 +35,11 @@ tcf_built_temp = {
 	}
 }
 
+# Destroys the temporary building and pops, then transfers foreign buildings to the trade company
+# building: the building type of the temporary building constructed: ex. trade_office
 tcf_built_permanent = {
 	location = {
+		save_temporary_scope_as = location_scope
 		destroy_all_buildings_of_type = building_type:$building$
 		every_pop = {
 			limit = {
@@ -27,11 +48,19 @@ tcf_built_permanent = {
 			destroy_pop = this
 		}
 	}
+	owner = { save_temporary_scope_as = owner_scope }
+	tcf_transfer_foreign_buildings = {
+		owner_scope = scope:owner_scope
+		location_scope = scope:location_scope
+	}
+
 }
 
+# Constructs the permanent version of a trade company building after the temporary one is built
+#  and transfers ownership to the appropriate trade company country
+# building: the building type of the temporary building constructed: ex. trade_company_harbor
 tcf_built_permanent_tc = {
 	tcf_built_permanent = { building = $building$ }
-
 	owner = {
 		if = {
 			limit = { NOT = { has_variable = trade_company_home_region } }
