@@ -62,6 +62,12 @@ trade_office_permanent = {
     town = yes
     city = yes
 
+	allow = {
+        is_port = yes
+        market = { in_trade_range_of = scope:actor }
+    }
+
+
     build_time = trade_post_build_time
 
     unique_production_methods = {
@@ -75,16 +81,6 @@ trade_office_permanent = {
         merchant_capacity_from_building = 0.3
         building_owner_maritime_presence = 0.05
         merchant_power_from_building = 0.2
-    }
-
-	# disallow the user from building this directly
-	allow = {
-        always = no
-    }
-
-	# hides the building from view as the user cannot build directly
-	country_potential = {
-        always = no
     }
 
 	on_built = {
@@ -182,16 +178,6 @@ embassy_permanent = {
 		diplomatic_capacity = 0.1
 	}
 
-	# disallow the user from building this directly
-	allow = {
-        always = no
-    }
-
-	# hides the building from view as the user cannot build directly
-	country_potential = {
-        always = no
-    }
-
     # upon construction completion, destroy the temporary building, and delete the temporary pops
     on_built = {
 		tcf_built_permanent = { building = embassy }
@@ -284,16 +270,6 @@ missionary_building_permanent = {
 		local_tribal_promotion = 0.5
 		local_disease_resistance = 0.05
 	}
-
-	# disallow the user from building this directly
-	allow = {
-        always = no
-    }
-
-	# hides the building from view as the user cannot build directly
-	country_potential = {
-        always = no
-    }
 
 	on_built = { 
 		tcf_built_permanent = { building = missionary_building }
@@ -416,16 +392,6 @@ slave_center_permanent = {
 		building_enslavement_power = 0.050
 	}
 
-	# disallow the user from building this directly
-	allow = {
-        always = no
-    }
-
-	# hides the building from view as the user cannot build directly
-	country_potential = {
-        always = no
-    }
-
 	on_built = {
 		tcf_built_permanent = { building = slave_center }
 	}
@@ -523,16 +489,6 @@ overseas_trading_post_permanent = {
 		merchant_capacity_from_building = 0.1
 		merchant_power_from_building = 0.2
 	}
-	
-	# disallow the user from building this directly
-	allow = {
-        always = no
-    }
-
-	# hides the building from view as the user cannot build directly
-	country_potential = {
-        always = no
-    }
 
 	on_built = { 
 		tcf_built_permanent = { building = overseas_trading_post }
