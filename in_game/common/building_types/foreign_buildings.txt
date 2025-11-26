@@ -43,7 +43,7 @@ trade_office = {
     }
 
 	on_built = {
-		tcf_built_temp = { building = trade_office }
+		tcf_built_temp = { building_type = trade_office }
 	}
 }
 
@@ -84,7 +84,7 @@ trade_office_permanent = {
     }
 
 	on_built = {
-		tcf_built_permanent = { building = trade_office }
+		tcf_built_permanent = { building_type = trade_office }
 	}
 }
 
@@ -134,7 +134,7 @@ embassy = {
 	}
 
 	on_built = {
-		tcf_built_temp = { building = embassy }
+		tcf_built_temp = { building_type = embassy }
 	}
 }
 
@@ -180,7 +180,7 @@ embassy_permanent = {
 
     # upon construction completion, destroy the temporary building, and delete the temporary pops
     on_built = {
-		tcf_built_permanent = { building = embassy }
+		tcf_built_permanent = { building_type = embassy }
     }
 }
 
@@ -228,7 +228,7 @@ missionary_building = {
 	}
 
 	on_built = { 
-		tcf_built_temp = { building = missionary_building }
+		tcf_built_temp = { building_type = missionary_building }
 	}
 }
 
@@ -272,7 +272,7 @@ missionary_building_permanent = {
 	}
 
 	on_built = { 
-		tcf_built_permanent = { building = missionary_building }
+		tcf_built_permanent = { building_type = missionary_building }
 	}
 }
 
@@ -333,7 +333,7 @@ slave_center = {
 	}
 
 	on_built = {
-		tcf_built_temp = { building = slave_center }
+		tcf_built_temp = { building_type = slave_center }
 	}
 }
 
@@ -393,7 +393,7 @@ slave_center_permanent = {
 	}
 
 	on_built = {
-		tcf_built_permanent = { building = slave_center }
+		tcf_built_permanent = { building_type = slave_center }
 	}
 }
 
@@ -442,7 +442,7 @@ overseas_trading_post = {
 	}
 
 	on_built = {
-		tcf_built_temp = { building = overseas_trading_post }
+		tcf_built_temp = { building_type = overseas_trading_post }
 	}
 }
 
@@ -491,6 +491,6 @@ overseas_trading_post_permanent = {
 	}
 
 	on_built = { 
-		tcf_built_permanent = { building = overseas_trading_post }
+		tcf_built_permanent = { building_type = overseas_trading_post }
 	}
 }

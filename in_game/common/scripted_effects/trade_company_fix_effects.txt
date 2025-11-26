@@ -21,12 +21,13 @@ tcf_transfer_foreign_buildings = {
 }
 
 # Constructs the permanent version of a building after the temporary one is built
-# building: the building type of the temporary building constructed: ex. trade_office
+# call from building scope
+# building_type: the building type of the temporary building constructed: ex. trade_office
 tcf_built_temp = {
 	owner = { save_temporary_scope_as = owner_scope }
 	location = {
 		construct_building = {
-			building_type = building_type:$building$_permanent
+			building_type = building_type:$building_type$_permanent
 			instant = yes
 			cost_multiplier = 0
 			cost_multiplier_reason = "game_concept_foreign_building"
@@ -36,11 +37,12 @@ tcf_built_temp = {
 }
 
 # Destroys the temporary building and pops, then transfers foreign buildings to the trade company
-# building: the building type of the temporary building constructed: ex. trade_office
+# call from building scope
+# building_type: the building type of the temporary building constructed: ex. trade_office
 tcf_built_permanent = {
 	location = {
 		save_temporary_scope_as = location_scope
-		destroy_all_buildings_of_type = building_type:$building$
+		destroy_all_buildings_of_type = building_type:$building_type$
 		every_pop = {
 			limit = {
 				pop_type = pop_type:temp
@@ -58,9 +60,10 @@ tcf_built_permanent = {
 
 # Constructs the permanent version of a trade company building after the temporary one is built
 #  and transfers ownership to the appropriate trade company country
-# building: the building type of the temporary building constructed: ex. trade_company_harbor
+# call from building scope
+# building_type: the building type of the temporary building constructed: ex. trade_company_harbor
 tcf_built_permanent_tc = {
-	tcf_built_permanent = { building = $building$ }
+	tcf_built_permanent = { building_type = $building_type$ }
 	owner = {
 		if = {
 			limit = { NOT = { has_variable = trade_company_home_region } }
