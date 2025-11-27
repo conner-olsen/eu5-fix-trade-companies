@@ -27,7 +27,7 @@ tcf_built_temp = {
 	owner = { save_temporary_scope_as = owner_scope }
 	location = {
 		construct_building = {
-			building_type = building_type:$building_type$_permanent
+			building_type = building_type:$building_type$
 			instant = yes
 			cost_multiplier = 0
 			cost_multiplier_reason = "game_concept_foreign_building"
@@ -42,7 +42,7 @@ tcf_built_temp = {
 tcf_built_permanent = {
 	location = {
 		save_temporary_scope_as = location_scope
-		destroy_all_buildings_of_type = building_type:$building_type$
+		destroy_all_buildings_of_type = building_type:$building_type$_temp
 		every_pop = {
 			limit = {
 				pop_type = pop_type:temp

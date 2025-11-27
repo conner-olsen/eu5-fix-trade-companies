@@ -1,4 +1,4 @@
-﻿trade_company_headquarters = {
+﻿trade_company_headquarters_temp = {
 	is_foreign = yes
 	max_levels = trade_company_headquarters_max_level
 	pop_type = temp
@@ -84,7 +84,7 @@
 	}
 }
 
-trade_company_headquarters_permanent = {
+trade_company_headquarters = {
 	is_foreign = yes
 	max_levels = trade_company_headquarters_max_level
 	pop_type = burghers
@@ -137,7 +137,7 @@ trade_company_headquarters_permanent = {
 	on_built = {
 		owner = { save_scope_as = overlord }
 		location = {
-			destroy_all_buildings_of_type = building_type:trade_company_headquarters
+			destroy_all_buildings_of_type = building_type:trade_company_headquarters_temp
             every_pop = {
                 limit = {
                     pop_type = pop_type:temp
@@ -227,7 +227,7 @@ trade_company_headquarters_permanent = {
 	}
 }
 
-trade_company_garrison = {
+trade_company_garrison_temp = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -252,18 +252,18 @@ trade_company_garrison = {
 			}
 		}
 		OR = {
-			NOT = { has_building = building_type:trade_company_garrison_permanent }
+			NOT = { has_building = building_type:trade_company_garrison }
 			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_garrison_permanent }
+				filter = { building_type = building_type:trade_company_garrison }
 				is_max_level = no
 			}
 		}
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters_permanent > 0
+			total_effective_building_levels:trade_company_headquarters > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters_permanent > 0
+				total_effective_building_levels:trade_company_headquarters > 0
 			}
 		}
 	}
@@ -281,7 +281,7 @@ trade_company_garrison = {
 	}
 }
 
-trade_company_garrison_permanent = {
+trade_company_garrison = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -306,9 +306,9 @@ trade_company_garrison_permanent = {
 			}
 		}
 		OR = {
-			NOT = { has_building = building_type:trade_company_garrison_permanent }
+			NOT = { has_building = building_type:trade_company_garrison }
 			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_garrison_permanent }
+				filter = { building_type = building_type:trade_company_garrison }
 				is_max_level = no
 			}
 		}
@@ -324,7 +324,7 @@ trade_company_garrison_permanent = {
 	}
 }
 
-trade_company_harbor = {
+trade_company_harbor_temp = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -349,18 +349,18 @@ trade_company_harbor = {
 			}
 		}
 		OR = {
-			NOT = { has_building = building_type:trade_company_harbor_permanent }
+			NOT = { has_building = building_type:trade_company_harbor }
 			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_harbor_permanent }
+				filter = { building_type = building_type:trade_company_harbor }
 				is_max_level = no
 			}
 		}
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters_permanent > 0
+			total_effective_building_levels:trade_company_headquarters > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters_permanent > 0
+				total_effective_building_levels:trade_company_headquarters > 0
 			}
 		}
 	}
@@ -379,7 +379,7 @@ trade_company_harbor = {
 	}
 }
 
-trade_company_harbor_permanent = {
+trade_company_harbor = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -404,9 +404,9 @@ trade_company_harbor_permanent = {
 			}
 		}
 		OR = {
-			NOT = { has_building = building_type:trade_company_harbor_permanent }
+			NOT = { has_building = building_type:trade_company_harbor }
 			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_harbor_permanent }
+				filter = { building_type = building_type:trade_company_harbor }
 				is_max_level = no
 			}
 		}
@@ -422,7 +422,7 @@ trade_company_harbor_permanent = {
 	}
 }
 
-trade_company_local_venture = {
+trade_company_local_venture_temp = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -447,18 +447,18 @@ trade_company_local_venture = {
 			}
 		}
 		OR = {
-			NOT = { has_building = building_type:trade_company_venture_permanent }
+			NOT = { has_building = building_type:trade_company_venture }
 			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_venture_permanent }
+				filter = { building_type = building_type:trade_company_venture }
 				is_max_level = no
 			}
 		}
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters_permanent > 0
+			total_effective_building_levels:trade_company_headquarters > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters_permanent > 0
+				total_effective_building_levels:trade_company_headquarters > 0
 			}
 		}
 	}
@@ -474,7 +474,7 @@ trade_company_local_venture = {
 	}
 }
 
-trade_company_local_venture_permanent = {
+trade_company_local_venture = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -499,9 +499,9 @@ trade_company_local_venture_permanent = {
 			}
 		}
 		OR = {
-			NOT = { has_building = building_type:trade_company_venture_permanent }
+			NOT = { has_building = building_type:trade_company_venture }
 			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_venture_permanent }
+				filter = { building_type = building_type:trade_company_venture }
 				is_max_level = no
 			}
 		}
@@ -515,7 +515,7 @@ trade_company_local_venture_permanent = {
 	}
 }
 
-trade_company_foreign_influence = {
+trade_company_foreign_influence_temp = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -540,18 +540,18 @@ trade_company_foreign_influence = {
 			}
 		}
 		OR = {
-			NOT = { has_building = building_type:trade_company_foreign_influence_permanent }
+			NOT = { has_building = building_type:trade_company_foreign_influence }
 			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_foreign_influence_permanent }
+				filter = { building_type = building_type:trade_company_foreign_influence }
 				is_max_level = no
 			}
 		}
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters_permanent > 0
+			total_effective_building_levels:trade_company_headquarters > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters_permanent > 0
+				total_effective_building_levels:trade_company_headquarters > 0
 			}
 		}
 	}
@@ -568,7 +568,7 @@ trade_company_foreign_influence = {
 	}
 }
 
-trade_company_foreign_influence_permanent = {
+trade_company_foreign_influence = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -593,9 +593,9 @@ trade_company_foreign_influence_permanent = {
 			}
 		}
 		OR = {
-			NOT = { has_building = building_type:trade_company_foreign_influence_permanent }
+			NOT = { has_building = building_type:trade_company_foreign_influence }
 			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_foreign_influence_permanent }
+				filter = { building_type = building_type:trade_company_foreign_influence }
 				is_max_level = no
 			}
 		}
@@ -610,7 +610,7 @@ trade_company_foreign_influence_permanent = {
 	}
 }
 
-trade_company_governance = {
+trade_company_governance_temp = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -635,18 +635,18 @@ trade_company_governance = {
 			}
 		}
 		OR = {
-			NOT = { has_building = building_type:trade_company_governance_permanent }
+			NOT = { has_building = building_type:trade_company_governance }
 			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_governance_permanent }
+				filter = { building_type = building_type:trade_company_governance }
 				is_max_level = no
 			}
 		}
 	}
 	country_potential = {
 		OR = {
-			total_effective_building_levels:trade_company_headquarters_permanent > 0
+			total_effective_building_levels:trade_company_headquarters > 0
 			any_subject = {
-				total_effective_building_levels:trade_company_headquarters_permanent > 0
+				total_effective_building_levels:trade_company_headquarters > 0
 			}
 		}
 	}
@@ -664,7 +664,7 @@ trade_company_governance = {
 	}
 }
 
-trade_company_governance_permanent = {
+trade_company_governance = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	own_or_overlord_relation_needed = trade_company_rights
@@ -689,9 +689,9 @@ trade_company_governance_permanent = {
 			}
 		}
 		OR = {
-			NOT = { has_building = building_type:trade_company_governance_permanent }
+			NOT = { has_building = building_type:trade_company_governance }
 			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_governance_permanent }
+				filter = { building_type = building_type:trade_company_governance }
 				is_max_level = no
 			}
 		}
