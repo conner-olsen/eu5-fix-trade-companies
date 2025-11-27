@@ -137,9 +137,6 @@ tcf_built_permanent_tc = {
 					limit = { exists = scope:trade_company_country }
 					root = { change_building_owner = scope:trade_company_country }
 				}
-				else = {
-					root.location = { destroy_building = root }
-				}
 			}
 		}
 	}
