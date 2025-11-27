@@ -251,7 +251,13 @@ trade_company_garrison = {
 				target = root.region
 			}
 		}
-		NOT = { has_building = building_type:trade_company_garrison_permanent }
+		OR = {
+			NOT = { has_building = building_type:trade_company_garrison_permanent }
+			any_buildings_in_location = {
+				filter = { building_type = building_type:trade_company_garrison_permanent }
+				is_max_level = no
+			}
+		}
 	}
 	country_potential = {
 		OR = {
@@ -299,7 +305,13 @@ trade_company_garrison_permanent = {
 				target = root.region
 			}
 		}
-		NOT = { has_building = building_type:trade_company_garrison_permanent }
+		OR = {
+			NOT = { has_building = building_type:trade_company_garrison_permanent }
+			any_buildings_in_location = {
+				filter = { building_type = building_type:trade_company_garrison_permanent }
+				is_max_level = no
+			}
+		}
 	}
 	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
@@ -336,7 +348,13 @@ trade_company_harbor = {
 				target = root.region
 			}
 		}
-		NOT = { has_building = building_type:trade_company_harbor_permanent }
+		OR = {
+			NOT = { has_building = building_type:trade_company_harbor_permanent }
+			any_buildings_in_location = {
+				filter = { building_type = building_type:trade_company_harbor_permanent }
+				is_max_level = no
+			}
+		}
 	}
 	country_potential = {
 		OR = {
@@ -385,7 +403,13 @@ trade_company_harbor_permanent = {
 				target = root.region
 			}
 		}
-		NOT = { has_building = building_type:trade_company_harbor_permanent }
+		OR = {
+			NOT = { has_building = building_type:trade_company_harbor_permanent }
+			any_buildings_in_location = {
+				filter = { building_type = building_type:trade_company_harbor_permanent }
+				is_max_level = no
+			}
+		}
 	}
 	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
@@ -422,7 +446,13 @@ trade_company_local_venture = {
 				target = root.region
 			}
 		}
-		NOT = { has_building = building_type:trade_company_local_venture_permanent }
+		OR = {
+			NOT = { has_building = building_type:trade_company_venture_permanent }
+			any_buildings_in_location = {
+				filter = { building_type = building_type:trade_company_venture_permanent }
+				is_max_level = no
+			}
+		}
 	}
 	country_potential = {
 		OR = {
@@ -468,7 +498,13 @@ trade_company_local_venture_permanent = {
 				target = root.region
 			}
 		}
-		NOT = { has_building = building_type:trade_company_local_venture_permanent }
+		OR = {
+			NOT = { has_building = building_type:trade_company_venture_permanent }
+			any_buildings_in_location = {
+				filter = { building_type = building_type:trade_company_venture_permanent }
+				is_max_level = no
+			}
+		}
 	}
 	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
@@ -503,7 +539,13 @@ trade_company_foreign_influence = {
 				target = root.region
 			}
 		}
-		NOT = { has_building = building_type:trade_company_foreign_influence_permanent }
+		OR = {
+			NOT = { has_building = building_type:trade_company_foreign_influence_permanent }
+			any_buildings_in_location = {
+				filter = { building_type = building_type:trade_company_foreign_influence_permanent }
+				is_max_level = no
+			}
+		}
 	}
 	country_potential = {
 		OR = {
@@ -550,7 +592,13 @@ trade_company_foreign_influence_permanent = {
 				target = root.region
 			}
 		}
-		NOT = { has_building = building_type:trade_company_foreign_influence_permanent }
+		OR = {
+			NOT = { has_building = building_type:trade_company_foreign_influence_permanent }
+			any_buildings_in_location = {
+				filter = { building_type = building_type:trade_company_foreign_influence_permanent }
+				is_max_level = no
+			}
+		}
 	}
 	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
@@ -586,7 +634,13 @@ trade_company_governance = {
 				target = root.region
 			}
 		}
-		NOT = { has_building = building_type:trade_company_governance_permanent }
+		OR = {
+			NOT = { has_building = building_type:trade_company_governance_permanent }
+			any_buildings_in_location = {
+				filter = { building_type = building_type:trade_company_governance_permanent }
+				is_max_level = no
+			}
+		}
 	}
 	country_potential = {
 		OR = {
@@ -634,7 +688,13 @@ trade_company_governance_permanent = {
 				target = root.region
 			}
 		}
-		NOT = { has_building = building_type:trade_company_governance_permanent }
+		OR = {
+			NOT = { has_building = building_type:trade_company_governance_permanent }
+			any_buildings_in_location = {
+				filter = { building_type = building_type:trade_company_governance_permanent }
+				is_max_level = no
+			}
+		}
 	}
 	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {

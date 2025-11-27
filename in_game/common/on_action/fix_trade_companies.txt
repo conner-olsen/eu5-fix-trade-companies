@@ -1,6 +1,22 @@
 monthly_country_pulse = {
     on_actions = {
         ftc_trade_company_advance_sweeper
+        ftc_destroy_old_buildings
+    }
+}
+
+ftc_destroy_old_buildings = {
+    trigger = {
+        has_variable_list = destroy_these
+    }
+    effect = {
+        every_in_list = {
+            variable = destroy_these
+            location = {
+                destroy_building = prev
+            }
+        }
+        clear_variable_list = destroy_these
     }
 }
 
