@@ -11,27 +11,30 @@
 	expensive = yes
 	country_potential = {
 		total_effective_building_levels:trade_company_headquarters < 1
-		
 		custom_tooltip = {
 			text = building_trade_hq_only_one
-			NOT = { has_variable = building_trade_hq }
+			NOT = {
+				has_variable = building_trade_hq
+			}
 		}
-		
 		num_relations_above_limit <= 0
-		
 	}
-	
 	location_potential = {
 		NOT = {
-			owner = { is_subject_of = scope:actor } 
+			owner = {
+				is_subject_of = scope:actor
+			}
 		}
 	}
-
 	allow = {
-		market = { in_trade_range_of = scope:actor }
+		market = {
+			in_trade_range_of = scope:actor
+		}
 		scope:actor = {
 			OR = {
-				NOT = { has_variable_list = trade_company_regions }
+				NOT = {
+					has_variable_list = trade_company_regions
+				}
 				NOT = {
 					is_target_in_variable_list = {
 						name = trade_company_regions
@@ -62,8 +65,9 @@
 		local_monthly_prosperity = 0.001
 		local_build_buildings_cost = -0.1
 	}
-	custom_tags = { trade_company_building }
-	
+	custom_tags = {
+		trade_company_building
+	}
 	on_construction_started = {
 		owner = {
 			set_variable = {
@@ -72,15 +76,15 @@
 			}
 		}
 	}
-	
 	on_construction_ended = {
 		owner = {
 			remove_variable = building_trade_hq
 		}
 	}
-
 	on_built = {
-		tcf_built_temp = { building_type = trade_company_headquarters }
+		tcf_built_temp = {
+			building_type = trade_company_headquarters
+		}
 	}
 }
 
@@ -95,7 +99,6 @@ trade_company_headquarters = {
 	town = yes
 	city = yes
 	expensive = yes
-	
 	build_time = trade_company_headquarters_time
 	unique_production_methods = {
 		trade_company_headquarters_requirements = {
@@ -117,8 +120,9 @@ trade_company_headquarters = {
 		local_monthly_prosperity = 0.001
 		local_build_buildings_cost = -0.1
 	}
-	custom_tags = { trade_company_building }
-	
+	custom_tags = {
+		trade_company_building
+	}
 	on_construction_started = {
 		owner = {
 			set_variable = {
@@ -127,30 +131,29 @@ trade_company_headquarters = {
 			}
 		}
 	}
-	
 	on_construction_ended = {
 		owner = {
 			remove_variable = building_trade_hq
 		}
 	}
-	
 	on_built = {
-		owner = { save_scope_as = overlord }
+		owner = {
+			save_scope_as = overlord
+		}
 		location = {
 			destroy_all_buildings_of_type = building_type:trade_company_headquarters_temp
-            every_pop = {
-                limit = {
-                    pop_type = pop_type:temp
-                }
-                destroy_pop = this
-            }
+			every_pop = {
+				limit = {
+					pop_type = pop_type:temp
+				}
+				destroy_pop = this
+			}
 			save_scope_as = capital
 			create_building_country_in_location = {
 				reforms = {
 					banking_country
 				}
 				save_scope_as = trade_company_tag
-
 				hidden_effect = {
 					change_heir_selection = heir_selection:bank_selection
 					change_government_type = government_type:republic
@@ -161,15 +164,24 @@ trade_company_headquarters = {
 				}
 			}
 			if = {
-				limit = { exists = scope:trade_company_tag }
-				root = { change_building_owner = scope:trade_company_tag }
+				limit = {
+					exists = scope:trade_company_tag
+				}
+				root = {
+					change_building_owner = scope:trade_company_tag
+				}
 				scope:trade_company_tag = {
 					set_capital = scope:capital
-					set_variable = { name = trade_company_home_region value = scope:capital.region }
+					set_variable = {
+						name = trade_company_home_region
+						value = scope:capital.region
+					}
 					if = {
 						limit = {
 							OR = {
-								NOT = { has_variable_list = trade_company_regions }
+								NOT = {
+									has_variable_list = trade_company_regions
+								}
 								NOT = {
 									is_target_in_variable_list = {
 										name = trade_company_regions
@@ -188,13 +200,17 @@ trade_company_headquarters = {
 			}
 		}
 		scope:overlord = {
-			culture = { save_temporary_scope_as = overlord_culture }
-			if = {	
+			culture = {
+				save_temporary_scope_as = overlord_culture
+			}
+			if = {
 				limit = {
 					exists = scope:capital
 					exists = scope:trade_company_tag
 					OR = {
-						NOT = { has_variable_list = trade_company_regions }
+						NOT = {
+							has_variable_list = trade_company_regions
+						}
 						is_target_in_variable_list = {
 							name = trade_company_regions
 							target = scope:capital.region
@@ -218,7 +234,6 @@ trade_company_headquarters = {
 				}
 				order_by = building_level
 				change_building_owner = scope:trade_company_tag
-				
 			}
 		}
 		scope:trade_company_tag = {
@@ -244,19 +259,8 @@ trade_company_garrison_temp = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		scope:actor = {
-			has_variable_list = trade_company_regions
-			is_target_in_variable_list = {
-				name = trade_company_regions
-				target = root.region
-			}
-		}
-		OR = {
-			NOT = { has_building = building_type:trade_company_garrison }
-			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_garrison }
-				is_max_level = no
-			}
+		tfc_company_building_location_potential = {
+			building_type = $trade_company_garrison$
 		}
 	}
 	country_potential = {
@@ -268,16 +272,22 @@ trade_company_garrison_temp = {
 		}
 	}
 	allow = {
-		market = { in_trade_range_of = scope:actor }
+		market = {
+			in_trade_range_of = scope:actor
+		}
 	}
-	custom_tags = { trade_company_building satellite_trade_building }
+	custom_tags = {
+		trade_company_building
+		satellite_trade_building
+	}
 	modifier = {
 		local_defensive = 0.25
 		local_garrison_size = 0.5
 	}
-	
 	on_built = {
-		tcf_built_temp = { building_type = trade_company_garrison }
+		tcf_built_temp = {
+			building_type = trade_company_garrison
+		}
 	}
 }
 
@@ -298,29 +308,22 @@ trade_company_garrison = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		scope:actor = {
-			has_variable_list = trade_company_regions
-			is_target_in_variable_list = {
-				name = trade_company_regions
-				target = root.region
-			}
-		}
-		OR = {
-			NOT = { has_building = building_type:trade_company_garrison }
-			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_garrison }
-				is_max_level = no
-			}
+		tfc_company_building_location_potential = {
+			building_type = $trade_company_garrison$
 		}
 	}
-	custom_tags = { trade_company_building satellite_trade_building }
+	custom_tags = {
+		trade_company_building
+		satellite_trade_building
+	}
 	modifier = {
 		local_defensive = 0.25
 		local_garrison_size = 0.5
 	}
-
 	on_built = {
-		tcf_built_permanent_tc = { building_type = trade_company_garrison }
+		tcf_built_permanent_tc = {
+			building_type = trade_company_garrison
+		}
 	}
 }
 
@@ -341,19 +344,8 @@ trade_company_harbor_temp = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		scope:actor = {
-			has_variable_list = trade_company_regions
-			is_target_in_variable_list = {
-				name = trade_company_regions
-				target = root.region
-			}
-		}
-		OR = {
-			NOT = { has_building = building_type:trade_company_harbor }
-			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_harbor }
-				is_max_level = no
-			}
+		tfc_company_building_location_potential = {
+			building_type = $trade_company_harbor$
 		}
 	}
 	country_potential = {
@@ -366,16 +358,23 @@ trade_company_harbor_temp = {
 	}
 	allow = {
 		is_port = yes
-		market = { in_trade_range_of = scope:actor }
+		market = {
+			in_trade_range_of = scope:actor
+		}
 	}
-	custom_tags = { trade_company_building satellite_trade_building }
+	custom_tags = {
+		trade_company_building
+		satellite_trade_building
+	}
 	modifier = {
 		merchant_power_from_building = 0.5
 		building_owner_maritime_presence = 0.01
 		building_owner_overlord_maritime_presence = 0.02
 	}
 	on_built = {
-		tcf_built_temp = { building_type = trade_company_harbor }
+		tcf_built_temp = {
+			building_type = trade_company_harbor
+		}
 	}
 }
 
@@ -396,29 +395,23 @@ trade_company_harbor = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		scope:actor = {
-			has_variable_list = trade_company_regions
-			is_target_in_variable_list = {
-				name = trade_company_regions
-				target = root.region
-			}
-		}
-		OR = {
-			NOT = { has_building = building_type:trade_company_harbor }
-			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_harbor }
-				is_max_level = no
-			}
+		tfc_company_building_location_potential = {
+			building_type = $trade_company_harbor$
 		}
 	}
-	custom_tags = { trade_company_building satellite_trade_building }
+	custom_tags = {
+		trade_company_building
+		satellite_trade_building
+	}
 	modifier = {
 		merchant_power_from_building = 0.5
 		building_owner_maritime_presence = 0.01
 		building_owner_overlord_maritime_presence = 0.02
 	}
 	on_built = {
-		tcf_built_permanent_tc = { building_type = trade_company_harbor }
+		tcf_built_permanent_tc = {
+			building_type = trade_company_harbor
+		}
 	}
 }
 
@@ -439,19 +432,8 @@ trade_company_local_venture_temp = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		scope:actor = {
-			has_variable_list = trade_company_regions
-			is_target_in_variable_list = {
-				name = trade_company_regions
-				target = root.region
-			}
-		}
-		OR = {
-			NOT = { has_building = building_type:trade_company_venture }
-			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_venture }
-				is_max_level = no
-			}
+		tfc_company_building_location_potential = {
+			building_type = $trade_company_local_venture$
 		}
 	}
 	country_potential = {
@@ -463,14 +445,21 @@ trade_company_local_venture_temp = {
 		}
 	}
 	allow = {
-		market = { in_trade_range_of = scope:actor }
+		market = {
+			in_trade_range_of = scope:actor
+		}
 	}
-	custom_tags = { trade_company_building satellite_trade_building }
+	custom_tags = {
+		trade_company_building
+		satellite_trade_building
+	}
 	modifier = {
 		local_raw_material_output = 0.33
 	}
 	on_built = {
-		tcf_built_temp = { building_type = trade_company_local_venture }
+		tcf_built_temp = {
+			building_type = trade_company_local_venture
+		}
 	}
 }
 
@@ -491,27 +480,21 @@ trade_company_local_venture = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		scope:actor = {
-			has_variable_list = trade_company_regions
-			is_target_in_variable_list = {
-				name = trade_company_regions
-				target = root.region
-			}
-		}
-		OR = {
-			NOT = { has_building = building_type:trade_company_venture }
-			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_venture }
-				is_max_level = no
-			}
+		tfc_company_building_location_potential = {
+			building_type = $trade_company_local_venture$
 		}
 	}
-	custom_tags = { trade_company_building satellite_trade_building }
+	custom_tags = {
+		trade_company_building
+		satellite_trade_building
+	}
 	modifier = {
 		local_raw_material_output = 0.33
 	}
 	on_built = {
-		tcf_built_permanent_tc = { building_type = trade_company_local_venture }
+		tcf_built_permanent_tc = {
+			building_type = trade_company_local_venture
+		}
 	}
 }
 
@@ -532,19 +515,8 @@ trade_company_foreign_influence_temp = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		scope:actor = {
-			has_variable_list = trade_company_regions
-			is_target_in_variable_list = {
-				name = trade_company_regions
-				target = root.region
-			}
-		}
-		OR = {
-			NOT = { has_building = building_type:trade_company_foreign_influence }
-			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_foreign_influence }
-				is_max_level = no
-			}
+		tfc_company_building_location_potential = {
+			building_type = $trade_company_foreign_influence$
 		}
 	}
 	country_potential = {
@@ -556,15 +528,22 @@ trade_company_foreign_influence_temp = {
 		}
 	}
 	allow = {
-		market = { in_trade_range_of = scope:actor }
+		market = {
+			in_trade_range_of = scope:actor
+		}
 	}
-	custom_tags = { trade_company_building satellite_trade_building }
+	custom_tags = {
+		trade_company_building
+		satellite_trade_building
+	}
 	modifier = {
 		local_monthly_development = 0.005
 		local_max_control = 0.05
 	}
 	on_built = {
-		tcf_built_temp = { building_type = trade_company_foreign_influence }
+		tcf_built_temp = {
+			building_type = trade_company_foreign_influence
+		}
 	}
 }
 
@@ -585,28 +564,22 @@ trade_company_foreign_influence = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		scope:actor = {
-			has_variable_list = trade_company_regions
-			is_target_in_variable_list = {
-				name = trade_company_regions
-				target = root.region
-			}
-		}
-		OR = {
-			NOT = { has_building = building_type:trade_company_foreign_influence }
-			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_foreign_influence }
-				is_max_level = no
-			}
+		tfc_company_building_location_potential = {
+			building_type = $trade_company_foreign_influence$
 		}
 	}
-	custom_tags = { trade_company_building satellite_trade_building }
+	custom_tags = {
+		trade_company_building
+		satellite_trade_building
+	}
 	modifier = {
 		local_monthly_development = 0.005
 		local_max_control = 0.05
 	}
 	on_built = {
-		tcf_built_permanent_tc = { building_type = trade_company_foreign_influence }
+		tcf_built_permanent_tc = {
+			building_type = trade_company_foreign_influence
+		}
 	}
 }
 
@@ -627,19 +600,8 @@ trade_company_governance_temp = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		scope:actor = {
-			has_variable_list = trade_company_regions
-			is_target_in_variable_list = {
-				name = trade_company_regions
-				target = root.region
-			}
-		}
-		OR = {
-			NOT = { has_building = building_type:trade_company_governance }
-			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_governance }
-				is_max_level = no
-			}
+		tfc_company_building_location_potential = {
+			building_type = $trade_company_governance$
 		}
 	}
 	country_potential = {
@@ -651,16 +613,23 @@ trade_company_governance_temp = {
 		}
 	}
 	allow = {
-		market = { in_trade_range_of = scope:actor }
+		market = {
+			in_trade_range_of = scope:actor
+		}
 	}
-	custom_tags = { trade_company_building satellite_trade_building }
+	custom_tags = {
+		trade_company_building
+		satellite_trade_building
+	}
 	modifier = {
 		manpower_to_building_owner = 0.003
 		sailors_to_building_owner = 0.005
 		can_recruit_regiment_in_this_location = yes
 	}
 	on_built = {
-		tcf_built_temp = { building_type = trade_company_governance }
+		tcf_built_temp = {
+			building_type = trade_company_governance
+		}
 	}
 }
 
@@ -681,28 +650,22 @@ trade_company_governance = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		scope:actor = {
-			has_variable_list = trade_company_regions
-			is_target_in_variable_list = {
-				name = trade_company_regions
-				target = root.region
-			}
-		}
-		OR = {
-			NOT = { has_building = building_type:trade_company_governance }
-			any_buildings_in_location = {
-				filter = { building_type = building_type:trade_company_governance }
-				is_max_level = no
-			}
+		tfc_company_building_location_potential = {
+			building_type = $trade_company_governance$
 		}
 	}
-	custom_tags = { trade_company_building satellite_trade_building }
+	custom_tags = {
+		trade_company_building
+		satellite_trade_building
+	}
 	modifier = {
 		manpower_to_building_owner = 0.003
 		sailors_to_building_owner = 0.005
 		can_recruit_regiment_in_this_location = yes
 	}
 	on_built = {
-		tcf_built_permanent_tc = { building_type = trade_company_governance }
+		tcf_built_permanent_tc = {
+			building_type = trade_company_governance
+		}
 	}
 }
