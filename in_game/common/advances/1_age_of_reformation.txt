@@ -1,0 +1,20 @@
+trade_companies_advance = {
+	age = age_4_reformation
+	icon = expanded_supply_trains
+	unlock_subject_type = trade_company
+	unlock_building = trade_company_headquarters
+	unlock_building = trade_company_governance
+	unlock_building = trade_company_garrison
+	unlock_building = trade_company_harbor
+	unlock_building = trade_company_local_venture
+	unlock_building = trade_company_foreign_influence
+	
+	unlock_building = trade_company_headquarters_temp
+	unlock_building = trade_company_governance_temp
+	unlock_building = trade_company_garrison_temp
+	unlock_building = trade_company_harbor_temp
+	unlock_building = trade_company_local_venture_temp
+	unlock_building = trade_company_foreign_influence_temp
+
+	requires = safe_exploration_techniques_advance
+}

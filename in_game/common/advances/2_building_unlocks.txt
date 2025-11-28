@@ -1,0 +1,6 @@
+slave_center_advance = {
+	age = age_2_renaissance
+	unlock_building = slave_center
+	unlock_building = slave_center_temp
+	requires = gun_smith_advance
+}
