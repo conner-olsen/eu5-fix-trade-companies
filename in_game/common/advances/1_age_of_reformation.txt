@@ -1,4 +1,4 @@
-trade_companies_advance = {
+INJECT:trade_companies_advance = {
 	age = age_4_reformation
 	icon = expanded_supply_trains
 	unlock_subject_type = trade_company
