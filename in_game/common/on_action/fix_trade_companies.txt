@@ -2,6 +2,7 @@ monthly_country_pulse = {
     on_actions = {
         ftc_trade_company_advance_sweeper
         ftc_destroy_old_buildings
+        ftc_hide_buildings
     }
 }
 
@@ -38,3 +39,27 @@ ftc_trade_company_advance_sweeper = {
         }
     }
 }
+
+ftc_hide_buildings = {
+    trigger = {
+        NOT = { has_global_variable_list = tcf_hidden_buildings }
+    }
+
+    effect = {
+        hide_building = { target = building_type:trade_office }
+        hide_building = { target = building_type:embassy }
+        hide_building = { target = building_type:slave_center }
+        hide_building = { target = building_type:missionary_building }
+        hide_building = { target = building_type:overseas_trading_post }
+
+        hide_building = { target = building_type:trade_company_headquarters }
+        hide_building = { target = building_type:trade_company_garrison }
+        hide_building = { target = building_type:trade_company_harbor }
+        hide_building = { target = building_type:trade_company_local_venture }
+        hide_building = { target = building_type:trade_company_foreign_influence }
+        hide_building = { target = building_type:trade_company_governance }
+
+        
+    }
+}
+
