@@ -72,7 +72,7 @@ tcf_built_permanent_tc = {
 		limit = {
 			location = {
 				any_buildings_in_location = {
-					building_type = building_type:$building_type$_permanent 
+					building_type = building_type:$building_type$ 
 					owner = { is_subject_of = scope:overlord_scope }
 					is_max_level = no
 				}
@@ -82,7 +82,7 @@ tcf_built_permanent_tc = {
 			# level up TC owned building
 			every_buildings_in_location = {
 				limit = {
-					building_type = building_type:$building_type$_permanent
+					building_type = building_type:$building_type$
 					owner = { is_subject_of = scope:overlord_scope }
 					is_max_level = no
 				}
@@ -94,11 +94,11 @@ tcf_built_permanent_tc = {
 				destroy_pop = this
 			}
 			# Destroy temp buildings
-			destroy_all_buildings_of_type = building_type:$building_type$	
+			destroy_all_buildings_of_type = building_type:$building_type$_temp	
 			# Destroy overlord owned permanent building
 			every_buildings_in_location = {
 				limit = {
-					building_type = building_type:$building_type$_permanent
+					building_type = building_type:$building_type$
 					owner = scope:overlord_scope
 				}
 				save_temporary_scope_as = old_building
