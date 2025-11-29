@@ -1,5 +1,7 @@
 # Transfers the ownership of all foreign buildings in a location to the trade company if one 
 #  exists in the region
+# ROOT: location
+# ARGS:
 # owner_scope: scope of the country that built the building: ex. scope:owner_scope
 # location_scope: scope of the location where the building was constructed: ex. scope:location_scope
 tcf_transfer_foreign_buildings = {
@@ -21,8 +23,8 @@ tcf_transfer_foreign_buildings = {
 }
 
 # Constructs the permanent version of a building after the temporary one is built
-# call from building scope
-# building_type: the building type of the temporary building constructed: ex. trade_office
+# ROOT: building
+# ARGS: building_type
 tcf_built_temp = {
 	owner = { save_temporary_scope_as = owner_scope }
 	location = {
@@ -36,9 +38,9 @@ tcf_built_temp = {
 	}
 }
 
-# Destroys the temporary building and pops, then transfers foreign buildings to the trade company
-# call from building scope
-# building_type: the building type of the temporary building constructed: ex. trade_office
+# Destroys the completed temporary building and pops, then transfers foreign buildings to the trade company
+# ROOT: building
+# ARGS: building_type
 tcf_built_permanent = {
 	location = {
 		save_temporary_scope_as = location_scope
@@ -61,8 +63,8 @@ tcf_built_permanent = {
 # If there isn't a building in the province already, constructs the permanent version of a trade 
 # company building after the temporary one is built and transfers ownership to the appropriate trade 
 # company country. If the building already exists, increase the level of the building
-# call from building scope
-# building_type: the building type of the temporary building constructed: ex. trade_company_harbor
+# ROOT: building
+# ARGS: building_type
 tcf_built_permanent_tc = {
 	owner = { save_temporary_scope_as = overlord_scope }
 	
