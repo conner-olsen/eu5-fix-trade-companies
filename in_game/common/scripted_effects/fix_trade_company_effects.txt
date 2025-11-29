@@ -22,36 +22,17 @@ tcf_transfer_foreign_buildings = {
 	}
 }
 
-# Instantly constructs the specified building at no cost, and changes it to the level specified plus one
-# Ex. setting the level argument to 1 will build a level 2 building
-# ROOT: location
-# ARGS: building_type, level, owner
-tcf_construct_building_at_level = {
-	construct_building = {
-		building_type = building_type:$building_type$
-		instant = yes
-		cost_multiplier = 0
-		cost_multiplier_reason = "game_concept_foreign_building"
-		owner = $owner$
-	}
-	every_buildings_in_location = {
-		limit = {
-			building_type = building_type:$building_type$
-			owner = $owner$
-		}
-		change_building_level = $level$
-	}
-}
-
 # Constructs the permanent version of a building after the temporary one is built
 # ROOT: building
 # ARGS: building_type
 tcf_built_temp = {
 	owner = { save_temporary_scope_as = owner_scope }
 	location = {
-		tcf_construct_building_at_level = {
-			building_type = $building_type$
-			level = level
+		construct_building = {
+			building_type = building_type:$building_type$
+			instant = yes
+			cost_multiplier = 0
+			cost_multiplier_reason = "game_concept_foreign_building"
 			owner = scope:owner_scope
 		}
 	}
