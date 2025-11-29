@@ -1,24 +1,16 @@
-# Transfers the ownership of all foreign buildings in a location to the trade company if one 
+# Transfers the ownership of a foreign building in a location to the trade company if one 
 #  exists in the region
-# ROOT: location
-# ARGS:
-# owner_scope: scope of the country that built the building: ex. scope:owner_scope
-# location_scope: scope of the location where the building was constructed: ex. scope:location_scope
-tcf_transfer_foreign_buildings = {
-	$owner_scope$ = {
+# ROOT: building - the building to change ownership of
+tcf_transfer_foreign_building = {
+	owner = {
 		every_subject = {
 			limit = {
 				has_variable = trade_company_home_region
-				var:trade_company_home_region = $location_scope$.region
+				var:trade_company_home_region = root:location.region
 			}
-			save_temporary_scope_as = trade_company
-			$location_scope$ = {
-				every_buildings_in_location = {
-					limit = {
-						owner = $owner_scope$
-					}
-					change_building_owner = scope:trade_company
-				}
+			save_temporary_scope_as = new_owner
+			prev = {
+				change_building_owner = scope:new_owner
 			}
 		}
 	}
@@ -47,7 +39,6 @@ tcf_built_temp = {
 # ARGS: building_type
 tcf_built_permanent = {
 	location = {
-		save_temporary_scope_as = location_scope
 		destroy_all_buildings_of_type = building_type:$building_type$_temp
 		every_pop = {
 			limit = {
@@ -56,13 +47,7 @@ tcf_built_permanent = {
 			destroy_pop = this
 		}
 	}
-	owner = {
-		save_temporary_scope_as = owner_scope
-	}
-	tcf_transfer_foreign_buildings = {
-		owner_scope = scope:owner_scope
-		location_scope = scope:location_scope
-	}
+	tcf_transfer_foreign_building
 }
 
 # If there isn't a building in the province already, constructs the permanent version of a trade 
