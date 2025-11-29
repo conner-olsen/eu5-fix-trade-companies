@@ -33,7 +33,7 @@ tcf_built_temp = {
 # Destroys the completed temporary building and pops, then transfers foreign buildings to the trade company
 # ROOT: building
 # ARGS: building_type
-tcf_built_permanent = {
+tcf_built = {
 	location = {
 		destroy_all_buildings_of_type = building_type:$building_type$_temp
 		every_pop = {
