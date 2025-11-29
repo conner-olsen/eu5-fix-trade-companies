@@ -1,31 +1,38 @@
-# Transfers the ownership of a foreign building in a location to the trade company if one 
-#  exists in the region
-# ROOT: building - the building to change ownership of
-tcf_transfer_foreign_building = {
+# Constructs the permanent version of a building after the temporary one is built
+# ROOT: building
+# ARGS: building_type
+tcf_built_temp = {
 	owner = {
 		every_subject = {
 			limit = {
-				has_variable = trade_company_home_region
-				var:trade_company_home_region = root:location.region
+				var:trade_company_home_region = root.location.region
 			}
-			save_temporary_scope_as = new_owner
-			prev = {
-				change_building_owner = scope:new_owner
-			}
+			save_temporary_scope_as = tc_scope
 		}
 	}
-}
-
-# Constructs the permanent version of a building after the temporary one is built
-# ROOT: building
-tcf_built_temp = {
+	# If there is a trade company in the region, they will be the onwer
+	if = {
+		limit = {
+			exists = scope:tc_scope
+		}
+		set_local_variable = {
+			name = permanent_owner
+			value = scope:tc_scope
+		}
+	}
+	else = {
+		set_local_variable = {
+			name = permanent_owner
+			value = owner
+		}
+	}
 	location = {
 		construct_building = {
-			building_type = building_type
+			building_type = building_type:$building_type$
 			instant = yes
 			cost_multiplier = 0
 			cost_multiplier_reason = "game_concept_foreign_building"
-			owner = prev:owner
+			owner = local_var:permanent_owner
 		}
 	}
 }
@@ -43,7 +50,6 @@ tcf_built = {
 			destroy_pop = this
 		}
 	}
-	tcf_transfer_foreign_building
 }
 
 # If there isn't a building in the province already, constructs the permanent version of a trade 
