@@ -578,6 +578,7 @@ lateralview = {
 					blockoverride "scroll_list_layout" {
 						vbox = {
 							dynamicgridbox = {
+								layoutpolicy_horizontal = expanding
 								visible = "[And( ProductionView.Vars.NotExistOrHasValue( 'display', 'lists' ), Not(ProductionView.IsLocationFilterEnabled) )]"
 								addrow = 48
 								addcolumn = 100%
