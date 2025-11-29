@@ -14,7 +14,9 @@ tcf_transfer_foreign_buildings = {
 			save_temporary_scope_as = trade_company
 			$location_scope$ = {
 				every_buildings_in_location = {
-					limit = { owner = $owner_scope$ }
+					limit = {
+						owner = $owner_scope$
+					}
 					change_building_owner = scope:trade_company
 				}
 			}
@@ -26,7 +28,9 @@ tcf_transfer_foreign_buildings = {
 # ROOT: building
 # ARGS: building_type
 tcf_built_temp = {
-	owner = { save_temporary_scope_as = owner_scope }
+	owner = {
+		save_temporary_scope_as = owner_scope
+	}
 	location = {
 		construct_building = {
 			building_type = building_type:$building_type$
@@ -52,12 +56,13 @@ tcf_built_permanent = {
 			destroy_pop = this
 		}
 	}
-	owner = { save_temporary_scope_as = owner_scope }
+	owner = {
+		save_temporary_scope_as = owner_scope
+	}
 	tcf_transfer_foreign_buildings = {
 		owner_scope = scope:owner_scope
 		location_scope = scope:location_scope
 	}
-
 }
 
 # If there isn't a building in the province already, constructs the permanent version of a trade 
@@ -66,16 +71,19 @@ tcf_built_permanent = {
 # ROOT: building
 # ARGS: building_type
 tcf_built_permanent_tc = {
-	owner = { save_temporary_scope_as = overlord_scope }
-	
+	owner = {
+		save_temporary_scope_as = overlord_scope
+	}
 	# if the building type exists, is owned by one of our subjects, and is not at max level;
 	# increase the level by 1 and destroy the building just built 
 	if = {
 		limit = {
 			location = {
 				any_buildings_in_location = {
-					building_type = building_type:$building_type$ 
-					owner = { is_subject_of = scope:overlord_scope }
+					building_type = building_type:$building_type$
+					owner = {
+						is_subject_of = scope:overlord_scope
+					}
 					is_max_level = no
 				}
 			}
@@ -85,18 +93,22 @@ tcf_built_permanent_tc = {
 			every_buildings_in_location = {
 				limit = {
 					building_type = building_type:$building_type$
-					owner = { is_subject_of = scope:overlord_scope }
+					owner = {
+						is_subject_of = scope:overlord_scope
+					}
 					is_max_level = no
 				}
 				change_building_level = 1
 			}
 			# destroy temp pops
 			every_pop = {
-				limit = { pop_type = pop_type:temp }
+				limit = {
+					pop_type = pop_type:temp
+				}
 				destroy_pop = this
 			}
 			# Destroy temp buildings
-			destroy_all_buildings_of_type = building_type:$building_type$_temp	
+			destroy_all_buildings_of_type = building_type:$building_type$_temp
 			# Destroy overlord owned permanent building
 			every_buildings_in_location = {
 				limit = {
@@ -114,10 +126,16 @@ tcf_built_permanent_tc = {
 		}
 	}
 	else = {
-		tcf_built_permanent = { building_type = $building_type$ }
+		tcf_built_permanent = {
+			building_type = $building_type$
+		}
 		owner = {
 			if = {
-				limit = { NOT = { has_variable = trade_company_home_region } }
+				limit = {
+					NOT = {
+						has_variable = trade_company_home_region
+					}
+				}
 				save_temporary_scope_as = owner_scope
 				random_in_list = {
 					variable = trade_company_subjects
@@ -136,8 +154,12 @@ tcf_built_permanent_tc = {
 					save_scope_as = trade_company_country
 				}
 				if = {
-					limit = { exists = scope:trade_company_country }
-					root = { change_building_owner = scope:trade_company_country }
+					limit = {
+						exists = scope:trade_company_country
+					}
+					root = {
+						change_building_owner = scope:trade_company_country
+					}
 				}
 			}
 		}
