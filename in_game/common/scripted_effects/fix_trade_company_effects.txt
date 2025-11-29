@@ -18,18 +18,14 @@ tcf_transfer_foreign_building = {
 
 # Constructs the permanent version of a building after the temporary one is built
 # ROOT: building
-# ARGS: building_type
 tcf_built_temp = {
-	owner = {
-		save_temporary_scope_as = owner_scope
-	}
 	location = {
 		construct_building = {
-			building_type = building_type:$building_type$
+			building_type = building_type
 			instant = yes
 			cost_multiplier = 0
 			cost_multiplier_reason = "game_concept_foreign_building"
-			owner = scope:owner_scope
+			owner = prev:owner
 		}
 	}
 }
