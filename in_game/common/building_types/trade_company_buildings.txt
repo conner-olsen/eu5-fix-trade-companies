@@ -259,7 +259,7 @@ trade_company_garrison_temp = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		tfc_company_building_location_potential = {
+		ftc_company_building_location_potential = {
 			building_type = trade_company_garrison
 		}
 	}
@@ -308,7 +308,7 @@ trade_company_garrison = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		tfc_company_building_location_potential = {
+		ftc_company_building_location_potential = {
 			building_type = trade_company_garrison
 		}
 	}
@@ -344,7 +344,7 @@ trade_company_harbor_temp = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		tfc_company_building_location_potential = {
+		ftc_company_building_location_potential = {
 			building_type = trade_company_harbor
 		}
 	}
@@ -395,7 +395,7 @@ trade_company_harbor = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		tfc_company_building_location_potential = {
+		ftc_company_building_location_potential = {
 			building_type = trade_company_harbor
 		}
 	}
@@ -432,7 +432,7 @@ trade_company_local_venture_temp = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		tfc_company_building_location_potential = {
+		ftc_company_building_location_potential = {
 			building_type = trade_company_local_venture
 		}
 	}
@@ -480,7 +480,7 @@ trade_company_local_venture = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		tfc_company_building_location_potential = {
+		ftc_company_building_location_potential = {
 			building_type = trade_company_local_venture
 		}
 	}
@@ -515,7 +515,7 @@ trade_company_foreign_influence_temp = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		tfc_company_building_location_potential = {
+		ftc_company_building_location_potential = {
 			building_type = trade_company_foreign_influence
 		}
 	}
@@ -564,7 +564,7 @@ trade_company_foreign_influence = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		tfc_company_building_location_potential = {
+		ftc_company_building_location_potential = {
 			building_type = trade_company_foreign_influence
 		}
 	}
@@ -600,7 +600,7 @@ trade_company_governance_temp = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		tfc_company_building_location_potential = {
+		ftc_company_building_location_potential = {
 			building_type = trade_company_governance
 		}
 	}
@@ -650,7 +650,7 @@ trade_company_governance = {
 		satellite_trade_building_requirements
 	}
 	location_potential = {
-		tfc_company_building_location_potential = {
+		ftc_company_building_location_potential = {
 			building_type = trade_company_governance
 		}
 	}
