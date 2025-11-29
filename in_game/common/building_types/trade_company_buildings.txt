@@ -260,7 +260,7 @@ trade_company_garrison_temp = {
 	}
 	location_potential = {
 		tfc_company_building_location_potential = {
-			building_type = $trade_company_garrison$
+			building_type = trade_company_garrison
 		}
 	}
 	country_potential = {
@@ -309,7 +309,7 @@ trade_company_garrison = {
 	}
 	location_potential = {
 		tfc_company_building_location_potential = {
-			building_type = $trade_company_garrison$
+			building_type = trade_company_garrison
 		}
 	}
 	custom_tags = {
@@ -345,7 +345,7 @@ trade_company_harbor_temp = {
 	}
 	location_potential = {
 		tfc_company_building_location_potential = {
-			building_type = $trade_company_harbor$
+			building_type = trade_company_harbor
 		}
 	}
 	country_potential = {
@@ -396,7 +396,7 @@ trade_company_harbor = {
 	}
 	location_potential = {
 		tfc_company_building_location_potential = {
-			building_type = $trade_company_harbor$
+			building_type = trade_company_harbor
 		}
 	}
 	custom_tags = {
@@ -433,7 +433,7 @@ trade_company_local_venture_temp = {
 	}
 	location_potential = {
 		tfc_company_building_location_potential = {
-			building_type = $trade_company_local_venture$
+			building_type = trade_company_local_venture
 		}
 	}
 	country_potential = {
@@ -481,7 +481,7 @@ trade_company_local_venture = {
 	}
 	location_potential = {
 		tfc_company_building_location_potential = {
-			building_type = $trade_company_local_venture$
+			building_type = trade_company_local_venture
 		}
 	}
 	custom_tags = {
@@ -516,7 +516,7 @@ trade_company_foreign_influence_temp = {
 	}
 	location_potential = {
 		tfc_company_building_location_potential = {
-			building_type = $trade_company_foreign_influence$
+			building_type = trade_company_foreign_influence
 		}
 	}
 	country_potential = {
@@ -565,7 +565,7 @@ trade_company_foreign_influence = {
 	}
 	location_potential = {
 		tfc_company_building_location_potential = {
-			building_type = $trade_company_foreign_influence$
+			building_type = trade_company_foreign_influence
 		}
 	}
 	custom_tags = {
@@ -601,7 +601,7 @@ trade_company_governance_temp = {
 	}
 	location_potential = {
 		tfc_company_building_location_potential = {
-			building_type = $trade_company_governance$
+			building_type = trade_company_governance
 		}
 	}
 	country_potential = {
@@ -651,7 +651,7 @@ trade_company_governance = {
 	}
 	location_potential = {
 		tfc_company_building_location_potential = {
-			building_type = $trade_company_governance$
+			building_type = trade_company_governance
 		}
 	}
 	custom_tags = {
