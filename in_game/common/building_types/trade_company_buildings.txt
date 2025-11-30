@@ -86,6 +86,9 @@
 			building_type = trade_company_headquarters
 		}
 	}
+	remove_if = {
+		always = yes
+	}
 }
 
 trade_company_headquarters = {
@@ -289,6 +292,9 @@ trade_company_garrison_temp = {
 			building_type = trade_company_garrison
 		}
 	}
+	remove_if = {
+		always = yes
+	}
 }
 
 trade_company_garrison = {
@@ -321,7 +327,7 @@ trade_company_garrison = {
 		local_garrison_size = 0.5
 	}
 	on_built = {
-		tcf_built_permanent_tc = {
+		tcf_built = {
 			building_type = trade_company_garrison
 		}
 	}
@@ -375,6 +381,9 @@ trade_company_harbor_temp = {
 		tcf_built_temp = {
 			building_type = trade_company_harbor
 		}
+	}
+	remove_if = {
+		always = yes
 	}
 }
 
@@ -461,6 +470,9 @@ trade_company_local_venture_temp = {
 			building_type = trade_company_local_venture
 		}
 	}
+	remove_if = {
+		always = yes
+	}
 }
 
 trade_company_local_venture = {
@@ -544,6 +556,9 @@ trade_company_foreign_influence_temp = {
 		tcf_built_temp = {
 			building_type = trade_company_foreign_influence
 		}
+	}
+	remove_if = {
+		always = yes
 	}
 }
 
@@ -630,6 +645,9 @@ trade_company_governance_temp = {
 		tcf_built_temp = {
 			building_type = trade_company_governance
 		}
+	}
+	remove_if = {
+		always = yes
 	}
 }
 

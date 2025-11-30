@@ -45,6 +45,9 @@ trade_office_temp = {
 	on_built = {
 		tcf_built_temp = { building_type = trade_office }
 	}
+	remove_if = {
+		always = yes
+	}
 }
 
 trade_office = {
@@ -135,6 +138,9 @@ embassy_temp = {
 
 	on_built = {
 		tcf_built_temp = { building_type = embassy }
+	}
+	remove_if = {
+		always = yes
 	}
 }
 
@@ -229,6 +235,9 @@ missionary_building_temp = {
 
 	on_built = { 
 		tcf_built_temp = { building_type = missionary_building }
+	}
+	remove_if = {
+		always = yes
 	}
 }
 
@@ -334,6 +343,9 @@ slave_center_temp = {
 
 	on_built = {
 		tcf_built_temp = { building_type = slave_center }
+	}
+	remove_if = {
+		always = yes
 	}
 }
 
@@ -443,6 +455,9 @@ overseas_trading_post_temp = {
 
 	on_built = {
 		tcf_built_temp = { building_type = overseas_trading_post }
+	}
+	remove_if = {
+		always = yes
 	}
 }
 
