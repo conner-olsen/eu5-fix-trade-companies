@@ -2,18 +2,19 @@
 #  exists in the region
 # ROOT: building - the building to change ownership of
 tcf_transfer_foreign_building = {
+	location.region = {
+		save_temporary_scope_as = building_region
+	}
 	owner = {
 		every_subject = {
 			limit = {
 				has_variable = trade_company_home_region
-				var:trade_company_home_region = root:location.region
+				var:trade_company_home_region = scope:building_region
 			}
 			save_temporary_scope_as = new_owner
-			prev = {
-				change_building_owner = scope:new_owner
-			}
 		}
 	}
+	change_building_owner = scope:new_owner
 }
 
 # Constructs the permanent version of a building after the temporary one is built
@@ -67,17 +68,10 @@ tcf_built = {
 			root = {
 				# add old levels to new levels
 				change_building_level = scope:building_to_replace.building_level
-				# # do not exceed max levels
-				# if = {
-				# 	limit = {
-				# 		building_level >= max_levels
-				# 	}
-				# 	change_building_level = max_levels
-				# }
 			}
 			# destroy old building
 			destroy_building = scope:building_to_replace
 		}	
-		tcf_transfer_foreign_building
 	}
+	tcf_transfer_foreign_building
 }
