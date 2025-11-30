@@ -418,7 +418,7 @@ trade_company_harbor = {
 		building_owner_overlord_maritime_presence = 0.02
 	}
 	on_built = {
-		tcf_built_permanent_tc = {
+		tcf_built = {
 			building_type = trade_company_harbor
 		}
 	}
@@ -504,7 +504,7 @@ trade_company_local_venture = {
 		local_raw_material_output = 0.33
 	}
 	on_built = {
-		tcf_built_permanent_tc = {
+		tcf_built = {
 			building_type = trade_company_local_venture
 		}
 	}
@@ -592,7 +592,7 @@ trade_company_foreign_influence = {
 		local_max_control = 0.05
 	}
 	on_built = {
-		tcf_built_permanent_tc = {
+		tcf_built = {
 			building_type = trade_company_foreign_influence
 		}
 	}
@@ -682,7 +682,7 @@ trade_company_governance = {
 		can_recruit_regiment_in_this_location = yes
 	}
 	on_built = {
-		tcf_built_permanent_tc = {
+		tcf_built = {
 			building_type = trade_company_governance
 		}
 	}
