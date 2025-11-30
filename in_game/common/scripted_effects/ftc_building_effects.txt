@@ -21,14 +21,14 @@ ftc_transfer_foreign_building = {
 # ROOT: building
 # ARGS: building_type
 ftc_built_temp = {
-	# destroy temp pop
-	every_pop = {
-		limit = {
-			pop_type = pop_type:temp
-		}
-		destroy_pop = this
-	}
 	location = {
+		# destroy temp pop
+		every_pop = {
+			limit = {
+				pop_type = pop_type:temp
+			}
+			destroy_pop = this
+		}
 		construct_building = {
 			building_type = building_type:$building_type$
 			instant = yes
@@ -70,7 +70,7 @@ ftc_built_perm = {
 			}
 			# destroy old building
 			destroy_building = scope:building_to_replace
-		}	
+		}
 	}
 	ftc_transfer_foreign_building
 }
