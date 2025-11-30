@@ -86,9 +86,7 @@
 			building_type = trade_company_headquarters
 		}
 	}
-	remove_if = {
-		always = yes
-	}
+
 }
 
 trade_company_headquarters = {
@@ -294,9 +292,7 @@ trade_company_garrison_temp = {
 			building_type = trade_company_garrison
 		}
 	}
-	remove_if = {
-		always = yes
-	}
+
 }
 
 trade_company_garrison = {
@@ -330,6 +326,9 @@ trade_company_garrison = {
 	modifier = {
 		local_defensive = 0.25
 		local_garrison_size = 0.5
+	}
+	on_construction_started = {
+		ftc_permanent_building_construction_started = yes
 	}
 	on_built = {
 		ftc_built_perm = {
@@ -387,9 +386,6 @@ trade_company_harbor_temp = {
 			building_type = trade_company_harbor
 		}
 	}
-	remove_if = {
-		always = yes
-	}
 }
 
 trade_company_harbor = {
@@ -424,6 +420,9 @@ trade_company_harbor = {
 		merchant_power_from_building = 0.5
 		building_owner_maritime_presence = 0.01
 		building_owner_overlord_maritime_presence = 0.02
+	}
+	on_construction_started = {
+		ftc_permanent_building_construction_started = yes
 	}
 	on_built = {
 		ftc_built_perm = {
@@ -478,9 +477,7 @@ trade_company_local_venture_temp = {
 			building_type = trade_company_local_venture
 		}
 	}
-	remove_if = {
-		always = yes
-	}
+
 }
 
 trade_company_local_venture = {
@@ -513,6 +510,9 @@ trade_company_local_venture = {
 	}
 	modifier = {
 		local_raw_material_output = 0.33
+	}
+	on_construction_started = {
+		ftc_permanent_building_construction_started = yes
 	}
 	on_built = {
 		ftc_built_perm = {
@@ -568,9 +568,7 @@ trade_company_foreign_influence_temp = {
 			building_type = trade_company_foreign_influence
 		}
 	}
-	remove_if = {
-		always = yes
-	}
+
 }
 
 trade_company_foreign_influence = {
@@ -604,6 +602,9 @@ trade_company_foreign_influence = {
 	modifier = {
 		local_monthly_development = 0.005
 		local_max_control = 0.05
+	}
+	on_construction_started = {
+		ftc_permanent_building_construction_started = yes
 	}
 	on_built = {
 		ftc_built_perm = {
@@ -660,9 +661,7 @@ trade_company_governance_temp = {
 			building_type = trade_company_governance
 		}
 	}
-	remove_if = {
-		always = yes
-	}
+
 }
 
 trade_company_governance = {
@@ -697,6 +696,9 @@ trade_company_governance = {
 		manpower_to_building_owner = 0.003
 		sailors_to_building_owner = 0.005
 		can_recruit_regiment_in_this_location = yes
+	}
+	on_construction_started = {
+		ftc_permanent_building_construction_started = yes
 	}
 	on_built = {
 		ftc_built_perm = {

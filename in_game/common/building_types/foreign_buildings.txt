@@ -40,9 +40,7 @@ trade_office_temp = {
 			building_type = trade_office
 		}
 	}
-	remove_if = {
-		always = yes
-	}
+
 }
 
 trade_office = {
@@ -73,6 +71,9 @@ trade_office = {
 		merchant_capacity_from_building = 0.3
 		building_owner_maritime_presence = 0.05
 		merchant_power_from_building = 0.2
+	}
+	on_construction_started = {
+		ftc_permanent_building_construction_started = yes
 	}
 	on_built = {
 		ftc_built_perm = {
@@ -123,9 +124,7 @@ embassy_temp = {
 			building_type = embassy
 		}
 	}
-	remove_if = {
-		always = yes
-	}
+
 }
 
 embassy = {
@@ -159,6 +158,9 @@ embassy = {
 	}
 	foreign_country_modifier = {
 		diplomatic_capacity = 0.1
+	}
+	on_construction_started = {
+		ftc_permanent_building_construction_started = yes
 	}
 	# upon construction completion, destroy the temporary building, and delete the temporary pops
 	on_built = {
@@ -211,9 +213,7 @@ missionary_building_temp = {
 			building_type = missionary_building
 		}
 	}
-	remove_if = {
-		always = yes
-	}
+
 }
 
 missionary_building = {
@@ -248,6 +248,9 @@ missionary_building = {
 		building_missionary_effort = 0.1
 		local_tribal_promotion = 0.5
 		local_disease_resistance = 0.05
+	}
+	on_construction_started = {
+		ftc_permanent_building_construction_started = yes
 	}
 	on_built = {
 		ftc_built_perm = {
@@ -313,9 +316,7 @@ slave_center_temp = {
 			building_type = slave_center
 		}
 	}
-	remove_if = {
-		always = yes
-	}
+
 }
 
 slave_center = {
@@ -367,6 +368,9 @@ slave_center = {
 	modifier = {
 		building_enslavement_power = 0.05
 	}
+	on_construction_started = {
+		ftc_permanent_building_construction_started = yes
+	}
 	on_built = {
 		ftc_built_perm = {
 			building_type = slave_center
@@ -414,9 +418,7 @@ overseas_trading_post_temp = {
 			building_type = overseas_trading_post
 		}
 	}
-	remove_if = {
-		always = yes
-	}
+
 }
 
 overseas_trading_post = {
@@ -450,6 +452,9 @@ overseas_trading_post = {
 	modifier = {
 		merchant_capacity_from_building = 0.1
 		merchant_power_from_building = 0.2
+	}
+	on_construction_started = {
+		ftc_permanent_building_construction_started = yes
 	}
 	on_built = {
 		ftc_built_perm = {

@@ -22,19 +22,16 @@ ftc_transfer_foreign_building = {
 # ARGS: building_type
 ftc_built_temp = {
 	location = {
-		# destroy temp pop
-		every_pop = {
-			limit = {
-				pop_type = pop_type:temp
-			}
-			destroy_pop = this
-		}
 		construct_building = {
 			building_type = building_type:$building_type$
 			cost_multiplier = 0
 			cost_multiplier_reason = "game_concept_foreign_building"
 			owner = root.owner
 		}
+	}
+	trigger_event_non_silently = {
+		on_action = ftc_cleanup_temp_buildings_on_action
+		days = 1
 	}
 }
 
@@ -72,4 +69,30 @@ ftc_built_perm = {
 		}
 	}
 	ftc_transfer_foreign_building
+}
+
+# Deletes the temporary building and all temp pops in the location
+# Must be called by the delayed on_action to prevent deleting the active scope.
+# ROOT: building
+ftc_cleanup_temp_buildings = {
+	# ROOT here = building, PREV = country
+	location = {
+		# In this block ROOT = location, PREV = building
+		# So this destroys the building its called on.
+		destroy_building = prev
+	}
+}
+
+# For some reason doesn't work when done in the same operation as deleting the temp building.
+# Thus why the on_construction_started.
+ftc_permanent_building_construction_started = {
+	location = {
+		# destroy temp pop
+		every_pop = {
+			limit = {
+				pop_type = pop_type:temp
+			}
+			destroy_pop = this
+		}
+	}
 }
