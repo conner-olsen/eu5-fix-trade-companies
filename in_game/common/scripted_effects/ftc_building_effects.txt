@@ -31,7 +31,6 @@ ftc_built_temp = {
 		}
 		construct_building = {
 			building_type = building_type:$building_type$
-			instant = yes
 			cost_multiplier = 0
 			cost_multiplier_reason = "game_concept_foreign_building"
 			owner = root.owner

@@ -44,7 +44,7 @@
 			}
 		}
 	}
-	build_time = trade_company_headquarters_time
+	build_time = 0
 	unique_production_methods = {
 		trade_company_headquarters_requirements = {
 			paper = 0.1
@@ -110,7 +110,6 @@ trade_company_headquarters = {
 		}
 	}
 	country_potential = {
-		ftc_hide_permanent_buildings_country_potential = yes
 	}
 	modifier = {
 		merchant_capacity_from_building = 0.2
@@ -260,7 +259,7 @@ trade_company_garrison_temp = {
 	rural_settlement = yes
 	town = yes
 	city = yes
-	build_time = trade_company_build_time
+	build_time = 0
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
@@ -351,7 +350,7 @@ trade_company_harbor_temp = {
 	rural_settlement = yes
 	town = yes
 	city = yes
-	build_time = trade_company_build_time
+	build_time = 0
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
@@ -445,7 +444,7 @@ trade_company_local_venture_temp = {
 	rural_settlement = yes
 	town = yes
 	city = yes
-	build_time = trade_company_build_time
+	build_time = 0
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
@@ -534,7 +533,7 @@ trade_company_foreign_influence_temp = {
 	rural_settlement = yes
 	town = yes
 	city = yes
-	build_time = trade_company_build_time
+	build_time = 0
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
@@ -625,7 +624,7 @@ trade_company_governance_temp = {
 	rural_settlement = yes
 	town = yes
 	city = yes
-	build_time = trade_company_build_time
+	build_time = 0
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
