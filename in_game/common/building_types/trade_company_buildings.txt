@@ -82,7 +82,7 @@
 		}
 	}
 	on_built = {
-		tcf_built_temp = {
+		ftc_built_temp = {
 			building_type = trade_company_headquarters
 		}
 	}
@@ -288,7 +288,7 @@ trade_company_garrison_temp = {
 		local_garrison_size = 0.5
 	}
 	on_built = {
-		tcf_built_temp = {
+		ftc_built_temp = {
 			building_type = trade_company_garrison
 		}
 	}
@@ -327,7 +327,7 @@ trade_company_garrison = {
 		local_garrison_size = 0.5
 	}
 	on_built = {
-		tcf_built = {
+		ftc_built_perm = {
 			building_type = trade_company_garrison
 		}
 	}
@@ -378,7 +378,7 @@ trade_company_harbor_temp = {
 		building_owner_overlord_maritime_presence = 0.02
 	}
 	on_built = {
-		tcf_built_temp = {
+		ftc_built_temp = {
 			building_type = trade_company_harbor
 		}
 	}
@@ -418,7 +418,7 @@ trade_company_harbor = {
 		building_owner_overlord_maritime_presence = 0.02
 	}
 	on_built = {
-		tcf_built = {
+		ftc_built_perm = {
 			building_type = trade_company_harbor
 		}
 	}
@@ -466,7 +466,7 @@ trade_company_local_venture_temp = {
 		local_raw_material_output = 0.33
 	}
 	on_built = {
-		tcf_built_temp = {
+		ftc_built_temp = {
 			building_type = trade_company_local_venture
 		}
 	}
@@ -504,7 +504,7 @@ trade_company_local_venture = {
 		local_raw_material_output = 0.33
 	}
 	on_built = {
-		tcf_built = {
+		ftc_built_perm = {
 			building_type = trade_company_local_venture
 		}
 	}
@@ -553,7 +553,7 @@ trade_company_foreign_influence_temp = {
 		local_max_control = 0.05
 	}
 	on_built = {
-		tcf_built_temp = {
+		ftc_built_temp = {
 			building_type = trade_company_foreign_influence
 		}
 	}
@@ -592,7 +592,7 @@ trade_company_foreign_influence = {
 		local_max_control = 0.05
 	}
 	on_built = {
-		tcf_built = {
+		ftc_built_perm = {
 			building_type = trade_company_foreign_influence
 		}
 	}
@@ -642,7 +642,7 @@ trade_company_governance_temp = {
 		can_recruit_regiment_in_this_location = yes
 	}
 	on_built = {
-		tcf_built_temp = {
+		ftc_built_temp = {
 			building_type = trade_company_governance
 		}
 	}
@@ -682,7 +682,7 @@ trade_company_governance = {
 		can_recruit_regiment_in_this_location = yes
 	}
 	on_built = {
-		tcf_built = {
+		ftc_built_perm = {
 			building_type = trade_company_governance
 		}
 	}

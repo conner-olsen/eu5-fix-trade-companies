@@ -1,7 +1,7 @@
 # Transfers the ownership of a foreign building in a location to the trade company if one 
 #  exists in the region
 # ROOT: building - the building to change ownership of
-tcf_transfer_foreign_building = {
+ftc_transfer_foreign_building = {
 	location.region = {
 		save_temporary_scope_as = building_region
 	}
@@ -20,7 +20,7 @@ tcf_transfer_foreign_building = {
 # Constructs the permanent version of a building after the temporary one is built
 # ROOT: building
 # ARGS: building_type
-tcf_built_temp = {
+ftc_built_temp = {
 	# destroy temp pop
 	every_pop = {
 		limit = {
@@ -44,7 +44,7 @@ tcf_built_temp = {
 # If it doesn not, we simply transfer owner ship of this building
 # ROOT: building
 # ARGS: building_type
-tcf_built = {
+ftc_built_perm = {
 	location = {
 		# destroy temp building
 		destroy_all_buildings_of_type = building_type:$building_type$_temp
@@ -72,5 +72,5 @@ tcf_built = {
 			destroy_building = scope:building_to_replace
 		}	
 	}
-	tcf_transfer_foreign_building
+	ftc_transfer_foreign_building
 }

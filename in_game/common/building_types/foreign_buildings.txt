@@ -43,7 +43,7 @@ trade_office_temp = {
     }
 
 	on_built = {
-		tcf_built_temp = { building_type = trade_office }
+		ftc_built_temp = { building_type = trade_office }
 	}
 	remove_if = {
 		always = yes
@@ -87,7 +87,7 @@ trade_office = {
     }
 
 	on_built = {
-		tcf_built = { building_type = trade_office }
+		ftc_built_perm = { building_type = trade_office }
 	}
 }
 
@@ -137,7 +137,7 @@ embassy_temp = {
 	}
 
 	on_built = {
-		tcf_built_temp = { building_type = embassy }
+		ftc_built_temp = { building_type = embassy }
 	}
 	remove_if = {
 		always = yes
@@ -186,7 +186,7 @@ embassy = {
 
     # upon construction completion, destroy the temporary building, and delete the temporary pops
     on_built = {
-		tcf_built = { building_type = embassy }
+		ftc_built_perm = { building_type = embassy }
     }
 }
 
@@ -234,7 +234,7 @@ missionary_building_temp = {
 	}
 
 	on_built = { 
-		tcf_built_temp = { building_type = missionary_building }
+		ftc_built_temp = { building_type = missionary_building }
 	}
 	remove_if = {
 		always = yes
@@ -281,7 +281,7 @@ missionary_building = {
 	}
 
 	on_built = { 
-		tcf_built = { building_type = missionary_building }
+		ftc_built_perm = { building_type = missionary_building }
 	}
 }
 
@@ -342,7 +342,7 @@ slave_center_temp = {
 	}
 
 	on_built = {
-		tcf_built_temp = { building_type = slave_center }
+		ftc_built_temp = { building_type = slave_center }
 	}
 	remove_if = {
 		always = yes
@@ -405,7 +405,7 @@ slave_center = {
 	}
 
 	on_built = {
-		tcf_built = { building_type = slave_center }
+		ftc_built_perm = { building_type = slave_center }
 	}
 }
 
@@ -454,7 +454,7 @@ overseas_trading_post_temp = {
 	}
 
 	on_built = {
-		tcf_built_temp = { building_type = overseas_trading_post }
+		ftc_built_temp = { building_type = overseas_trading_post }
 	}
 	remove_if = {
 		always = yes
@@ -506,6 +506,6 @@ overseas_trading_post = {
 	}
 
 	on_built = { 
-		tcf_built = { building_type = overseas_trading_post }
+		ftc_built_perm = { building_type = overseas_trading_post }
 	}
 }
