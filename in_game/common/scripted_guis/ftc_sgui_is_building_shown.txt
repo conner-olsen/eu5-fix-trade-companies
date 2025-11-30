@@ -3,7 +3,7 @@ ftc_sgui_is_building_shown = {
 	is_shown = {
 		NOT = {
 			is_target_in_global_variable_list = {
-				name = tcf_hidden_buildings
+				name = ftc_hidden_buildings
 				target = this
 			}
 		}

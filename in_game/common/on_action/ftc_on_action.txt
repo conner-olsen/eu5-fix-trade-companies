@@ -42,7 +42,7 @@ ftc_trade_company_advance_sweeper = {
 
 ftc_hide_buildings = {
     trigger = {
-        NOT = { has_global_variable_list = tcf_hidden_buildings }
+        NOT = { has_global_variable_list = ftc_hidden_buildings }
     }
 
     effect = {
