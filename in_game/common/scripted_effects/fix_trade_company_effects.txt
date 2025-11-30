@@ -1,145 +1,76 @@
-# Transfers the ownership of all foreign buildings in a location to the trade company if one 
+# Transfers the ownership of a foreign building in a location to the trade company if one 
 #  exists in the region
-# ROOT: location
-# ARGS:
-# owner_scope: scope of the country that built the building: ex. scope:owner_scope
-# location_scope: scope of the location where the building was constructed: ex. scope:location_scope
-tcf_transfer_foreign_buildings = {
-	$owner_scope$ = {
+# ROOT: building - the building to change ownership of
+ftc_transfer_foreign_building = {
+	location.region = {
+		save_temporary_scope_as = building_region
+	}
+	owner = {
 		every_subject = {
 			limit = {
 				has_variable = trade_company_home_region
-				var:trade_company_home_region = $location_scope$.region
+				var:trade_company_home_region = scope:building_region
 			}
-			save_temporary_scope_as = trade_company
-			$location_scope$ = {
-				every_buildings_in_location = {
-					limit = { owner = $owner_scope$ }
-					change_building_owner = scope:trade_company
-				}
-			}
+			save_temporary_scope_as = new_owner
 		}
 	}
+	change_building_owner = scope:new_owner
 }
 
 # Constructs the permanent version of a building after the temporary one is built
 # ROOT: building
 # ARGS: building_type
-tcf_built_temp = {
-	owner = { save_temporary_scope_as = owner_scope }
+ftc_built_temp = {
+	# destroy temp pop
+	every_pop = {
+		limit = {
+			pop_type = pop_type:temp
+		}
+		destroy_pop = this
+	}
 	location = {
 		construct_building = {
 			building_type = building_type:$building_type$
 			instant = yes
 			cost_multiplier = 0
 			cost_multiplier_reason = "game_concept_foreign_building"
-			owner = scope:owner_scope
+			owner = root.owner
 		}
 	}
 }
 
-# Destroys the completed temporary building and pops, then transfers foreign buildings to the trade company
+# Checks to see if the location has any existing levels
+# If it does, we had those levels to the perm and destroy the old one
+# If it doesn not, we simply transfer owner ship of this building
 # ROOT: building
 # ARGS: building_type
-tcf_built_permanent = {
+ftc_built_perm = {
 	location = {
-		save_temporary_scope_as = location_scope
+		# destroy temp building
 		destroy_all_buildings_of_type = building_type:$building_type$_temp
-		every_pop = {
+		# check for existing levels
+		every_buildings_in_location = {
 			limit = {
-				pop_type = pop_type:temp
+				building_type = building_type:$building_type$
+				owner = {
+					is_subject_of = root.owner
+				}
+				is_max_level = no
 			}
-			destroy_pop = this
+			save_temporary_scope_as = building_to_replace
 		}
+		# if there are already existing levels, add them to our current level, and destroy the old
+		if = {
+			limit = {
+				exists = scope:building_to_replace
+			}
+			root = {
+				# add old levels to new levels
+				change_building_level = scope:building_to_replace.building_level
+			}
+			# destroy old building
+			destroy_building = scope:building_to_replace
+		}	
 	}
-	owner = { save_temporary_scope_as = owner_scope }
-	tcf_transfer_foreign_buildings = {
-		owner_scope = scope:owner_scope
-		location_scope = scope:location_scope
-	}
-
-}
-
-# If there isn't a building in the province already, constructs the permanent version of a trade 
-# company building after the temporary one is built and transfers ownership to the appropriate trade 
-# company country. If the building already exists, increase the level of the building
-# ROOT: building
-# ARGS: building_type
-tcf_built_permanent_tc = {
-	owner = { save_temporary_scope_as = overlord_scope }
-	
-	# if the building type exists, is owned by one of our subjects, and is not at max level;
-	# increase the level by 1 and destroy the building just built 
-	if = {
-		limit = {
-			location = {
-				any_buildings_in_location = {
-					building_type = building_type:$building_type$ 
-					owner = { is_subject_of = scope:overlord_scope }
-					is_max_level = no
-				}
-			}
-		}
-		location = {
-			# level up TC owned building
-			every_buildings_in_location = {
-				limit = {
-					building_type = building_type:$building_type$
-					owner = { is_subject_of = scope:overlord_scope }
-					is_max_level = no
-				}
-				change_building_level = 1
-			}
-			# destroy temp pops
-			every_pop = {
-				limit = { pop_type = pop_type:temp }
-				destroy_pop = this
-			}
-			# Destroy temp buildings
-			destroy_all_buildings_of_type = building_type:$building_type$_temp	
-			# Destroy overlord owned permanent building
-			every_buildings_in_location = {
-				limit = {
-					building_type = building_type:$building_type$
-					owner = scope:overlord_scope
-				}
-				save_temporary_scope_as = old_building
-			}
-			scope:overlord_scope = {
-				add_to_variable_list = {
-					name = destroy_these
-					target = scope:old_building
-				}
-			}
-		}
-	}
-	else = {
-		tcf_built_permanent = { building_type = $building_type$ }
-		owner = {
-			if = {
-				limit = { NOT = { has_variable = trade_company_home_region } }
-				save_temporary_scope_as = owner_scope
-				random_in_list = {
-					variable = trade_company_subjects
-					limit = {
-						has_variable = trade_company_home_region
-						var:trade_company_home_region = {
-							save_temporary_scope_as = target_region
-						}
-						scope:owner_scope = {
-							is_target_in_variable_list = {
-								name = trade_company_regions
-								target = scope:target_region
-							}
-						}
-					}
-					save_scope_as = trade_company_country
-				}
-				if = {
-					limit = { exists = scope:trade_company_country }
-					root = { change_building_owner = scope:trade_company_country }
-				}
-			}
-		}
-	}
+	ftc_transfer_foreign_building
 }
