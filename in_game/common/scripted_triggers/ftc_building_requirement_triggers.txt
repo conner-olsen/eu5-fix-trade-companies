@@ -32,3 +32,11 @@ ftc_is_in_trade_company_region = {
 		}
 	}
 }
+
+# Meant to be false for the player. 
+# Enabled for trade companies so that the AI can build still build the 
+# permanent buildings since they don't have the same pop issue.
+# ROOT: country
+ftc_hide_permanent_buildings_country_potential = {
+	is_subject_type = trade_company
+}

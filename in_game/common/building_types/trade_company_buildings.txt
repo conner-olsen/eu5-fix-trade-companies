@@ -109,6 +109,9 @@ trade_company_headquarters = {
 			category = building_maintenance
 		}
 	}
+	country_potential = {
+		ftc_hide_permanent_buildings_country_potential = yes
+	}
 	modifier = {
 		merchant_capacity_from_building = 0.2
 		building_owner_maritime_presence = 0.02
@@ -313,6 +316,9 @@ trade_company_garrison = {
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
+	country_potential = {
+		ftc_hide_permanent_buildings_country_potential = yes
+	}
 	location_potential = {
 		ftc_company_building_location_potential = {
 			building_type = trade_company_garrison
@@ -403,6 +409,9 @@ trade_company_harbor = {
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
+	country_potential = {
+		ftc_hide_permanent_buildings_country_potential = yes
+	}
 	location_potential = {
 		ftc_company_building_location_potential = {
 			building_type = trade_company_harbor
@@ -491,6 +500,9 @@ trade_company_local_venture = {
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
+	country_potential = {
+		ftc_hide_permanent_buildings_country_potential = yes
+	}
 	location_potential = {
 		ftc_company_building_location_potential = {
 			building_type = trade_company_local_venture
@@ -577,6 +589,9 @@ trade_company_foreign_influence = {
 	build_time = trade_company_build_time
 	possible_production_methods = {
 		satellite_trade_building_requirements
+	}
+	country_potential = {
+		ftc_hide_permanent_buildings_country_potential = yes
 	}
 	location_potential = {
 		ftc_company_building_location_potential = {
@@ -666,6 +681,9 @@ trade_company_governance = {
 	build_time = trade_company_build_time
 	possible_production_methods = {
 		satellite_trade_building_requirements
+	}
+	country_potential = {
+		ftc_hide_permanent_buildings_country_potential = yes
 	}
 	location_potential = {
 		ftc_company_building_location_potential = {
