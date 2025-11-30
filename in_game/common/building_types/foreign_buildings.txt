@@ -23,7 +23,7 @@ trade_office_temp = {
 			has_building = building_type:trade_office
 		}
 	}
-	build_time = 0
+	build_time = trade_company_build_time
 	unique_production_methods = {
 		trade_office_requirements = {
 			paper = 0.1
@@ -107,7 +107,7 @@ embassy_temp = {
 			is_capital = no
 		}
 	}
-	build_time = 0
+	build_time = trade_company_build_time
 	lifts_fog_of_war = yes
 	unique_production_methods = {
 		embassy_requirements = {
@@ -202,7 +202,7 @@ missionary_building_temp = {
 		colony_maintenance
 	}
 	construction_demand = simple_colony_construction
-	build_time = 0
+	build_time = trade_company_build_time
 	modifier = {
 		building_missionary_effort = 0.1
 		local_tribal_promotion = 0.5
@@ -295,7 +295,7 @@ slave_center_temp = {
 			has_slavery = yes
 		}
 	}
-	build_time = 0
+	build_time = trade_company_build_time
 	unique_production_methods = {
 		slave_center_maintenance = {
 			stone = 0.3
@@ -408,7 +408,7 @@ overseas_trading_post_temp = {
 		fur_trading_post_maintenance
 	}
 	construction_demand = simple_colony_construction
-	build_time = 0
+	build_time = trade_company_build_time
 	modifier = {
 		merchant_capacity_from_building = 0.1
 		merchant_power_from_building = 0.2

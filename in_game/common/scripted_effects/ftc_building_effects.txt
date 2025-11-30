@@ -21,12 +21,16 @@ ftc_transfer_foreign_building = {
 # ROOT: building
 # ARGS: building_type
 ftc_built_temp = {
+	owner  = {
+		save_temporary_scope_as = owner_scope
+	}
 	location = {
 		construct_building = {
 			building_type = building_type:$building_type$
 			cost_multiplier = 0
+			instant = yes
 			cost_multiplier_reason = "game_concept_foreign_building"
-			owner = root.owner
+			owner = scope:owner_scope
 		}
 	}
 	trigger_event_non_silently = {
