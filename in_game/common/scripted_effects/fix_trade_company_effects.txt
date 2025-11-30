@@ -21,6 +21,13 @@ tcf_transfer_foreign_building = {
 # ROOT: building
 # ARGS: building_type
 tcf_built_temp = {
+	# destroy temp pop
+	every_pop = {
+		limit = {
+			pop_type = pop_type:temp
+		}
+		destroy_pop = this
+	}
 	location = {
 		construct_building = {
 			building_type = building_type:$building_type$
@@ -32,7 +39,6 @@ tcf_built_temp = {
 	}
 }
 
-# Destroys temp building and pop, then
 # Checks to see if the location has any existing levels
 # If it does, we had those levels to the perm and destroy the old one
 # If it doesn not, we simply transfer owner ship of this building
@@ -42,13 +48,6 @@ tcf_built = {
 	location = {
 		# destroy temp building
 		destroy_all_buildings_of_type = building_type:$building_type$_temp
-		# destroy temp pop
-		every_pop = {
-			limit = {
-				pop_type = pop_type:temp
-			}
-			destroy_pop = this
-		}
 		# check for existing levels
 		every_buildings_in_location = {
 			limit = {
