@@ -1,49 +1,44 @@
 # Circumvents the pop check by replacing the pop_type with a non-existent pop, so when the game checks for
 #  existing pops, they are never found
-
 trade_office_temp = {
-    is_foreign = yes
-    stronger_power_projection = no
-    max_levels = ftc_temp_building_max_level
-    need_good_relation = yes
-    pop_type = temp
-
-    category = trade_category
-
-    employment_size = 0
-
-    rural_settlement = no
-    town = yes
-    city = yes
-    foobar = yes
-
-    allow = {
-        is_port = yes
-        market = { in_trade_range_of = scope:actor }
-    }
-
-	location_potential = {
-		NOT = { has_building = building_type:trade_office }
+	is_foreign = yes
+	stronger_power_projection = no
+	max_levels = ftc_temp_building_max_level
+	need_good_relation = yes
+	pop_type = temp
+	category = trade_category
+	employment_size = 0
+	rural_settlement = no
+	town = yes
+	city = yes
+	foobar = yes
+	allow = {
+		is_port = yes
+		market = {
+			in_trade_range_of = scope:actor
+		}
 	}
-
-    build_time = 0
-
-    unique_production_methods = {
-        trade_office_requirements = {
-            paper = 0.1
-            category = building_maintenance
-        }
-    }
-
-
-    modifier = {
-        merchant_capacity_from_building = 0.3
-        building_owner_maritime_presence = 0.05
-        merchant_power_from_building = 0.2
-    }
-
+	location_potential = {
+		NOT = {
+			has_building = building_type:trade_office
+		}
+	}
+	build_time = 0
+	unique_production_methods = {
+		trade_office_requirements = {
+			paper = 0.1
+			category = building_maintenance
+		}
+	}
+	modifier = {
+		merchant_capacity_from_building = 0.3
+		building_owner_maritime_presence = 0.05
+		merchant_power_from_building = 0.2
+	}
 	on_built = {
-		ftc_built_temp = { building_type = trade_office }
+		ftc_built_temp = {
+			building_type = trade_office
+		}
 	}
 	remove_if = {
 		always = yes
@@ -51,42 +46,38 @@ trade_office_temp = {
 }
 
 trade_office = {
-    is_foreign = yes
-    stronger_power_projection = no
-    max_levels = guild_max_level
-    need_good_relation = yes
-    pop_type = burghers
-
-    category = trade_category
-
-    employment_size = foreign_trade_employment
-
-    rural_settlement = no
-    town = yes
-    city = yes
-	
+	is_foreign = yes
+	stronger_power_projection = no
+	max_levels = guild_max_level
+	need_good_relation = yes
+	pop_type = burghers
+	category = trade_category
+	employment_size = foreign_trade_employment
+	rural_settlement = no
+	town = yes
+	city = yes
 	allow = {
-        is_port = yes
-        market = { in_trade_range_of = scope:actor }
-    }
-
-    build_time = trade_post_build_time
-
-    unique_production_methods = {
-        trade_office_requirements = {
-            paper = 0.1
-            category = building_maintenance
-        }
-    }
-
-    modifier = {
-        merchant_capacity_from_building = 0.3
-        building_owner_maritime_presence = 0.05
-        merchant_power_from_building = 0.2
-    }
-
+		is_port = yes
+		market = {
+			in_trade_range_of = scope:actor
+		}
+	}
+	build_time = trade_post_build_time
+	unique_production_methods = {
+		trade_office_requirements = {
+			paper = 0.1
+			category = building_maintenance
+		}
+	}
+	modifier = {
+		merchant_capacity_from_building = 0.3
+		building_owner_maritime_presence = 0.05
+		merchant_power_from_building = 0.2
+	}
 	on_built = {
-		ftc_built_perm = { building_type = trade_office }
+		ftc_built_perm = {
+			building_type = trade_office
+		}
 	}
 }
 
@@ -96,47 +87,41 @@ embassy_temp = {
 	max_levels = ftc_temp_building_max_level
 	need_good_relation = yes
 	pop_type = temp
-	
 	category = government_category
-	
 	employment_size = 0
-	
 	rural_settlement = no
 	town = yes
 	city = yes
-	
 	allow = {
 		is_capital = yes
 		scope:actor.country_rank_level <= owner.country_rank_level
 	}
-
 	location_potential = {
-		NOT = { has_building = building_type:embassy }
+		NOT = {
+			has_building = building_type:embassy
+		}
 	}
-
 	remove_if = {
-		location = { is_capital = no }
+		location = {
+			is_capital = no
+		}
 	}
-	
 	build_time = 0
-	
 	lifts_fog_of_war = yes
-	
 	unique_production_methods = {
 		embassy_requirements = {
-			paper = 1.0
+			paper = 1
 			jewelry = 0.5
-			
 			category = building_maintenance
 		}
 	}
-	
 	foreign_country_modifier = {
 		diplomatic_capacity = 0.1
 	}
-
 	on_built = {
-		ftc_built_temp = { building_type = embassy }
+		ftc_built_temp = {
+			building_type = embassy
+		}
 	}
 	remove_if = {
 		always = yes
@@ -149,45 +134,38 @@ embassy = {
 	max_levels = 1
 	need_good_relation = yes
 	pop_type = nobles
-	
 	category = government_category
-	
 	employment_size = minor_noble_employment
-	
 	rural_settlement = no
 	town = yes
 	city = yes
-
 	allow = {
 		is_capital = yes
 		scope:actor.country_rank_level <= owner.country_rank_level
 	}
-
 	remove_if = {
-		location = { is_capital = no }
-	}	
-	
+		location = {
+			is_capital = no
+		}
+	}
 	build_time = trade_post_build_time
-	
 	lifts_fog_of_war = yes
-	
 	unique_production_methods = {
 		embassy_requirements = {
-			paper = 1.0
+			paper = 1
 			jewelry = 0.5
-			
 			category = building_maintenance
 		}
 	}
-	
 	foreign_country_modifier = {
 		diplomatic_capacity = 0.1
 	}
-
-    # upon construction completion, destroy the temporary building, and delete the temporary pops
-    on_built = {
-		ftc_built_perm = { building_type = embassy }
-    }
+	# upon construction completion, destroy the temporary building, and delete the temporary pops
+	on_built = {
+		ftc_built_perm = {
+			building_type = embassy
+		}
+	}
 }
 
 missionary_building_temp = {
@@ -195,46 +173,43 @@ missionary_building_temp = {
 	is_foreign = yes
 	max_levels = ftc_temp_building_max_level
 	pop_type = temp
-	graphical_tags = { small_religious }
-	
+	graphical_tags = {
+		small_religious
+	}
 	category = colonial_category
-	
 	employment_size = 0
-	
 	pop_size_created = 0
-	
 	rural_settlement = yes
 	town = no
 	city = no
-	
 	allow = {
-		OR = { 
-			is_coastal_within_range = yes	
+		OR = {
+			is_coastal_within_range = yes
 			is_adjacent_to_owned_or_subject_owns = yes
 		}
-		NOT = { dominant_religion = scope:actor.religion }
+		NOT = {
+			dominant_religion = scope:actor.religion
+		}
 	}
-
 	location_potential = {
-		NOT = { has_building = building_type:missionary_building }
+		NOT = {
+			has_building = building_type:missionary_building
+		}
 	}
-
 	possible_production_methods = {
 		colony_maintenance
 	}
 	construction_demand = simple_colony_construction
-
-	
 	build_time = 0
-	
 	modifier = {
 		building_missionary_effort = 0.1
 		local_tribal_promotion = 0.5
 		local_disease_resistance = 0.05
 	}
-
-	on_built = { 
-		ftc_built_temp = { building_type = missionary_building }
+	on_built = {
+		ftc_built_temp = {
+			building_type = missionary_building
+		}
 	}
 	remove_if = {
 		always = yes
@@ -246,42 +221,38 @@ missionary_building = {
 	is_foreign = yes
 	max_levels = 1
 	pop_type = clergy
-	graphical_tags = { small_religious }
-	
+	graphical_tags = {
+		small_religious
+	}
 	category = colonial_category
-	
 	employment_size = religious_building_employment
-	
 	pop_size_created = religious_building_employment
-	
 	rural_settlement = yes
 	town = no
 	city = no
-
 	allow = {
-		OR = { 
-			is_coastal_within_range = yes	
+		OR = {
+			is_coastal_within_range = yes
 			is_adjacent_to_owned_or_subject_owns = yes
 		}
-		NOT = { dominant_religion = scope:actor.religion }
+		NOT = {
+			dominant_religion = scope:actor.religion
+		}
 	}
-
 	possible_production_methods = {
 		colony_maintenance
 	}
 	construction_demand = simple_colony_construction
-
-	
 	build_time = colonise_build_time
-	
 	modifier = {
 		building_missionary_effort = 0.1
 		local_tribal_promotion = 0.5
 		local_disease_resistance = 0.05
 	}
-
-	on_built = { 
-		ftc_built_perm = { building_type = missionary_building }
+	on_built = {
+		ftc_built_perm = {
+			building_type = missionary_building
+		}
 	}
 }
 
@@ -291,38 +262,37 @@ slave_center_temp = {
 	stronger_power_projection = yes
 	max_levels = ftc_temp_building_max_level
 	pop_type = temp
-	
 	category = colonial_category
-	
-	
 	employment_size = 0
-	
 	pop_size_created = 0
-	
 	rural_settlement = yes
 	town = yes
 	city = yes
-	
 	location_potential = {
-		NOT = { dominant_religion.group = scope:actor.religion.group }
-		owner ?= { religion != scope:actor.religion }
-		NOT = { has_building = building_type:slave_center }
+		NOT = {
+			dominant_religion.group = scope:actor.religion.group
+		}
+		owner ?= {
+			religion != scope:actor.religion
+		}
+		NOT = {
+			has_building = building_type:slave_center
+		}
 	}
-
 	allow = {
 		OR = {
 			sub_continent = sub_continent:west_africa
 			sub_continent = sub_continent:central_africa
 		}
-		OR = { 
+		OR = {
 			is_coastal_within_range = yes
 			is_adjacent_to_owned_or_subject_owns = yes
 		}
-		scope:actor = { has_slavery = yes }
+		scope:actor = {
+			has_slavery = yes
+		}
 	}
-	
 	build_time = 0
-	
 	unique_production_methods = {
 		slave_center_maintenance = {
 			stone = 0.3
@@ -335,14 +305,13 @@ slave_center_temp = {
 		}
 	}
 	construction_demand = simple_colony_construction
-
-	
 	modifier = {
-		building_enslavement_power = 0.050
+		building_enslavement_power = 0.05
 	}
-
 	on_built = {
-		ftc_built_temp = { building_type = slave_center }
+		ftc_built_temp = {
+			building_type = slave_center
+		}
 	}
 	remove_if = {
 		always = yes
@@ -355,37 +324,34 @@ slave_center = {
 	stronger_power_projection = yes
 	max_levels = 1
 	pop_type = burghers
-	
 	category = colonial_category
-	
-	
 	employment_size = foreign_trade_employment
-	
 	pop_size_created = foreign_trade_employment
-	
 	rural_settlement = yes
 	town = yes
 	city = yes
-
 	location_potential = {
-		NOT = { dominant_religion.group = scope:actor.religion.group }
-		owner ?= { religion != scope:actor.religion }
+		NOT = {
+			dominant_religion.group = scope:actor.religion.group
+		}
+		owner ?= {
+			religion != scope:actor.religion
+		}
 	}
-	
 	allow = {
 		OR = {
 			sub_continent = sub_continent:west_africa
 			sub_continent = sub_continent:central_africa
 		}
-		OR = { 
+		OR = {
 			is_coastal_within_range = yes
 			is_adjacent_to_owned_or_subject_owns = yes
 		}
-		scope:actor = { has_slavery = yes }
+		scope:actor = {
+			has_slavery = yes
+		}
 	}
-	
 	build_time = colonise_build_time
-	
 	unique_production_methods = {
 		slave_center_maintenance = {
 			stone = 0.3
@@ -398,14 +364,13 @@ slave_center = {
 		}
 	}
 	construction_demand = simple_colony_construction
-
-	
 	modifier = {
-		building_enslavement_power = 0.050
+		building_enslavement_power = 0.05
 	}
-
 	on_built = {
-		ftc_built_perm = { building_type = slave_center }
+		ftc_built_perm = {
+			building_type = slave_center
+		}
 	}
 }
 
@@ -414,47 +379,40 @@ overseas_trading_post_temp = {
 	is_foreign = yes
 	max_levels = ftc_temp_building_max_level
 	pop_type = temp
-
-	stronger_power_projection = yes	
-	
+	stronger_power_projection = yes
 	category = colonial_category
-
 	employment_size = 0
-	
 	pop_size_created = 0
-	
 	rural_settlement = yes
 	town = no
 	city = no
-
-
 	location_potential = {
-		NOT = { continent = scope:actor.capital.continent }
-		NOT = { has_building = building_type:overseas_trading_post }
+		NOT = {
+			continent = scope:actor.capital.continent
+		}
+		NOT = {
+			has_building = building_type:overseas_trading_post
+		}
 	}
-
 	allow = {
-		OR = { 
+		OR = {
 			is_coastal_within_range = yes
 			is_adjacent_to_owned_or_subject_owns = yes
 		}
 	}
-
 	possible_production_methods = {
 		fur_trading_post_maintenance
 	}
 	construction_demand = simple_colony_construction
-
-	
 	build_time = 0
-	
 	modifier = {
 		merchant_capacity_from_building = 0.1
 		merchant_power_from_building = 0.2
 	}
-
 	on_built = {
-		ftc_built_temp = { building_type = overseas_trading_post }
+		ftc_built_temp = {
+			building_type = overseas_trading_post
+		}
 	}
 	remove_if = {
 		always = yes
@@ -466,46 +424,36 @@ overseas_trading_post = {
 	is_foreign = yes
 	max_levels = 1
 	pop_type = burghers
-
-	stronger_power_projection = yes	
-	
+	stronger_power_projection = yes
 	category = colonial_category
-
 	employment_size = foreign_trade_employment
-	
 	pop_size_created = foreign_trade_employment
-	
 	rural_settlement = yes
 	town = no
 	city = no
-
 	location_potential = {
-		NOT = { continent = scope:actor.capital.continent }
-	}	
-
+		NOT = {
+			continent = scope:actor.capital.continent
+		}
+	}
 	allow = {
-		OR = { 
+		OR = {
 			is_coastal_within_range = yes
 			is_adjacent_to_owned_or_subject_owns = yes
 		}
 	}
-	
-	
-
 	possible_production_methods = {
 		fur_trading_post_maintenance
 	}
 	construction_demand = simple_colony_construction
-
-	
 	build_time = colonise_build_time
-	
 	modifier = {
 		merchant_capacity_from_building = 0.1
 		merchant_power_from_building = 0.2
 	}
-
-	on_built = { 
-		ftc_built_perm = { building_type = overseas_trading_post }
+	on_built = {
+		ftc_built_perm = {
+			building_type = overseas_trading_post
+		}
 	}
 }
