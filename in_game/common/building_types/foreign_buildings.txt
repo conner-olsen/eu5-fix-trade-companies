@@ -65,10 +65,6 @@ trade_office = {
     town = yes
     city = yes
 	
-	country_potential = {
-		ftc_hide_permanent_buildings_country_potential = yes
-	}
-	
 	allow = {
         is_port = yes
         market = { in_trade_range_of = scope:actor }
@@ -161,10 +157,6 @@ embassy = {
 	rural_settlement = no
 	town = yes
 	city = yes
-	
-	country_potential = {
-		ftc_hide_permanent_buildings_country_potential = yes
-	}
 
 	allow = {
 		is_capital = yes
@@ -265,10 +257,6 @@ missionary_building = {
 	rural_settlement = yes
 	town = no
 	city = no
-	
-	country_potential = {
-		ftc_hide_permanent_buildings_country_potential = yes
-	}
 
 	allow = {
 		OR = { 
@@ -378,10 +366,6 @@ slave_center = {
 	rural_settlement = yes
 	town = yes
 	city = yes
-	
-	country_potential = {
-		ftc_hide_permanent_buildings_country_potential = yes
-	}
 
 	location_potential = {
 		NOT = { dominant_religion.group = scope:actor.religion.group }
@@ -494,10 +478,6 @@ overseas_trading_post = {
 	rural_settlement = yes
 	town = no
 	city = no
-
-	country_potential = {
-		ftc_hide_permanent_buildings_country_potential = yes
-	}
 
 	location_potential = {
 		NOT = { continent = scope:actor.capital.continent }
