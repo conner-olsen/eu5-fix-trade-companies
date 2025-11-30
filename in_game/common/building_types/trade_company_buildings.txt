@@ -86,7 +86,6 @@
 			building_type = trade_company_headquarters
 		}
 	}
-
 }
 
 trade_company_headquarters = {
@@ -214,9 +213,11 @@ trade_company_headquarters = {
 						NOT = {
 							has_variable_list = trade_company_regions
 						}
-						is_target_in_variable_list = {
-							name = trade_company_regions
-							target = scope:capital.region
+						NOT = {
+							is_target_in_variable_list = {
+								name = trade_company_regions
+								target = scope:capital.region
+							}
 						}
 					}
 				}
@@ -292,7 +293,6 @@ trade_company_garrison_temp = {
 			building_type = trade_company_garrison
 		}
 	}
-
 }
 
 trade_company_garrison = {
@@ -477,7 +477,6 @@ trade_company_local_venture_temp = {
 			building_type = trade_company_local_venture
 		}
 	}
-
 }
 
 trade_company_local_venture = {
@@ -568,7 +567,6 @@ trade_company_foreign_influence_temp = {
 			building_type = trade_company_foreign_influence
 		}
 	}
-
 }
 
 trade_company_foreign_influence = {
@@ -661,7 +659,6 @@ trade_company_governance_temp = {
 			building_type = trade_company_governance
 		}
 	}
-
 }
 
 trade_company_governance = {
