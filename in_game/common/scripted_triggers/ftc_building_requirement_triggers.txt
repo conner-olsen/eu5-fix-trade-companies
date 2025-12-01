@@ -34,7 +34,7 @@ ftc_is_recieving_rights = {
 				target = scope:actor
 			}
 		}
-		owner.top_overlord = {
+		owner.top_overlord ?= {
 			giving_scripted_relation = {
 				type = relation_type:trade_company_rights
 				target = scope:actor
