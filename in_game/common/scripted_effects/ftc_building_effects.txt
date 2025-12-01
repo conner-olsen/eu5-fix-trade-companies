@@ -1,27 +1,8 @@
-# Transfers the ownership of a foreign building in a location to the trade company if one 
-#  exists in the region
-# ROOT: building - the building to change ownership of
-ftc_transfer_foreign_building = {
-	location.region = {
-		save_temporary_scope_as = building_region
-	}
-	owner = {
-		every_subject = {
-			limit = {
-				has_variable = trade_company_home_region
-				var:trade_company_home_region = scope:building_region
-			}
-			save_temporary_scope_as = new_owner
-		}
-	}
-	change_building_owner = scope:new_owner
-}
-
 # Constructs the permanent version of a building after the temporary one is built
 # ROOT: building
 # ARGS: building_type
 ftc_built_temp = {
-	owner  = {
+	owner = {
 		save_temporary_scope_as = owner_scope
 	}
 	location = {
@@ -71,8 +52,29 @@ ftc_built_perm = {
 			# destroy old building
 			destroy_building = scope:building_to_replace
 		}
+		if = {
+			limit = {
+				has_variable = level_constructed
+			}
+			prev = {
+				change_building_level = prev.var:level_constructed
+			}
+			remove_variable = level_constructed
+		}
+		region = {
+			save_temporary_scope_as = building_region
+		}
 	}
-	ftc_transfer_foreign_building
+	owner = {
+		every_subject = {
+			limit = {
+				has_variable = trade_company_home_region
+				var:trade_company_home_region = scope:building_region
+			}
+			save_temporary_scope_as = new_owner
+		}
+	}
+	change_building_owner = scope:new_owner
 }
 
 # Deletes the temporary building and all temp pops in the location

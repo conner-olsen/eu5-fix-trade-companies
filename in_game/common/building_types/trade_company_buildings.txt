@@ -1,6 +1,6 @@
 ﻿trade_company_headquarters_temp = {
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = trade_company_building_max_level
 	pop_type = temp
 	category = tc_category
 	employment_size = 0
@@ -247,7 +247,7 @@ trade_company_headquarters = {
 
 trade_company_garrison_temp = {
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = trade_company_building_max_level
 	pop_type = temp
 	category = tc_category
 	AI_ignore_available_worker_flag = yes
@@ -289,6 +289,14 @@ trade_company_garrison_temp = {
 	on_built = {
 		ftc_built_temp = {
 			building_type = trade_company_garrison
+		}
+	}
+	on_construction_started = {
+		location = {
+			set_variable = {
+				name = level_constructed
+				value = prev.building_levels_under_construction
+			}
 		}
 	}
 }
@@ -336,7 +344,7 @@ trade_company_garrison = {
 
 trade_company_harbor_temp = {
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = trade_company_building_max_level
 	pop_type = temp
 	category = tc_category
 	AI_ignore_available_worker_flag = yes
@@ -380,6 +388,14 @@ trade_company_harbor_temp = {
 	on_built = {
 		ftc_built_temp = {
 			building_type = trade_company_harbor
+		}
+	}
+	on_construction_started = {
+		location = {
+			set_variable = {
+				name = level_constructed
+				value = prev.building_levels_under_construction
+			}
 		}
 	}
 }
@@ -428,7 +444,7 @@ trade_company_harbor = {
 
 trade_company_local_venture_temp = {
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = trade_company_building_max_level
 	pop_type = temp
 	category = tc_category
 	AI_ignore_available_worker_flag = yes
@@ -469,6 +485,14 @@ trade_company_local_venture_temp = {
 	on_built = {
 		ftc_built_temp = {
 			building_type = trade_company_local_venture
+		}
+	}
+	on_construction_started = {
+		location = {
+			set_variable = {
+				name = level_constructed
+				value = prev.building_levels_under_construction
+			}
 		}
 	}
 }
@@ -515,7 +539,7 @@ trade_company_local_venture = {
 
 trade_company_foreign_influence_temp = {
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = trade_company_building_max_level
 	pop_type = temp
 	category = tc_category
 	AI_ignore_available_worker_flag = yes
@@ -557,6 +581,14 @@ trade_company_foreign_influence_temp = {
 	on_built = {
 		ftc_built_temp = {
 			building_type = trade_company_foreign_influence
+		}
+	}
+	on_construction_started = {
+		location = {
+			set_variable = {
+				name = level_constructed
+				value = prev.building_levels_under_construction
+			}
 		}
 	}
 }
@@ -604,7 +636,7 @@ trade_company_foreign_influence = {
 
 trade_company_governance_temp = {
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = trade_company_building_max_level
 	pop_type = temp
 	category = tc_category
 	AI_ignore_available_worker_flag = yes
@@ -647,6 +679,14 @@ trade_company_governance_temp = {
 	on_built = {
 		ftc_built_temp = {
 			building_type = trade_company_governance
+		}
+	}
+	on_construction_started = {
+		location = {
+			set_variable = {
+				name = level_constructed
+				value = prev.building_levels_under_construction
+			}
 		}
 	}
 }
