@@ -4,15 +4,26 @@
 ftc_company_building_location_potential = {
 	ftc_is_in_trade_company_region = yes
 	OR = {
+		# No building is present
 		NOT = {
 			has_building = building_type:$building_type$
 		}
-		any_buildings_in_location = {
-			building_type = building_type:$building_type$
-			owner = {
-				is_subject = yes
+		# Building is not max level and the queue isn't full
+		AND = {
+			any_buildings_in_location = {
+				building_type = building_type:$building_type$
+				owner = {
+					is_subject = yes
+				}
+				is_max_level = no
 			}
-			is_max_level = no
+			any_buildings_in_location = {
+				building_type = building_type:$building_type$
+				owner = {
+					is_subject_of = scope:actor
+				}
+				building_max_level > root.var:$building_type$_queue_size
+			}
 		}
 	}
 	# I have no idea why we need to surround this with a NOT,

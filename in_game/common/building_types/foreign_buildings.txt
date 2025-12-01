@@ -3,7 +3,7 @@
 trade_office_temp = {
 	is_foreign = yes
 	stronger_power_projection = no
-	max_levels = ftc_temp_building_max_level
+	max_levels = guild_max_level
 	need_good_relation = yes
 	pop_type = temp
 	category = trade_category
@@ -37,6 +37,11 @@ trade_office_temp = {
 	}
 	on_built = {
 		ftc_built_temp = {
+			building_type = trade_office
+		}
+	}
+	on_construction_started = {
+		ftc_count_queue = {
 			building_type = trade_office
 		}
 	}
@@ -85,7 +90,7 @@ trade_office = {
 embassy_temp = {
 	is_foreign = yes
 	stronger_power_projection = no
-	max_levels = ftc_temp_building_max_level
+	max_levels = 1
 	need_good_relation = yes
 	pop_type = temp
 	category = government_category
@@ -173,7 +178,7 @@ embassy = {
 missionary_building_temp = {
 	in_empty = empty
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = 1
 	pop_type = temp
 	graphical_tags = {
 		small_religious
@@ -263,7 +268,7 @@ slave_center_temp = {
 	in_empty = any
 	is_foreign = yes
 	stronger_power_projection = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = 1
 	pop_type = temp
 	category = colonial_category
 	employment_size = 0
@@ -381,7 +386,7 @@ slave_center = {
 overseas_trading_post_temp = {
 	in_empty = any
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = 1
 	pop_type = temp
 	stronger_power_projection = yes
 	category = colonial_category

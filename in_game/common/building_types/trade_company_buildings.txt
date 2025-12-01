@@ -292,11 +292,8 @@ trade_company_garrison_temp = {
 		}
 	}
 	on_construction_started = {
-		location = {
-			set_variable = {
-				name = level_constructed
-				value = prev.building_levels_under_construction
-			}
+		ftc_count_queue = {
+			building_type = trade_company_garrison
 		}
 	}
 }
@@ -391,11 +388,8 @@ trade_company_harbor_temp = {
 		}
 	}
 	on_construction_started = {
-		location = {
-			set_variable = {
-				name = level_constructed
-				value = prev.building_levels_under_construction
-			}
+		ftc_count_queue = {
+			building_type = trade_company_harbor
 		}
 	}
 }
@@ -488,11 +482,8 @@ trade_company_local_venture_temp = {
 		}
 	}
 	on_construction_started = {
-		location = {
-			set_variable = {
-				name = level_constructed
-				value = prev.building_levels_under_construction
-			}
+		ftc_count_queue = {
+			building_type = trade_company_local_venture
 		}
 	}
 }
@@ -584,11 +575,8 @@ trade_company_foreign_influence_temp = {
 		}
 	}
 	on_construction_started = {
-		location = {
-			set_variable = {
-				name = level_constructed
-				value = prev.building_levels_under_construction
-			}
+		ftc_count_queue = {
+			building_type = trade_company_foreign_influence
 		}
 	}
 }
@@ -682,11 +670,8 @@ trade_company_governance_temp = {
 		}
 	}
 	on_construction_started = {
-		location = {
-			set_variable = {
-				name = level_constructed
-				value = prev.building_levels_under_construction
-			}
+		ftc_count_queue = {
+			building_type = trade_company_governance
 		}
 	}
 }

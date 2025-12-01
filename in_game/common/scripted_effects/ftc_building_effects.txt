@@ -1,3 +1,38 @@
+# Adds the sum of constructing temp buildings and constructed permanent buildings to the location
+# as a variable named $building_type$_queue_size
+# ROOT: building
+# ARGS: 
+# building_type
+# existing_levels - value: number of existing temp buildings queued
+ftc_count_queue = {
+	location = {
+		# set value equal to existing construction +1 as numbering starts at 0
+		set_variable = {
+			name = $building_type$_queue_size
+			value = prev.building_levels_under_construction
+		}
+		change_variable = {
+			name = $building_type$_queue_size
+			add = 1
+		}
+		# add the number of existing levels to the variable
+		every_buildings_in_location = {
+			limit = {
+				building_type = building_type:$building_type$
+				owner = {
+					is_subject_of = root.owner
+				}
+			}
+			prev = {
+				change_variable = {
+					name = $building_type$_queue_size
+					add = prev.building_level
+				}
+			}
+		}
+	}
+}
+
 # Constructs the permanent version of a building after the temporary one is built
 # ROOT: building
 # ARGS: building_type
@@ -41,29 +76,35 @@ ftc_built_perm = {
 			save_temporary_scope_as = building_to_replace
 		}
 		# if there are already existing levels, add them to our current level, and destroy the old
+		# Otherwise use queue size, subtract 1 from the queue size since 1 level will go down it's own
 		if = {
 			limit = {
 				exists = scope:building_to_replace
 			}
-			root = {
-				# add old levels to new levels
-				change_building_level = scope:building_to_replace.building_level
+			set_local_variable = {
+				name = level_change
+				value = scope:building_to_replace.building_level
 			}
 			# destroy old building
 			destroy_building = scope:building_to_replace
 		}
-		if = {
-			limit = {
-				has_variable = level_constructed
+		else = {
+			set_local_variable = {
+				name = level_change
+				value = var:$building_type$_queue_size
 			}
-			prev = {
-				change_building_level = prev.var:level_constructed
+			change_local_variable = {
+				name = level_change
+				subtract = 1
 			}
-			remove_variable = level_constructed
+		}
+		prev = {
+			change_building_level = local_var:level_change
 		}
 		region = {
 			save_temporary_scope_as = building_region
 		}
+		remove_variable = $building_type$_queue_size
 	}
 	owner = {
 		every_subject = {
