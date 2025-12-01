@@ -9,11 +9,35 @@ ftc_company_building_location_potential = {
 				has_building = building_type:$building_type$
 			}
 			any_buildings_in_location = {
-					building_type = building_type:$building_type$
+				building_type = building_type:$building_type$
 				owner = {
-						is_subject = yes
-					}
+					is_subject = yes
+				}
 				is_max_level = no
+			}
+		}
+		# I have no idea why we need to surround this with a NOT,
+		# but without it, the game checks if we DON'T have trade rights, so I added it
+		NOT = {
+			ftc_is_recieving_rights
+		}
+	}
+}
+
+# Check if the owner of the location, or their overlord, is granting the actor tc rights
+# ROOT: location
+ftc_is_recieving_rights = {
+	OR = {
+		owner = {
+			giving_scripted_relation = {
+				type = relation_type:trade_company_rights
+				target = scope:actor
+			}
+		}
+		owner.top_overlord = {
+			giving_scripted_relation = {
+				type = relation_type:trade_company_rights
+				target = scope:actor
 			}
 		}
 	}
