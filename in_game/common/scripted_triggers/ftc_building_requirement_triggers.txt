@@ -9,12 +9,10 @@ ftc_company_building_location_potential = {
 				has_building = building_type:$building_type$
 			}
 			any_buildings_in_location = {
-				filter = {
 					building_type = building_type:$building_type$
-					owner =  {
+				owner = {
 						is_subject = yes
 					}
-				}
 				is_max_level = no
 			}
 		}
