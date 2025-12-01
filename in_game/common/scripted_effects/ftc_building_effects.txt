@@ -1,3 +1,64 @@
+# Determine how many levels a building type in a location should get, and level it up appropriately
+# ROOT: location
+# ARGS: building_type
+ftc_level_up = {
+	# check for existing levels
+	every_buildings_in_location = {
+		limit = {
+			building_type = building_type:$building_type$
+			owner = {
+				is_subject_of = root.owner
+			}
+			is_max_level = no
+		}
+		save_temporary_scope_as = building_to_replace
+	}
+	region = {
+		save_temporary_scope_as = building_region
+	}
+	# if there are existing levels, add them to the new building
+	if = {
+		limit = {
+			exists = scope:building_to_replace
+		}
+		set_local_variable = {
+			name = level_change
+			value = scope:building_to_replace.building_level
+		}
+		# destroy old building
+		destroy_building = scope:building_to_replace
+	}
+	# Otherwise use queue size, subtract 1 from the queue size since 1 level will go down it's own
+	else = {
+		set_local_variable = {
+			name = level_change
+			value = var:$building_type$_queue_size
+		}
+		change_local_variable = {
+			name = level_change
+			subtract = 1
+		}
+	}
+	prev = {
+		change_building_level = local_var:level_change
+	}
+}
+
+# Trasnfer the ownership of a building to a TC subject in a region, if one exists
+# ROOT: building
+ftc_transfer_ownership = {
+	owner = {
+		every_subject = {
+			limit = {
+				has_variable = trade_company_home_region
+				var:trade_company_home_region = scope:building_region
+			}
+			save_temporary_scope_as = new_owner
+		}
+	}
+	change_building_owner = scope:new_owner
+}
+
 # Adds the sum of constructing temp buildings and constructed permanent buildings to the location
 # as a variable named $building_type$_queue_size
 # ROOT: building
@@ -64,58 +125,12 @@ ftc_built_perm = {
 	location = {
 		# destroy temp building
 		destroy_all_buildings_of_type = building_type:$building_type$_temp
-		# check for existing levels
-		every_buildings_in_location = {
-			limit = {
-				building_type = building_type:$building_type$
-				owner = {
-					is_subject_of = root.owner
-				}
-				is_max_level = no
-			}
-			save_temporary_scope_as = building_to_replace
-		}
-		# if there are already existing levels, add them to our current level, and destroy the old
-		# Otherwise use queue size, subtract 1 from the queue size since 1 level will go down it's own
-		if = {
-			limit = {
-				exists = scope:building_to_replace
-			}
-			set_local_variable = {
-				name = level_change
-				value = scope:building_to_replace.building_level
-			}
-			# destroy old building
-			destroy_building = scope:building_to_replace
-		}
-		else = {
-			set_local_variable = {
-				name = level_change
-				value = var:$building_type$_queue_size
-			}
-			change_local_variable = {
-				name = level_change
-				subtract = 1
-			}
-		}
-		prev = {
-			change_building_level = local_var:level_change
-		}
-		region = {
-			save_temporary_scope_as = building_region
+		ftc_level_up = {
+			building_type = $building_type$
 		}
 		remove_variable = $building_type$_queue_size
 	}
-	owner = {
-		every_subject = {
-			limit = {
-				has_variable = trade_company_home_region
-				var:trade_company_home_region = scope:building_region
-			}
-			save_temporary_scope_as = new_owner
-		}
-	}
-	change_building_owner = scope:new_owner
+	ftc_transfer_ownership
 }
 
 # Deletes the temporary building and all temp pops in the location
