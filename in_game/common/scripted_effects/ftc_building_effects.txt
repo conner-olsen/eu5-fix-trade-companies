@@ -16,7 +16,7 @@ ftc_level_up = {
 	region = {
 		save_temporary_scope_as = building_region
 	}
-	# if there are existing levels, add them to the new building
+	# if there are existing levels, add them to the new building with the queue size
 	if = {
 		limit = {
 			exists = scope:building_to_replace
@@ -24,6 +24,14 @@ ftc_level_up = {
 		set_local_variable = {
 			name = level_change
 			value = scope:building_to_replace.building_level
+		}
+		change_local_variable = {
+			name = level_change
+			add = var:$building_type$_queue_size
+		}
+		change_local_variable = {
+			name = level_change
+			subtract = 1
 		}
 		# destroy old building
 		destroy_building = scope:building_to_replace
