@@ -19,8 +19,28 @@ trade_office_temp = {
 		}
 	}
 	location_potential = {
-		NOT = {
-			has_building = building_type:trade_office
+		OR = {
+			# No building is present
+			NOT = {
+				has_building = building_type:trade_office
+			}
+			# Building is not max level and the queue isn't full
+			AND = {
+				any_buildings_in_location = {
+					building_type = building_type:trade_office
+					owner = {
+						is_subject = yes
+					}
+					is_max_level = no
+				}
+				any_buildings_in_location = {
+					building_type = building_type:trade_office
+					owner = {
+						is_subject_of = scope:actor
+					}
+					building_max_level > root.var:trade_office_queue_size
+				}
+			}
 		}
 	}
 	build_time = trade_company_build_time
@@ -45,7 +65,6 @@ trade_office_temp = {
 			building_type = trade_office
 		}
 	}
-
 }
 
 trade_office = {
@@ -129,7 +148,6 @@ embassy_temp = {
 			building_type = embassy
 		}
 	}
-
 }
 
 embassy = {
@@ -218,7 +236,6 @@ missionary_building_temp = {
 			building_type = missionary_building
 		}
 	}
-
 }
 
 missionary_building = {
@@ -321,7 +338,6 @@ slave_center_temp = {
 			building_type = slave_center
 		}
 	}
-
 }
 
 slave_center = {
@@ -423,7 +439,6 @@ overseas_trading_post_temp = {
 			building_type = overseas_trading_post
 		}
 	}
-
 }
 
 overseas_trading_post = {
@@ -441,6 +456,11 @@ overseas_trading_post = {
 	location_potential = {
 		NOT = {
 			continent = scope:actor.capital.continent
+		}
+		NOT = {
+			ftc_company_building_location_potential = {
+				building_type = overseas_trading_post
+			}
 		}
 	}
 	allow = {
