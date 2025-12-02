@@ -106,6 +106,7 @@ trade_company_headquarters = {
 		}
 	}
 	country_potential = {
+		ftc_hide_permanent_buildings_country_potential = yes
 	}
 	modifier = {
 		merchant_capacity_from_building = 0.2
