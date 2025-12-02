@@ -29,9 +29,10 @@ ftc_level_up = {
 			name = level_change
 			add = var:$building_type$_queue_size
 		}
+		# subtract one to offset queue_size, and one to offset existing levels
 		change_local_variable = {
 			name = level_change
-			subtract = 1
+			subtract = 2
 		}
 		# destroy old building
 		destroy_building = scope:building_to_replace
