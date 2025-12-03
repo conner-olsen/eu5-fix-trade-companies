@@ -577,6 +577,7 @@ lateralview = {
 
 					blockoverride "scroll_list_layout" {
 						vbox = {
+							# FTC: replace with dynamicgrid box; add layoutpolicy
 							dynamicgridbox = {
 								layoutpolicy_horizontal = expanding
 								visible = "[And( ProductionView.Vars.NotExistOrHasValue( 'display', 'lists' ), Not(ProductionView.IsLocationFilterEnabled) )]"
@@ -585,6 +586,7 @@ lateralview = {
 								datamodel = "[ProductionView.GetBuildingItems]"
 								item = {
 									widget = {
+										# FTC: set visiblity with scripted GUI
 										visible = "[GetScriptedGui('ftc_sgui_is_building_shown').IsShown(GuiScope.SetRoot(BuildingItem.GetBuildingType.MakeScope).End)]"
 										size = { 100% 48 }
 
@@ -596,7 +598,7 @@ lateralview = {
 									}
 								}
 							}
-
+							# FTC: replace with dynamicgrid box; add layoutpolicy
 							dynamicgridbox = {
 								visible = "[And( ProductionView.Vars.NotExistOrHasValue( 'display', 'lists' ), ProductionView.IsLocationFilterEnabled )]"
 								addrow = 60
@@ -604,6 +606,7 @@ lateralview = {
 								datamodel = "[ProductionView.GetBuildingItems]"
 								item = {
 									widget = {
+										# FTC: set visiblity with scripted GUI
 										visible = "[GetScriptedGui('ftc_sgui_is_building_shown').IsShown(GuiScope.SetRoot(BuildingItem.GetBuildingType.MakeScope).End)]"
 										size = { 100% 60 }
 										widget = {
@@ -716,11 +719,13 @@ lateralview = {
 													maximumsize = {507 -1}
 													margin = { 5 7 }
 													margin_bottom = 0
+													# FTC: replace with dynamicgrid box; ignoreinivisible = yes
 													dynamicgridbox = {
 														ignoreinvisible = yes
 														layoutpolicy_horizontal = expanding
 														visible = "[And(CategoryBuildingTypesItem.IsExpanded, Not(ProductionView.IsLocationFilterEnabled))]"
 														flipdirection = yes
+														# FTC: adjust datamodel_wrap to 11
 														datamodel_wrap = 11
 														addcolumn = 54
 														addrow = 60
@@ -728,6 +733,7 @@ lateralview = {
 														datamodel = "[CategoryBuildingTypesItem.GetBuildingItems]"
 														item = {
 															widget = {
+																# FTC: set visiblity with scripted GUI
 																visible = "[GetScriptedGui('ftc_sgui_is_building_shown').IsShown(GuiScope.SetRoot(BuildingItem.GetBuildingType.MakeScope).End)]"
 																size = { 50 55 }
 																datacontext = "[BuildingItem.GetBuildingType]"
