@@ -600,6 +600,7 @@ lateralview = {
 							}
 							# FTC: replace with dynamicgrid box; add layoutpolicy
 							dynamicgridbox = {
+								layoutpolicy_horizontal = expanding
 								visible = "[And( ProductionView.Vars.NotExistOrHasValue( 'display', 'lists' ), ProductionView.IsLocationFilterEnabled )]"
 								addrow = 60
 								addcolumn = 100%
