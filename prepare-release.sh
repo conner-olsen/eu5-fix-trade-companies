@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-rsync -av --inplace --no-times --exclude 'assets/' --exclude 'dist/' --exclude '.metadata/' --exclude '.git/' --exclude '.gitattributes' --exclude 'LICENSE' --exclude 'README.md' --exclude 'prepare-release.sh' ./ dist/
+rsync -av --inplace --no-times in_game/ main_menu/ dist/
 
 rm -rf ../fix-trade-companies
 cp -r dist ../fix-trade-companies
