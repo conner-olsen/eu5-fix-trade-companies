@@ -3,3 +3,4 @@
 * text eol=crlf
 
 prepare-release.sh text eol=lf
+assets/** -text
