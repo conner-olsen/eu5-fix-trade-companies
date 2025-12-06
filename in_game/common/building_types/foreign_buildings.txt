@@ -24,19 +24,41 @@ trade_office_temp = {
 			NOT = {
 				has_building = building_type:trade_office
 			}
+			# Building is not max level and there is no queue
+			AND = {
+				any_buildings_in_location = {
+					building_type = building_type:trade_office
+					OR = {
+						owner = {
+							is_subject = yes
+						}
+						owner = scope:actor
+					}
+					is_max_level = no
+				}
+				NOT = {
+					has_variable = trade_office_queue_size
+				}
+			}
 			# Building is not max level and the queue isn't full
 			AND = {
 				any_buildings_in_location = {
 					building_type = building_type:trade_office
-					owner = {
-						is_subject = yes
+					OR = {
+						owner = {
+							is_subject = yes
+						}
+						owner = scope:actor
 					}
 					is_max_level = no
 				}
 				any_buildings_in_location = {
 					building_type = building_type:trade_office
-					owner = {
-						is_subject_of = scope:actor
+					OR = {
+						owner = {
+							is_subject = yes
+						}
+						owner = scope:actor
 					}
 					building_max_level > root.var:trade_office_queue_size
 				}
