@@ -167,3 +167,19 @@ ftc_permanent_building_construction_started = {
 		}
 	}
 }
+
+# update construction queue in a location. Recalculate the queue size and decrease it by one
+# to account for the construction that just ended.
+# ROOT: building that finished construction
+# ARGS: building_type
+ftc_temp_building_construction_ended = {
+	ftc_count_queue = {
+		building_type = $building_type$
+	}
+	location = {
+		change_variable = {
+			name = $building_type$_queue_size
+			subtract = 1
+		}
+	}
+}
