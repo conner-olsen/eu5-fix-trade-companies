@@ -79,6 +79,9 @@ ftc_transfer_ownership = {
 # building_type
 # existing_levels - value: number of existing temp buildings queued
 ftc_count_queue = {
+	owner = {
+		save_temporary_scope_as = builder_scope
+	}
 	location = {
 		# set value equal to existing construction +1 as numbering starts at 0
 		set_variable = {
@@ -93,8 +96,11 @@ ftc_count_queue = {
 		every_buildings_in_location = {
 			limit = {
 				building_type = building_type:$building_type$
+				OR = {
+					owner = scope:builder_scope
 				owner = {
 					is_subject_of = root.owner
+					}
 				}
 			}
 			prev = {
