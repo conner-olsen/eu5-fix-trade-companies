@@ -19,12 +19,12 @@
 		num_relations_above_limit <= 0
 	}
 	location_potential = {
-		NOT = {
+		OR = {
+			ftc_is_recieving_rights = yes
 			owner = {
 				is_subject_of = scope:actor
 			}
 		}
-		ftc_is_recieving_rights = yes
 	}
 	allow = {
 		market = {
