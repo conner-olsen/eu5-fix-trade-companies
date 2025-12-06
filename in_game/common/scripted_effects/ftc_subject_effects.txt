@@ -2,6 +2,6 @@
 # ROOT: country
 ftc_unlock_tc_advance_for_subjects = {
 	every_subject = {
-		research_advance = trade_companies_advance		
+		research_advance = advance_type:trade_companies_advance		
 	}
 }
