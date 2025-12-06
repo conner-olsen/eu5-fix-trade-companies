@@ -51,6 +51,10 @@ ftc_level_up = {
 	prev = {
 		change_building_level = local_var:level_change
 	}
+	change_variable = {
+		name = trade_company_garrison_queue_size
+		add = 1
+	}
 }
 
 # Trasnfer the ownership of a building to a TC subject in a region, if one exists
