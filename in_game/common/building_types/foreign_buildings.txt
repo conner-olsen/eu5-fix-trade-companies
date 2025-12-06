@@ -65,6 +65,11 @@ trade_office_temp = {
 			building_type = trade_office
 		}
 	}
+	on_construction_ended = {
+		ftc_temp_building_construction_ended = {
+			building_type = trade_office
+		}
+	}
 }
 
 trade_office = {
