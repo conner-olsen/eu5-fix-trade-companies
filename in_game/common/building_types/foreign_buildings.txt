@@ -78,7 +78,7 @@ trade_office_temp = {
 		merchant_power_from_building = 0.2
 	}
 	on_construction_started = {
-		ftc_count_queue = {
+		ftc_set_max_queue = {
 			building_type = trade_office
 		}
 	}

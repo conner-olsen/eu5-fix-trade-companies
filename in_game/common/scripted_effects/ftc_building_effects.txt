@@ -61,7 +61,7 @@ ftc_transfer_ownership = {
 # as a variable named $building_type$_max_queue
 # ROOT: building
 # ARGS: building_type
-ftc_count_queue = {
+ftc_set_max_queue = {
 	owner = {
 		save_temporary_scope_as = builder_scope
 	}
@@ -147,7 +147,7 @@ ftc_temp_building_construction_ended = {
 	owner = {
 		save_temporary_scope_as = owner_scope
 	}
-	ftc_count_queue = {
+	ftc_set_max_queue = {
 		building_type = $building_type$
 	}
 	location = {
