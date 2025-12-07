@@ -96,7 +96,7 @@ ftc_set_max_queue = {
 # subject if present
 # ROOT: building
 # ARGS: building_type
-ftc_built_perm = {
+ftc_perm_on_built = {
 	ftc_set_target_level = {
 		building_type = $building_type$
 	}

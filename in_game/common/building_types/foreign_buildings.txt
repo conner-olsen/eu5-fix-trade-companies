@@ -122,7 +122,7 @@ trade_office = {
 		ftc_perm_on_construction_started
 	}
 	on_built = {
-		ftc_built_perm = {
+		ftc_perm_on_built = {
 			building_type = trade_office
 		}
 	}
@@ -203,7 +203,7 @@ embassy = {
 		ftc_perm_on_construction_started
 	}
 	on_built = {
-		ftc_built_perm = {
+		ftc_perm_on_built = {
 			building_type = $building_type$
 		}
 	}
@@ -291,7 +291,7 @@ missionary_building = {
 		ftc_perm_on_construction_started
 	}
 	on_built = {
-		ftc_built_perm = {
+		ftc_perm_on_built = {
 			building_type = missionary_building
 		}
 	}
@@ -409,7 +409,7 @@ slave_center = {
 		ftc_perm_on_construction_started
 	}
 	on_built = {
-		ftc_built_perm = {
+		ftc_perm_on_built = {
 			building_type = slave_center
 		}
 	}
@@ -498,7 +498,7 @@ overseas_trading_post = {
 		ftc_perm_on_construction_started
 	}
 	on_built = {
-		ftc_built_perm = {
+		ftc_perm_on_built = {
 			building_type = overseas_trading_post
 		}
 	}
