@@ -211,7 +211,7 @@ ftc_temp_construction_complete = {
 # Use the target level to check if the construction was completed or canceled and route accordingly
 # ROOT: building
 # ARGS: building_type
-ftc_temp_building_construction_ended = {
+ftc_temp_on_construction_ended = {
 	if = {
 		limit = {
 			root.building_level = location.var:$building_type$_target_level

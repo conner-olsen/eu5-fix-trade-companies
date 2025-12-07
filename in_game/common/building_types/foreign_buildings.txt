@@ -83,7 +83,7 @@ trade_office_temp = {
 		}
 	}
 	on_construction_ended = {
-		ftc_temp_building_construction_ended = {
+		ftc_temp_on_construction_ended = {
 			building_type = trade_office
 		}
 	}
@@ -248,7 +248,7 @@ missionary_building_temp = {
 		local_disease_resistance = 0.05
 	}
 	on_construction_ended = {
-		ftc_temp_building_construction_ended = {
+		ftc_temp_on_construction_ended = {
 			building_type = missionary_building
 		}
 	}
@@ -350,7 +350,7 @@ slave_center_temp = {
 		building_enslavement_power = 0.05
 	}
 	on_construction_ended = {
-		ftc_temp_building_construction_ended = {
+		ftc_temp_on_construction_ended = {
 			building_type = slave_center
 		}
 	}
@@ -451,7 +451,7 @@ overseas_trading_post_temp = {
 		merchant_power_from_building = 0.2
 	}
 	on_construction_ended = {
-		ftc_temp_building_construction_ended = {
+		ftc_temp_on_construction_ended = {
 			building_type = trade_office
 		}
 	}
