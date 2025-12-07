@@ -297,7 +297,7 @@ trade_company_garrison_temp = {
 		local_garrison_size = 0.5
 	}
 	on_construction_started = {
-		ftc_set_max_queue = {
+		ftc_temp_construction_started = {
 			building_type = trade_company_garrison
 		}
 	}
@@ -340,10 +340,12 @@ trade_company_garrison = {
 		local_garrison_size = 0.5
 	}
 	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
+		ftc_permanent_building_construction_started
 	}
 	on_construction_ended = {
-		ftc_built_perm
+		ftc_built_perm = {
+			building_type = trade_company_garrison
+		}
 	}
 }
 
@@ -391,7 +393,7 @@ trade_company_harbor_temp = {
 		building_owner_overlord_maritime_presence = 0.02
 	}
 	on_construction_started = {
-		ftc_set_max_queue = {
+		ftc_temp_construction_started = {
 			building_type = trade_company_harbor
 		}
 	}
@@ -435,10 +437,12 @@ trade_company_harbor = {
 		building_owner_overlord_maritime_presence = 0.02
 	}
 	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
+		ftc_permanent_building_construction_started
 	}
 	on_construction_ended = {
-		ftc_built_perm
+		ftc_built_perm = {
+			building_type = trade_company_harbor
+		}
 	}
 }
 
@@ -483,7 +487,7 @@ trade_company_local_venture_temp = {
 		local_raw_material_output = 0.33
 	}
 	on_construction_started = {
-		ftc_set_max_queue = {
+		ftc_temp_construction_started = {
 			building_type = trade_company_local_venture
 		}
 	}
@@ -525,10 +529,12 @@ trade_company_local_venture = {
 		local_raw_material_output = 0.33
 	}
 	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
+		ftc_permanent_building_construction_started
 	}
 	on_construction_ended = {
-		ftc_built_perm
+		ftc_built_perm = {
+			building_type = trade_company_local_venture
+		}
 	}
 }
 
@@ -574,7 +580,7 @@ trade_company_foreign_influence_temp = {
 		local_max_control = 0.05
 	}
 	on_construction_started = {
-		ftc_set_max_queue = {
+		ftc_temp_construction_started = {
 			building_type = trade_company_foreign_influence
 		}
 	}
@@ -617,10 +623,12 @@ trade_company_foreign_influence = {
 		local_max_control = 0.05
 	}
 	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
+		ftc_permanent_building_construction_started
 	}
 	on_construction_ended = {
-		ftc_built_perm
+		ftc_built_perm = {
+			building_type = trade_company_foreign_influence
+		}
 	}
 }
 
@@ -667,13 +675,13 @@ trade_company_governance_temp = {
 		can_recruit_regiment_in_this_location = yes
 	}
 	on_construction_started = {
-		ftc_set_max_queue = {
-			building_type = trade_company_governance
+		ftc_temp_construction_started = {
+			building_type = trade_company_governance_temp
 		}
 	}
 	on_construction_ended = {
 		ftc_temp_building_construction_ended = {
-			building_type = trade_company_governance
+			building_type = trade_company_governance_temp
 		}
 	}
 }
@@ -711,9 +719,11 @@ trade_company_governance = {
 		can_recruit_regiment_in_this_location = yes
 	}
 	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
+		ftc_permanent_building_construction_started
 	}
 	on_construction_ended = {
-		ftc_built_perm
+		ftc_built_perm = {
+			building_type = trade_company_governance
+		}
 	}
 }

@@ -119,7 +119,7 @@ trade_office = {
 		merchant_power_from_building = 0.2
 	}
 	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
+		ftc_permanent_building_construction_started
 	}
 	on_built = {
 		ftc_built_perm = {
@@ -200,7 +200,12 @@ embassy = {
 		diplomatic_capacity = 0.1
 	}
 	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
+		ftc_permanent_building_construction_started
+	}
+	on_built = {
+		ftc_built_perm = {
+			building_type = $building_type$
+		}
 	}
 }
 
@@ -283,7 +288,12 @@ missionary_building = {
 		local_disease_resistance = 0.05
 	}
 	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
+		ftc_permanent_building_construction_started
+	}
+	on_built = {
+		ftc_built_perm = {
+			building_type = missionary_building
+		}
 	}
 }
 
@@ -396,7 +406,12 @@ slave_center = {
 		building_enslavement_power = 0.05
 	}
 	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
+		ftc_permanent_building_construction_started
+	}
+	on_built = {
+		ftc_built_perm = {
+			building_type = slave_center
+		}
 	}
 }
 
@@ -480,9 +495,11 @@ overseas_trading_post = {
 		merchant_power_from_building = 0.2
 	}
 	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
+		ftc_permanent_building_construction_started
 	}
-	on_construction_ended = {
-		ftc_built_perm
+	on_built = {
+		ftc_built_perm = {
+			building_type = overseas_trading_post
+		}
 	}
 }
