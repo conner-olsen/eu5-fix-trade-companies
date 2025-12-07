@@ -22,7 +22,7 @@ ftc_company_building_location_potential = {
 				owner = {
 					is_subject_of = scope:actor
 				}
-				building_max_level > root.var:$building_type$_queue_size
+				building_max_level > root.var:$building_type$_max_queue
 			}
 		}
 	}

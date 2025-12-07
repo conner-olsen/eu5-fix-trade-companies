@@ -58,7 +58,7 @@ ftc_transfer_ownership = {
 }
 
 # Adds the sum of constructing temp buildings and constructed permanent buildings to the location
-# as a variable named $building_type$_queue_size
+# as a variable named $building_type$_max_queue
 # ROOT: building
 # ARGS: building_type
 ftc_count_queue = {
@@ -68,11 +68,11 @@ ftc_count_queue = {
 	location = {
 		# set value equal to existing construction +1 as numbering starts at 0
 		set_variable = {
-			name = $building_type$_queue_size
+			name = $building_type$_max_queue
 			value = prev.building_levels_under_construction
 		}
 		change_variable = {
-			name = $building_type$_queue_size
+			name = $building_type$_max_queue
 			add = 1
 		}
 		# add the number of existing levels to the variable
@@ -88,7 +88,7 @@ ftc_count_queue = {
 			}
 			prev = {
 				change_variable = {
-					name = $building_type$_queue_size
+					name = $building_type$_max_queue
 					add = prev.building_level
 				}
 			}
@@ -128,6 +128,7 @@ ftc_cleanup_temp_buildings = {
 # Thus why the on_construction_started.
 ftc_permanent_building_construction_started = {
 	location = {
+		# set variable to mark 
 		# destroy temp pop
 		every_pop = {
 			limit = {
@@ -151,14 +152,14 @@ ftc_temp_building_construction_ended = {
 	}
 	location = {
 		change_variable = {
-			name = $building_type$_queue_size
+			name = $building_type$_max_queue
 			subtract = 1
 		}
 		if = {
 			limit = {
-				var:$building_type$_queue_size = 0
+				var:$building_type$_max_queue = 0
 			}
-			remove_variable = $building_type$_queue_size
+			remove_variable = $building_type$_max_queue
 		}
 		ftc_add_level_to_location = {
 			building_type = $building_type$
