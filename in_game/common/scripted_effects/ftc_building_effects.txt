@@ -156,9 +156,6 @@ ftc_cleanup_temp_buildings = {
 			remove_variable = $building_type$_target_level
 		}
 	}
-	owner = {
-		save_temporary_scope_as = builder_scope
-	}
 	location = {
 		# destroy temp pop
 		every_pop = {
@@ -180,11 +177,6 @@ ftc_temp_on_construction_ended = {
 		}
 		ftc_temp_construction_complete = {
 			building_type = $building_type$
-		}
-	}
-	else = {
-		location = {
-			set_variable = construction_canceled
 		}
 	}
 	location = {
