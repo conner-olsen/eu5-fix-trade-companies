@@ -342,10 +342,8 @@ trade_company_garrison = {
 	on_construction_started = {
 		ftc_permanent_building_construction_started = yes
 	}
-	on_built = {
-		ftc_built_perm = {
-			building_type = trade_company_garrison
-		}
+	on_construction_ended = {
+		ftc_built_perm
 	}
 }
 
@@ -399,7 +397,7 @@ trade_company_harbor_temp = {
 	}
 	on_construction_ended = {
 		ftc_temp_building_construction_ended = {
-			building_type = trade_company_garrison
+			building_type = trade_company_harbor
 		}
 	}
 }
@@ -439,10 +437,8 @@ trade_company_harbor = {
 	on_construction_started = {
 		ftc_permanent_building_construction_started = yes
 	}
-	on_built = {
-		ftc_built_perm = {
-			building_type = trade_company_harbor
-		}
+	on_construction_ended = {
+		ftc_built_perm
 	}
 }
 
@@ -493,7 +489,7 @@ trade_company_local_venture_temp = {
 	}
 	on_construction_ended = {
 		ftc_temp_building_construction_ended = {
-			building_type = trade_company_harbor
+			building_type = trade_company_local_venture
 		}
 	}
 }
@@ -531,10 +527,8 @@ trade_company_local_venture = {
 	on_construction_started = {
 		ftc_permanent_building_construction_started = yes
 	}
-	on_built = {
-		ftc_built_perm = {
-			building_type = trade_company_local_venture
-		}
+	on_construction_ended = {
+		ftc_built_perm
 	}
 }
 
@@ -625,10 +619,8 @@ trade_company_foreign_influence = {
 	on_construction_started = {
 		ftc_permanent_building_construction_started = yes
 	}
-	on_built = {
-		ftc_built_perm = {
-			building_type = trade_company_foreign_influence
-		}
+	on_construction_ended = {
+		ftc_built_perm
 	}
 }
 
@@ -721,9 +713,7 @@ trade_company_governance = {
 	on_construction_started = {
 		ftc_permanent_building_construction_started = yes
 	}
-	on_built = {
-		ftc_built_perm = {
-			building_type = trade_company_governance
-		}
+	on_construction_ended = {
+		ftc_built_perm
 	}
 }

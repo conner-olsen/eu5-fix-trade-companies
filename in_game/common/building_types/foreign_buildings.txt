@@ -121,8 +121,8 @@ trade_office = {
 	on_construction_started = {
 		ftc_permanent_building_construction_started = yes
 	}
-	on_built = {
-		ftc_transfer_ownership
+	on_construction_ended = {
+		ftc_built_perm
 	}
 }
 
@@ -163,11 +163,6 @@ embassy_temp = {
 	foreign_country_modifier = {
 		diplomatic_capacity = 0.1
 	}
-	on_built = {
-		ftc_built_temp = {
-			building_type = embassy
-		}
-	}
 }
 
 embassy = {
@@ -204,12 +199,6 @@ embassy = {
 	}
 	on_construction_started = {
 		ftc_permanent_building_construction_started = yes
-	}
-	# upon construction completion, destroy the temporary building, and delete the temporary pops
-	on_built = {
-		ftc_built_perm = {
-			building_type = embassy
-		}
 	}
 }
 
@@ -251,8 +240,8 @@ missionary_building_temp = {
 		local_tribal_promotion = 0.5
 		local_disease_resistance = 0.05
 	}
-	on_built = {
-		ftc_built_temp = {
+	on_construction_ended = {
+		ftc_temp_building_construction_ended = {
 			building_type = missionary_building
 		}
 	}
@@ -293,11 +282,6 @@ missionary_building = {
 	}
 	on_construction_started = {
 		ftc_permanent_building_construction_started = yes
-	}
-	on_built = {
-		ftc_built_perm = {
-			building_type = missionary_building
-		}
 	}
 }
 
@@ -353,8 +337,8 @@ slave_center_temp = {
 	modifier = {
 		building_enslavement_power = 0.05
 	}
-	on_built = {
-		ftc_built_temp = {
+	on_construction_ended = {
+		ftc_temp_building_construction_ended = {
 			building_type = slave_center
 		}
 	}
@@ -412,11 +396,6 @@ slave_center = {
 	on_construction_started = {
 		ftc_permanent_building_construction_started = yes
 	}
-	on_built = {
-		ftc_built_perm = {
-			building_type = slave_center
-		}
-	}
 }
 
 overseas_trading_post_temp = {
@@ -454,9 +433,9 @@ overseas_trading_post_temp = {
 		merchant_capacity_from_building = 0.1
 		merchant_power_from_building = 0.2
 	}
-	on_built = {
-		ftc_built_temp = {
-			building_type = overseas_trading_post
+	on_construction_ended = {
+		ftc_temp_building_construction_ended = {
+			building_type = trade_office
 		}
 	}
 }
@@ -501,9 +480,7 @@ overseas_trading_post = {
 	on_construction_started = {
 		ftc_permanent_building_construction_started = yes
 	}
-	on_built = {
-		ftc_built_perm = {
-			building_type = overseas_trading_post
-		}
+	on_construction_ended = {
+		ftc_built_perm
 	}
 }
