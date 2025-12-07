@@ -78,7 +78,7 @@ trade_office_temp = {
 		merchant_power_from_building = 0.2
 	}
 	on_construction_started = {
-		ftc_temp_construction_started = {
+		ftc_temp_on_construction_started = {
 			building_type = trade_office
 		}
 	}

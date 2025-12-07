@@ -181,7 +181,7 @@ ftc_perm_on_construction_started = {
 # build the max queue and determine the target level when a temp
 # ROOT: building
 # ARGS: building_type
-ftc_temp_construction_started = {
+ftc_temp_on_construction_started = {
 	ftc_set_max_queue = {
 		building_type = $building_type$
 	}
