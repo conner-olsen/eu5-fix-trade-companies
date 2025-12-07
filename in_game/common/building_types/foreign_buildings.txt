@@ -122,9 +122,7 @@ trade_office = {
 		ftc_permanent_building_construction_started = yes
 	}
 	on_built = {
-		ftc_built_perm = {
-			building_type = trade_office
-		}
+		ftc_transfer_ownership
 	}
 }
 
