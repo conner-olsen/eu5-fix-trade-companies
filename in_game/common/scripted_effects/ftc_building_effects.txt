@@ -1,59 +1,36 @@
-# Determine how many levels a building type in a location should get, and level it up appropriately
+# either construct a new building or add a level to an existing building in a location
 # ROOT: location
-# ARGS: building_type
-ftc_level_up = {
-	# check for existing levels
+# ARGS: building_type; builder
+ftc_add_level_to_location = {
 	every_buildings_in_location = {
 		limit = {
 			building_type = building_type:$building_type$
-			owner = {
-				is_subject_of = root.owner
+			OR = {
+				owner = $builder$
+				owner = {
+					is_subject_of = $builder$
+				}
 			}
 			is_max_level = no
 		}
-		save_temporary_scope_as = building_to_replace
+		save_temporary_scope_as = building_to_level
 	}
-	region = {
-		save_temporary_scope_as = building_region
-	}
-	# if there are existing levels, add them to the new building with the queue size
 	if = {
 		limit = {
-			exists = scope:building_to_replace
+			exists = scope:building_to_level
 		}
-		set_local_variable = {
-			name = level_change
-			value = scope:building_to_replace.building_level
+		scope:building_to_level = {
+			change_building_level = 1
 		}
-		change_local_variable = {
-			name = level_change
-			add = var:$building_type$_queue_size
-		}
-		# subtract one to offset queue_size, and one to offset existing levels
-		change_local_variable = {
-			name = level_change
-			subtract = 2
-		}
-		# destroy old building
-		destroy_building = scope:building_to_replace
 	}
-	# Otherwise use queue size, subtract 1 from the queue size since 1 level will go down it's own
 	else = {
-		set_local_variable = {
-			name = level_change
-			value = var:$building_type$_queue_size
+		construct_building = {
+			building_type = building_type:$building_type$
+			cost_multiplier = 0
+			instant = yes
+			cost_multiplier_reason = "game_concept_foreign_building"
+			owner = $builder$
 		}
-		change_local_variable = {
-			name = level_change
-			subtract = 1
-		}
-	}
-	prev = {
-		change_building_level = local_var:level_change
-	}
-	change_variable = {
-		name = trade_company_garrison_queue_size
-		add = 1
 	}
 }
 
@@ -75,9 +52,7 @@ ftc_transfer_ownership = {
 # Adds the sum of constructing temp buildings and constructed permanent buildings to the location
 # as a variable named $building_type$_queue_size
 # ROOT: building
-# ARGS: 
-# building_type
-# existing_levels - value: number of existing temp buildings queued
+# ARGS: building_type
 ftc_count_queue = {
 	owner = {
 		save_temporary_scope_as = builder_scope
@@ -98,8 +73,8 @@ ftc_count_queue = {
 				building_type = building_type:$building_type$
 				OR = {
 					owner = scope:builder_scope
-				owner = {
-					is_subject_of = root.owner
+					owner = {
+						is_subject_of = root.owner
 					}
 				}
 			}
@@ -113,42 +88,12 @@ ftc_count_queue = {
 	}
 }
 
-# Constructs the permanent version of a building after the temporary one is built
-# ROOT: building
-# ARGS: building_type
-ftc_built_temp = {
-	owner = {
-		save_temporary_scope_as = owner_scope
-	}
-	location = {
-		construct_building = {
-			building_type = building_type:$building_type$
-			cost_multiplier = 0
-			instant = yes
-			cost_multiplier_reason = "game_concept_foreign_building"
-			owner = scope:owner_scope
-		}
-	}
-	trigger_event_non_silently = {
-		on_action = ftc_cleanup_temp_buildings_on_action
-		days = 1
-	}
-}
-
 # Checks to see if the location has any existing levels
 # If it does, we had those levels to the perm and destroy the old one
 # If it doesn not, we simply transfer owner ship of this building
 # ROOT: building
 # ARGS: building_type
 ftc_built_perm = {
-	location = {
-		# destroy temp building
-		destroy_all_buildings_of_type = building_type:$building_type$_temp
-		ftc_level_up = {
-			building_type = $building_type$
-		}
-		remove_variable = $building_type$_queue_size
-	}
 	ftc_transfer_ownership
 }
 
@@ -161,6 +106,13 @@ ftc_cleanup_temp_buildings = {
 		# In this block ROOT = location, PREV = building
 		# So this destroys the building its called on.
 		destroy_building = prev
+		# destroy temp pop
+		every_pop = {
+			limit = {
+				pop_type = pop_type:temp
+			}
+			destroy_pop = this
+		}
 	}
 }
 
@@ -183,6 +135,9 @@ ftc_permanent_building_construction_started = {
 # ROOT: building that finished construction
 # ARGS: building_type
 ftc_temp_building_construction_ended = {
+	owner = {
+		save_temporary_scope_as = owner_scope
+	}
 	ftc_count_queue = {
 		building_type = $building_type$
 	}
@@ -196,6 +151,20 @@ ftc_temp_building_construction_ended = {
 				var:$building_type$_queue_size = 0
 			}
 			remove_variable = $building_type$_queue_size
+		}
+		ftc_add_level_to_location = {
+			building_type = $building_type$
+			builder = scope:owner_scope
+		}
+	}
+	# if there are no more temp levels under construction, destroy the temp building
+	if = {
+		limit = {
+			building_levels_under_construction = 0
+		}
+		trigger_event_non_silently = {
+			on_action = ftc_cleanup_temp_buildings_on_action
+			days = 1
 		}
 	}
 }

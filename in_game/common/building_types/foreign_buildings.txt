@@ -77,11 +77,6 @@ trade_office_temp = {
 		building_owner_maritime_presence = 0.05
 		merchant_power_from_building = 0.2
 	}
-	on_built = {
-		ftc_built_temp = {
-			building_type = trade_office
-		}
-	}
 	on_construction_started = {
 		ftc_count_queue = {
 			building_type = trade_office
