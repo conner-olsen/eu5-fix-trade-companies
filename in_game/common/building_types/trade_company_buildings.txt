@@ -287,11 +287,6 @@ trade_company_garrison_temp = {
 		local_defensive = 0.25
 		local_garrison_size = 0.5
 	}
-	on_built = {
-		ftc_built_temp = {
-			building_type = trade_company_garrison
-		}
-	}
 	on_construction_started = {
 		ftc_count_queue = {
 			building_type = trade_company_garrison
@@ -388,11 +383,6 @@ trade_company_harbor_temp = {
 		building_owner_maritime_presence = 0.01
 		building_owner_overlord_maritime_presence = 0.02
 	}
-	on_built = {
-		ftc_built_temp = {
-			building_type = trade_company_harbor
-		}
-	}
 	on_construction_started = {
 		ftc_count_queue = {
 			building_type = trade_company_harbor
@@ -487,11 +477,6 @@ trade_company_local_venture_temp = {
 	modifier = {
 		local_raw_material_output = 0.33
 	}
-	on_built = {
-		ftc_built_temp = {
-			building_type = trade_company_local_venture
-		}
-	}
 	on_construction_started = {
 		ftc_count_queue = {
 			building_type = trade_company_local_venture
@@ -584,11 +569,6 @@ trade_company_foreign_influence_temp = {
 	modifier = {
 		local_monthly_development = 0.005
 		local_max_control = 0.05
-	}
-	on_built = {
-		ftc_built_temp = {
-			building_type = trade_company_foreign_influence
-		}
 	}
 	on_construction_started = {
 		ftc_count_queue = {
@@ -684,11 +664,6 @@ trade_company_governance_temp = {
 		manpower_to_building_owner = 0.003
 		sailors_to_building_owner = 0.005
 		can_recruit_regiment_in_this_location = yes
-	}
-	on_built = {
-		ftc_built_temp = {
-			building_type = trade_company_governance
-		}
 	}
 	on_construction_started = {
 		ftc_count_queue = {
