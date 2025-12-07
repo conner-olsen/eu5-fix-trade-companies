@@ -1,62 +1,3 @@
-# either construct a new building or add a level to an existing building in a location
-# ROOT: location
-# ARGS: building_type; builder
-ftc_add_level_to_location = {
-	every_buildings_in_location = {
-		limit = {
-			building_type = building_type:$building_type$
-			OR = {
-				owner = $builder$
-				owner = {
-					is_subject_of = $builder$
-				}
-			}
-			is_max_level = no
-		}
-		save_temporary_scope_as = building_to_level
-	}
-	if = {
-		limit = {
-			exists = scope:building_to_level
-		}
-		scope:building_to_level = {
-			change_building_level = 1
-		}
-	}
-	else = {
-		construct_building = {
-			building_type = building_type:$building_type$
-			cost_multiplier = 0
-			instant = yes
-			cost_multiplier_reason = "game_concept_foreign_building"
-			owner = $builder$
-		}
-	}
-}
-
-# Trasnfer the ownership of a building to a TC subject in a region, if one exists
-# ROOT: building
-ftc_transfer_ownership = {
-	location.region = {
-		save_temporary_scope_as = building_region
-	}
-	owner = {
-		every_subject = {
-			limit = {
-				has_variable = trade_company_home_region
-				var:trade_company_home_region = scope:building_region
-			}
-			save_temporary_scope_as = new_owner
-		}
-	}
-	if = {
-		limit = {
-			exists = scope:new_owner
-		}
-		change_building_owner = scope:new_owner
-	}
-}
-
 # Adds the sum of constructing temp buildings and constructed permanent buildings to the location
 # as a variable named $building_type$_max_queue
 # ROOT: building
@@ -88,36 +29,6 @@ ftc_set_max_queue = {
 					add = prev.building_level
 				}
 			}
-		}
-	}
-}
-
-# Sets the target level for further constructions, and transfers ownership to appropriate
-# subject if present
-# ROOT: building
-# ARGS: building_type
-ftc_perm_on_built = {
-	ftc_set_target_level = {
-		building_type = $building_type$
-	}
-	ftc_transfer_ownership
-}
-
-# Deletes the temporary building and all temp pops in the location
-# Must be called by the delayed on_action to prevent deleting the active scope.
-# ROOT: building
-ftc_cleanup_temp_buildings = {
-	# ROOT here = building, PREV = country
-	location = {
-		# In this block ROOT = location, PREV = building
-		# So this destroys the building its called on.
-		destroy_building = prev
-		# destroy temp pop
-		every_pop = {
-			limit = {
-				pop_type = pop_type:temp
-			}
-			destroy_pop = this
 		}
 	}
 }
@@ -163,20 +74,6 @@ ftc_set_target_level = {
 	}
 }
 
-# For some reason doesn't work when done in the same operation as deleting the temp building.
-# Thus why the on_construction_started.
-ftc_perm_on_construction_started = {
-	location = {
-		# destroy temp pop
-		every_pop = {
-			limit = {
-				pop_type = pop_type:temp
-			}
-			destroy_pop = this
-		}
-	}
-}
-
 # Called whenever a temp_construction is started
 # build the max queue and determine the target level when a temp
 # ROOT: building
@@ -187,6 +84,42 @@ ftc_temp_on_construction_started = {
 	}
 	ftc_set_target_level = {
 		building_type = $building_type$
+	}
+}
+
+# either construct a new building or add a level to an existing building in a location
+# ROOT: location
+# ARGS: building_type; builder
+ftc_add_level_to_location = {
+	every_buildings_in_location = {
+		limit = {
+			building_type = building_type:$building_type$
+			OR = {
+				owner = $builder$
+				owner = {
+					is_subject_of = $builder$
+				}
+			}
+			is_max_level = no
+		}
+		save_temporary_scope_as = building_to_level
+	}
+	if = {
+		limit = {
+			exists = scope:building_to_level
+		}
+		scope:building_to_level = {
+			change_building_level = 1
+		}
+	}
+	else = {
+		construct_building = {
+			building_type = building_type:$building_type$
+			cost_multiplier = 0
+			instant = yes
+			cost_multiplier_reason = "game_concept_foreign_building"
+			owner = $builder$
+		}
 	}
 }
 
@@ -251,5 +184,71 @@ ftc_temp_on_construction_ended = {
 # start construction of perm; used only foreign buildings with a max_level of 1
 # this includes: embassy, missonary_building, overseas_trading_post, slave_center 
 ftc_temp_on_built = {
+}
 
+# For some reason doesn't work when done in the same operation as deleting the temp building.
+# Thus why the on_construction_started.
+ftc_perm_on_construction_started = {
+	location = {
+		# destroy temp pop
+		every_pop = {
+			limit = {
+				pop_type = pop_type:temp
+			}
+			destroy_pop = this
+		}
+	}
+}
+
+# Trasnfer the ownership of a building to a TC subject in a region, if one exists
+# ROOT: building
+ftc_transfer_ownership = {
+	location.region = {
+		save_temporary_scope_as = building_region
+	}
+	owner = {
+		every_subject = {
+			limit = {
+				has_variable = trade_company_home_region
+				var:trade_company_home_region = scope:building_region
+			}
+			save_temporary_scope_as = new_owner
+		}
+	}
+	if = {
+		limit = {
+			exists = scope:new_owner
+		}
+		change_building_owner = scope:new_owner
+	}
+}
+
+# Deletes the temporary building and all temp pops in the location
+# Must be called by the delayed on_action to prevent deleting the active scope.
+# ROOT: building
+ftc_cleanup_temp_buildings = {
+	# ROOT here = building, PREV = country
+	location = {
+		# In this block ROOT = location, PREV = building
+		# So this destroys the building its called on.
+		destroy_building = prev
+		# destroy temp pop
+		every_pop = {
+			limit = {
+				pop_type = pop_type:temp
+			}
+			destroy_pop = this
+		}
+	}
+}
+
+# Sets the target level for further constructions, and transfers ownership to appropriate
+# subject if present
+# ROOT: building
+# ARGS: building_type
+ftc_perm_on_built = {
+	ftc_set_target_level = {
+		building_type = $building_type$
+	}
+	ftc_transfer_ownership
 }
