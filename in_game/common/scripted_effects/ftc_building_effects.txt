@@ -165,7 +165,7 @@ ftc_set_target_level = {
 
 # For some reason doesn't work when done in the same operation as deleting the temp building.
 # Thus why the on_construction_started.
-ftc_permanent_building_construction_started = {
+ftc_perm_on_construction_started = {
 	location = {
 		# destroy temp pop
 		every_pop = {
@@ -246,4 +246,10 @@ ftc_temp_building_construction_ended = {
 		remove_variable = $building_type$_max_queue
 		remove_variable = $building_type$_target_level
 	}
+}
+
+# start construction of perm; used only foreign buildings with a max_level of 1
+# this includes: embassy, missonary_building, overseas_trading_post, slave_center 
+ftc_temp_on_built = {
+
 }
