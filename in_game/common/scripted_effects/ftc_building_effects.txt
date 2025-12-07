@@ -92,9 +92,8 @@ ftc_set_max_queue = {
 	}
 }
 
-# Checks to see if the location has any existing levels
-# If it does, we had those levels to the perm and destroy the old one
-# If it doesn not, we simply transfer owner ship of this building
+# Sets the target level for further constructions, and transfers ownership to appropriate
+# subject if present
 # ROOT: building
 # ARGS: building_type
 ftc_built_perm = {
@@ -141,12 +140,6 @@ ftc_set_target_level = {
 					owner = {
 						is_subject_of = scope:owner_scope
 					}
-				}
-			}
-			location = {
-				set_variable = {
-					name = foobar
-					value = prev.building_level
 				}
 			}
 			location = {
@@ -226,19 +219,10 @@ ftc_temp_building_construction_ended = {
 		ftc_temp_construction_complete = {
 			building_type = $building_type$
 		}
-		location = {
-			set_variable = construction_complete
-		}
 	}
 	else = {
 		location = {
 			set_variable = construction_canceled
-		}
-		location = {
-			set_variable = {
-				name = got_levels
-				value = root.building_level
-			}
 		}
 	}
 	location = {
