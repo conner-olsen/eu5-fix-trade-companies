@@ -141,6 +141,35 @@ ftc_temp_construction_complete = {
 	}
 }
 
+# Deletes the temporary building and all temp pops in the location
+# Must be called by the delayed on_action to prevent deleting the active scope.
+# ROOT: building
+# ARGS: building_type
+ftc_cleanup_temp_buildings = {
+	if = {
+		limit = {
+			building_levels_under_construction = 0
+		}
+		location = {
+			destroy_all_buildings_of_type = building_type:$building_type$_temp
+			remove_variable = $building_type$_max_queue
+			remove_variable = $building_type$_target_level
+		}
+	}
+	owner = {
+		save_temporary_scope_as = builder_scope
+	}
+	location = {
+		# destroy temp pop
+		every_pop = {
+			limit = {
+				pop_type = pop_type:temp
+			}
+			destroy_pop = this
+		}
+	}
+}
+
 # Use the target level to check if the construction was completed or canceled and route accordingly
 # ROOT: building
 # ARGS: building_type
@@ -176,8 +205,6 @@ ftc_temp_on_construction_ended = {
 			on_action = ftc_cleanup_temp_buildings_on_action
 			days = 1
 		}
-		remove_variable = $building_type$_max_queue
-		remove_variable = $building_type$_target_level
 	}
 }
 
@@ -186,9 +213,9 @@ ftc_temp_on_construction_ended = {
 ftc_temp_on_built = {
 }
 
-# For some reason doesn't work when done in the same operation as deleting the temp building.
-# Thus why the on_construction_started.
-ftc_perm_on_construction_started = {
+# destroy temp pops
+# ROOT: building
+ftc_perm_on_construction_ended = {
 	location = {
 		# destroy temp pop
 		every_pop = {
@@ -220,25 +247,6 @@ ftc_transfer_ownership = {
 			exists = scope:new_owner
 		}
 		change_building_owner = scope:new_owner
-	}
-}
-
-# Deletes the temporary building and all temp pops in the location
-# Must be called by the delayed on_action to prevent deleting the active scope.
-# ROOT: building
-ftc_cleanup_temp_buildings = {
-	# ROOT here = building, PREV = country
-	location = {
-		# In this block ROOT = location, PREV = building
-		# So this destroys the building its called on.
-		destroy_building = prev
-		# destroy temp pop
-		every_pop = {
-			limit = {
-				pop_type = pop_type:temp
-			}
-			destroy_pop = this
-		}
 	}
 }
 

@@ -65,6 +65,6 @@ ftc_hide_buildings = {
 
 ftc_cleanup_temp_buildings_on_action = {
     effect = {
-        ftc_cleanup_temp_buildings = yes
+        ftc_cleanup_temp_buildings
     }
 }
