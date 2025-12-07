@@ -162,6 +162,16 @@ embassy_temp = {
 	foreign_country_modifier = {
 		diplomatic_capacity = 0.1
 	}
+	on_construction_started = {
+		ftc_temp_on_construction_started = {
+			building_type = embassy
+		}
+	}
+	on_construction_ended = {
+		ftc_temp_on_construction_ended = {
+			building_type = embassy
+		}
+	}
 }
 
 embassy = {
@@ -238,6 +248,11 @@ missionary_building_temp = {
 		building_missionary_effort = 0.1
 		local_tribal_promotion = 0.5
 		local_disease_resistance = 0.05
+	}
+	on_construction_started = {
+		ftc_temp_on_construction_started = {
+			building_type = missionary_building
+		}
 	}
 	on_construction_ended = {
 		ftc_temp_on_construction_ended = {
@@ -336,6 +351,11 @@ slave_center_temp = {
 	modifier = {
 		building_enslavement_power = 0.05
 	}
+	on_construction_started = {
+		ftc_temp_on_construction_started = {
+			building_type = slave_center
+		}
+	}
 	on_construction_ended = {
 		ftc_temp_on_construction_ended = {
 			building_type = slave_center
@@ -432,9 +452,14 @@ overseas_trading_post_temp = {
 		merchant_capacity_from_building = 0.1
 		merchant_power_from_building = 0.2
 	}
+	on_construction_started = {
+		ftc_temp_on_construction_started = {
+			building_type = overseas_trading_post
+		}
+	}
 	on_construction_ended = {
 		ftc_temp_on_construction_ended = {
-			building_type = trade_office
+			building_type = overseas_trading_post
 		}
 	}
 }
