@@ -339,9 +339,6 @@ trade_company_garrison = {
 		local_defensive = 0.25
 		local_garrison_size = 0.5
 	}
-	on_construction_started = {
-		ftc_perm_on_construction_started
-	}
 	on_construction_ended = {
 		ftc_perm_on_built = {
 			building_type = trade_company_garrison
@@ -436,9 +433,6 @@ trade_company_harbor = {
 		building_owner_maritime_presence = 0.01
 		building_owner_overlord_maritime_presence = 0.02
 	}
-	on_construction_started = {
-		ftc_perm_on_construction_started
-	}
 	on_construction_ended = {
 		ftc_perm_on_built = {
 			building_type = trade_company_harbor
@@ -527,9 +521,6 @@ trade_company_local_venture = {
 	}
 	modifier = {
 		local_raw_material_output = 0.33
-	}
-	on_construction_started = {
-		ftc_perm_on_construction_started
 	}
 	on_construction_ended = {
 		ftc_perm_on_built = {
@@ -621,9 +612,6 @@ trade_company_foreign_influence = {
 	modifier = {
 		local_monthly_development = 0.005
 		local_max_control = 0.05
-	}
-	on_construction_started = {
-		ftc_perm_on_construction_started
 	}
 	on_construction_ended = {
 		ftc_perm_on_built = {
@@ -717,9 +705,6 @@ trade_company_governance = {
 		manpower_to_building_owner = 0.003
 		sailors_to_building_owner = 0.005
 		can_recruit_regiment_in_this_location = yes
-	}
-	on_construction_started = {
-		ftc_perm_on_construction_started
 	}
 	on_construction_ended = {
 		ftc_perm_on_built = {
