@@ -71,10 +71,6 @@ ftc_set_max_queue = {
 			name = $building_type$_max_queue
 			value = prev.building_levels_under_construction
 		}
-		change_variable = {
-			name = $building_type$_max_queue
-			add = 1
-		}
 		# add the number of existing levels to the variable
 		every_buildings_in_location = {
 			limit = {
@@ -147,14 +143,7 @@ ftc_temp_building_construction_ended = {
 	owner = {
 		save_temporary_scope_as = owner_scope
 	}
-	ftc_set_max_queue = {
-		building_type = $building_type$
-	}
 	location = {
-		change_variable = {
-			name = $building_type$_max_queue
-			subtract = 1
-		}
 		if = {
 			limit = {
 				var:$building_type$_max_queue = 0
