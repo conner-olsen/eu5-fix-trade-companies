@@ -82,8 +82,17 @@
 		}
 	}
 	on_built = {
-		ftc_built_temp = {
-			building_type = trade_company_headquarters
+		owner = {
+			save_temporary_scope_as = builder
+		}
+		location = {
+			construct_building = {
+				building_type = building_type:trade_company_headquarters
+				cost_multiplier = 0
+				instant = yes
+				cost_multiplier_reason = "game_concept_foreign_building"
+				owner = scope:builder
+			}
 		}
 	}
 }
