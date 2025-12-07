@@ -98,6 +98,9 @@ ftc_set_max_queue = {
 # ROOT: building
 # ARGS: building_type
 ftc_built_perm = {
+	ftc_set_target_level = {
+		building_type = $building_type$
+	}
 	ftc_transfer_ownership
 }
 
@@ -120,11 +123,57 @@ ftc_cleanup_temp_buildings = {
 	}
 }
 
+# save the level that the building should be if the construction completes
+# we use this to keep track of if the construction was completed or cancaled when `on_construction_ended`
+# is called
+# ROOT: building
+# ARGS: building_type
+ftc_set_target_level = {
+	owner = {
+		save_temporary_scope_as = owner_scope
+	}
+	location = {
+		every_buildings_in_location = {
+			limit = {
+				building_type = building_type:$building_type$
+				OR = {
+					owner = scope:owner_scope
+					owner = {
+						is_subject_of = scope:owner_scope
+					}
+				}
+			}
+			location = {
+				set_variable = {
+					name = foobar
+					value = prev.building_level
+				}
+			}
+			location = {
+				set_variable = {
+					name = $building_type$_target_level
+					value = prev.building_level
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_variable = $building_type$_target_level
+				}
+			}
+			set_variable = {
+				name = $building_type$_target_level
+				value = 0
+			}
+		}
+	}
+}
+
 # For some reason doesn't work when done in the same operation as deleting the temp building.
 # Thus why the on_construction_started.
 ftc_permanent_building_construction_started = {
 	location = {
-		# set variable to mark 
 		# destroy temp pop
 		every_pop = {
 			limit = {
@@ -135,13 +184,62 @@ ftc_permanent_building_construction_started = {
 	}
 }
 
-# update construction queue in a location. Recalculate the queue size and decrease it by one
-# to account for the construction that just ended.
+# Called whenever a temp_construction is started
+# build the max queue and determine the target level when a temp
+# ROOT: building
+# ARGS: building_type
+ftc_temp_construction_started = {
+	ftc_set_max_queue = {
+		building_type = $building_type$
+	}
+	ftc_set_target_level = {
+		building_type = $building_type$
+	}
+}
+
+# update construction queue in a location
 # ROOT: building that finished construction
 # ARGS: building_type
-ftc_temp_building_construction_ended = {
+ftc_temp_construction_complete = {
 	owner = {
 		save_temporary_scope_as = owner_scope
+	}
+	location = {
+		ftc_add_level_to_location = {
+			building_type = $building_type$
+			builder = scope:owner_scope
+		}
+	}
+	ftc_set_target_level = {
+		building_type = $building_type$
+	}
+}
+
+# Use the target level to check if the construction was completed or canceled and route accordingly
+# ROOT: building
+# ARGS: building_type
+ftc_temp_building_construction_ended = {
+	if = {
+		limit = {
+			root.building_level = location.var:$building_type$_target_level
+		}
+		ftc_temp_construction_complete = {
+			building_type = $building_type$
+		}
+		location = {
+			set_variable = construction_complete
+		}
+	}
+	else = {
+		location = {
+			set_variable = construction_canceled
+		}
+		location = {
+			set_variable = {
+				name = got_levels
+				value = root.building_level
+			}
+		}
 	}
 	location = {
 		if = {
@@ -149,13 +247,10 @@ ftc_temp_building_construction_ended = {
 				var:$building_type$_max_queue = 0
 			}
 			remove_variable = $building_type$_max_queue
-		}
-		ftc_add_level_to_location = {
-			building_type = $building_type$
-			builder = scope:owner_scope
+			remove_variable = $building_type$_target_level
 		}
 	}
-	# if there are no more temp levels under construction, destroy the temp building
+	# if there are no more temp levels under construction, destroy the temp building and clear vars
 	if = {
 		limit = {
 			building_levels_under_construction = 0
@@ -164,5 +259,7 @@ ftc_temp_building_construction_ended = {
 			on_action = ftc_cleanup_temp_buildings_on_action
 			days = 1
 		}
+		remove_variable = $building_type$_max_queue
+		remove_variable = $building_type$_target_level
 	}
 }
