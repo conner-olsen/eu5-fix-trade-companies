@@ -186,16 +186,6 @@ ftc_temp_on_construction_ended = {
 				}
 			}
 		}
-		location = {
-			set_variable = {
-				name = target_level
-				value = var:$building_type$_target_level
-			}
-			set_variable = {
-				name = building_level
-				value = root.building_level
-			}
-		}
 		ftc_temp_construction_complete = {
 			building_type = $building_type$
 		}
