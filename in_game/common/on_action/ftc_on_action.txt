@@ -47,3 +47,13 @@ ftc_hide_buildings = {
         
     }
 }
+
+# We need one of these for each foreign building as they all need different calls, and we can't
+# pass arguments with on_actions
+ftc_on_construction_ended_on_action_trade_office = {
+    effect = {
+        ftc_on_construction_ended_on_action_effect = {
+            building_type = trade_office
+        }
+    }
+}

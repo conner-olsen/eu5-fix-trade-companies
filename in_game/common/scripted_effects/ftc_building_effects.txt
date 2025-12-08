@@ -58,6 +58,10 @@ ftc_set_target_level = {
 					name = $building_type$_target_level
 					value = prev.building_level
 				}
+				change_variable = {
+					name = $building_type$_target_level
+					add = 1
+				}
 			}
 		}
 		if = {
@@ -68,7 +72,7 @@ ftc_set_target_level = {
 			}
 			set_variable = {
 				name = $building_type$_target_level
-				value = 0
+				value = 1
 			}
 		}
 	}
@@ -162,32 +166,48 @@ ftc_cleanup_temp_buildings = {
 	}
 }
 
-# Use the target level to check if the construction was completed or canceled and route accordingly
+# we put all the logic into an on_action that fires the next day, as the properties of building
+# won't be updated till then
 # ROOT: building
 # ARGS: building_type
-ftc_temp_on_construction_ended = {
-	owner = {
-		save_temporary_scope_as = builder_scope
+ftc_on_construction_ended_on_action_effect = {
+	ftc_set_max_queue = {
+		building_type = $building_type$
 	}
-	# if we have reached the target level of buildings and at least one perm version of the build
-	# exists, the construcion was completed
+	ftc_set_target_level = {
+		building_type = $building_type$
+	}
+	# TODO: Testing
+	location = {
+		set_variable = {
+			name = target_level_test
+			value = var:$building_type$_target_level
+		}
+		set_variable = {
+			name = building_level_test
+			value = root.building_level
+		}
+		set_variable = {
+			name = under_construction_test
+			value = root.building_levels_under_construction
+		}
+	}
+	# TODO: Testing ends here
+	# if we have reached the target level of buildings the construcion was completed
 	if = {
 		limit = {
 			root.building_level = location.var:$building_type$_target_level
-			location = {
-				any_buildings_in_location = {
-					building_type = building_type:$building_type$
-					OR = {
-						owner = scope:builder_scope
-						owner = {
-							is_subject_of = scope:builder_scope
-						}
-					}
-				}
-			}
 		}
 		ftc_temp_construction_complete = {
 			building_type = $building_type$
+		}
+		location = {
+			set_variable = construction_complete
+		}
+	}
+	else = {
+		location = {
+			set_variable = construction_cancelled
 		}
 	}
 	location = {
@@ -207,6 +227,17 @@ ftc_temp_on_construction_ended = {
 		ftc_cleanup_temp_buildings = {
 			building_type = $building_type$
 		}
+	}
+}
+
+# we put all the logic into an on_action that fires the next day, as the properties of the building
+# won't be updated till then
+# ROOT: building
+# ARGS: building_type
+ftc_temp_on_construction_ended = {
+	trigger_event_silently = {
+		on_action = ftc_on_construction_ended_on_action_$building_type$
+		days = 1
 	}
 }
 
