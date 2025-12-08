@@ -34,8 +34,8 @@ ftc_set_max_queue = {
 }
 
 # save the level that the building should be if the construction completes
-# we use this to keep track of if the construction was completed or cancaled when `on_construction_ended`
-# is called
+# we use this to keep track of if the construction was completed or cancelled 
+# when `on_construction_ended`  is called
 # ROOT: building
 # ARGS: building_type
 ftc_set_target_level = {
