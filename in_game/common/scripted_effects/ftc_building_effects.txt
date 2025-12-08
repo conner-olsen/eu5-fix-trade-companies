@@ -146,17 +146,12 @@ ftc_temp_construction_complete = {
 # ROOT: building
 # ARGS: building_type
 ftc_cleanup_temp_buildings = {
-	if = {
-		limit = {
-			building_levels_under_construction = 0
-		}
-		location = {
-			destroy_all_buildings_of_type = building_type:$building_type$_temp
-			remove_variable = $building_type$_max_queue
-			remove_variable = $building_type$_target_level
-		}
-	}
 	location = {
+		# destroy temp_buildings
+		destroy_all_buildings_of_type = building_type:$building_type$_temp
+		# clear variables
+		remove_variable = $building_type$_max_queue
+		remove_variable = $building_type$_target_level
 		# destroy temp pop
 		every_pop = {
 			limit = {
@@ -188,21 +183,15 @@ ftc_temp_on_construction_ended = {
 			remove_variable = $building_type$_target_level
 		}
 	}
-	# if there are no more temp levels under construction, destroy the temp building and clear vars
+	# if there are no more temp buildings under construction, cleanup up the temporary stuff
 	if = {
 		limit = {
 			building_levels_under_construction = 0
 		}
-		trigger_event_non_silently = {
-			on_action = ftc_cleanup_temp_buildings_on_action
-			days = 1
+		ftc_cleanup_temp_buildings = {
+			building_type = $building_type$
 		}
 	}
-}
-
-# start construction of perm; used only foreign buildings with a max_level of 1
-# this includes: embassy, missonary_building, overseas_trading_post, slave_center 
-ftc_temp_on_built = {
 }
 
 # destroy temp pops
