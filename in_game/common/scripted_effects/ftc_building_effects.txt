@@ -166,9 +166,35 @@ ftc_cleanup_temp_buildings = {
 # ROOT: building
 # ARGS: building_type
 ftc_temp_on_construction_ended = {
+	owner = {
+		save_temporary_scope_as = builder_scope
+	}
+	# if we have reached the target level of buildings and at least one perm version of the build
+	# exists, the construcion was completed
 	if = {
 		limit = {
 			root.building_level = location.var:$building_type$_target_level
+			location = {
+				any_buildings_in_location = {
+					building_type = building_type:$building_type$
+					OR = {
+						owner = scope:builder_scope
+						owner = {
+							is_subject_of = scope:builder_scope
+						}
+					}
+				}
+			}
+		}
+		location = {
+			set_variable = {
+				name = target_level
+				value = var:$building_type$_target_level
+			}
+			set_variable = {
+				name = building_level
+				value = root.building_level
+			}
 		}
 		ftc_temp_construction_complete = {
 			building_type = $building_type$
