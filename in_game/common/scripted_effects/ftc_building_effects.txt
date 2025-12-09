@@ -186,13 +186,13 @@ ftc_on_construction_ended_on_action_effect = {
 			building_type = $building_type$
 		}
 	}
-	location = {
+	# if there are no more temp buildings under construction, cleanup up the temporary stuff
 		if = {
 			limit = {
-				var:$building_type$_max_queue = 0
+			building_levels_under_construction = 0
 			}
-			remove_variable = $building_type$_max_queue
-			remove_variable = $building_type$_target_level
+		ftc_cleanup_temp_buildings_multi_level = {
+			building_type = $building_type$
 		}
 	}
 }
@@ -202,20 +202,19 @@ ftc_on_construction_ended_on_action_effect = {
 # ROOT: building
 # ARGS: building_type
 ftc_temp_on_construction_ended_multi_level = {
-	# if there are no more temp buildings under construction, cleanup up the temporary stuff
+	# if there are no more temp buildings under construction, cleanup up the temporary variables
 	if = {
 		limit = {
 			building_levels_under_construction = 0
 		}
-		ftc_cleanup_temp_buildings_multi_level = {
-			building_type = $building_type$
+		location = {
+			remove_variable = $building_type$_max_queue
+			remove_variable = $building_type$_target_level
 		}
 	}
-	else = {
 		trigger_event_silently = {
 			on_action = ftc_on_construction_ended_on_action_$building_type$
 			days = 1
-		}
 	}
 }
 
