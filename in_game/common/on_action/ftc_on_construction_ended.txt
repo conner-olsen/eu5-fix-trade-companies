@@ -1,6 +1,6 @@
 ftc_cleanup_temp_buildings_on_action_single_level = {
 	effect = {
-		ftc_cleanup_temp_buildings_single_level
+		ftc_cleanup_temp_buildings_single_level = yes
 	}
 }
 
