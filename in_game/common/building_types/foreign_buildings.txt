@@ -78,12 +78,12 @@ trade_office_temp = {
 		merchant_power_from_building = 0.2
 	}
 	on_construction_started = {
-		ftc_temp_on_construction_started = {
+		ftc_temp_on_construction_started_multi_level = {
 			building_type = trade_office
 		}
 	}
 	on_construction_ended = {
-		ftc_temp_on_construction_ended = {
+		ftc_temp_on_construction_ended_multi_level = {
 			building_type = trade_office
 		}
 	}
@@ -162,13 +162,8 @@ embassy_temp = {
 	foreign_country_modifier = {
 		diplomatic_capacity = 0.1
 	}
-	on_construction_started = {
-		ftc_temp_on_construction_started = {
-			building_type = embassy
-		}
-	}
-	on_construction_ended = {
-		ftc_temp_on_construction_ended = {
+	on_built = {
+		ftc_temp_on_built_single_level = {
 			building_type = embassy
 		}
 	}
@@ -249,13 +244,8 @@ missionary_building_temp = {
 		local_tribal_promotion = 0.5
 		local_disease_resistance = 0.05
 	}
-	on_construction_started = {
-		ftc_temp_on_construction_started = {
-			building_type = missionary_building
-		}
-	}
-	on_construction_ended = {
-		ftc_temp_on_construction_ended = {
+	on_built = {
+		ftc_temp_on_built_single_level = {
 			building_type = missionary_building
 		}
 	}
@@ -351,13 +341,8 @@ slave_center_temp = {
 	modifier = {
 		building_enslavement_power = 0.05
 	}
-	on_construction_started = {
-		ftc_temp_on_construction_started = {
-			building_type = slave_center
-		}
-	}
-	on_construction_ended = {
-		ftc_temp_on_construction_ended = {
+	on_built = {
+		ftc_temp_on_built_single_level = {
 			building_type = slave_center
 		}
 	}
@@ -412,8 +397,9 @@ slave_center = {
 	modifier = {
 		building_enslavement_power = 0.05
 	}
-	on_construction_ended = {
+	on_built = {
 		ftc_perm_on_construction_ended
+		ftc_transfer_ownership
 	}
 }
 
@@ -452,13 +438,8 @@ overseas_trading_post_temp = {
 		merchant_capacity_from_building = 0.1
 		merchant_power_from_building = 0.2
 	}
-	on_construction_started = {
-		ftc_temp_on_construction_started = {
-			building_type = overseas_trading_post
-		}
-	}
-	on_construction_ended = {
-		ftc_temp_on_construction_ended = {
+	on_built = {
+		ftc_temp_on_built_single_level = {
 			building_type = overseas_trading_post
 		}
 	}

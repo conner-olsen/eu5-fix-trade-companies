@@ -1,0 +1,56 @@
+ftc_cleanup_temp_buildings_on_action_single_level = {
+	effect = {
+		ftc_cleanup_temp_buildings_single_level
+	}
+}
+
+# We need one of these for each multi-level foreign building as they all need different calls, 
+# and we can't pass arguments with on_actions
+ftc_on_construction_ended_on_action_trade_office = {
+	effect = {
+		ftc_on_construction_ended_on_action_effect = {
+			building_type = trade_office
+		}
+	}
+}
+
+ftc_on_construction_ended_on_action_trade_company_garrison = {
+	effect = {
+		ftc_on_construction_ended_on_action_effect = {
+			building_type = trade_company_garrison
+		}
+	}
+}
+
+ftc_on_construction_ended_on_action_trade_company_harbor = {
+	effect = {
+		ftc_on_construction_ended_on_action_effect = {
+			building_type = trade_company_harbor
+		}
+	}
+}
+
+ftc_on_construction_ended_on_action_trade_company_local_venture = {
+	effect = {
+		ftc_on_construction_ended_on_action_effect = {
+			building_type = trade_company_local_venture
+		}
+	}
+}
+
+ftc_on_construction_ended_on_action_trade_company_foreign_influence = {
+	effect = {
+		ftc_on_construction_ended_on_action_effect = {
+			building_type = trade_company_foreign_influence
+		}
+	}
+}
+
+ftc_on_construction_ended_on_action_trade_company_governance = {
+	effect = {
+		ftc_on_construction_ended_on_action_effect = {
+			building_type = trade_company_governance
+		}
+	}
+}
+

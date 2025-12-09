@@ -78,11 +78,11 @@ ftc_set_target_level = {
 	}
 }
 
-# Called whenever a temp_construction is started
+# Called whenever a temp_construction with a max_level > 1 is started
 # build the max queue and determine the target level when a temp
 # ROOT: building
 # ARGS: building_type
-ftc_temp_on_construction_started = {
+ftc_temp_on_construction_started_multi_level = {
 	ftc_set_max_queue = {
 		building_type = $building_type$
 	}
@@ -145,11 +145,11 @@ ftc_temp_construction_complete = {
 	}
 }
 
-# Deletes the temporary building and all temp pops in the location
+# Deletes the temporary building and all temp pops in the location and clears variables
 # Must be called by the delayed on_action to prevent deleting the active scope.
 # ROOT: building
 # ARGS: building_type
-ftc_cleanup_temp_buildings = {
+ftc_cleanup_temp_buildings_multi_level = {
 	location = {
 		# destroy temp_buildings
 		destroy_all_buildings_of_type = building_type:$building_type$_temp
@@ -200,7 +200,7 @@ ftc_on_construction_ended_on_action_effect = {
 		limit = {
 			building_levels_under_construction = 0
 		}
-		ftc_cleanup_temp_buildings = {
+		ftc_cleanup_temp_buildings_multi_level = {
 			building_type = $building_type$
 		}
 	}
@@ -210,14 +210,55 @@ ftc_on_construction_ended_on_action_effect = {
 # won't be updated till then
 # ROOT: building
 # ARGS: building_type
-ftc_temp_on_construction_ended = {
+ftc_temp_on_construction_ended_multi_level = {
 	trigger_event_silently = {
 		on_action = ftc_on_construction_ended_on_action_$building_type$
 		days = 1
 	}
 }
 
-# destroy temp pops
+# Deletes the temporary building and all temp pops in the location
+# Must be called by the delayed on_action to prevent deleting the active scope.
+# ROOT: building
+ftc_cleanup_temp_buildings_single_level = {
+	location = {
+		destroy_building = prev
+		every_pop = {
+			limit = {
+				pop_type = pop_type:temp
+			}
+			destroy_pop = this
+		}
+	}
+}
+
+# When there's only one level, all we need to do is construct the perm and trigger cleanup
+# we use an on_action because simply destroying the building here will be deleting active scope
+# and that crashes the game
+# ROOT: building
+# ARGS: building_type
+ftc_temp_on_built_single_level = {
+	owner = {
+		save_temporary_scope_as = builder_scope
+	}
+	location = {
+		construct_building = {
+			building_type = building_type:$building_type$
+			cost_multiplier = 0
+			instant = yes
+			cost_multiplier_reason = "game_concept_foreign_building"
+			owner = scope:builder_scope
+		}
+	}
+	trigger_event_silently = {
+		on_action = ftc_cleanup_temp_buildings_on_action_single_level
+		days = 1
+	}
+}
+
+# destroy temp pops again
+# they should already be gone, but we destroy them again to account for some strange edge cases
+# I haven't really figured out yet
 # ROOT: building
 ftc_perm_on_construction_ended = {
 	location = {
