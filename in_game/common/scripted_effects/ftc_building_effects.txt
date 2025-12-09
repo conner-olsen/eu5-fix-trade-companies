@@ -177,22 +177,6 @@ ftc_on_construction_ended_on_action_effect = {
 	ftc_set_target_level = {
 		building_type = $building_type$
 	}
-	# TODO: Testing
-	location = {
-		set_variable = {
-			name = target_level_test
-			value = var:$building_type$_target_level
-		}
-		set_variable = {
-			name = building_level_test
-			value = root.building_level
-		}
-		set_variable = {
-			name = under_construction_test
-			value = root.building_levels_under_construction
-		}
-	}
-	# TODO: Testing ends here
 	# if we have reached the target level of buildings the construcion was completed
 	if = {
 		limit = {
@@ -200,14 +184,6 @@ ftc_on_construction_ended_on_action_effect = {
 		}
 		ftc_temp_construction_complete = {
 			building_type = $building_type$
-		}
-		location = {
-			set_variable = construction_complete
-		}
-	}
-	else = {
-		location = {
-			set_variable = construction_cancelled
 		}
 	}
 	location = {
