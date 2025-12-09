@@ -218,6 +218,14 @@ ftc_temp_on_construction_ended_multi_level = {
 			remove_variable = $building_type$_target_level
 		}
 	}
+	else = {
+		ftc_set_max_queue = {
+			building_type = $building_type$
+		}
+		ftc_set_target_level = {
+			building_type = $building_type$
+		}
+	}
 	trigger_event_silently = {
 		on_action = ftc_on_construction_ended_on_action_$building_type$
 		days = 1
