@@ -1,59 +1,74 @@
 monthly_country_pulse = {
-    on_actions = {
-        ftc_trade_company_advance_sweeper
-        ftc_destroy_old_buildings
-        ftc_hide_buildings
-    }
+	on_actions = {
+		ftc_trade_company_advance_sweeper
+		ftc_destroy_old_buildings
+		ftc_hide_buildings
+	}
 }
 
 ftc_trade_company_advance_sweeper = {
-    trigger = {
-        NOT = { has_global_variable = ftc_trade_company_sweep_done }
-    }
-
-    effect = {
-        set_global_variable = ftc_trade_company_sweep_done
-
-        every_country = {
-            limit = { is_subject_type = trade_company }
-
-            if = {
-                limit = { NOT = { has_advance = trade_companies_advance } }
-                research_advance = advance_type:trade_companies_advance
-            }
-        }
-    }
+	trigger = {
+		NOT = {
+			has_global_variable = ftc_trade_company_sweep_done
+		}
+	}
+	effect = {
+		set_global_variable = ftc_trade_company_sweep_done
+		every_country = {
+			limit = {
+				is_subject_type = trade_company
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_advance = trade_companies_advance
+					}
+				}
+				research_advance = advance_type:trade_companies_advance
+			}
+		}
+	}
 }
 
 ftc_hide_buildings = {
-    trigger = {
-        NOT = { has_global_variable_list = ftc_hidden_buildings }
-    }
-
-    effect = {
-        hide_building = { target = building_type:trade_office }
-        hide_building = { target = building_type:embassy }
-        hide_building = { target = building_type:slave_center }
-        hide_building = { target = building_type:missionary_building }
-        hide_building = { target = building_type:overseas_trading_post }
-
-        hide_building = { target = building_type:trade_company_headquarters }
-        hide_building = { target = building_type:trade_company_garrison }
-        hide_building = { target = building_type:trade_company_harbor }
-        hide_building = { target = building_type:trade_company_local_venture }
-        hide_building = { target = building_type:trade_company_foreign_influence }
-        hide_building = { target = building_type:trade_company_governance }
-
-        
-    }
-}
-
-# We need one of these for each foreign building as they all need different calls, and we can't
-# pass arguments with on_actions
-ftc_on_construction_ended_on_action_trade_office = {
-    effect = {
-        ftc_on_construction_ended_on_action_effect = {
-            building_type = trade_office
-        }
-    }
+	trigger = {
+		NOT = {
+			has_global_variable_list = ftc_hidden_buildings
+		}
+	}
+	effect = {
+		hide_building = {
+			target = building_type:trade_office
+		}
+		hide_building = {
+			target = building_type:embassy
+		}
+		hide_building = {
+			target = building_type:slave_center
+		}
+		hide_building = {
+			target = building_type:missionary_building
+		}
+		hide_building = {
+			target = building_type:overseas_trading_post
+		}
+		hide_building = {
+			target = building_type:trade_company_headquarters
+		}
+		hide_building = {
+			target = building_type:trade_company_garrison
+		}
+		hide_building = {
+			target = building_type:trade_company_harbor
+		}
+		hide_building = {
+			target = building_type:trade_company_local_venture
+		}
+		hide_building = {
+			target = building_type:trade_company_foreign_influence
+		}
+		hide_building = {
+			target = building_type:trade_company_governance
+		}
+	}
 }
