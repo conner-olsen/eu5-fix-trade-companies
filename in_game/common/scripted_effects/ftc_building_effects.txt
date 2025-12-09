@@ -7,10 +7,15 @@ ftc_set_max_queue = {
 		save_temporary_scope_as = builder_scope
 	}
 	location = {
-		# set value equal to existing construction +1 as numbering starts at 0
+		# set value equal to existing construction +1
+		# we add one simply because I like numbering to start at 1 rather than 0
 		set_variable = {
 			name = $building_type$_max_queue
 			value = prev.building_levels_under_construction
+		}
+		change_variable = {
+			name = $building_type$_max_queue
+			add = 1
 		}
 		# add the number of existing levels to the variable
 		every_buildings_in_location = {
@@ -58,6 +63,7 @@ ftc_set_target_level = {
 					name = $building_type$_target_level
 					value = prev.building_level
 				}
+				# we add one simply because I like numbering to start at 1 rather than 0
 				change_variable = {
 					name = $building_type$_target_level
 					add = 1
@@ -187,10 +193,10 @@ ftc_on_construction_ended_on_action_effect = {
 		}
 	}
 	# if there are no more temp buildings under construction, cleanup up the temporary stuff
-		if = {
-			limit = {
+	if = {
+		limit = {
 			building_levels_under_construction = 0
-			}
+		}
 		ftc_cleanup_temp_buildings_multi_level = {
 			building_type = $building_type$
 		}
@@ -212,9 +218,9 @@ ftc_temp_on_construction_ended_multi_level = {
 			remove_variable = $building_type$_target_level
 		}
 	}
-		trigger_event_silently = {
-			on_action = ftc_on_construction_ended_on_action_$building_type$
-			days = 1
+	trigger_event_silently = {
+		on_action = ftc_on_construction_ended_on_action_$building_type$
+		days = 1
 	}
 }
 
