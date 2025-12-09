@@ -195,6 +195,13 @@ ftc_on_construction_ended_on_action_effect = {
 			remove_variable = $building_type$_target_level
 		}
 	}
+}
+
+# we put all the logic into an on_action that fires the next day, as the properties of the building
+# won't be updated till then
+# ROOT: building
+# ARGS: building_type
+ftc_temp_on_construction_ended_multi_level = {
 	# if there are no more temp buildings under construction, cleanup up the temporary stuff
 	if = {
 		limit = {
@@ -204,16 +211,11 @@ ftc_on_construction_ended_on_action_effect = {
 			building_type = $building_type$
 		}
 	}
-}
-
-# we put all the logic into an on_action that fires the next day, as the properties of the building
-# won't be updated till then
-# ROOT: building
-# ARGS: building_type
-ftc_temp_on_construction_ended_multi_level = {
-	trigger_event_silently = {
-		on_action = ftc_on_construction_ended_on_action_$building_type$
-		days = 1
+	else = {
+		trigger_event_silently = {
+			on_action = ftc_on_construction_ended_on_action_$building_type$
+			days = 1
+		}
 	}
 }
 
