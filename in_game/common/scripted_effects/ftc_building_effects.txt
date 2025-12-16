@@ -165,7 +165,11 @@ ftc_cleanup_temp_buildings_multi_level = {
 		# destroy temp pop
 		every_pop = {
 			limit = {
-				pop_type = pop_type:temp
+				OR = {
+					pop_type = pop_type:ftc_temp_nobles
+					pop_type = pop_type:ftc_temp_clergy
+					pop_type = pop_type:ftc_temp_burghers
+				}
 			}
 			destroy_pop = this
 		}
@@ -240,7 +244,11 @@ ftc_cleanup_temp_buildings_single_level = {
 		destroy_building = prev
 		every_pop = {
 			limit = {
-				pop_type = pop_type:temp
+				OR = {
+					pop_type = pop_type:ftc_temp_nobles
+					pop_type = pop_type:ftc_temp_clergy
+					pop_type = pop_type:ftc_temp_burghers
+				}
 			}
 			destroy_pop = this
 		}
@@ -280,7 +288,11 @@ ftc_perm_on_construction_ended = {
 		# destroy temp pop
 		every_pop = {
 			limit = {
-				pop_type = pop_type:temp
+				OR = {
+					pop_type = pop_type:ftc_temp_nobles
+					pop_type = pop_type:ftc_temp_clergy
+					pop_type = pop_type:ftc_temp_burghers
+				}
 			}
 			destroy_pop = this
 		}
