@@ -8,8 +8,6 @@
 	unlock_building = trade_company_harbor
 	unlock_building = trade_company_local_venture
 	unlock_building = trade_company_foreign_influence
-	
-	ftc_unlock_tc_advance_for_subjects
 
 	requires = safe_exploration_techniques_advance
 }
