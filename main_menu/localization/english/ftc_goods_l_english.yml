@@ -1,0 +1,4 @@
+﻿l_english:
+ ftc_temp_nobles_demand: "Needs of the [ShowPopTypeName('nobles')]"
+ ftc_temp_clergy_demand: "Needs of the [ShowPopTypeName('clergy')]"
+ ftc_temp_burghers_demand: "Needs of the [ShowPopTypeName('burghers')]"

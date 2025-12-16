@@ -1,0 +1,14 @@
+﻿ftc_temp_nobles_demand = {
+	hidden = yes
+	category = pop_needs
+}
+
+ftc_temp_clergy_demand = {
+	hidden = yes
+	category = pop_needs
+}
+
+ftc_temp_burghers_demand = {
+	hidden = yes
+	category = pop_needs
+}
