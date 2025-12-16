@@ -9,6 +9,7 @@
 	city = yes
 	expensive = yes
 	country_potential = {
+		ftc_company_building_country_potential = yes
 		total_effective_building_levels:trade_company_headquarters < 1
 		custom_tooltip = {
 			text = building_trade_hq_only_one
@@ -276,6 +277,7 @@ trade_company_garrison_temp = {
 		}
 	}
 	country_potential = {
+		ftc_company_building_country_potential = yes
 		OR = {
 			total_effective_building_levels:trade_company_headquarters > 0
 			any_subject = {
@@ -367,6 +369,7 @@ trade_company_harbor_temp = {
 		}
 	}
 	country_potential = {
+		ftc_company_building_country_potential = yes
 		OR = {
 			total_effective_building_levels:trade_company_headquarters > 0
 			any_subject = {
@@ -461,6 +464,7 @@ trade_company_local_venture_temp = {
 		}
 	}
 	country_potential = {
+		ftc_company_building_country_potential = yes
 		OR = {
 			total_effective_building_levels:trade_company_headquarters > 0
 			any_subject = {
@@ -550,6 +554,7 @@ trade_company_foreign_influence_temp = {
 		}
 	}
 	country_potential = {
+		ftc_company_building_country_potential = yes
 		OR = {
 			total_effective_building_levels:trade_company_headquarters > 0
 			any_subject = {
@@ -641,6 +646,7 @@ trade_company_governance_temp = {
 		}
 	}
 	country_potential = {
+		ftc_company_building_country_potential = yes
 		OR = {
 			total_effective_building_levels:trade_company_headquarters > 0
 			any_subject = {

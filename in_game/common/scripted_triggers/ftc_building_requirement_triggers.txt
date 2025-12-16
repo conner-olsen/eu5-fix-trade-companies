@@ -79,3 +79,11 @@ ftc_is_in_trade_company_region = {
 ftc_hide_permanent_buildings_country_potential = {
 	is_subject_type = trade_company
 }
+
+# Check if the country has the trade companies advance.
+# This is a workaround to the game requiring the target nation to have the advance.
+# So I removed the building unlock from the advance, and instead use country potential.
+# ROOT: country
+ftc_company_building_country_potential = {
+	has_advance = trade_companies_advance
+}
