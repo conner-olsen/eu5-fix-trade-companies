@@ -240,7 +240,7 @@ trade_company_headquarters = {
 					target = scope:trade_company_tag
 				}
 			}
-			every_owned_foreign_building = {
+			ordered_owned_foreign_building = {
 				limit = {
 					location = {
 						region = scope:capital.region
