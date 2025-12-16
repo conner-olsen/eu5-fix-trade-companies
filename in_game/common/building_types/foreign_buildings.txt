@@ -11,7 +11,6 @@ trade_office_temp = {
 	rural_settlement = no
 	town = yes
 	city = yes
-	foobar = yes
 	allow = {
 		is_port = yes
 		market = {
