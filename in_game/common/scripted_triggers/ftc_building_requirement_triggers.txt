@@ -26,10 +26,18 @@ ftc_company_building_location_potential = {
 			}
 		}
 	}
-	# I have no idea why we need to surround this with a NOT,
-	# but without it, the game checks if we DON'T have trade rights, so I added it
-	NOT = {
-		ftc_is_receiving_rights
+
+	OR = {
+		# Either it's your subject,
+		owner = {
+			is_subject_of = scope:actor
+		}
+		# or you are receiving trade company rights
+		# I have no idea why we need to surround this with a NOT,
+		# but without it, the game checks if we DON'T have trade rights, so I added it
+		NOT = {
+			ftc_is_receiving_rights
+		}
 	}
 }
 
