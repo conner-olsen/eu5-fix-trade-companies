@@ -16,5 +16,7 @@ INJECT:trade_companies_advance = {
 	unlock_building = trade_company_local_venture_temp
 	unlock_building = trade_company_foreign_influence_temp
 
+	ftc_unlock_tc_advance_for_subjects
+
 	requires = safe_exploration_techniques_advance
 }

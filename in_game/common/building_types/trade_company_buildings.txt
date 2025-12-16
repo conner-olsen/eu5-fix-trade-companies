@@ -1,6 +1,6 @@
 ﻿trade_company_headquarters_temp = {
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = trade_company_building_max_level
 	pop_type = temp
 	category = tc_category
 	employment_size = 0
@@ -19,12 +19,12 @@
 		num_relations_above_limit <= 0
 	}
 	location_potential = {
-		NOT = {
+		OR = {
+			ftc_is_receiving_rights = yes
 			owner = {
 				is_subject_of = scope:actor
 			}
 		}
-		ftc_is_recieving_rights = yes
 	}
 	allow = {
 		market = {
@@ -82,8 +82,17 @@
 		}
 	}
 	on_built = {
-		ftc_built_temp = {
-			building_type = trade_company_headquarters
+		owner = {
+			save_temporary_scope_as = builder
+		}
+		location = {
+			construct_building = {
+				building_type = building_type:trade_company_headquarters
+				cost_multiplier = 0
+				instant = yes
+				cost_multiplier_reason = "game_concept_foreign_building"
+				owner = scope:builder
+			}
 		}
 	}
 }
@@ -106,6 +115,7 @@ trade_company_headquarters = {
 		}
 	}
 	country_potential = {
+		ftc_hide_permanent_buildings_country_potential = yes
 	}
 	modifier = {
 		merchant_capacity_from_building = 0.2
@@ -247,7 +257,7 @@ trade_company_headquarters = {
 
 trade_company_garrison_temp = {
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = trade_company_building_max_level
 	pop_type = temp
 	category = tc_category
 	AI_ignore_available_worker_flag = yes
@@ -286,8 +296,13 @@ trade_company_garrison_temp = {
 		local_defensive = 0.25
 		local_garrison_size = 0.5
 	}
-	on_built = {
-		ftc_built_temp = {
+	on_construction_started = {
+		ftc_temp_on_construction_started_multi_level = {
+			building_type = trade_company_garrison
+		}
+	}
+	on_construction_ended = {
+		ftc_temp_on_construction_ended_multi_level = {
 			building_type = trade_company_garrison
 		}
 	}
@@ -324,11 +339,8 @@ trade_company_garrison = {
 		local_defensive = 0.25
 		local_garrison_size = 0.5
 	}
-	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
-	}
-	on_built = {
-		ftc_built_perm = {
+	on_construction_ended = {
+		ftc_perm_on_built = {
 			building_type = trade_company_garrison
 		}
 	}
@@ -336,7 +348,7 @@ trade_company_garrison = {
 
 trade_company_harbor_temp = {
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = trade_company_building_max_level
 	pop_type = temp
 	category = tc_category
 	AI_ignore_available_worker_flag = yes
@@ -377,8 +389,13 @@ trade_company_harbor_temp = {
 		building_owner_maritime_presence = 0.01
 		building_owner_overlord_maritime_presence = 0.02
 	}
-	on_built = {
-		ftc_built_temp = {
+	on_construction_started = {
+		ftc_temp_on_construction_started_multi_level = {
+			building_type = trade_company_harbor
+		}
+	}
+	on_construction_ended = {
+		ftc_temp_on_construction_ended_multi_level = {
 			building_type = trade_company_harbor
 		}
 	}
@@ -416,11 +433,8 @@ trade_company_harbor = {
 		building_owner_maritime_presence = 0.01
 		building_owner_overlord_maritime_presence = 0.02
 	}
-	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
-	}
-	on_built = {
-		ftc_built_perm = {
+	on_construction_ended = {
+		ftc_perm_on_built = {
 			building_type = trade_company_harbor
 		}
 	}
@@ -428,7 +442,7 @@ trade_company_harbor = {
 
 trade_company_local_venture_temp = {
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = trade_company_building_max_level
 	pop_type = temp
 	category = tc_category
 	AI_ignore_available_worker_flag = yes
@@ -466,8 +480,13 @@ trade_company_local_venture_temp = {
 	modifier = {
 		local_raw_material_output = 0.33
 	}
-	on_built = {
-		ftc_built_temp = {
+	on_construction_started = {
+		ftc_temp_on_construction_started_multi_level = {
+			building_type = trade_company_local_venture
+		}
+	}
+	on_construction_ended = {
+		ftc_temp_on_construction_ended_multi_level = {
 			building_type = trade_company_local_venture
 		}
 	}
@@ -503,11 +522,8 @@ trade_company_local_venture = {
 	modifier = {
 		local_raw_material_output = 0.33
 	}
-	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
-	}
-	on_built = {
-		ftc_built_perm = {
+	on_construction_ended = {
+		ftc_perm_on_built = {
 			building_type = trade_company_local_venture
 		}
 	}
@@ -515,7 +531,7 @@ trade_company_local_venture = {
 
 trade_company_foreign_influence_temp = {
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = trade_company_building_max_level
 	pop_type = temp
 	category = tc_category
 	AI_ignore_available_worker_flag = yes
@@ -554,8 +570,13 @@ trade_company_foreign_influence_temp = {
 		local_monthly_development = 0.005
 		local_max_control = 0.05
 	}
-	on_built = {
-		ftc_built_temp = {
+	on_construction_started = {
+		ftc_temp_on_construction_started_multi_level = {
+			building_type = trade_company_foreign_influence
+		}
+	}
+	on_construction_ended = {
+		ftc_temp_on_construction_ended_multi_level = {
 			building_type = trade_company_foreign_influence
 		}
 	}
@@ -592,11 +613,8 @@ trade_company_foreign_influence = {
 		local_monthly_development = 0.005
 		local_max_control = 0.05
 	}
-	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
-	}
-	on_built = {
-		ftc_built_perm = {
+	on_construction_ended = {
+		ftc_perm_on_built = {
 			building_type = trade_company_foreign_influence
 		}
 	}
@@ -604,7 +622,7 @@ trade_company_foreign_influence = {
 
 trade_company_governance_temp = {
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = trade_company_building_max_level
 	pop_type = temp
 	category = tc_category
 	AI_ignore_available_worker_flag = yes
@@ -644,8 +662,13 @@ trade_company_governance_temp = {
 		sailors_to_building_owner = 0.005
 		can_recruit_regiment_in_this_location = yes
 	}
-	on_built = {
-		ftc_built_temp = {
+	on_construction_started = {
+		ftc_temp_on_construction_started_multi_level = {
+			building_type = trade_company_governance
+		}
+	}
+	on_construction_ended = {
+		ftc_temp_on_construction_ended_multi_level = {
 			building_type = trade_company_governance
 		}
 	}
@@ -683,11 +706,8 @@ trade_company_governance = {
 		sailors_to_building_owner = 0.005
 		can_recruit_regiment_in_this_location = yes
 	}
-	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
-	}
-	on_built = {
-		ftc_built_perm = {
+	on_construction_ended = {
+		ftc_perm_on_built = {
 			building_type = trade_company_governance
 		}
 	}

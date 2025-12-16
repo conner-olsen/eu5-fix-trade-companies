@@ -3,7 +3,7 @@
 trade_office_temp = {
 	is_foreign = yes
 	stronger_power_projection = no
-	max_levels = ftc_temp_building_max_level
+	max_levels = guild_max_level
 	need_good_relation = yes
 	pop_type = temp
 	category = trade_category
@@ -19,8 +19,50 @@ trade_office_temp = {
 		}
 	}
 	location_potential = {
-		NOT = {
-			has_building = building_type:trade_office
+		OR = {
+			# No building is present
+			NOT = {
+				has_building = building_type:trade_office
+			}
+			# Building is not max level and there is no queue
+			AND = {
+				any_buildings_in_location = {
+					building_type = building_type:trade_office
+					OR = {
+						owner = {
+							is_subject = yes
+						}
+						owner = scope:actor
+					}
+					is_max_level = no
+				}
+				NOT = {
+					has_variable = trade_office_max_queue
+				}
+			}
+			# Building is not max level and the queue isn't full
+			AND = {
+				any_buildings_in_location = {
+					building_type = building_type:trade_office
+					OR = {
+						owner = {
+							is_subject = yes
+						}
+						owner = scope:actor
+					}
+					is_max_level = no
+				}
+				any_buildings_in_location = {
+					building_type = building_type:trade_office
+					OR = {
+						owner = {
+							is_subject = yes
+						}
+						owner = scope:actor
+					}
+					building_max_level > root.var:trade_office_max_queue
+				}
+			}
 		}
 	}
 	build_time = trade_company_build_time
@@ -35,12 +77,16 @@ trade_office_temp = {
 		building_owner_maritime_presence = 0.05
 		merchant_power_from_building = 0.2
 	}
-	on_built = {
-		ftc_built_temp = {
+	on_construction_started = {
+		ftc_temp_on_construction_started_multi_level = {
 			building_type = trade_office
 		}
 	}
-
+	on_construction_ended = {
+		ftc_temp_on_construction_ended_multi_level = {
+			building_type = trade_office
+		}
+	}
 }
 
 trade_office = {
@@ -72,11 +118,8 @@ trade_office = {
 		building_owner_maritime_presence = 0.05
 		merchant_power_from_building = 0.2
 	}
-	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
-	}
 	on_built = {
-		ftc_built_perm = {
+		ftc_perm_on_built = {
 			building_type = trade_office
 		}
 	}
@@ -85,7 +128,7 @@ trade_office = {
 embassy_temp = {
 	is_foreign = yes
 	stronger_power_projection = no
-	max_levels = ftc_temp_building_max_level
+	max_levels = 1
 	need_good_relation = yes
 	pop_type = temp
 	category = government_category
@@ -120,11 +163,10 @@ embassy_temp = {
 		diplomatic_capacity = 0.1
 	}
 	on_built = {
-		ftc_built_temp = {
+		ftc_temp_on_built_single_level = {
 			building_type = embassy
 		}
 	}
-
 }
 
 embassy = {
@@ -159,21 +201,15 @@ embassy = {
 	foreign_country_modifier = {
 		diplomatic_capacity = 0.1
 	}
-	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
-	}
-	# upon construction completion, destroy the temporary building, and delete the temporary pops
-	on_built = {
-		ftc_built_perm = {
-			building_type = embassy
-		}
+	on_construction_ended = {
+		ftc_perm_on_construction_ended
 	}
 }
 
 missionary_building_temp = {
 	in_empty = empty
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = 1
 	pop_type = temp
 	graphical_tags = {
 		small_religious
@@ -209,11 +245,10 @@ missionary_building_temp = {
 		local_disease_resistance = 0.05
 	}
 	on_built = {
-		ftc_built_temp = {
+		ftc_temp_on_built_single_level = {
 			building_type = missionary_building
 		}
 	}
-
 }
 
 missionary_building = {
@@ -249,13 +284,8 @@ missionary_building = {
 		local_tribal_promotion = 0.5
 		local_disease_resistance = 0.05
 	}
-	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
-	}
-	on_built = {
-		ftc_built_perm = {
-			building_type = missionary_building
-		}
+	on_construction_ended = {
+		ftc_perm_on_construction_ended
 	}
 }
 
@@ -263,7 +293,7 @@ slave_center_temp = {
 	in_empty = any
 	is_foreign = yes
 	stronger_power_projection = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = 1
 	pop_type = temp
 	category = colonial_category
 	employment_size = 0
@@ -312,11 +342,10 @@ slave_center_temp = {
 		building_enslavement_power = 0.05
 	}
 	on_built = {
-		ftc_built_temp = {
+		ftc_temp_on_built_single_level = {
 			building_type = slave_center
 		}
 	}
-
 }
 
 slave_center = {
@@ -368,20 +397,16 @@ slave_center = {
 	modifier = {
 		building_enslavement_power = 0.05
 	}
-	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
-	}
 	on_built = {
-		ftc_built_perm = {
-			building_type = slave_center
-		}
+		ftc_perm_on_construction_ended
+		ftc_transfer_ownership
 	}
 }
 
 overseas_trading_post_temp = {
 	in_empty = any
 	is_foreign = yes
-	max_levels = ftc_temp_building_max_level
+	max_levels = 1
 	pop_type = temp
 	stronger_power_projection = yes
 	category = colonial_category
@@ -414,11 +439,10 @@ overseas_trading_post_temp = {
 		merchant_power_from_building = 0.2
 	}
 	on_built = {
-		ftc_built_temp = {
+		ftc_temp_on_built_single_level = {
 			building_type = overseas_trading_post
 		}
 	}
-
 }
 
 overseas_trading_post = {
@@ -437,6 +461,11 @@ overseas_trading_post = {
 		NOT = {
 			continent = scope:actor.capital.continent
 		}
+		NOT = {
+			ftc_company_building_location_potential = {
+				building_type = overseas_trading_post
+			}
+		}
 	}
 	allow = {
 		OR = {
@@ -453,12 +482,8 @@ overseas_trading_post = {
 		merchant_capacity_from_building = 0.1
 		merchant_power_from_building = 0.2
 	}
-	on_construction_started = {
-		ftc_permanent_building_construction_started = yes
-	}
 	on_built = {
-		ftc_built_perm = {
-			building_type = overseas_trading_post
-		}
+		ftc_perm_on_construction_ended
+		ftc_transfer_ownership
 	}
 }
