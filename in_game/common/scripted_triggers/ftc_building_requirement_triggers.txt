@@ -1,4 +1,4 @@
-# Can build/upgrade given TC building type in this location
+﻿# Can build/upgrade given TC building type in this location
 # ROOT: location
 # ARGS: building_type
 ftc_company_building_location_potential = {

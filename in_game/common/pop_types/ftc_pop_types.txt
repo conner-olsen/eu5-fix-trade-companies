@@ -1,4 +1,4 @@
-temp = {
+﻿temp = {
 	colo pop_clergy
 
 	editor = 0.05

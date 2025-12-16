@@ -1,4 +1,4 @@
-gives_trade_company_rights_to = {
+﻿gives_trade_company_rights_to = {
 	none = GIVES_TRADE_COMPANY_RIGHTS_TO_TRIGGER
 	global = GIVES_TRADE_COMPANY_RIGHTS_TO_TRIGGER
 	first = FIRST_GIVES_TRADE_COMPANY_RIGHTS_TO_TRIGGER

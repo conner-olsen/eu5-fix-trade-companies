@@ -1,4 +1,4 @@
-monthly_country_pulse = {
+﻿monthly_country_pulse = {
     on_actions = {
         ftc_trade_company_advance_sweeper
         ftc_hide_buildings

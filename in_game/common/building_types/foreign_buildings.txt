@@ -1,4 +1,4 @@
-# Circumvents the pop check by replacing the pop_type with a non-existent pop, so when the game checks for
+﻿# Circumvents the pop check by replacing the pop_type with a non-existent pop, so when the game checks for
 #  existing pops, they are never found
 trade_office_temp = {
 	is_foreign = yes

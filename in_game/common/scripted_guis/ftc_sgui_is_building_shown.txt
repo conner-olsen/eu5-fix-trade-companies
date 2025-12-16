@@ -1,4 +1,4 @@
-ftc_sgui_is_building_shown = {
+﻿ftc_sgui_is_building_shown = {
 	scope = building_type
 	is_shown = {
 		NOT = {

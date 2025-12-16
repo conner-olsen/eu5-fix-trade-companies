@@ -1,4 +1,4 @@
-rgo_building_category = {
+﻿rgo_building_category = {
 }
 
 basic_industry_category = {

@@ -1,4 +1,4 @@
-# Adds the sum of constructing temp buildings and constructed permanent buildings to the location
+﻿# Adds the sum of constructing temp buildings and constructed permanent buildings to the location
 # as a variable named $building_type$_max_queue
 # ROOT: building
 # ARGS: building_type
