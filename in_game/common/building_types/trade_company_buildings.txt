@@ -156,7 +156,7 @@ trade_company_headquarters = {
 			destroy_all_buildings_of_type = building_type:trade_company_headquarters_temp
 			every_pop = {
 				limit = {
-					pop_type = pop_type:temp
+					pop_type = pop_type:ftc_temp_burghers
 				}
 				destroy_pop = this
 			}
