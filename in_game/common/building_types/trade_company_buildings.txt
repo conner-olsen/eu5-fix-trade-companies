@@ -47,7 +47,7 @@
 	}
 	build_time = trade_company_build_time
 	unique_production_methods = {
-		trade_company_headquarters_requirements = {
+		trade_company_headquarters_temp_requirements = {
 			paper = 0.1
 			category = building_maintenance
 		}

@@ -66,7 +66,7 @@ trade_office_temp = {
 	}
 	build_time = trade_company_build_time
 	unique_production_methods = {
-		trade_office_requirements = {
+		trade_office_temp_requirements = {
 			paper = 0.1
 			category = building_maintenance
 		}
@@ -152,7 +152,7 @@ embassy_temp = {
 	build_time = trade_company_build_time
 	lifts_fog_of_war = yes
 	unique_production_methods = {
-		embassy_requirements = {
+		embassy_temp_requirements = {
 			paper = 1
 			jewelry = 0.5
 			category = building_maintenance
@@ -326,7 +326,7 @@ slave_center_temp = {
 	}
 	build_time = trade_company_build_time
 	unique_production_methods = {
-		slave_center_maintenance = {
+		slave_center_temp_maintenance = {
 			stone = 0.3
 			tools = 0.3
 			firearms = 0.33
