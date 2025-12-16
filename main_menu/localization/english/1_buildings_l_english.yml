@@ -46,6 +46,3 @@
  missionary_building_temp_desc: "The $missionary_building$ is the local center for religious ambassadors and missionaries who aim to convert the local natives to the one true faith."
  slave_center_temp: "Construct Slave Center"
  slave_center_temp_desc: "The business with slaves is handled in the $slave_center$. Wealthy entrepreneurs come here to acquire slave labor while raiders and pirates sell their captives."
-
- tc_category: "Trade Company Buildings"
- tc_category_desc: "Buildings that affect your Trade trade_company subjects."
