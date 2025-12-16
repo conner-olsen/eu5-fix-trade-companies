@@ -1,4 +1,4 @@
-hide_building = {
+ftc_hide_building = {
 	add_to_global_variable_list = {
 	     name = ftc_hidden_buildings
 	     target = $target$
