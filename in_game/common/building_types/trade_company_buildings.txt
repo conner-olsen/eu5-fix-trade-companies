@@ -20,7 +20,7 @@
 	}
 	location_potential = {
 		OR = {
-			ftc_is_recieving_rights = yes
+			ftc_is_receiving_rights = yes
 			owner = {
 				is_subject_of = scope:actor
 			}
