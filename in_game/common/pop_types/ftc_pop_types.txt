@@ -1,0 +1,69 @@
+﻿ftc_temp_nobles = {
+	color = pop_ftc_temp_nobles
+	
+	editor = 0.05
+	
+	assimilation_conversion_factor = 0.05
+
+	pop_food_consumption = 20.0
+
+	city_graphics = 1.0
+	
+	dhimmi_estate = { is_dhimmi = yes }
+	tribes_estate = { is_gaelic_clans = yes }
+	nobles_estate = {}
+	
+	
+	promotion_factor = 0.1
+	
+	upper = yes
+	has_cap = no
+	
+	literacy_impact = {
+		local_cultural_tradition = 0.2
+		local_monthly_control = 0.01
+	}
+}
+
+
+ftc_temp_clergy = {
+	color = pop_ftc_temp_clergy
+	editor = 0.05
+	assimilation_conversion_factor = 0.05
+	city_graphics = 1
+	promotion_factor = 0.1
+	pop_food_consumption = 5
+	dhimmi_estate = {
+		is_dhimmi = yes
+	}
+	clergy_estate = {
+	}
+	upper = yes
+	has_cap = no
+	literacy_impact = {
+		local_pop_conversion_speed_modifier = 0.25
+		local_pop_assimilation_speed_modifier = 0.25
+	}
+}
+
+ftc_temp_burghers = {
+	color = pop_ftc_temp_burghers
+	editor = 0.1
+	assimilation_conversion_factor = 0.1
+	pop_food_consumption = 4
+	city_graphics = 1
+	dhimmi_estate = {
+		is_dhimmi = yes
+	}
+	burghers_estate = {
+	}
+	promotion_factor = 0.5
+	migration_factor = 0.5
+	upper = yes
+	has_cap = no
+	counts_towards_market_language = yes
+	literacy_impact = {
+		local_monthly_development_modifier = 0.25
+		local_trades_per_burgher = 0.5
+	}
+}

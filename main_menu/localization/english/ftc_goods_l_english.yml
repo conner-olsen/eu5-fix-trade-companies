@@ -1,0 +1,9 @@
+﻿l_english:
+ ftc_temp_nobles_demand: "Needs of the [ShowPopTypeName('nobles')]"
+ ftc_temp_clergy_demand: "Needs of the [ShowPopTypeName('clergy')]"
+ ftc_temp_burghers_demand: "Needs of the [ShowPopTypeName('burghers')]"
+
+ slave_center_temp_maintenance: "Slave Centers"
+ trade_office_temp_requirements: "Trade Office Requirements"
+ embassy_temp_requirements: "Embassy Requirements"
+ trade_company_headquarters_temp_requirements: "$trade_company_headquarters$ Requirements"

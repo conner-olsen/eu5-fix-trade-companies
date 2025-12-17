@@ -1,0 +1,65 @@
+﻿# Can build/upgrade given TC building type in this location
+# ROOT: location
+# ARGS: building_type
+ftc_company_building_location_potential = {
+	ftc_is_in_trade_company_region = yes
+	OR = {
+		# No building is present
+		NOT = {
+			has_building = building_type:$building_type$
+		}
+		# Building is not max level and the queue isn't full
+		AND = {
+			any_buildings_in_location = {
+				building_type = building_type:$building_type$
+				owner = {
+					is_subject = yes
+				}
+				is_max_level = no
+			}
+			# If the queue isn't set, always allow the building to be built
+			# Otherwise, check if the building is at or above the max queue
+			# This is to stop having errors be thrown when the variable is not set
+			OR = {
+				root = {
+					NOT = { has_variable = $building_type$_max_queue }
+				}
+				any_buildings_in_location = {
+					building_type = building_type:$building_type$
+					owner = {
+						is_subject_of = scope:actor
+					}
+					building_max_level > root.var:$building_type$_max_queue
+				}
+			}
+		}
+	}
+}
+
+# Check if the region has a trade company established already.
+# ROOT: location
+ftc_is_in_trade_company_region = {
+	scope:actor = {
+		has_variable_list = trade_company_regions
+		is_target_in_variable_list = {
+			name = trade_company_regions
+			target = root.region
+		}
+	}
+}
+
+# Meant to be false for the player. 
+# Enabled for trade companies so that the AI can build still the 
+# permanent buildings since they don't have the same pop issue.
+# ROOT: country
+ftc_hide_permanent_buildings_country_potential = {
+	is_subject_type = trade_company
+}
+
+# Check if the country has the trade companies advance.
+# This is a workaround to the game requiring the target nation to have the advance.
+# So I removed the building unlock from the advance, and instead use country potential.
+# ROOT: country
+ftc_company_building_country_potential = {
+	has_advance = trade_companies_advance
+}

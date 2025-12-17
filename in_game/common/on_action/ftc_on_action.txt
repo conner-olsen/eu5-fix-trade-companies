@@ -1,0 +1,70 @@
+﻿monthly_country_pulse = {
+    on_actions = {
+        ftc_trade_company_advance_sweeper
+        ftc_hide_buildings
+    }
+}
+
+ftc_trade_company_advance_sweeper = {
+	trigger = {
+		NOT = {
+			has_global_variable = ftc_trade_company_sweep_done
+		}
+	}
+	effect = {
+		set_global_variable = ftc_trade_company_sweep_done
+		every_country = {
+			limit = {
+				is_subject_type = trade_company
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_advance = trade_companies_advance
+					}
+				}
+				research_advance = advance_type:trade_companies_advance
+			}
+		}
+	}
+}
+
+ftc_hide_buildings = {
+	trigger = {
+		NOT = {
+			has_global_variable_list = ftc_hidden_buildings
+		}
+	}
+	effect = {
+		ftc_hide_building = {
+			target = building_type:trade_office
+		}
+		ftc_hide_building = {
+			target = building_type:embassy
+		}
+		ftc_hide_building = {
+			target = building_type:slave_center
+		}
+		ftc_hide_building = {
+			target = building_type:overseas_trading_post
+		}
+		ftc_hide_building = {
+			target = building_type:trade_company_headquarters
+		}
+		ftc_hide_building = {
+			target = building_type:trade_company_garrison
+		}
+		ftc_hide_building = {
+			target = building_type:trade_company_harbor
+		}
+		ftc_hide_building = {
+			target = building_type:trade_company_local_venture
+		}
+		ftc_hide_building = {
+			target = building_type:trade_company_foreign_influence
+		}
+		ftc_hide_building = {
+			target = building_type:trade_company_governance
+		}
+	}
+}
