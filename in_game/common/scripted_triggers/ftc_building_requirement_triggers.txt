@@ -22,7 +22,20 @@ ftc_company_building_location_potential = {
 				owner = {
 					is_subject_of = scope:actor
 				}
-				building_max_level > root.var:$building_type$_max_queue
+				# If the variable is set, check if the building is at or above the max queue
+				# Otherwise, always allow the building to be built
+				# This is to stop having errors be thrown when the variable is not set
+				if = {
+					limit = {
+						root = {
+							has_variable = $building_type$_max_queue
+						}
+					}
+					building_max_level > root.var:$building_type$_max_queue
+				}
+				else = {
+					always = yes
+				}
 			}
 		}
 	}
