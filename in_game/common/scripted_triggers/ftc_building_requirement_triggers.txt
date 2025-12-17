@@ -34,38 +34,6 @@ ftc_company_building_location_potential = {
 			}
 		}
 	}
-
-	OR = {
-		# Either it's your subject,
-		owner = {
-			is_subject_of = scope:actor
-		}
-		# or you are receiving trade company rights
-		# I have no idea why we need to surround this with a NOT,
-		# but without it, the game checks if we DON'T have trade rights, so I added it
-		NOT = {
-			ftc_is_receiving_rights
-		}
-	}
-}
-
-# Check if the owner of the location, or their overlord, is granting the actor tc rights
-# ROOT: location
-ftc_is_receiving_rights = {
-	OR = {
-		owner = {
-			giving_scripted_relation = {
-				type = relation_type:trade_company_rights
-				target = scope:actor
-			}
-		}
-		owner.top_overlord ?= {
-			giving_scripted_relation = {
-				type = relation_type:trade_company_rights
-				target = scope:actor
-			}
-		}
-	}
 }
 
 # Check if the region has a trade company established already.
