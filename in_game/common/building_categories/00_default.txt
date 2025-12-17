@@ -1,0 +1,55 @@
+# I have no idea why I need to overwrite the whole default file, but if I just
+# place the new category in a different file it won't ever expand. 
+rgo_building_category = {
+}
+
+basic_industry_category = {
+}
+
+weapons_industry_category = {
+}
+
+
+consumer_goods_category = {
+}
+
+
+government_category = {
+}
+
+
+infrastructure_category = {
+}
+
+religious_category = {
+}
+
+cultural_category = {
+}
+
+trade_category = {
+}
+
+tc_category = {
+}
+
+naval_category = {
+}
+
+military_category = {
+}
+
+
+defense_category = {
+}
+
+
+village_category = {
+}
+
+
+colonial_category = {
+}
+
+estate_category = {
+}
