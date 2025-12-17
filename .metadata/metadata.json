@@ -1,7 +1,7 @@
 ﻿{
   "name" : "Fix Trade Companies Dev",
   "id" : "fix.trade.companies.dev",
-  "version" : "0.2.0",
+  "version" : "1.0.0",
   "game_id" : "eu5",
   "picture" : null,
   "supported_game_version" : "1.0.*",
