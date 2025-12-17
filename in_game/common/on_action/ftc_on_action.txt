@@ -46,9 +46,6 @@ ftc_hide_buildings = {
 			target = building_type:slave_center
 		}
 		ftc_hide_building = {
-			target = building_type:missionary_building
-		}
-		ftc_hide_building = {
 			target = building_type:overseas_trading_post
 		}
 		ftc_hide_building = {
