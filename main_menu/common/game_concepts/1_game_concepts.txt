@@ -1,3 +1,0 @@
-﻿trade_company_rights = {
-	texture = "gfx/interface/icons/subject_types/trade_company.dds"
-}

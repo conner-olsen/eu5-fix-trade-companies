@@ -19,14 +19,6 @@
 		}
 		num_relations_above_limit <= 0
 	}
-	location_potential = {
-		OR = {
-			ftc_is_receiving_rights = yes
-			owner = {
-				is_subject_of = scope:actor
-			}
-		}
-	}
 	allow = {
 		market = {
 			in_trade_range_of = scope:actor
