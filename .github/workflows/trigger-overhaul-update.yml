@@ -1,0 +1,19 @@
+﻿name: Notify Overhaul Mod
+
+# Trigger immediately when code is pushed to the 'dev' branch
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  ping-overhaul:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Overhaul Sync
+        # This sends pings the overhaul repo to update.
+        run: |
+          curl -X POST https://api.github.com/repos/conner-olsen/eu5-trade-company-overhaul/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.ACCESS_TOKEN }} \
+          --data '{"event_type": "sync_trigger"}'
