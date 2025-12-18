@@ -81,9 +81,8 @@ Subscribe on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedet
 
 ### Manual Installation
 1. Clone or download this repository
-2. Copy the `in_game` folder contents to your EU5 mod directory
-3. Copy the `main_menu` folder contents to your EU5 mod directory
-4. Enable the mod in the launcher
+2. it to\Documents\Paradox Interactive\Europa Universalis V\mod
+3. Enable as normal in game.
 
 ## Project Structure
 
