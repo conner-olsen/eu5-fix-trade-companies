@@ -24,30 +24,99 @@ EU5 trade companies were clearly not finished for release. Numerous issues make 
 
 7. **Fixes issues with multiple trade companies per region** - Only one trade company headquarters per overlord per region is now allowed. Previously, buildings would arbitrarily transfer to only one of multiple companies in the same region.
 
-## Technical Details
+## Fixes Explanation
 
-### How the Pop Issue Workaround Works
+Explanations of each fix in detail for those interested in the technical implementation or wanting to contribute.
 
-The `is_foreign = yes` flag on buildings causes the game to reject construction if pops already exist at that location. Since we can't modify this behavior directly, the mod:
+### 1. Trade Companies Start with the Trade Company Advance
 
-1. Creates "temp" versions of each trade company building (e.g., `trade_company_garrison_temp`)
-2. These temp buildings use a temporary pop type (`ftc_temp_burghers`) with identical localization
-3. When a temp building completes construction, it:
-   - Instantly constructs the real building at zero cost
+Trade companies need the `trade_companies_advance` to build anything, but Paradox never gave it to them.
+
+**Solution:** The advance is unlocked when a Trade Company Headquarters is built:
+
+```
+research_advance = advance_type:trade_companies_advance
+```
+
+Additionally, a sweeper runs on game start (`ftc_trade_company_advance_sweeper`) to grant the advance to any existing trade companies for save game compatibility.
+
+**Note:** Ideally, trade companies would inherit their overlord's technology, but this hasn't been figured out yet. Contributions welcome.
+
+### 2. Allow Overlord to Build Trade Company Buildings
+
+There was a limit to the number of Trade Company buildings that could be constructed via `number_of_satellite_trade_buildings`. The check allowed building if either the overlord's or the Trade Company's limit was sufficient. However, the only source of this modifier was the Trade Company Headquarters, which only applied to the Trade Company itself - the overlord never had any source of it.
+
+Since Paradox explicitly checked against the overlord's limit, it seems they intended for overlords to have some source of this modifier. This was confirmed when they [accepted a bug report](https://forum.paradoxplaza.com/forum/threads/trade-company-buildings-cant-be-built.1869285/#post-30909723) on the issue.
+
+**Why remove the limit entirely?**
+- The limit never actually functioned. Despite theoretically limiting trade companies to 2 of each building type, you could build unlimited numbers as a Trade Company.
+- The limit doesn't make much sense - company buildings are already weak, and you're naturally limited by Trade Company regions.
+- The modifier is global, so you could bypass it by creating multiple trade companies per region anyway.
+
+### 3. Attempted to Make the Trade Company AI Build More
+
+The Trade Company AI is reluctant to build company buildings. To improve this, the following flags were added to each building:
+
+```
+AI_ignore_available_worker_flag = yes
+important_for_AI = yes
+```
+
+This makes the AI ignore the Burghers requirement (since there likely won't be many where Trade Companies start) and prioritize these buildings more.
+
+**Current Status:** Even with these changes, the AI still doesn't expand much, likely because base game Trade Company buildings are poor investments. Further improvements are being investigated.
+
+### 4. Removing the Market Access Requirement
+
+In the original files, all buildings used:
+
+```
+own_or_overlord_relation_needed = trade_access
+```
+
+Where `trade_access` is market access preference. However, the `own_or_overlord_relation_needed` check doesn't actually count for the overlord, and the AI never requests market access preference on its own - meaning Trade Companies could never build any buildings with this requirement.
+
+**Why removal is acceptable:**
+- The base acceptance chance for market access preference is already positive with no negative modifiers, so if the AI actually requested it, they'd get access to everyone with a market anyway.
+- The only practical effect would have been preventing buildings in companies that don't own a market (within the same Trade Company Region), which isn't a major concern.
+
+**Note:** The requirement still applies to constructing the headquarters. If a way is found to fix the `own_or_overlord_relation_needed` check, or if Paradox patches it, the requirement will be restored.
+
+Attempts were made to add `+1000 wants_to_receive` reasons for Trade Companies, but they still don't request market access for unknown reasons.
+
+### 5. Allows Renaming Trade Companies
+
+Trade Companies can now be renamed through the standard country renaming interface.
+
+### 6. The Pop Issue Workaround
+
+**The Problem:** The error "We can not build a [Company Building] in [Location] as there are already [Country Pops] there." prevents overlords from building more than one Trade Company building per location once pops exist there. This only affects the overlord, not the Trade Company itself.
+
+The requirement doesn't appear in the files except for its localization. After extensive testing, it stems from `is_foreign = yes`. Removing this flag allows building within existing borders but prevents expansion entirely, and would prevent overlords from building at all.
+
+**The Workaround (credit to @Pickle):**
+
+1. Created duplicate "temp" versions of each affected building (e.g., `trade_company_garrison_temp`)
+2. These temp buildings use a temporary pop type (`ftc_temp_burghers`) with identical localization to the original
+3. When the temp building completes construction:
+   - It instantly constructs the real building at zero cost
    - Destroys itself and any temporary pops
-4. The real buildings are hidden from the overlord's construction menu via `ftc_hide_permanent_buildings_country_potential`
-5. The production view is modified to support hiding specific buildings (also contributed to the [Community Mod Framework](https://github.com/Europa-Universalis-5-Modding-Co-op/community-mod-framework))
+   - No temp pop types ever persist in the game
 
-### How the Advance Fix Works
+**Hiding the Duplicates:**
 
-Trade companies need the `trade_companies_advance` to build anything. The mod:
+- The real buildings have `country_potential` set to always fail for overlords via `ftc_hide_permanent_buildings_country_potential`
+- For buildings you already own (where the above doesn't work), @Pickle modified the production view to support hiding specific buildings
+- This modification was also committed to the [Community Mod Framework](https://github.com/Europa-Universalis-5-Modding-Co-op/community-mod-framework)
 
-1. Unlocks the advance when a Trade Company Headquarters is built via `research_advance = advance_type:trade_companies_advance`
-2. Runs a sweeper on game start to grant the advance to any existing trade companies
+**Limitation:** If another mod overwrites the production view, duplicates will appear. Use the "Build [Building Name]" variant in this case.
 
-### Region Restriction
+### 7. Fix Issues with Multiple Trade Companies Per Region
 
-To prevent the building transfer bug, the headquarters now checks:
+**The Problem:** If you have multiple trade companies in the same Trade Company region, constructed buildings arbitrarily transfer to only one of them with no way to choose which.
+
+**Solution:** Restricted to one trade company headquarters per region per overlord. The headquarters now checks:
+
 - Whether the overlord already has a trade company in the target region via `trade_company_regions` variable list
 - Blocks construction if one already exists in that region
 
@@ -81,8 +150,8 @@ Subscribe on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedet
 
 ### Manual Installation
 1. Clone or download this repository
-2. it to\Documents\Paradox Interactive\Europa Universalis V\mod
-3. Enable as normal in game.
+2. Copy it to `Documents\Paradox Interactive\Europa Universalis V\mod`
+3. Enable as normal in game
 
 ## Project Structure
 
