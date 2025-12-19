@@ -1,6 +1,5 @@
 # Auto detect text files and perform LF normalization
-* text=auto
-* text eol=crlf
+* text=auto eol=crlf
 
 prepare-release.sh text eol=lf
 assets/** -text
