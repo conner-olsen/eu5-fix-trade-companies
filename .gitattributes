@@ -2,5 +2,3 @@
 * text=auto eol=crlf
 
 prepare-release.sh text eol=lf
-assets/** -text
-main_menu/gfx/** -text
