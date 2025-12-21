@@ -1,0 +1,28 @@
+﻿l_english:
+ FTC_BUILDING_TYPE_MATCHES_TRIGGER: "Is the building you are trying to build"
+ NOT_FTC_BUILDING_TYPE_MATCHES_TRIGGER: "Is not the building you are trying to build."
+ FIRST_FTC_BUILDING_TYPE_MATCHES_TRIGGER: "We have the building you are trying to build."
+ NOT_FIRST_FTC_BUILDING_TYPE_MATCHES_TRIGGER: "We do not have the building you are trying to build."
+ THIRD_FTC_BUILDING_TYPE_MATCHES_TRIGGER: "We have the building you are trying to build."
+ NOT_THIRD_FTC_BUILDING_TYPE_MATCHES_TRIGGER: "We do not have the building you are trying to build."
+
+ FTC_BUILDING_IS_MAX_LEVEL_TRIGGER: "Building is at max level."
+ NOT_FTC_BUILDING_IS_MAX_LEVEL_TRIGGER: "Building is not at max level."
+ FIRST_FTC_BUILDING_IS_MAX_LEVEL_TRIGGER: "We have a building that is at max level."
+ NOT_FIRST_FTC_BUILDING_IS_MAX_LEVEL_TRIGGER: "We do not have a building that is at max level."
+ THIRD_FTC_BUILDING_IS_MAX_LEVEL_TRIGGER: "We have a building that is at max level."
+ NOT_THIRD_FTC_BUILDING_IS_MAX_LEVEL_TRIGGER: "We do not have a building that is at max level."
+
+ FTC_BUILDING_QUEUE_IS_SET_TRIGGER: "There are some of the building under construction."
+ NOT_FTC_BUILDING_QUEUE_IS_SET_TRIGGER: "There are none of the building under construction."
+ FIRST_FTC_BUILDING_QUEUE_IS_SET_TRIGGER: "There are some of the building under construction."
+ NOT_FIRST_FTC_BUILDING_QUEUE_IS_SET_TRIGGER: "There are none of the building under construction."
+ THIRD_FTC_BUILDING_QUEUE_IS_SET_TRIGGER: "There are some of the building under construction."
+ NOT_THIRD_FTC_BUILDING_QUEUE_IS_SET_TRIGGER: "There are none of the building under construction."
+
+ FTC_BUILDING_MAX_LEVEL_GREATER_THAN_QUEUE_TRIGGER: "The building's max level is greater than the current levels plus those under construction."
+ NOT_FTC_BUILDING_MAX_LEVEL_GREATER_THAN_QUEUE_TRIGGER: "The building's max level is less than the current levels plus those under construction."
+ FIRST_FTC_BUILDING_MAX_LEVEL_GREATER_THAN_QUEUE_TRIGGER: "The building's max level is greater than the current levels plus those under construction."
+ NOT_FIRST_FTC_BUILDING_MAX_LEVEL_GREATER_THAN_QUEUE_TRIGGER: "The building's max level is less than the current levels plus those under construction."
+ THIRD_FTC_BUILDING_MAX_LEVEL_GREATER_THAN_QUEUE_TRIGGER: "The building's max level is greater than the current levels plus those under construction."
+ NOT_THIRD_FTC_BUILDING_MAX_LEVEL_GREATER_THAN_QUEUE_TRIGGER: "The building's max level is less than the current levels plus those under construction."

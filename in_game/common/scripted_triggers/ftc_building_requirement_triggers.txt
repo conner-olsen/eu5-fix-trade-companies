@@ -27,7 +27,11 @@ ftc_can_building_be_built_or_upgraded_in_location = {
     NOT = {
         # No building owned by the actor is present
         any_buildings_in_location = {
-            building_type = building_type:$building_type$
+            custom_description = {
+                text = ftc_building_type_matches_trigger_text
+                building_type = building_type:$building_type$
+            }
+            
             OR = {
                 owner = scope:actor
                 owner = {
@@ -38,17 +42,40 @@ ftc_can_building_be_built_or_upgraded_in_location = {
 
             # Building is not max level and the queue isn't full
             OR = {
-                is_max_level = yes
+                custom_description = {
+                    text = ftc_building_is_max_level_trigger_text
+                    is_max_level = yes
+                }
 
-                AND = {
-                    # If the queue isn't set, always allow the building to be built
-                    # This is to stop having errors be thrown when the variable is not set
-                    root = { has_variable = $building_type$_max_queue }
-
-                    # Otherwise, check if the building is at or above the max queue
-                    NOT = {
-                        building_max_level > root.var:$building_type$_max_queue
+                # Replaced 'AND' with 'TRIGGER_IF' to fix error log spam when reading the tooltip.
+                trigger_if = {
+                    limit = {
+                        # If the queue isn't set, it stops here and goes to 'trigger_else'
+                        # This prevents the game from evaluating the next part in the tooltip.
+                        custom_description = {
+                            text = ftc_building_queue_is_set_trigger_text
+                            root = { has_variable = $building_type$_max_queue }
+                        }
                     }
+                    
+                    # This is only evaluated if the limit above is true.
+					# Check if the building is at or above the max queue.
+                    NOT = {
+                        custom_description = {
+                            text = ftc_building_max_level_greater_than_queue_trigger_text
+                            building_max_level > root.var:$building_type$_max_queue
+                        }
+                    }
+                }
+                
+                trigger_else = {
+                    # If variable is not set, this blocker does not apply.
+                    # Returns false so the build action is NOT blocked by this check.
+					# (as this is all wrapped in a NOT trigger)
+					custom_description = {
+						text = ftc_building_max_level_greater_than_queue_trigger_text
+						always = no
+					}
                 }
             }
         }
