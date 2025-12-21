@@ -24,40 +24,35 @@ ftc_is_in_trade_company_region = {
 # ROOT: location
 # ARGS: building_type
 ftc_can_building_be_built_or_upgraded_in_location = {
-	OR = {
-		# No building is present
-		NOT = {
-			has_building = building_type:$building_type$
-		}
-		# Building is not max level and the queue isn't full
-		AND = {
-			any_buildings_in_location = {
-				building_type = building_type:$building_type$
-				OR = {
-					owner = {
-						is_subject = yes
-					}
-					owner = scope:actor
-				}
-				is_max_level = no
-			}
-			# If the queue isn't set, always allow the building to be built
-			# Otherwise, check if the building is at or above the max queue
-			# This is to stop having errors be thrown when the variable is not set
-			OR = {
-				root = {
-					NOT = { has_variable = $building_type$_max_queue }
-				}
-				any_buildings_in_location = {
-					building_type = building_type:$building_type$
-					owner = {
-						is_subject_of = scope:actor
-					}
-					building_max_level > root.var:$building_type$_max_queue
-				}
-			}
-		}
-	}
+    NOT = {
+        # No building owned by the actor is present
+        any_buildings_in_location = {
+            building_type = building_type:$building_type$
+            OR = {
+                owner = scope:actor
+                owner = {
+                    is_subject_of = scope:actor
+                    is_subject_type = trade_company
+                }
+            }
+
+            # Building is not max level and the queue isn't full
+            OR = {
+                is_max_level = yes
+
+                AND = {
+                    # If the queue isn't set, always allow the building to be built
+                    # This is to stop having errors be thrown when the variable is not set
+                    root = { has_variable = $building_type$_max_queue }
+
+                    # Otherwise, check if the building is at or above the max queue
+                    NOT = {
+                        building_max_level > root.var:$building_type$_max_queue
+                    }
+                }
+            }
+        }
+    }
 }
 
 # Meant to be false for the player. 
