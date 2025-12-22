@@ -63,6 +63,9 @@ trade_office = {
 			in_trade_range_of = scope:actor
 		}
 	}
+	location_potential = {
+		ftc_disable_permanent_buildings_location_potential = yes
+	}
 	build_time = trade_post_build_time
 	unique_production_methods = {
 		trade_office_requirements = {

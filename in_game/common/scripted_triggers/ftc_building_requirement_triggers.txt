@@ -24,48 +24,85 @@ ftc_is_in_trade_company_region = {
 # ROOT: location
 # ARGS: building_type
 ftc_can_building_be_built_or_upgraded_in_location = {
-	OR = {
-		# No building is present
-		NOT = {
-			has_building = building_type:$building_type$
-		}
-		# Building is not max level and the queue isn't full
-		AND = {
-			any_buildings_in_location = {
-				building_type = building_type:$building_type$
-				OR = {
-					owner = {
-						is_subject = yes
+    NOT = {
+        # No building owned by the actor is present
+        any_buildings_in_location = {
+            custom_description = {
+                text = ftc_building_type_matches_trigger_text
+                building_type = building_type:$building_type$
+            }
+            
+            OR = {
+                owner = scope:actor
+                owner = {
+                    is_subject_of = scope:actor
+                    is_subject_type = trade_company
+                }
+            }
+
+            # Building is not max level and the queue isn't full
+            OR = {
+                custom_description = {
+                    text = ftc_building_is_max_level_trigger_text
+                    is_max_level = yes
+                }
+
+                # Replaced 'AND' with 'TRIGGER_IF' to fix error log spam when reading the tooltip.
+                trigger_if = {
+                    limit = {
+                        # If the queue isn't set, it stops here and goes to 'trigger_else'
+                        # This prevents the game from evaluating the next part in the tooltip.
+                        custom_description = {
+                            text = ftc_building_queue_is_set_trigger_text
+                            root = { has_variable = $building_type$_max_queue }
+                        }
+                    }
+                    
+                    # This is only evaluated if the limit above is true.
+					# Check if the building is at or above the max queue.
+                    NOT = {
+                        custom_description = {
+                            text = ftc_building_max_level_greater_than_queue_trigger_text
+                            building_max_level > root.var:$building_type$_max_queue
+                        }
+                    }
+                }
+                
+                trigger_else = {
+                    # If variable is not set, this blocker does not apply.
+                    # Returns false so the build action is NOT blocked by this check.
+					# (as this is all wrapped in a NOT trigger)
+					custom_description = {
+						text = ftc_building_max_level_greater_than_queue_trigger_text
+						always = no
 					}
-					owner = scope:actor
-				}
-				is_max_level = no
-			}
-			# If the queue isn't set, always allow the building to be built
-			# Otherwise, check if the building is at or above the max queue
-			# This is to stop having errors be thrown when the variable is not set
-			OR = {
-				root = {
-					NOT = { has_variable = $building_type$_max_queue }
-				}
-				any_buildings_in_location = {
-					building_type = building_type:$building_type$
-					owner = {
-						is_subject_of = scope:actor
-					}
-					building_max_level > root.var:$building_type$_max_queue
-				}
-			}
-		}
+                }
+            }
+        }
+    }
+}
+
+# Hide the permanent buildings from the player. 
+# Allow the AI to build permanent buildings directly
+# Maybe the AI will know to build the temp buildings too.
+# But this is just in case they won't.
+# ROOT: country
+ftc_hide_permanent_buildings_country_potential = {
+	custom_description = {
+		text = ftc_hide_buildings_for_player_trigger_text
+		is_human = no
 	}
 }
 
-# Meant to be false for the player. 
-# Enabled for trade companies so that the AI can build still the 
-# permanent buildings since they don't have the same pop issue.
-# ROOT: country
-ftc_hide_permanent_buildings_country_potential = {
-	is_subject_type = trade_company
+# This is to allow the player to see the built permanent buildings in the production view.
+# Country potential will hide even the buildings you already own.
+# Currently I just have this for the trade office, as there has been some confusion about it.
+# ROOT: location
+ftc_disable_permanent_buildings_location_potential = {
+	custom_description = {
+		text = ftc_hide_buildings_for_player_trigger_text
+		is_human = no
+	}
 }
 
 # Check if the country has the trade companies advance.
