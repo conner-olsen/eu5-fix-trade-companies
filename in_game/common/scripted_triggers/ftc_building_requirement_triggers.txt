@@ -101,7 +101,9 @@ ftc_hide_permanent_buildings_country_potential = {
 ftc_disable_permanent_buildings_location_potential = {
 	custom_description = {
 		text = ftc_hide_buildings_for_player_trigger_text
-		is_human = no
+        scope:actor = {
+            is_human = no
+        }
 	}
 }
 
