@@ -1,4 +1,4 @@
-# I have no idea why I need to overwrite the whole default file, but if I just
+﻿# I have no idea why I need to overwrite the whole default file, but if I just
 # place the new category in a different file it won't ever expand. 
 rgo_building_category = {
 }
