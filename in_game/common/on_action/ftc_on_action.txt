@@ -32,11 +32,14 @@ ftc_trade_company_advance_sweeper = {
 ftc_hide_buildings = {
 	trigger = {
 		NOT = {
-			has_global_variable_list = ftc_hidden_buildings
+			has_global_variable = ftc_building_visibility_set
 		}
 	}
 	effect = {
-		ftc_hide_building = {
+		# ftc_hide_building = {
+		# 	target = building_type:trade_office
+		# }
+		ftc_show_building = {
 			target = building_type:trade_office
 		}
 		ftc_hide_building = {
@@ -66,5 +69,6 @@ ftc_hide_buildings = {
 		ftc_hide_building = {
 			target = building_type:trade_company_governance
 		}
+		set_global_variable = ftc_building_visibility_set
 	}
 }

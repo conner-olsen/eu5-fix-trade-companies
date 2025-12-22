@@ -26,3 +26,10 @@
  NOT_FIRST_FTC_BUILDING_MAX_LEVEL_GREATER_THAN_QUEUE_TRIGGER: "The building's max level is less than the current levels plus those under construction."
  THIRD_FTC_BUILDING_MAX_LEVEL_GREATER_THAN_QUEUE_TRIGGER: "The building's max level is greater than the current levels plus those under construction."
  NOT_THIRD_FTC_BUILDING_MAX_LEVEL_GREATER_THAN_QUEUE_TRIGGER: "The building's max level is less than the current levels plus those under construction."
+
+ FTC_HIDE_PERMANENT_BUILDINGS_COUNTRY_POTENTIAL_TRIGGER: "Use the 'Build (Building Name)' variant instead!"
+ NOT_FTC_HIDE_PERMANENT_BUILDINGS_COUNTRY_POTENTIAL_TRIGGER: "Use the 'Build (Building Name)' variant instead!"
+ FIRST_FTC_HIDE_PERMANENT_BUILDINGS_COUNTRY_POTENTIAL_TRIGGER: "Use the 'Build (Building Name)' variant instead!"
+ NOT_FIRST_FTC_HIDE_PERMANENT_BUILDINGS_COUNTRY_POTENTIAL_TRIGGER: "Use the 'Build (Building Name)' variant instead!"
+ THIRD_FTC_HIDE_PERMANENT_BUILDINGS_COUNTRY_POTENTIAL_TRIGGER: "Use the 'Build (Building Name)' variant instead!"
+ NOT_THIRD_FTC_HIDE_PERMANENT_BUILDINGS_COUNTRY_POTENTIAL_TRIGGER: "Use the 'Build (Building Name)' variant instead!"

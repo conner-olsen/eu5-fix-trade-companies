@@ -4,3 +4,10 @@
 	     target = $target$
 	}
 }
+
+ftc_show_building = {
+	remove_list_global_variable = {
+		name = ftc_hidden_buildings
+		target = $target$
+	}
+}
