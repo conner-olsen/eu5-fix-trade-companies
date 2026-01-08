@@ -5,7 +5,7 @@
   "game_id" : "eu5",
   "picture" : null,
   "supported_game_version" : "1.0.*",
-  "short_description" : "Fix Trade Companies Development Build.",
+  "short_description" : "Fixes Trade Companies.",
   "tags" : [ "Trade and Economics", "Gameplay", "Fixes" ],
   "relationships" : [ ],
   "game_custom_data" : { }
