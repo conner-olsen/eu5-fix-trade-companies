@@ -13,9 +13,11 @@ trade_office_temp = {
 	city = yes
 	allow = {
 		is_port = yes
-		market = {
-			in_trade_range_of = scope:actor
-		}
+        # TODO: The below spams the error log, not sure if it does this in vanilla too since its the same
+        # I'll figure it out later but for now commented out so I can debug other things easier
+        # market = {
+        # 	in_trade_range_of = scope:actor
+        # }
 	}
 	location_potential = {
 		ftc_can_building_be_built_or_upgraded_in_location = {
@@ -59,9 +61,9 @@ trade_office = {
 	city = yes
 	allow = {
 		is_port = yes
-		market = {
-			in_trade_range_of = scope:actor
-		}
+		# market = {
+		# 	in_trade_range_of = scope:actor
+		# }
 	}
 	location_potential = {
 		ftc_disable_permanent_buildings_location_potential = yes
