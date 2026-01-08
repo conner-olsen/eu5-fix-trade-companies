@@ -80,7 +80,7 @@ trade_office = {
 		building_owner_maritime_presence = 0.05
 		merchant_power_from_building = 0.2
 	}
-	on_built = {
+    on_construction_ended = {
 		ftc_perm_on_built = {
 			building_type = trade_office
 		}
