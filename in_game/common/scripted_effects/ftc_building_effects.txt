@@ -187,7 +187,7 @@ ftc_on_construction_ended_on_action_effect = {
 	ftc_set_target_level = {
 		building_type = $building_type$
 	}
-	# if we have reached the target level of buildings the construcion was completed
+	# if we have reached the target level of buildings the construction was completed
 	if = {
 		limit = {
 			root.building_level = location.var:$building_type$_target_level
