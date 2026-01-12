@@ -1,6 +1,0 @@
-colors = {
-	# pop colors
-	pop_ftc_temp_nobles = hsv360 { 224 59 81 }
-	pop_ftc_temp_clergy = hsv360 { 217 13 91 }
-	pop_ftc_temp_burghers = hsv360 { 40 87 80 }
-}

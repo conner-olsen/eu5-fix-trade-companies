@@ -1,2 +1,0 @@
-﻿l_english:
- CONSTRUCT_BUILDING_NO_RELATION_TYPE: "@trigger_no! We can only build a [BUILDING_TYPE.GetName] in a foreign [locations|e] where the country gives us the [RELATION_TYPE.GetName] [relation_type|e]."

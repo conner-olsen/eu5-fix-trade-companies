@@ -1,7 +1,8 @@
-﻿trade_company_headquarters_temp = {
+﻿trade_company_headquarters = {
 	is_foreign = yes
-	max_levels = trade_company_building_max_level
-	pop_type = ftc_temp_burghers
+	max_levels = trade_company_headquarters_max_level
+	pop_type = burghers
+	# CHANGE: Use tc_category
 	category = tc_category
 	employment_size = huge_foreign_trade_employment
 	rural_settlement = yes
@@ -9,25 +10,24 @@
 	city = yes
 	expensive = yes
 	country_potential = {
+		# CHANGE: Add company building potential checks
 		ftc_company_building_country_potential = yes
+		# NOTE: I believe this is meant to prevent trade companies from making more trade companies
 		total_effective_building_levels:trade_company_headquarters < 1
+
 		custom_tooltip = {
 			text = building_trade_hq_only_one
-			NOT = {
-				has_variable = building_trade_hq
-			}
+			NOT = { has_variable = building_trade_hq }
 		}
+
 		num_relations_above_limit <= 0
 	}
+
 	allow = {
-		market = {
-			in_trade_range_of = scope:actor
-		}
+		market = { in_trade_range_of = scope:actor }
 		scope:actor = {
 			OR = {
-				NOT = {
-					has_variable_list = trade_company_regions
-				}
+				NOT = { has_variable_list = trade_company_regions }
 				NOT = {
 					is_target_in_variable_list = {
 						name = trade_company_regions
@@ -37,69 +37,6 @@
 			}
 		}
 	}
-	build_time = trade_company_build_time
-	unique_production_methods = {
-		trade_company_headquarters_temp_requirements = {
-			paper = 0.1
-			category = building_maintenance
-		}
-	}
-	modifier = {
-		merchant_capacity_from_building = 0.2
-		building_owner_maritime_presence = 0.02
-		scaled_gold_to_building_owner = 0.2
-		building_owner_overlord_maritime_presence = 0.05
-		scaled_gold_to_building_owner_overlord = 0.5
-		local_crown_estate_power = -0.2
-		number_of_satellite_trade_buildings = 3
-	}
-	raw_modifier = {
-		local_monthly_development = 0.01
-		local_monthly_prosperity = 0.001
-		local_build_buildings_cost = -0.1
-	}
-	custom_tags = {
-		trade_company_building
-	}
-	on_construction_started = {
-		owner = {
-			set_variable = {
-				name = building_trade_hq
-				value = 1
-			}
-		}
-	}
-	on_construction_ended = {
-		owner = {
-			remove_variable = building_trade_hq
-		}
-	}
-	on_built = {
-		owner = {
-			save_temporary_scope_as = builder
-		}
-		location = {
-			construct_building = {
-				building_type = building_type:trade_company_headquarters
-				cost_multiplier = 0
-				instant = yes
-				cost_multiplier_reason = "game_concept_foreign_building"
-				owner = scope:builder
-			}
-		}
-	}
-}
-
-trade_company_headquarters = {
-	is_foreign = yes
-	max_levels = trade_company_headquarters_max_level
-	pop_type = burghers
-	category = tc_category
-	employment_size = huge_foreign_trade_employment
-	rural_settlement = yes
-	town = yes
-	city = yes
-	expensive = yes
 	build_time = trade_company_headquarters_time
 	unique_production_methods = {
 		trade_company_headquarters_requirements = {
@@ -107,9 +44,6 @@ trade_company_headquarters = {
 			category = building_maintenance
 		}
 	}
-	country_potential = {
-		ftc_hide_permanent_buildings_country_potential = yes
-	}
 	modifier = {
 		merchant_capacity_from_building = 0.2
 		building_owner_maritime_presence = 0.02
@@ -117,6 +51,8 @@ trade_company_headquarters = {
 		building_owner_overlord_maritime_presence = 0.05
 		scaled_gold_to_building_owner_overlord = 0.5
 		local_crown_estate_power = -0.2
+	}
+	capital_country_modifier = {
 		number_of_satellite_trade_buildings = 3
 	}
 	raw_modifier = {
@@ -124,9 +60,8 @@ trade_company_headquarters = {
 		local_monthly_prosperity = 0.001
 		local_build_buildings_cost = -0.1
 	}
-	custom_tags = {
-		trade_company_building
-	}
+	custom_tags = { trade_company_building }
+
 	on_construction_started = {
 		owner = {
 			set_variable = {
@@ -135,29 +70,24 @@ trade_company_headquarters = {
 			}
 		}
 	}
+
 	on_construction_ended = {
 		owner = {
 			remove_variable = building_trade_hq
 		}
 	}
+
+
 	on_built = {
-		owner = {
-			save_scope_as = overlord
-		}
+		owner = { save_scope_as = overlord }
 		location = {
-			destroy_all_buildings_of_type = building_type:trade_company_headquarters_temp
-			every_pop = {
-				limit = {
-					pop_type = pop_type:ftc_temp_burghers
-				}
-				destroy_pop = this
-			}
 			save_scope_as = capital
 			create_building_country_in_location = {
 				reforms = {
 					banking_country
 				}
 				save_scope_as = trade_company_tag
+
 				hidden_effect = {
 					change_heir_selection = heir_selection:bank_selection
 					change_government_type = government_type:republic
@@ -168,24 +98,15 @@ trade_company_headquarters = {
 				}
 			}
 			if = {
-				limit = {
-					exists = scope:trade_company_tag
-				}
-				root = {
-					change_building_owner = scope:trade_company_tag
-				}
+				limit = { exists = scope:trade_company_tag }
+				root = { change_building_owner = scope:trade_company_tag }
 				scope:trade_company_tag = {
 					set_capital = scope:capital
-					set_variable = {
-						name = trade_company_home_region
-						value = scope:capital.region
-					}
+					set_variable = { name = trade_company_home_region value = scope:capital.region }
 					if = {
 						limit = {
 							OR = {
-								NOT = {
-									has_variable_list = trade_company_regions
-								}
+								NOT = { has_variable_list = trade_company_regions }
 								NOT = {
 									is_target_in_variable_list = {
 										name = trade_company_regions
@@ -198,8 +119,9 @@ trade_company_headquarters = {
 							name = trade_company_regions
 							target = scope:capital.region
 						}
+						# CHANGE: Make trade companies start with the trade company advance
+						research_advance = advance_type:trade_companies_advance
 					}
-					research_advance = advance_type:trade_companies_advance
 				}
 			}
 		}
@@ -212,9 +134,8 @@ trade_company_headquarters = {
 					exists = scope:capital
 					exists = scope:trade_company_tag
 					OR = {
-						NOT = {
-							has_variable_list = trade_company_regions
-						}
+						NOT = { has_variable_list = trade_company_regions }
+						# CHANGED: This was missing a not before, a clear mistake
 						NOT = {
 							is_target_in_variable_list = {
 								name = trade_company_regions
@@ -232,72 +153,19 @@ trade_company_headquarters = {
 					target = scope:trade_company_tag
 				}
 			}
-			ordered_owned_foreign_building = {
+			# CHANGED: Give regional foreign buildings to the trade company (since they will get them anyways later)
+			every_owned_foreign_building = {
 				limit = {
 					location = {
 						region = scope:capital.region
 					}
 				}
-				order_by = building_level
 				change_building_owner = scope:trade_company_tag
 			}
 		}
+		# CHANGE: Make the trade company follow your culture (not sure why they wouldn't)
 		scope:trade_company_tag = {
 			change_culture = scope:overlord_culture
-		}
-	}
-}
-
-trade_company_garrison_temp = {
-	is_foreign = yes
-	max_levels = trade_company_building_max_level
-	pop_type = ftc_temp_burghers
-	category = tc_category
-	AI_ignore_available_worker_flag = yes
-	important_for_AI = yes
-	employment_size = large_foreign_trade_employment
-	rural_settlement = yes
-	town = yes
-	city = yes
-	build_time = trade_company_build_time
-	possible_production_methods = {
-		satellite_trade_building_requirements
-	}
-	location_potential = {
-		ftc_company_building_location_potential = {
-			building_type = trade_company_garrison
-		}
-	}
-	country_potential = {
-		ftc_company_building_country_potential = yes
-		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
-			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
-			}
-		}
-	}
-	allow = {
-		market = {
-			in_trade_range_of = scope:actor
-		}
-	}
-	custom_tags = {
-		trade_company_building
-		satellite_trade_building
-	}
-	modifier = {
-		local_defensive = 0.25
-		local_garrison_size = 0.5
-	}
-	on_construction_started = {
-		ftc_temp_on_construction_started_multi_level = {
-			building_type = trade_company_garrison
-		}
-	}
-	on_construction_ended = {
-		ftc_temp_on_construction_ended_multi_level = {
-			building_type = trade_company_garrison
 		}
 	}
 }
@@ -306,7 +174,11 @@ trade_company_garrison = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	pop_type = burghers
+	# CHANGE: remove trade access requirement
+	# own_or_overlord_relation_needed = trade_access
+	# CHANGE: Use tc_category
 	category = tc_category
+	# CHANGE: add the below two flags to encourage AIs to build.
 	AI_ignore_available_worker_flag = yes
 	important_for_AI = yes
 	employment_size = large_foreign_trade_employment
@@ -317,82 +189,25 @@ trade_company_garrison = {
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
-	country_potential = {
-		ftc_hide_permanent_buildings_country_potential = yes
-	}
+	# CHANGE: Factor out location potential to trigger
 	location_potential = {
-		ftc_company_building_location_potential = {
-			building_type = trade_company_garrison
-		}
+		ftc_company_building_location_potential = yes
 	}
-	custom_tags = {
-		trade_company_building
-		satellite_trade_building
+	# CHANGE: Factor out country potential to trigger, and remove headquarters in country requirement
+	country_potential = {
+		ftc_company_building_country_potential = yes
 	}
+	# CHANGE: Deleted allow block to remove satellite building requirement, and redundant market range check.
+
+	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
 		local_defensive = 0.25
 		local_garrison_size = 0.5
 	}
-	on_construction_ended = {
-		ftc_perm_on_built = {
-			building_type = trade_company_garrison
-		}
-	}
-}
 
-trade_company_harbor_temp = {
-	is_foreign = yes
-	max_levels = trade_company_building_max_level
-	pop_type = ftc_temp_burghers
-	category = tc_category
-	AI_ignore_available_worker_flag = yes
-	important_for_AI = yes
-	employment_size = large_foreign_trade_employment
-	rural_settlement = yes
-	town = yes
-	city = yes
-	build_time = trade_company_build_time
-	possible_production_methods = {
-		satellite_trade_building_requirements
-	}
-	location_potential = {
-		ftc_company_building_location_potential = {
-			building_type = trade_company_harbor
-		}
-	}
-	country_potential = {
-		ftc_company_building_country_potential = yes
-		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
-			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
-			}
-		}
-	}
-	allow = {
-		is_port = yes
-		market = {
-			in_trade_range_of = scope:actor
-		}
-	}
-	custom_tags = {
-		trade_company_building
-		satellite_trade_building
-	}
-	modifier = {
-		merchant_power_from_building = 0.5
-		building_owner_maritime_presence = 0.01
-		building_owner_overlord_maritime_presence = 0.02
-	}
-	on_construction_started = {
-		ftc_temp_on_construction_started_multi_level = {
-			building_type = trade_company_harbor
-		}
-	}
-	on_construction_ended = {
-		ftc_temp_on_construction_ended_multi_level = {
-			building_type = trade_company_harbor
-		}
+	# CHANGE: Refactor and move on_built to effect.
+	on_built = {
+		ftc_company_building_on_built = yes
 	}
 }
 
@@ -400,7 +215,11 @@ trade_company_harbor = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	pop_type = burghers
+	# CHANGE: remove trade access requirement
+	# own_or_overlord_relation_needed = trade_access
+	# CHANGE: Use tc_category
 	category = tc_category
+	# CHANGE: add the below two flags to encourage AIs to build.
 	AI_ignore_available_worker_flag = yes
 	important_for_AI = yes
 	employment_size = large_foreign_trade_employment
@@ -411,80 +230,27 @@ trade_company_harbor = {
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
-	country_potential = {
-		ftc_hide_permanent_buildings_country_potential = yes
-	}
+	# CHANGE: Factor out location potential to trigger
 	location_potential = {
-		ftc_company_building_location_potential = {
-			building_type = trade_company_harbor
-		}
+		ftc_company_building_location_potential = yes
 	}
-	custom_tags = {
-		trade_company_building
-		satellite_trade_building
+	# CHANGE: Factor out country potential to trigger, and remove headquarters in country requirement
+	country_potential = {
+		ftc_company_building_country_potential = yes
 	}
+	# CHANGE: Remove satellite building requirement, and redundant market range check.
+	allow = {
+		is_port = yes
+	}
+
+	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
 		merchant_power_from_building = 0.5
 		building_owner_maritime_presence = 0.01
 		building_owner_overlord_maritime_presence = 0.02
 	}
-	on_construction_ended = {
-		ftc_perm_on_built = {
-			building_type = trade_company_harbor
-		}
-	}
-}
-
-trade_company_local_venture_temp = {
-	is_foreign = yes
-	max_levels = trade_company_building_max_level
-	pop_type = ftc_temp_burghers
-	category = tc_category
-	AI_ignore_available_worker_flag = yes
-	important_for_AI = yes
-	employment_size = large_foreign_trade_employment
-	rural_settlement = yes
-	town = yes
-	city = yes
-	build_time = trade_company_build_time
-	possible_production_methods = {
-		satellite_trade_building_requirements
-	}
-	location_potential = {
-		ftc_company_building_location_potential = {
-			building_type = trade_company_local_venture
-		}
-	}
-	country_potential = {
-		ftc_company_building_country_potential = yes
-		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
-			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
-			}
-		}
-	}
-	allow = {
-		market = {
-			in_trade_range_of = scope:actor
-		}
-	}
-	custom_tags = {
-		trade_company_building
-		satellite_trade_building
-	}
-	modifier = {
-		local_raw_material_output = 0.33
-	}
-	on_construction_started = {
-		ftc_temp_on_construction_started_multi_level = {
-			building_type = trade_company_local_venture
-		}
-	}
-	on_construction_ended = {
-		ftc_temp_on_construction_ended_multi_level = {
-			building_type = trade_company_local_venture
-		}
+	on_built = {
+		ftc_company_building_on_built = yes
 	}
 }
 
@@ -492,7 +258,11 @@ trade_company_local_venture = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	pop_type = burghers
+	# CHANGE: remove trade access requirement
+	# own_or_overlord_relation_needed = trade_access
+	# CHANGE: Use tc_category
 	category = tc_category
+	# CHANGE: add the below two flags to encourage AIs to build.
 	AI_ignore_available_worker_flag = yes
 	important_for_AI = yes
 	employment_size = large_foreign_trade_employment
@@ -503,79 +273,22 @@ trade_company_local_venture = {
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
-	country_potential = {
-		ftc_hide_permanent_buildings_country_potential = yes
-	}
+	# CHANGE: Factor out location potential to trigger
 	location_potential = {
-		ftc_company_building_location_potential = {
-			building_type = trade_company_local_venture
-		}
+		ftc_company_building_location_potential = yes
 	}
-	custom_tags = {
-		trade_company_building
-		satellite_trade_building
+	# CHANGE: Factor out country potential to trigger, and remove headquarters in country requirement
+	country_potential = {
+		ftc_company_building_country_potential = yes
 	}
+	# CHANGE: Deleted allow block to remove satellite building requirement, and redundant market range check.
+
+	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
 		local_raw_material_output = 0.33
 	}
-	on_construction_ended = {
-		ftc_perm_on_built = {
-			building_type = trade_company_local_venture
-		}
-	}
-}
-
-trade_company_foreign_influence_temp = {
-	is_foreign = yes
-	max_levels = trade_company_building_max_level
-	pop_type = ftc_temp_burghers
-	category = tc_category
-	AI_ignore_available_worker_flag = yes
-	important_for_AI = yes
-	employment_size = large_foreign_trade_employment
-	rural_settlement = yes
-	town = yes
-	city = yes
-	build_time = trade_company_build_time
-	possible_production_methods = {
-		satellite_trade_building_requirements
-	}
-	location_potential = {
-		ftc_company_building_location_potential = {
-			building_type = trade_company_foreign_influence
-		}
-	}
-	country_potential = {
-		ftc_company_building_country_potential = yes
-		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
-			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
-			}
-		}
-	}
-	allow = {
-		market = {
-			in_trade_range_of = scope:actor
-		}
-	}
-	custom_tags = {
-		trade_company_building
-		satellite_trade_building
-	}
-	modifier = {
-		local_monthly_development = 0.005
-		local_max_control = 0.05
-	}
-	on_construction_started = {
-		ftc_temp_on_construction_started_multi_level = {
-			building_type = trade_company_foreign_influence
-		}
-	}
-	on_construction_ended = {
-		ftc_temp_on_construction_ended_multi_level = {
-			building_type = trade_company_foreign_influence
-		}
+	on_built = {
+		ftc_company_building_on_built = yes
 	}
 }
 
@@ -583,7 +296,11 @@ trade_company_foreign_influence = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	pop_type = burghers
+	# CHANGE: remove trade access requirement
+	# own_or_overlord_relation_needed = trade_access
+	# CHANGE: Use tc_category
 	category = tc_category
+	# CHANGE: add the below two flags to encourage AIs to build.
 	AI_ignore_available_worker_flag = yes
 	important_for_AI = yes
 	employment_size = large_foreign_trade_employment
@@ -594,81 +311,23 @@ trade_company_foreign_influence = {
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
-	country_potential = {
-		ftc_hide_permanent_buildings_country_potential = yes
-	}
+	# CHANGE: Factor out location potential to trigger
 	location_potential = {
-		ftc_company_building_location_potential = {
-			building_type = trade_company_foreign_influence
-		}
+		ftc_company_building_location_potential = yes
 	}
-	custom_tags = {
-		trade_company_building
-		satellite_trade_building
+	# CHANGE: Factor out country potential to trigger, and remove headquarters in country requirement
+	country_potential = {
+		ftc_company_building_country_potential = yes
 	}
+	# CHANGE: Deleted allow block to remove satellite building requirement, and redundant market range check.
+
+	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
 		local_monthly_development = 0.005
 		local_max_control = 0.05
 	}
-	on_construction_ended = {
-		ftc_perm_on_built = {
-			building_type = trade_company_foreign_influence
-		}
-	}
-}
-
-trade_company_governance_temp = {
-	is_foreign = yes
-	max_levels = trade_company_building_max_level
-	pop_type = ftc_temp_burghers
-	category = tc_category
-	AI_ignore_available_worker_flag = yes
-	important_for_AI = yes
-	employment_size = large_foreign_trade_employment
-	rural_settlement = yes
-	town = yes
-	city = yes
-	build_time = trade_company_build_time
-	possible_production_methods = {
-		satellite_trade_building_requirements
-	}
-	location_potential = {
-		ftc_company_building_location_potential = {
-			building_type = trade_company_governance
-		}
-	}
-	country_potential = {
-		ftc_company_building_country_potential = yes
-		OR = {
-			total_effective_building_levels:trade_company_headquarters > 0
-			any_subject = {
-				total_effective_building_levels:trade_company_headquarters > 0
-			}
-		}
-	}
-	allow = {
-		market = {
-			in_trade_range_of = scope:actor
-		}
-	}
-	custom_tags = {
-		trade_company_building
-		satellite_trade_building
-	}
-	modifier = {
-		manpower_to_building_owner = 0.003
-		sailors_to_building_owner = 0.005
-		can_recruit_regiment_in_this_location = yes
-	}
-	on_construction_started = {
-		ftc_temp_on_construction_started_multi_level = {
-			building_type = trade_company_governance
-		}
-	}
-	on_construction_ended = {
-		ftc_temp_on_construction_ended_multi_level = {
-			building_type = trade_company_governance
-		}
+	on_built = {
+		ftc_company_building_on_built = yes
 	}
 }
 
@@ -676,7 +335,11 @@ trade_company_governance = {
 	is_foreign = yes
 	max_levels = trade_company_building_max_level
 	pop_type = burghers
+	# CHANGE: remove trade access requirement
+	# own_or_overlord_relation_needed = trade_access
+	# CHANGE: Use tc_category
 	category = tc_category
+	# CHANGE: add the below two flags to encourage AIs to build.
 	AI_ignore_available_worker_flag = yes
 	important_for_AI = yes
 	employment_size = large_foreign_trade_employment
@@ -687,26 +350,23 @@ trade_company_governance = {
 	possible_production_methods = {
 		satellite_trade_building_requirements
 	}
-	country_potential = {
-		ftc_hide_permanent_buildings_country_potential = yes
-	}
+	# CHANGE: Factor out location potential to trigger
 	location_potential = {
-		ftc_company_building_location_potential = {
-			building_type = trade_company_governance
-		}
+		ftc_company_building_location_potential = yes
 	}
-	custom_tags = {
-		trade_company_building
-		satellite_trade_building
+	# CHANGE: Factor out country potential to trigger, and remove headquarters in country requirement
+	country_potential = {
+		ftc_company_building_country_potential = yes
 	}
+	# CHANGE: Deleted allow block to remove satellite building requirement, and redundant market range check.
+
+	custom_tags = { trade_company_building satellite_trade_building }
 	modifier = {
 		manpower_to_building_owner = 0.003
 		sailors_to_building_owner = 0.005
 		can_recruit_regiment_in_this_location = yes
 	}
-	on_construction_ended = {
-		ftc_perm_on_built = {
-			building_type = trade_company_governance
-		}
+	on_built = {
+		ftc_company_building_on_built = yes
 	}
 }
