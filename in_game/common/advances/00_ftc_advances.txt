@@ -1,0 +1,11 @@
+﻿# NOTE: For some reason, replace is not sufficient here. If done, the changes will be reflected in the advance,
+# but not the building requirements. Further, the file name matters too, as if it is alphabetically after
+# the original game file, then the same issue occurs, where the change is reflected in the advance,
+# but not the buildings. There must be some setup going on where this is calculated with the first file loaded.
+trade_companies_advance = {
+	age = age_4_reformation
+	icon = expanded_supply_trains
+	unlock_subject_type = trade_company
+
+	requires = safe_exploration_techniques_advance
+}
