@@ -1,87 +1,41 @@
 ﻿# Circumvents the pop check by replacing the pop_type with a non-existent pop, so when the game checks for
 #  existing pops, they are never found
-trade_office_temp = {
-	is_foreign = yes
-	stronger_power_projection = no
-	max_levels = guild_max_level
-	need_good_relation = yes
-	pop_type = ftc_temp_burghers
-	category = trade_category
-	employment_size = foreign_trade_employment
-	rural_settlement = no
-	town = yes
-	city = yes
-	allow = {
-		is_port = yes
-		market = {
-			in_trade_range_of = scope:actor
-		}
-	}
-	location_potential = {
-		ftc_can_building_be_built_or_upgraded_in_location = {
-			building_type = trade_office
-		}
-	}
-	build_time = trade_company_build_time
-	unique_production_methods = {
-		trade_office_temp_requirements = {
-			paper = 0.1
-			category = building_maintenance
-		}
-	}
-	modifier = {
-		merchant_capacity_from_building = 0.3
-		building_owner_maritime_presence = 0.05
-		merchant_power_from_building = 0.2
-	}
-	on_construction_started = {
-		ftc_temp_on_construction_started_multi_level = {
-			building_type = trade_office
-		}
-	}
-	on_construction_ended = {
-		ftc_temp_on_construction_ended_multi_level = {
-			building_type = trade_office
-		}
-	}
-}
-
 trade_office = {
 	is_foreign = yes
 	stronger_power_projection = no
 	max_levels = guild_max_level
 	need_good_relation = yes
 	pop_type = burghers
+
 	category = trade_category
+
 	employment_size = foreign_trade_employment
+
 	rural_settlement = no
 	town = yes
 	city = yes
+
 	allow = {
 		is_port = yes
-		market = {
-			in_trade_range_of = scope:actor
-		}
+		market = { in_trade_range_of = scope:actor }
 	}
-	location_potential = {
-		ftc_disable_permanent_buildings_location_potential = yes
-	}
+
+
+
 	build_time = trade_post_build_time
+
 	unique_production_methods = {
 		trade_office_requirements = {
 			paper = 0.1
 			category = building_maintenance
 		}
 	}
+
+
 	modifier = {
 		merchant_capacity_from_building = 0.3
 		building_owner_maritime_presence = 0.05
 		merchant_power_from_building = 0.2
-	}
-	on_built = {
-		ftc_perm_on_built = {
-			building_type = trade_office
-		}
 	}
 }
 
@@ -172,36 +126,36 @@ missionary_building = {
 	max_levels = 1
 	pop_type = clergy
 	graphical_tags = { small_religious }
-	
+
 	category = colonial_category
-	
+
 	employment_size = religious_building_employment
-	
+
 	pop_size_created = religious_building_employment
-	
+
 	rural_settlement = yes
 	town = no
 	city = no
-	
+
 	allow = {
-		OR = { 
-			is_coastal_within_range = yes	
+		OR = {
+			is_coastal_within_range = yes
 			is_adjacent_to_owned_or_subject_owns = yes
 		}
 		NOT = { dominant_religion = scope:actor.religion }
 	}
-	
-	
-	
+
+
+
 
 	possible_production_methods = {
 		colony_maintenance
 	}
 	construction_demand = simple_colony_construction
 
-	
+
 	build_time = colonise_build_time
-	
+
 	modifier = {
 		building_missionary_effort = 0.1
 		local_tribal_promotion = 0.5
