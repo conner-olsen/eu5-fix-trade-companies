@@ -1,57 +1,52 @@
 ﻿[h1]Overview:[/h1]
-...
+EU5 trade companies were clearly not finished for release. Numerous issues make them completely non-functional. This mod fixes all the problems while keeping trade companies as Paradox 'intended'.
 
 [h1]Features:[/h1]
 [olist]
- [*][b]Feature 1:[/b] Feature 1 description
-	[list]
-	 [*][b]Sub-Feature 1:[/b] Feature 1 sub-feature description
-	 [*][b]Sub-Feature 2:[/b] Feature 1 sub-feature description
-	[/list]
- [*][b]Feature 2:[/b] Feature 2 description
- [*][b]...[/b]
+ [*][b]Allows overlord to build Trade Company buildings[/b] (which get transferred to the Trade Company).
+ [*][b]Makes trade companies start with the Trade Company advance so they can actually construct buildings[/b] (paradox really forgot to give them this :/)
+ [*][b]Attempts to make the AI build and expand the Trade Company more[/b] (not sure if this is truly working).
+ [*][b]Replace Market Access Preference Requirement with either Positive Relation or higher Power Projection.[/b] - Trade companies will never request market access on their own, and overlord access doesn't count despite clearly being intended to.
+ [*][b]Allows renaming Trade Companies[/b]
+ [*][b]Fix the "We can not build a [Company Building] in [Location] as there are already [Country Pops] there." issue[/b] - To fix this, we had to create duplicate temporary buildings and pops, which once built will construct the real buildings and destroy themselves, circumventing this issue. Because of this, you will see "Build [Building Type]" buildings; once these are built, they will be replaced with the regular "[Building Type]" buildings. The real buildings should be hidden in the construction view, but see the note on this below.
+ [*][b]Fix "We need to have researched the Trade Companies Advance to be able to build [Company Building]" appearing even when you have the advance researched.[/b]
+ [*][b]Fix issues with multiple trade companies per region[/b] - Only one trade company per overlord in the same region. (previously, if you made multiple trade companies per region, when either the trade companies themselves or the overlord constructs buildings, it would arbitrarily transfer the buildings to only one of them)
 [/olist]
+See the [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]fixes discussion[/url] for details on all of these changes and why they were made.
 
 [h1]Planned/Upcoming:[/h1]
 [olist]
- [*][b]Planned Feature 1:[/b] Planned Feature 1 description
- [*][b]Planned Feature 2:[/b] Planned Feature 2 description
- [*][b]...[/b]
+ [*][b]Add delete company interaction.[/b]
 [/olist]
 
-[h2]Native Localizations:[/h2]
-[list]
- [*][b]English:[/b] Primary
-[/list]
-
-[h2]DeepL-Translated Localizations:[/h2]
-[list]
- [*][b]Chinese / 中文[/b]
- [*][b]French / Français[/b]
- [*][b]German / Deutsch[/b]
- [*][b]Japanese / 日本語[/b]
- [*][b]Korean / 한국어[/b]
- [*][b]Polish / Polski[/b]
- [*][b]Portuguese (Brazil) / Português (Brasil)[/b]
- [*][b]Russian / Русский[/b]
- [*][b]Spanish / Español[/b]
- [*][b]Turkish / Türkçe[/b]
-[/list]
-
-[h1]Change Log:[/h1]
-See the [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/$item-id$]Change Notes on the workshop page[/url].
+[h1]Known Issues:[/h1]
+[olist]
+ [*][b]There are two pop-type filters for Burgers, Clerics, and Nobles[/b] - These are the temporary pop types we use to get around the "We can not build a [Company Building] in [Location] as there are already [Country Pops] there" issue.
+ [*][b]Trade buildings do not appear with the Burgers filter applied when on a location view[/b] - They still appear without the filter applied, and can be seen from the macro builder.
+[/olist]
+You can follow the status of fixing these via their respective [url=https://github.com/conner-olsen/eu5-fix-trade-companies/issues]GitHub Issues.[/url]
 
 [h1]Compatibility:[/h1]
 [list]
- [*]Not Achievement Compatible.
+ [*]Not Ironman Compatible.
  [*]Fully save game compatible.
- [*]Should work with any mod.
+ [*]Will work with any mod that doesn't modify, trade buildings, the trade company advance, or the trade company subject type.
  [*]I may add compatibility patches upon request.
 [/list]
 
-In addition to the pinned suggestions discussion, you can also ask any questions, report bugs, or make suggestions in the [url=$REPLACE_ME$]#$REPLACE_ME$ channel of the $REPLACE_ME$ discord server[/url]. And if you are interested in joining in the development of this or one of my other mods, you can ping or add me on Discord @$REPLACE_ME$. All contributions are welcome.
+[h1]Important Note:[/h1]
+[list]
+ [*]When using mods that overwrite the production view, you will see some duplicate trade buildings, one titled 'build [building name]' and the other just '[building name]'. Use the 'build [building name]' to construct the buildings. This was necessary to fix the "We can not build a [Company Building] in [Location] as there are already [Country Pops] there." issue.
+[/list]
 
-The source and dev versions of the mod are available on [url=$REPLACE_ME$]GitHub.[/url]
+[h1]Additional Information:[/h1]
+We are working on a separate, to-be-released Trade Company Overhaul mod that aims to completely rebalance trade companies, making them much more worthwhile and interesting. Currently, with the base stats of company buildings, trade companies seem weak and not very worth using. There is a pinned [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014814/]overhaul discussion[/url] at the bottom of this mod page to discuss and make suggestions for the upcoming overhaul.
+
+The pinned [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]fixes discussion[/url] is where we explain all the fixes we made in detail, go over my to-do list/things we potentially cannot fix, and where you can have any discussion or suggestions related to fixing base game Trade Company issues.
+
+In addition to the pinned discussions and comments on this page, there will also be channels for discussing this and the upcoming overhaul in the [url=https://discord.gg/qpStARR8uB]#trade-company-overhaul channel of the EU5 Community discord server[/url]. If you are interested in joining in the development of either the fixes mod or the overhaul, you can ping or add @arealconner on Discord. All contributions are welcome.
+
+The source and dev versions of the mod are available on [url=https://github.com/conner-olsen/eu5-fix-trade-companies]GitHub.[/url]
 
 --NO-TRANSLATE-BELOW--
 [h1]DeepL Translated Mod Pages:[/h1]
