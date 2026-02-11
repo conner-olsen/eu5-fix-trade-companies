@@ -1,0 +1,51 @@
+===WORKSHOP_TITLE===
+무역 회사 수정 / Fix Trade Companies
+===WORKSHOP_DESCRIPTION===
+[i]You are on the DeepL-Generated Korean Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
+
+[h1]개요:[/h1]
+EU5 무역 회사는 출시를 위해 확실히 완성된 상태가 아니었습니다. 수많은 문제로 인해 완전히 작동하지 않는 상태입니다. 이 모드는 역설사(Paradox)가 '의도했던' 대로 무역 회사를 유지하면서 모든 문제를 수정합니다.
+
+[h1]기능:[/h1]
+[olist]
+ [*][b]종주국이 무역 회사 건물을 건설할 수 있도록 허용[/b] (건설 시 무역 회사로 이전됩니다).
+ [*][b]무역 회사가 무역 회사 기술(Advance)을 가진 상태로 시작하여 실제로 건물을 지을 수 있도록 변경[/b] (역설사가 이걸 정말 깜빡했더군요 :/)
+ [*][b]AI가 무역 회사를 더 많이 건설하고 확장하도록 시도[/b] (실제로 작동하는지는 확실하지 않습니다).
+ [*][b]시장 접근 선호도 요구 사항을 우호적 관계 또는 높은 세력 투사로 교체.[/b] - 무역 회사는 스스로 시장 접근을 요청하지 않으며, 종주국의 접근은 의도된 것이 분명함에도 불구하고 계산되지 않습니다.
+ [*][b]무역 회사 이름 변경 허용[/b]
+ [*][b]이미 [Country Pops]이 존재하여 [Location]에 [Company Building]을 건설할 수 없다는 문제 수정[/b] - 이를 수정하기 위해 임시 건물과 팝을 중복으로 생성해야 했습니다. 건설이 완료되면 실제 건물이 세워지고 임시 요소들은 삭제되어 이 문제를 우회합니다. 이 때문에 "Build [Building Type]" 건물을 보게 될 것입니다. 건설이 완료되면 일반적인 "[Building Type]" 건물로 대체됩니다. 실제 건물은 건설 창에서 숨겨져야 하지만, 아래의 참고 사항을 확인하세요.
+ [*][b]무역 회사 기술을 연구했음에도 "[Company Building]을 건설하려면 무역 회사 기술을 연구해야 합니다"라고 표시되는 문제 수정.[/b]
+ [*][b]지역당 여러 무역 회사가 존재하는 문제 수정[/b] - 동일 지역 내 종주국당 하나의 무역 회사만 허용됩니다. (이전에는 한 지역에 여러 무역 회사를 만들면, 무역 회사나 종주국이 건물을 건설할 때 그중 하나에만 임의로 건물이 이전되었습니다)
+ [*][b]회사 폐쇄(Close Company) 상호작용 추가[/b] - 무역 회사를 삭제합니다.
+[/olist]
+이러한 변경 사항에 대한 자세한 내용과 변경 이유는 [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]수정 사항 토론[/url]을 참조하십시오.
+
+[h1]알려진 문제:[/h1]
+[olist]
+ [*][b]시민, 성직자, 귀족에 대한 두 가지 팝 유형 필터가 존재함[/b] - "이미 [Country Pops]이 존재하여 [Location]에 [Company Building]을 건설할 수 없습니다" 문제를 해결하기 위해 사용하는 임시 팝 유형입니다.
+ [*][b]지역 보기에서 시민(Burgers) 필터를 적용했을 때 무역 건물이 나타나지 않음[/b] - 필터를 적용하지 않은 상태에서는 여전히 나타나며, 매크로 빌더에서도 확인할 수 있습니다.
+[/olist]
+해당 [url=https://github.com/conner-olsen/eu5-fix-trade-companies/issues]GitHub Issues[/url]를 통해 이 문제들의 수정 상태를 확인할 수 있습니다.
+
+[h1]호환성:[/h1]
+[list]
+ [*]아이언맨 비호환.
+ [*]세이브 파일과 완벽하게 호환됩니다.
+ [*]무역 건물, 무역 회사 기술, 또는 무역 회사 종속국 유형을 수정하지 않는 다른 모든 모드와 호환됩니다.
+ [*]요청 시 호환성 패치를 추가할 수 있습니다.
+[/list]
+
+[h1]중요 참고 사항:[/h1]
+[list]
+ [*]생산 창(Production View)을 덮어씌우는 모드를 사용할 경우, 'build [building name]'과 그냥 '[building name]'이라는 두 가지 중복된 무역 건물을 보게 됩니다. 건물을 지으려면 'build [building name]'을 사용하세요. 이는 "이미 [Country Pops]이 존재하여 [Location]에 [Company Building]을 건설할 수 없습니다" 문제를 해결하기 위해 필요했습니다.
+[/list]
+
+[h1]추가 정보:[/h1]
+저희는 무역 회사를 완전히 재밸런싱하여 훨씬 더 가치 있고 흥미롭게 만드는 별도의 '무역 회사 개편(Trade Company Overhaul)' 모드를 작업 중입니다. 현재 기본 능력치로는 무역 회사가 약하고 사용할 가치가 별로 없어 보입니다. 이 모드 페이지 하단에 고정된 [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014814/]개편 관련 토론[/url]에서 향후 개편에 대한 의견을 나누고 제안해 주세요.
+
+고정된 [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]수정 사항 토론[/url]에서는 저희가 수행한 모든 수정을 자세히 설명하고, 할 일 목록/수정 불가능할 수도 있는 사항들을 검토하며, 기본 게임 무역 회사 문제와 관련된 토론이나 제안을 할 수 있습니다.
+
+고정된 토론과 댓글 외에도, [url=https://discord.gg/qpStARR8uB]EU5 커뮤니티 디스코드 서버의 #trade-company-overhaul 채널[/url]에서 이 모드와 향후 개편에 대해 논의할 수 있는 채널이 마련될 예정입니다. 수정 모드나 개편 모드 개발에 참여하고 싶으시다면 디스코드에서 @arealconner를 핑하거나 추가해 주세요. 모든 기여를 환영합니다.
+
+모드의 소스 및 개발 버전은 [url=https://github.com/conner-olsen/eu5-fix-trade-companies]GitHub[/url]에서 확인할 수 있습니다.
+

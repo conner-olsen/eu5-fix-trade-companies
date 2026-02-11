@@ -1,0 +1,17 @@
+﻿l_german:
+ # NO-TRANSLATE BELOW
+ ftc_temp_nobles: "$nobles$"
+ ftc_temp_clergy: "$clergy$"
+ ftc_temp_burghers: "$burghers$"
+
+ ftc_temp_nobles_desc: "$nobles_desc$"
+ ftc_temp_clergy_desc: "$clergy_desc$"
+ ftc_temp_burghers_desc: "$burghers_desc$"
+
+ ftc_temp_nobles_literacy_impact: "$nobles_literacy_impact$"
+ ftc_temp_clergy_literacy_impact: "$clergy_literacy_impact$"
+ ftc_temp_burghers_literacy_impact: "$burghers_literacy_impact$"
+
+ ftc_temp_nobles_pop_percentage_impact: "$nobles_pop_percentage_impact$"
+ ftc_temp_clergy_pop_percentage_impact: "$clergy_pop_percentage_impact$"
+ ftc_temp_burghers_pop_percentage_impact: "$burghers_pop_percentage_impact$"

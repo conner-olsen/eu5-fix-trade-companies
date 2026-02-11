@@ -1,0 +1,9 @@
+﻿l_turkish:
+ ftc_temp_nobles_demand: "$nobles_demand$"
+ ftc_temp_clergy_demand: "$clergy_demand$"
+ ftc_temp_burghers_demand: "$burghers_demand$"
+
+ slave_center_temp_maintenance: "$slave_center_maintenance$"
+ trade_office_temp_requirements: "$trade_office_requirements$"
+ embassy_temp_requirements: "$embassy_requirements$"
+ trade_company_headquarters_temp_requirements: "$trade_company_headquarters_requirements$"

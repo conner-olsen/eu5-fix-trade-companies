@@ -1,0 +1,51 @@
+===WORKSHOP_TITLE===
+Naprawa Kompanii Handlowych / Fix Trade Companies
+===WORKSHOP_DESCRIPTION===
+[i]You are on the DeepL-Generated Polish Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
+
+[h1]Przegląd:[/h1]
+Kompanie handlowe w EU5 najwyraźniej nie zostały ukończone przed premierą. Liczne problemy sprawiają, że są one całkowicie niefunkcjonalne. Ten mod naprawia wszystkie błędy, zachowując kompanie handlowe takimi, jakimi Paradox je „zaplanował”.
+
+[h1]Funkcje:[/h1]
+[olist]
+ [*][b]Pozwala suwerenowi na budowanie budynków Kompanii Handlowej[/b] (które są przekazywane Kompanii Handlowej).
+ [*][b]Sprawia, że kompanie handlowe zaczynają z odblokowanym postępem „Kompanie Handlowe”, aby mogły faktycznie wznosić budynki[/b] (Paradox naprawdę zapomniał im go dodać :/).
+ [*][b]Próbuje skłonić AI do częstszego budowania i rozwijania Kompanii Handlowej[/b] (nie ma pewności, czy to w pełni działa).
+ [*][b]Zastępuje wymóg preferencji dostępu do rynku pozytywnymi relacjami lub wyższą projekcją siły.[/b] – Kompanie handlowe nigdy same nie proszą o dostęp do rynku, a dostęp suwerena nie jest wliczany, mimo że najwyraźniej tak miało być.
+ [*][b]Pozwala na zmianę nazw Kompanii Handlowych[/b]
+ [*][b]Naprawia błąd „We can not build a [Company Building] in [Location] as there are already [Country Pops] there.”[/b] – Aby to naprawić, musieliśmy stworzyć tymczasowe duplikaty budynków i populacji, które po wybudowaniu wzniosą właściwe budynki i ulegną usunięciu, omijając ten problem. Z tego powodu zobaczysz budynki typu „Build [Building Type]”; po ich ukończeniu zostaną one zastąpione zwykłymi budynkami „[Building Type]”. Właściwe budynki powinny być ukryte w widoku budowy, ale zapoznaj się z poniższą uwagą.
+ [*][b]Naprawia błąd „We need to have researched the Trade Companies Advance to be able to build [Company Building]”, pojawiający się nawet po opracowaniu postępu.[/b]
+ [*][b]Naprawia problemy z wieloma kompaniami handlowymi w jednym regionie[/b] – Tylko jedna kompania handlowa na suwerena w tym samym regionie. (Wcześniej, jeśli stworzyłeś kilka kompanii w jednym regionie, gdy one same lub suweren budowali budynki, były one losowo przekazywane tylko jednej z nich).
+ [*][b]Dodaje interakcję „Rozwiąż kompanię”[/b] – usuwa kompanię handlową.
+[/olist]
+Zobacz [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]dyskusję o poprawkach[/url], aby poznać szczegóły tych zmian i powody ich wprowadzenia.
+
+[h1]Znane problemy:[/h1]
+[olist]
+ [*][b]Istnieją dwa filtry typów populacji dla Mieszczan, Duchowieństwa i Szlachty[/b] – Są to tymczasowe typy populacji używane do obejścia błędu „We can not build a [Company Building] in [Location] as there are already [Country Pops] there”.
+ [*][b]Budynki handlowe nie pojawiają się z nałożonym filtrem Mieszczan w widoku lokacji[/b] – Wciąż pojawiają się bez filtra i są widoczne w makro-kreatorze.
+[/olist]
+Możesz śledzić status naprawy tych błędów poprzez odpowiednie zgłoszenia na [url=https://github.com/conner-olsen/eu5-fix-trade-companies/issues]GitHub Issues.[/url]
+
+[h1]Kompatybilność:[/h1]
+[list]
+ [*]Niekompatybilny z trybem Ironman.
+ [*]W pełni kompatybilny z zapisami gry.
+ [*]Będzie działać z każdym modem, który nie modyfikuje budynków handlowych, postępu „Trade Company” ani typu podległości Kompanii Handlowej.
+ [*]Na prośbę mogę dodać patche kompatybilności.
+[/list]
+
+[h1]Ważna uwaga:[/h1]
+[list]
+ [*]Przy używaniu modów, które nadpisują widok produkcji, zobaczysz duplikaty budynków handlowych: jeden zatytułowany „build [building name]”, a drugi po prostu „[building name]”. Używaj „build [building name]”, aby wznosić te obiekty. Było to konieczne, aby naprawić błąd „We can not build a [Company Building] in [Location] as there are already [Country Pops] there.”.
+[/list]
+
+[h1]Dodatkowe informacje:[/h1]
+Pracujemy nad osobnym, mającym się wkrótce ukazać modem „Trade Company Overhaul”, który ma na celu całkowite zbalansowanie kompanii handlowych, czyniąc je znacznie bardziej opłacalnymi i interesującymi. Obecnie, przy podstawowych statystykach budynków, kompanie handlowe wydają się słabe i mało użyteczne. Na dole strony moda znajduje się przypięta [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014814/]dyskusja o rebalansie[/url], gdzie można sugerować zmiany dla nadchodzącego projektu.
+
+W przypiętej [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]dyskusji o poprawkach[/url] szczegółowo wyjaśniamy wszystkie wprowadzone zmiany, omawiamy listę zadań do zrobienia oraz rzeczy, których potencjalnie nie da się naprawić. To również miejsce na wszelkie dyskusje i sugestie dotyczące naprawiania problemów z Kompaniami Handlowymi w podstawowej wersji gry.
+
+Oprócz przypiętych dyskusji i komentarzy na tej stronie, dostępne będą również kanały do dyskusji o tym modzie i nadchodzącym rebalansie na [url=https://discord.gg/qpStARR8uB]kanale #trade-company-overhaul na serwerze Discord społeczności EU5[/url]. Jeśli jesteś zainteresowany udziałem w pracach nad modem naprawczym lub rebalansem, możesz napisać do @arealconner na Discordzie. Każdy wkład jest mile widziany.
+
+Wersje źródłowe i deweloperskie moda są dostępne na [url=https://github.com/conner-olsen/eu5-fix-trade-companies]GitHubie.[/url]
+

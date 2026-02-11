@@ -1,0 +1,51 @@
+===WORKSHOP_TITLE===
+Handelsgesellschaften-Fix / Fix Trade Companies
+===WORKSHOP_DESCRIPTION===
+[i]You are on the DeepL-Generated German Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
+
+[h1]Übersicht:[/h1]
+Die Handelskompanien in EU5 waren zum Release eindeutig noch nicht fertiggestellt. Zahlreiche Probleme machen sie völlig funktionsunfähig. Diese Mod behebt alle Probleme, behält aber die Handelskompanien so bei, wie Paradox sie „beabsichtigt“ hat.
+
+[h1]Features:[/h1]
+[olist]
+ [*][b]Ermöglicht dem Lehensherrn den Bau von Handelskompanie-Gebäuden[/b] (die an die Handelskompanie übertragen werden).
+ [*][b]Lässt Handelskompanien mit dem Fortschritt „Handelskompanien“ starten, damit sie tatsächlich Gebäude bauen können[/b] (Paradox hat tatsächlich vergessen, ihnen diesen zu geben :/).
+ [*][b]Versucht, die KI dazu zu bringen, die Handelskompanie mehr auszubauen und zu erweitern[/b] (nicht sicher, ob dies wirklich funktioniert).
+ [*][b]Ersetzt die Anforderung für Marktzugangspräferenz entweder durch eine positive Beziehung oder eine höhere Machtprojektion.[/b] – Handelskompanien werden von sich aus nie um Marktzugang bitten, und der Zugang des Lehensherrn zählt nicht, obwohl dies offensichtlich so beabsichtigt war.
+ [*][b]Ermöglicht das Umbenennen von Handelskompanien[/b]
+ [*][b]Behebt das Problem „Wir können kein [Company Building] in [Location] bauen, da sich dort bereits [Country Pops] befinden.“[/b] – Um dies zu beheben, mussten wir temporäre Duplikate von Gebäuden und Pops erstellen. Sobald diese gebaut sind, errichten sie die echten Gebäude und zerstören sich selbst, um dieses Problem zu umgehen. Daher werden Sie „[Building Type] bauen“-Gebäude sehen; sobald diese fertiggestellt sind, werden sie durch die regulären „[Building Type]“-Gebäude ersetzt. Die echten Gebäude sollten in der Bauansicht ausgeblendet sein, beachten Sie dazu jedoch den untenstehenden Hinweis.
+ [*][b]Behebt den Fehler „Wir müssen den Fortschritt 'Handelskompanien' erforscht haben...“, der selbst dann erscheint, wenn der Fortschritt bereits erforscht wurde.[/b]
+ [*][b]Behebt Probleme mit mehreren Handelskompanien pro Region[/b] – Nur eine Handelskompanie pro Lehensherr in derselben Region. (Zuvor wurden Gebäude willkürlich an nur eine von ihnen übertragen, wenn entweder die Handelskompanien selbst oder der Lehensherr Gebäude errichteten).
+ [*][b]Fügt die Interaktion „Kompanie auflösen“ hinzu[/b] – löscht eine Handelskompanie.
+[/olist]
+Weitere Details zu all diesen Änderungen und den Gründen für ihre Umsetzung finden Sie in der [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]Diskussion über Fehlerbehebungen[/url].
+
+[h1]Bekannte Probleme:[/h1]
+[olist]
+ [*][b]Es gibt zwei Pop-Typ-Filter für Bürger, Klerus und Adel[/b] – Dies sind die temporären Pop-Typen, die wir verwenden, um das Problem „Wir können kein [Company Building] in [Location] bauen, da sich dort bereits [Country Pops] befinden“ zu umgehen.
+ [*][b]Handelsgebäude erscheinen nicht, wenn der Bürger-Filter in der Ortsansicht aktiviert ist[/b] – Ohne Filter erscheinen sie weiterhin und sind auch über den Makro-Planer sichtbar.
+[/olist]
+Sie können den Status der Behebung dieser Probleme über die jeweiligen [url=https://github.com/conner-olsen/eu5-fix-trade-companies/issues]GitHub Issues[/url] verfolgen.
+
+[h1]Kompatibilität:[/h1]
+[list]
+ [*]Nicht Ironman-kompatibel.
+ [*]Vollständig kompatibel mit Spielständen.
+ [*]Funktioniert mit jeder Mod, die nicht die Handelsgebäude, den Handelskompanie-Fortschritt oder den Handelskompanie-Subjekttyp verändert.
+ [*]Auf Anfrage füge ich eventuell Kompatibilitäts-Patches hinzu.
+[/list]
+
+[h1]Wichtiger Hinweis:[/h1]
+[list]
+ [*]Wenn Sie Mods verwenden, die die Produktionsansicht überschreiben, werden Sie einige doppelte Handelsgebäude sehen: eines mit dem Titel „[building name] bauen“ und das andere nur „[building name]“. Verwenden Sie „[building name] bauen“, um die Gebäude zu errichten. Dies war notwendig, um das Problem „Wir können kein [Company Building] in [Location] bauen, da sich dort bereits [Country Pops] befinden.“ zu beheben.
+[/list]
+
+[h1]Zusätzliche Informationen:[/h1]
+Wir arbeiten an einer separaten, noch zu veröffentlichenden „Trade Company Overhaul“-Mod, die darauf abzielt, Handelskompanien komplett neu auszubalancieren und sie wesentlich lohnenswerter und interessanter zu machen. Derzeit wirken Handelskompanien mit den Basiswerten der Kompaniegebäude schwach und wenig lohnenswert. Am Ende dieser Mod-Seite gibt es eine angepinnte [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014814/]Overhaul-Diskussion[/url], um Vorschläge für die kommende Überarbeitung zu diskutieren.
+
+In der angepinnten [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]Diskussion über Fehlerbehebungen[/url] erklären wir alle vorgenommenen Korrekturen im Detail, gehen meine To-Do-Liste sowie Dinge durch, die wir potenziell nicht beheben können, und bieten Raum für Diskussionen oder Vorschläge zu Problemen der Handelskompanien im Basisspiel.
+
+Zusätzlich zu den angepinnten Diskussionen und Kommentaren auf dieser Seite wird es auch Kanäle zur Diskussion dieser Mod und des kommenden Overhauls im [url=https://discord.gg/qpStARR8uB]#trade-company-overhaul-Kanal des EU5 Community Discord-Servers[/url] geben. Wenn Sie an der Entwicklung der Fixes-Mod oder des Overhauls mitwirken möchten, können Sie @arealconner auf Discord anpingen oder hinzufügen. Alle Beiträge sind willkommen.
+
+Die Quell- und Entwicklerversionen der Mod sind auf [url=https://github.com/conner-olsen/eu5-fix-trade-companies]GitHub[/url] verfügbar.
+

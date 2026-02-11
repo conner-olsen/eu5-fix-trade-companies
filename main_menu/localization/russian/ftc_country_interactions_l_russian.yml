@@ -1,0 +1,7 @@
+﻿l_russian:
+ ftc_delete_company_interaction: "Закрытая компания"
+ ftc_delete_company_interaction_desc: "Удаляет торговую компанию."
+ ftc_delete_company_interaction_act: "Удалить компанию"
+ ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName] закрывает [SCOPE.sCountry('recipient').GetName]"
+ ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName] закрыл [SCOPE.sCountry('recipient').GetName]"
+ PROPOSE_ftc_delete_company_interaction: "Закрыть $TARGET$?"

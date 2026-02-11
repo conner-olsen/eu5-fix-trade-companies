@@ -1,0 +1,51 @@
+===WORKSHOP_TITLE===
+Ticaret Şirketleri Düzeltmesi / Fix Trade Companies
+===WORKSHOP_DESCRIPTION===
+[i]You are on the DeepL-Generated Turkish Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
+
+[h1]Genel Bakış:[/h1]
+EU5 ticaret şirketleri çıkış için açıkça tamamlanmamıştı. Sayısız sorun onları tamamen işlevsiz kılıyor. Bu mod, ticaret şirketlerini Paradox'un "planladığı" gibi tutarken tüm sorunları düzeltir.
+
+[h1]Özellikler:[/h1]
+[olist]
+ [*][b]Haminin Ticaret Şirketi binaları inşa etmesine izin verir[/b] (ki bunlar Ticaret Şirketine devredilir).
+ [*][b]Ticaret şirketlerinin binaları gerçekten inşa edebilmeleri için Ticaret Şirketi ilerlemesi (advance) ile başlamasını sağlar[/b] (Paradox bunu onlara vermeyi gerçekten unutmuş :/)
+ [*][b]Yapay zekanın Ticaret Şirketini daha fazla inşa etmesini ve genişletmesini sağlamaya çalışır[/b] (bunun gerçekten çalışıp çalışmadığından emin değilim).
+ [*][b]Pazar Erişimi Tercihi Gereksinimini Pozitif İlişki veya daha yüksek Güç Gösterimi (Power Projection) ile değiştirir.[/b] - Ticaret şirketleri asla kendi başlarına pazar erişimi talep etmezler ve hami erişimi, açıkça amaçlanmış olmasına rağmen sayılmaz.
+ [*][b]Ticaret Şirketlerini yeniden adlandırmaya izin verir[/b]
+ [*][b]"[Location] konumunda zaten [Country Pops] olduğu için bir [Company Building] inşa edemeyiz." sorununu giderir[/b] - Bunu düzeltmek için, inşa edildiğinde gerçek binaları inşa edecek ve kendilerini yok ederek bu sorunu aşacak geçici kopya binalar ve nüfuslar oluşturmamız gerekiyordu. Bu nedenle, "[Building Type] İnşa Et" binalarını göreceksiniz; bunlar inşa edildiğinde normal "[Building Type]" binaları ile değiştirilecektir. Gerçek binalar inşaat görünümünde gizli olmalıdır, ancak bununla ilgili aşağıdaki nota bakın.
+ [*][b]İlerleme araştırılmış olsa bile görünen "[Company Building] inşa edebilmek için Ticaret Şirketleri İlerlemesini araştırmış olmamız gerekiyor." hatasını giderir.[/b]
+ [*][b]Bölge başına birden fazla ticaret şirketiyle ilgili sorunları giderir[/b] - Aynı bölgede hami başına yalnızca bir ticaret şirketi. (Önceden, bölge başına birden fazla ticaret şirketi oluşturduğunuzda, ticaret şirketlerinin kendileri veya hami binalar inşa ettiğinde, binaları keyfi olarak bunlardan yalnızca birine devrediyordu)
+ [*][b]Şirketi Kapat etkileşimi ekler[/b] - bir ticaret şirketini siler
+[/olist]
+Tüm bu değişikliklerin ayrıntıları ve neden yapıldıkları için [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]düzeltmeler tartışmasına[/url] göz atın.
+
+[h1]Bilinen Sorunlar:[/h1]
+[olist]
+ [*][b]Burjuvalar, Din Adamları ve Soylular için ikişer nüfus tipi filtresi bulunur[/b] - Bunlar, "[Location] konumunda zaten [Country Pops] olduğu için bir [Company Building] inşa edemeyiz" sorununu aşmak için kullandığımız geçici nüfus tipleridir.
+ [*][b]Ticaret binaları, bir konum görünümündeyken Burjuvalar filtresi uygulandığında görünmez[/b] - Filtre uygulanmadığında hala görünürler ve makro inşaatçıdan görülebilirler.
+[/olist]
+Bunların düzeltilme durumunu ilgili [url=https://github.com/conner-olsen/eu5-fix-trade-companies/issues]GitHub Sorunları[/url] üzerinden takip edebilirsiniz.
+
+[h1]Uyumluluk:[/h1]
+[list]
+ [*]Ironman uyumlu değildir.
+ [*]Kayıtlı oyunlarla tamamen uyumludur.
+ [*]Ticaret binalarını, ticaret şirketi ilerlemesini veya ticaret şirketi tebaa türünü değiştirmeyen her modla çalışacaktır.
+ [*]İstek üzerine uyumluluk yamaları ekleyebilirim.
+[/list]
+
+[h1]Önemli Not:[/h1]
+[list]
+ [*]Üretim görünümünün üzerine yazan modlar kullanırken, biri '[building name] inşa et' ve diğeri sadece '[building name]' başlıklı bazı mükerrer ticaret binaları göreceksiniz. Binaları inşa etmek için '[building name] inşa et' seçeneğini kullanın. Bu, "[Location] konumunda zaten [Country Pops] olduğu için bir [Company Building] inşa edemeyiz." sorununu çözmek için gerekliydi.
+[/list]
+
+[h1]Ek Bilgi:[/h1]
+Ticaret şirketlerini tamamen yeniden dengelemeyi, onları çok daha değerli ve ilginç hale getirmeyi amaçlayan, henüz yayınlanmamış ayrı bir Ticaret Şirketi Revizyonu (Overhaul) modu üzerinde çalışıyoruz. Şu anda, şirket binalarının temel istatistikleriyle ticaret şirketleri zayıf görünüyor ve kullanmaya pek değmiyor. Yaklaşan revizyonu tartışmak ve önerilerde bulunmak için bu mod sayfasının altında sabitlenmiş bir [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014814/]revizyon tartışması[/url] bulunmaktadır.
+
+Sabitlenmiş [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]düzeltmeler tartışması[/url], yaptığımız tüm düzeltmeleri ayrıntılı olarak açıkladığımız, yapılacaklar listemi/potansiyel olarak düzeltemeyeceğimiz şeyleri gözden geçirdiğimiz ve temel oyun Ticaret Şirketi sorunlarını düzeltmeyle ilgili her türlü tartışmayı veya öneriyi yapabileceğiniz yerdir.
+
+Sabitlenmiş tartışmalara ve bu sayfadaki yorumlara ek olarak, [url=https://discord.gg/qpStARR8uB]EU5 Community discord sunucusunun #trade-company-overhaul kanalında[/url] bunu ve yaklaşan revizyonu tartışmak için kanallar da olacaktır. Düzeltme modunun veya revizyonun geliştirilmesine katılmakla ilgileniyorsanız, Discord üzerinden @arealconner'ı etiketleyebilir veya ekleyebilirsiniz. Tüm katkılar memnuniyetle karşılanır.
+
+Modun kaynak ve geliştirme sürümleri [url=https://github.com/conner-olsen/eu5-fix-trade-companies]GitHub'da[/url] mevcuttur.
+

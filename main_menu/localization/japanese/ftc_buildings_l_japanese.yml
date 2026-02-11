@@ -1,0 +1,26 @@
+﻿l_japanese:
+ tc_category: "貿易会社ビル"
+ tc_category_desc: "貿易に影響を与える建物貿易会社"
+
+ # NO-TRANSLATE BELOW
+ trade_company_headquarters_temp: "$trade_company_headquarters$"
+ trade_company_headquarters_temp_desc: "$trade_company_headquarters_desc$"
+ trade_company_garrison_temp: "$trade_company_garrison$"
+ trade_company_garrison_temp_desc: "$trade_company_garrison_desc$"
+ trade_company_harbor_temp: "$trade_company_harbor$"
+ trade_company_harbor_temp_desc: "$trade_company_harbor_desc$"
+ trade_company_local_venture_temp: "$trade_company_local_venture$"
+ trade_company_local_venture_temp_desc: "$trade_company_local_venture_desc$"
+ trade_company_foreign_influence_temp: "$trade_company_foreign_influence$"
+ trade_company_foreign_influence_temp_desc: "$trade_company_foreign_influence_desc$"
+ trade_company_governance_temp: "$trade_company_governance$"
+ trade_company_governance_temp_desc: "$trade_company_governance_desc$"
+
+ embassy_temp: "$embassy$"
+ embassy_temp_desc: "$embassy_desc$"
+ overseas_trading_post_temp: "$overseas_trading_post$"
+ overseas_trading_post_temp_desc: "$overseas_trading_post_desc$"
+ trade_office_temp: "$trade_office$"
+ trade_office_temp_desc: "$trade_office_desc$"
+ slave_center_temp: "$slave_center$"
+ slave_center_temp_desc: "$slave_center_desc$"

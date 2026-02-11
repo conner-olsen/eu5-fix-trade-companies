@@ -5,8 +5,8 @@ EU5 trade companies were clearly not finished for release. Numerous issues make 
 [olist]
  [*][b]Allows overlord to build Trade Company buildings[/b] (which get transferred to the Trade Company).
  [*][b]Makes trade companies start with the Trade Company advance so they can actually construct buildings[/b] (paradox really forgot to give them this :/)
- [*][b]Attempts to make the AI build and expand the Trade Company more[/b] (not sure if this is truly working).
- [*][b]Replace Market Access Preference Requirement with either Positive Relation or higher Power Projection.[/b] - Trade companies will never request market access on their own, and overlord access doesn't count despite clearly being intended to.
+ [*][b]Makes AI build and expand the Trade Companies more[/b]
+ [*][b]Replace Market Access Preference Requirement with either Positive Relation or higher Power Projection[/b] - Trade companies will never request market access on their own, and overlord access doesn't count despite clearly being intended to.
  [*][b]Allows renaming Trade Companies[/b]
  [*][b]Fix the "We can not build a [Company Building] in [Location] as there are already [Country Pops] there." issue[/b] - To fix this, we had to create duplicate temporary buildings and pops, which once built will construct the real buildings and destroy themselves, circumventing this issue. Because of this, you will see "Build [Building Type]" buildings; once these are built, they will be replaced with the regular "[Building Type]" buildings. The real buildings should be hidden in the construction view, but see the note on this below.
  [*][b]Fix "We need to have researched the Trade Companies Advance to be able to build [Company Building]" appearing even when you have the advance researched.[/b]

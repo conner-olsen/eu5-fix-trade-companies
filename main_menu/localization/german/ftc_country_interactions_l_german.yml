@@ -1,0 +1,7 @@
+﻿l_german:
+ ftc_delete_company_interaction: "Geschlossene Gesellschaft"
+ ftc_delete_company_interaction_desc: "Löscht die Handelsgesellschaft."
+ ftc_delete_company_interaction_act: "Unternehmen löschen"
+ ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName] schließt [SCOPE.sCountry('recipient').GetName]"
+ ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName] geschlossen [SCOPE.sCountry('recipient').GetName]"
+ PROPOSE_ftc_delete_company_interaction: "$TARGET$ schließen?"
