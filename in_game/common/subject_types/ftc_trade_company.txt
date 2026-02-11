@@ -1,0 +1,4 @@
+﻿INJECT:trade_company = {
+	is_colonial_subject = yes
+}
+

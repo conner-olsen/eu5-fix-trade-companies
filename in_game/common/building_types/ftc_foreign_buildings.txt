@@ -1,167 +1,5 @@
 ﻿# Circumvents the pop check by replacing the pop_type with a non-existent pop, so when the game checks for
 #  existing pops, they are never found
-trade_office = {
-	is_foreign = yes
-	stronger_power_projection = no
-	max_levels = guild_max_level
-	need_good_relation = yes
-	pop_type = burghers
-
-	category = trade_category
-
-	employment_size = foreign_trade_employment
-
-	rural_settlement = no
-	town = yes
-	city = yes
-
-	allow = {
-		is_port = yes
-		market = { in_trade_range_of = scope:actor }
-	}
-
-
-
-	build_time = trade_post_build_time
-
-	unique_production_methods = {
-		trade_office_requirements = {
-			paper = 0.1
-			category = building_maintenance
-		}
-	}
-
-
-	modifier = {
-		merchant_capacity_from_building = 0.3
-		building_owner_maritime_presence = 0.05
-		merchant_power_from_building = 0.2
-	}
-}
-
-embassy_temp = {
-	is_foreign = yes
-	stronger_power_projection = no
-	max_levels = 1
-	need_good_relation = yes
-	pop_type = ftc_temp_nobles
-	category = government_category
-	employment_size = minor_noble_employment
-	rural_settlement = no
-	town = yes
-	city = yes
-	allow = {
-		is_capital = yes
-		scope:actor.country_rank_level <= owner.country_rank_level
-	}
-	location_potential = {
-		NOT = {
-			has_building = building_type:embassy
-		}
-	}
-	remove_if = {
-		location = {
-			is_capital = no
-		}
-	}
-	build_time = trade_company_build_time
-	lifts_fog_of_war = yes
-	unique_production_methods = {
-		embassy_temp_requirements = {
-			paper = 1
-			jewelry = 0.5
-			category = building_maintenance
-		}
-	}
-	foreign_country_modifier = {
-		diplomatic_capacity = 0.1
-	}
-	on_built = {
-		ftc_temp_on_built_single_level = {
-			building_type = embassy
-		}
-	}
-}
-
-embassy = {
-	is_foreign = yes
-	stronger_power_projection = no
-	max_levels = 1
-	need_good_relation = yes
-	pop_type = nobles
-	category = government_category
-	employment_size = minor_noble_employment
-	rural_settlement = no
-	town = yes
-	city = yes
-	allow = {
-		is_capital = yes
-		scope:actor.country_rank_level <= owner.country_rank_level
-	}
-	remove_if = {
-		location = {
-			is_capital = no
-		}
-	}
-	build_time = trade_post_build_time
-	lifts_fog_of_war = yes
-	unique_production_methods = {
-		embassy_requirements = {
-			paper = 1
-			jewelry = 0.5
-			category = building_maintenance
-		}
-	}
-	foreign_country_modifier = {
-		diplomatic_capacity = 0.1
-	}
-	on_construction_ended = {
-		ftc_perm_on_construction_ended
-	}
-}
-
-missionary_building = {
-	in_empty = empty
-	is_foreign = yes
-	max_levels = 1
-	pop_type = clergy
-	graphical_tags = { small_religious }
-
-	category = colonial_category
-
-	employment_size = religious_building_employment
-
-	pop_size_created = religious_building_employment
-
-	rural_settlement = yes
-	town = no
-	city = no
-
-	allow = {
-		OR = {
-			is_coastal_within_range = yes
-			is_adjacent_to_owned_or_subject_owns = yes
-		}
-		NOT = { dominant_religion = scope:actor.religion }
-	}
-
-
-
-
-	possible_production_methods = {
-		colony_maintenance
-	}
-	construction_demand = simple_colony_construction
-
-
-	build_time = colonise_build_time
-
-	modifier = {
-		building_missionary_effort = 0.1
-		local_tribal_promotion = 0.5
-		local_disease_resistance = 0.05
-	}
-}
 
 slave_center_temp = {
 	in_empty = any
@@ -222,7 +60,7 @@ slave_center_temp = {
 	}
 }
 
-slave_center = {
+REPLACE:slave_center = {
 	in_empty = any
 	is_foreign = yes
 	stronger_power_projection = yes
@@ -319,7 +157,7 @@ overseas_trading_post_temp = {
 	}
 }
 
-overseas_trading_post = {
+REPLACE:overseas_trading_post = {
 	in_empty = any
 	is_foreign = yes
 	max_levels = 1
