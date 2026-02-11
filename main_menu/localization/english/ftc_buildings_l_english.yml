@@ -1,4 +1,8 @@
 ﻿l_english:
+ tc_category: "Trade Company Buildings"
+ tc_category_desc: "Buildings that affect your Trade trade_company subjects."
+
+ # NO-TRANSLATE BELOW
  trade_company_headquarters_temp: "$trade_company_headquarters$"
  trade_company_headquarters_temp_desc: "$trade_company_headquarters_desc$"
  trade_company_garrison_temp: "$trade_company_garrison$"
@@ -20,6 +24,3 @@
  trade_office_temp_desc: "$trade_office_desc$"
  slave_center_temp: "$slave_center$"
  slave_center_temp_desc: "$slave_center_desc$"
-
- tc_category: "Trade Company Buildings"
- tc_category_desc: "Buildings that affect your Trade trade_company subjects."

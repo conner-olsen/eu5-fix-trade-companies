@@ -1,0 +1,55 @@
+﻿ftc_delete_company_interaction = {
+	type = subject
+	category = CATEGORY_SUBJECT_ACTIONS
+
+	potential = {
+	}
+
+	allow = {
+	}
+
+	ai_tick = never
+
+	use_enroute = no
+
+	select_trigger = {
+		looking_for_a = country
+		interaction_source_list = {
+			scope:actor = {
+				every_subject = {
+					if = {
+						limit = {
+							is_subject_type = trade_company
+						}
+						add_to_list = source
+					}
+				}
+			}
+		}
+		target_flag = recipient
+		name = "choose_country"
+		column = {
+			data = name
+		}
+		visible = {
+		}
+		enabled = {
+		}
+	}
+
+	effect = {
+		scope:recipient = {
+			every_owned_building = {
+				if = {
+					limit = {
+						NOT = { building_category = tc_category }
+					}
+					change_building_level = -10
+				}
+				else = {
+					change_building_owner = scope:actor
+				}
+			}
+		}
+	}
+}
