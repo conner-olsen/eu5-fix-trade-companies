@@ -51,5 +51,11 @@
 				}
 			}
 		}
+		scope:actor = {
+			remove_list_variable = {
+				name = trade_company_regions
+				target = scope:recipient.var:trade_company_home_region
+			}
+		}
 	}
 }
