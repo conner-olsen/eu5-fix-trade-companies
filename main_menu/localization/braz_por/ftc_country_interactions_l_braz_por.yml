@@ -1,0 +1,7 @@
+﻿l_braz_por:
+ ftc_delete_company_interaction: "Fechar Empresa"
+ ftc_delete_company_interaction_desc: "Exclui a empresa comercial."
+ ftc_delete_company_interaction_act: "Excluir empresa"
+ ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName] encerra [SCOPE.sCountry('recipient').GetName]"
+ ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName] encerrou [SCOPE.sCountry('recipient').GetName]"
+ PROPOSE_ftc_delete_company_interaction: "Fechar $TARGET$?"

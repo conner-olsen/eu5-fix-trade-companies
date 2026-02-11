@@ -1,0 +1,7 @@
+﻿l_english:
+ ftc_delete_company_interaction: "Close Company"
+ ftc_delete_company_interaction_desc: "Deletes the Trade Company."
+ ftc_delete_company_interaction_act: "Delete Company"
+ ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName] closes [SCOPE.sCountry('recipient').GetName]"
+ ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName] closed [SCOPE.sCountry('recipient').GetName]"
+ PROPOSE_ftc_delete_company_interaction: "Close $TARGET$?"

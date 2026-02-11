@@ -700,7 +700,7 @@ trade_company_governance = {
 		satellite_trade_building
 	}
 	modifier = {
-		manpower_to_building_owner = 0.003
+		manpower_to_building_owner = 0.005
 		sailors_to_building_owner = 0.005
 		can_recruit_regiment_in_this_location = yes
 	}
