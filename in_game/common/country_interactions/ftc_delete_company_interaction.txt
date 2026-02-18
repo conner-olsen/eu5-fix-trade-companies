@@ -42,7 +42,7 @@
 			every_owned_building = {
 				if = {
 					limit = {
-						NOT = { building_category = tc_category }
+						building_category = tc_category
 					}
 					change_building_level = -10
 				}
