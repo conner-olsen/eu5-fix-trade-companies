@@ -32,6 +32,7 @@
 			data = name
 		}
 		visible = {
+			is_subject_type = trade_company
 		}
 		enabled = {
 		}
