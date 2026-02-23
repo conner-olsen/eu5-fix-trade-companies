@@ -17,8 +17,8 @@ See the [url=https://steamcommunity.com/workshop/filedetails/discussion/36100280
 
 [h1]Known Issues:[/h1]
 [olist]
- [*][b]There are two pop-type filters for Burgers, Clerics, and Nobles[/b] - These are the temporary pop types we use to get around the "We can not build a [Company Building] in [Location] as there are already [Country Pops] there" issue.
- [*][b]Trade buildings do not appear with the Burgers filter applied when on a location view[/b] - They still appear without the filter applied, and can be seen from the macro builder.
+ [*][b]There are two pop-type filters for Burghers, Clerics, and Nobles[/b] - These are the temporary pop types we use to get around the "We can not build a [Company Building] in [Location] as there are already [Country Pops] there" issue.
+ [*][b]Trade buildings do not appear with the Burghers filter applied when on a location view[/b] - They still appear without the filter applied, and can be seen from the macro builder.
 [/olist]
 You can follow the status of fixing these via their respective [url=https://github.com/conner-olsen/eu5-fix-trade-companies/issues]GitHub Issues.[/url]
 
