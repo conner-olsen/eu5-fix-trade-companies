@@ -4,48 +4,71 @@
 [i]You are on the DeepL-Generated Simplified Chinese Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
 
 [h1]概览：[/h1]
-EU5的贸易公司显然在发布时还没有完工。许多问题导致它们完全无法运作。本模组在保持Paradox“初衷”的同时，修复了所有这些问题。
+EU5的贸易公司显然在发布时还未完工。许多问题导致它们完全无法发挥作用。本模组在保持 Paradox “原意”的同时，修复了所有这些问题。
 
 [h1]功能：[/h1]
 [olist]
- [*][b]允许宗主国建造贸易公司建筑[/b]（这些建筑会被转移给贸易公司）。
- [*][b]让贸易公司在开始时就拥有“贸易公司”技术进展，以便它们能够真正进行建筑施工[/b]（Paradox 真的忘了给它们这个 :/）。
- [*][b]尝试让 AI 更多地建造和扩展贸易公司[/b]（不确定这是否真的生效）。
- [*][b]将市场准入偏好需求替换为正向关系或更高的力量投射。[/b] —— 贸易公司永远不会主动请求市场准入，而且尽管宗主国的准入显然是设计初衷，但目前并不计入其中。
- [*][b]允许重命名贸易公司[/b]
- [*][b]修复了“由于该地已有 [Country Pops]，我们无法在 [Location] 建造 [Company Building]”的问题[/b] —— 为了修复此问题，我们不得不创建重复的临时建筑和人口。一旦建成，它们将构建真正的建筑并自行销毁，从而规避此问题。因此，你会看到名为“建造 [Building Type]”的建筑；一旦建成，它们将被常规的“[Building Type]”建筑取代。真正的建筑本应在建造视图中隐藏，但请参阅下方的备注。
- [*][b]修复了即使已经研究了技术，仍显示“我们需要研究贸易公司技术进展才能建造 [Company Building]”的问题。[/b]
- [*][b]修复了每个区域存在多个贸易公司的问题[/b] —— 每个宗主国在同一区域只能拥有一个贸易公司。（此前，如果你在每个区域创建了多个贸易公司，当贸易公司本身或宗主国建造建筑时，系统会随意地将建筑仅转移给其中一个公司）
- [*][b]添加“关闭公司”互动[/b] —— 删除一家贸易公司
+ [*][b]允许宗主国建造贸易公司建筑[/b]（建筑会自动移交给贸易公司）。
+ [*][b]让贸易公司在成立时即拥有“贸易公司”进展，以便它们能够真正地建造建筑[/b]（P社真的忘了给它们这个进展 :/）。
+ [*][b]促使 AI 更多地建造并扩张贸易公司[/b]。
+ [*][b]将市场准入偏好需求替换为“正关系”或“更高的力量投射”[/b] - 贸易公司永远不会主动请求市场准入，而且宗主国的准入即便显然是设计初衷也并不计入。
+ [*][b]允许重命名贸易公司[/b]。
+ [*][b]修复“无法在 [Location] 建造 [Company Building]，因为该地已存在 [Country Pops]”的问题[/b] - 为了修复此问题，我们不得不创建重复的临时建筑和人口。建筑完工后将建造正式建筑并自我销毁，从而绕过此问题。因此，你会看到“建造 [Building Type]”建筑；一旦这些建筑完工，它们将被常规的“[Building Type]”建筑取代。正式建筑在建造视图中本应隐藏，但请参阅下文的说明。
+ [*][b]修复即使已研发进展，仍显示“我们需要研发贸易公司进展才能建造 [Company Building]”的问题。[/b]
+ [*][b]修复每个区域存在多个贸易公司的问题[/b] - 每个宗主国在同一区域只能拥有一个贸易公司。（以前，如果你在同一区域建立多个贸易公司，当贸易公司本身或宗主国建造建筑时，建筑会随机移交给其中之一）。
+ [*][b]修复贸易公司总是散布不忠的问题[/b]。
+ [*][b]添加“关闭公司”互动[/b] - 删除一个贸易公司。
 [/olist]
-有关所有这些更改的详细信息以及修改原因，请参阅 [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]修复内容讨论帖[/url]。
+有关所有这些更改的详细信息以及修改原因，请参见[url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]修复讨论区[/url]。
 
 [h1]已知问题：[/h1]
 [olist]
- [*][b]市民（Burgers）、教士（Clerics）和贵族（Nobles）会有两个人口类型过滤器[/b] —— 这些是我们用来规避“已有 [Country Pops]”问题的临时人口类型。
- [*][b]在地块视图中应用市民过滤器时，贸易建筑不会显示[/b] —— 它们在不应用过滤器的情况下仍然显示，并且可以在宏观建造器中看到。
+ [*][b]市民、教士和贵族会有两个人口类型过滤器[/b] - 这些是用于绕过“由于已存在 [Country Pops] 而无法建造”问题的临时人口类型。
+ [*][b]在地块视图中使用“市民”过滤器时，贸易建筑不会显示[/b] - 但在不使用过滤器时仍会显示，且可在宏观建造器中看到。
 [/olist]
-你可以通过各自的 [url=https://github.com/conner-olsen/eu5-fix-trade-companies/issues]GitHub Issues[/url] 关注这些问题的修复进度。
+
+[h1]原生本地化：[/h1]
+[list]
+ [*][b]English:[/b] Primary
+[/list]
+
+[h1]DeepL 翻译本地化：[/h1]
+[list]
+ [*][b]Chinese / 中文[/b]
+ [*][b]French / Français[/b]
+ [*][b]German / Deutsch[/b]
+ [*][b]Japanese / 日本語[/b]
+ [*][b]Korean / 한국어[/b]
+ [*][b]Polish / Polski[/b]
+ [*][b]Portuguese (Brazil) / Português (Brasil)[/b]
+ [*][b]Russian / Русский[/b]
+ [*][b]Spanish / Español[/b]
+ [*][b]Turkish / Türkçe[/b]
+[/list]
+
+[h1]更新日志：[/h1]
+参见[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3610028078]创意工坊页面上的更新说明[/url]。
+你也可以通过相应的 [url=https://github.com/conner-olsen/eu5-fix-trade-companies/issues]GitHub Issues[/url] 关注修复进度。
 
 [h1]兼容性：[/h1]
 [list]
- [*]不兼容铁人模式。
+ [*]不兼容铁人模式/成就。
  [*]完全兼容存档。
- [*]可与任何不修改贸易建筑、贸易公司技术进展或贸易公司附属国类型的模组协同工作。
+ [*]兼容任何不修改贸易建筑、贸易公司进展或贸易公司附属国类型的模组。
  [*]我可能会根据要求添加兼容性补丁。
 [/list]
 
 [h1]重要说明：[/h1]
 [list]
- [*]当使用覆盖生产界面的模组时，你会看到一些重复的贸易建筑，一个标题为“建造 [building name]”，另一个仅为“[building name]”。请使用“建造 [building name]”来构建建筑。这是修复“由于该地已有 [Country Pops]，我们无法在 [Location] 建造 [Company Building]”问题所必需的。
+ [*]当使用重写生产视图的模组时，你会看到重复的贸易建筑，一个名为“建造 [building name]”，另一个仅为“[building name]”。请使用“建造 [building name]”来建造建筑。这是修复“无法在 [Location] 建造 [Company Building]，因为该地已存在 [Country Pops]”问题的必要手段。
 [/list]
 
 [h1]附加信息：[/h1]
-我们正在开发一个独立的、即将发布的“贸易公司大改（Trade Company Overhaul）”模组，旨在完全重新平衡贸易公司，使其更具价值和趣味性。目前，根据公司建筑的基础属性，贸易公司显得很弱，不值得使用。本模组页面底部有一个置顶的 [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014814/]大改讨论帖[/url]，用于讨论并为即将到来的大改提供建议。
+我们正在开发一个独立的、即将发布的“贸易公司重做 (Trade Company Overhaul)”模组，旨在完全重新平衡贸易公司，使其更具价值和趣味性。目前，根据公司建筑的基础属性，贸易公司显得很弱，不值得使用。在本模组页面底部有一个置顶的[url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014814/]重做讨论区[/url]，用于讨论并为即将到来的重做提供建议。
 
-在置顶的 [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]修复内容讨论帖[/url] 中，我们详细解释了所做的所有修复，列出了我的待办事项以及可能无法修复的问题，你也可以在此进行任何与修复原版贸易公司问题相关的讨论或建议。
+置顶的[url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]修复讨论区[/url]详细解释了我们所做的所有修复，列出了我的待办事项/可能无法修复的内容，你也可以在此进行与修复原版贸易公司问题相关的讨论或提出建议。
 
-除了本页面的置顶讨论和评论外，在 [url=https://discord.gg/qpStARR8uB]EU5 Community Discord 服务器的 #trade-company-overhaul 频道[/url] 也会有讨论本项目和即将到来的大改的频道。如果你有兴趣参与修复模组或大改模组的开发，可以在 Discord 上 ping 或添加 @arealconner。欢迎所有贡献。
+除了本页面的置顶讨论和评论外，在 [url=https://discord.gg/qpStARR8uB]EU5 社区 Discord 服务器的 #trade-company-overhaul 频道[/url]中也有讨论本项目及即将到来的重做的频道。如果你有兴趣参与修复模组或重做模组的开发，可以在 Discord 上私信或添加 @arealconner。欢迎任何形式的贡献。
 
 模组的源码和开发版本可在 [url=https://github.com/conner-olsen/eu5-fix-trade-companies]GitHub[/url] 上获取。
 

@@ -29,6 +29,9 @@ SOURCES = [
 # --- Path Setup ---
 ROOT_DIR = os.path.dirname(SCRIPT_DIR)
 CONFIG_PATH = os.path.join(SCRIPT_DIR, "config.toml")
+METADATA_PATH = os.path.join(ROOT_DIR, ".metadata", "metadata.json")
+WORKSHOP_DESCRIPTION_PATH = os.path.join(ROOT_DIR, "assets", "workshop", "workshop-description.bbcode")
+TRANSLATIONS_DIR = os.path.join(ROOT_DIR, "assets", "workshop", "translations")
 APP_ID = 3450310
 CREATE_ITEM_TIMEOUT_SECONDS = 30
 CREATE_ITEM_POLL_INTERVAL_SECONDS = 0.1
@@ -37,6 +40,32 @@ CLEANUP_RETRY_DELAY_SECONDS = 3
 CLEANUP_MAX_ATTEMPTS = 20
 WORKSHOP_FILE_TYPE = EWorkshopFileType.COMMUNITY
 SUBMODS_DIR_NAME = "submods"
+WORKSHOP_TRANSLATION_FILENAME_RE = re.compile(r"^workshop_(.+)\.txt$")
+WORKSHOP_TITLE_MARKER = "===WORKSHOP_TITLE==="
+WORKSHOP_DESCRIPTION_MARKER = "===WORKSHOP_DESCRIPTION==="
+WORKSHOP_NO_TRANSLATE_BELOW = "--NO-TRANSLATE-BELOW--"
+WORKSHOP_ITEM_ID_TOKEN = "$item-id$"
+MAX_DESCRIPTION_LENGTH = 8000
+UPLOAD_MOD_DEFAULT_KEY = "upload_mod_by_default"
+UPLOAD_WORKSHOP_PAGES_DEFAULT_KEY = "upload_workshop_pages_by_default"
+UPLOAD_SUBMODS_DEFAULT_KEY = "upload_submods_by_default"
+UPLOAD_ON_VERSION_CHANGE_KEY = "upload_only_on_version_change"
+UPLOAD_VERSIONS_PATH = os.path.join(DEPENDENCIES_DIR, ".upload_versions.json")
+UPLOAD_VERSIONS_FILE_VERSION = 1
+
+LANGUAGE_TO_STEAM = {
+    "english": "english",
+    "french": "french",
+    "german": "german",
+    "spanish": "spanish",
+    "polish": "polish",
+    "russian": "russian",
+    "simp_chinese": "schinese",
+    "turkish": "turkish",
+    "braz_por": "brazilian",
+    "japanese": "japanese",
+    "korean": "koreana",
+}
 
 def _on_rm_error(func, path, exc_info):
     exc = exc_info[1]
@@ -91,6 +120,132 @@ def load_dev_name(config):
         return None
     dev_name = str(dev_name).strip()
     return dev_name if dev_name else None
+
+def load_source_language(config):
+    """Load and validate source_language used for workshop page uploads."""
+    source_language = config.get("source_language")
+    if source_language is None:
+        print("Error: source_language not set in config.toml.")
+        return None
+
+    source_language = str(source_language).strip().lower()
+    if source_language not in LANGUAGE_TO_STEAM:
+        valid = ", ".join(sorted(LANGUAGE_TO_STEAM.keys()))
+        print(f"Error: Unsupported source_language '{source_language}'.")
+        print(f"Supported values: {valid}")
+        return None
+
+    return source_language
+
+def load_required_bool(config, key):
+    """Load a required boolean config setting."""
+    value = config.get(key)
+    if value is None:
+        print(f"Error: {key} not set in config.toml.")
+        return None
+    if not isinstance(value, bool):
+        print(f"Error: {key} must be true or false in config.toml.")
+        return None
+    return value
+
+def load_optional_bool(config, key, default):
+    """Load an optional boolean config setting."""
+    if key not in config:
+        return default
+    value = config.get(key)
+    if not isinstance(value, bool):
+        print(f"Error: {key} must be true or false in config.toml.")
+        return None
+    return value
+
+def resolve_upload_targets(args, config):
+    """Resolve whether to upload mod, workshop pages, and submods."""
+    if args.mod or args.workshop_pages or args.submods:
+        # CLI target flags override config defaults for this run.
+        return args.mod, args.workshop_pages, args.submods
+
+    upload_mod = load_required_bool(config, UPLOAD_MOD_DEFAULT_KEY)
+    if upload_mod is None:
+        return None, None, None
+
+    upload_workshop_pages = load_required_bool(config, UPLOAD_WORKSHOP_PAGES_DEFAULT_KEY)
+    if upload_workshop_pages is None:
+        return None, None, None
+
+    upload_submods = load_optional_bool(config, UPLOAD_SUBMODS_DEFAULT_KEY, False)
+    if upload_submods is None:
+        return None, None, None
+
+    return upload_mod, upload_workshop_pages, upload_submods
+
+def load_upload_versions(path):
+    """Load cached uploaded versions for main mod and submods."""
+    if not os.path.exists(path):
+        return {"version": UPLOAD_VERSIONS_FILE_VERSION, "entries": {}}
+
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        print(f"Warning: Failed to read upload version cache '{path}': {e}. Rebuilding.")
+        return {"version": UPLOAD_VERSIONS_FILE_VERSION, "entries": {}}
+
+    if not isinstance(data, dict):
+        print(f"Warning: Upload version cache '{path}' is invalid. Rebuilding.")
+        return {"version": UPLOAD_VERSIONS_FILE_VERSION, "entries": {}}
+
+    if data.get("version") != UPLOAD_VERSIONS_FILE_VERSION:
+        print(f"Warning: Upload version cache '{path}' has unsupported version. Rebuilding.")
+        return {"version": UPLOAD_VERSIONS_FILE_VERSION, "entries": {}}
+
+    entries = data.get("entries")
+    if not isinstance(entries, dict):
+        print(f"Warning: Upload version cache '{path}' has invalid entries. Rebuilding.")
+        return {"version": UPLOAD_VERSIONS_FILE_VERSION, "entries": {}}
+
+    return data
+
+def save_upload_versions(path, data):
+    """Persist uploaded version cache atomically."""
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    temp_path = path + ".tmp"
+    with open(temp_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, sort_keys=True)
+    os.replace(temp_path, path)
+
+def load_metadata_version(metadata_path, label):
+    """Read and validate metadata.json version."""
+    try:
+        with open(metadata_path, "r", encoding="utf-8-sig") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: Metadata file not found for {label}: {metadata_path}")
+        return None
+    except Exception as e:
+        print(f"Error: Failed reading metadata for {label} at '{metadata_path}': {e}")
+        return None
+
+    version = data.get("version")
+    if version is None:
+        print(f"Error: Missing 'version' in metadata for {label}: {metadata_path}")
+        return None
+
+    version = str(version).strip()
+    if not version:
+        print(f"Error: Blank 'version' in metadata for {label}: {metadata_path}")
+        return None
+
+    return version
+
+def should_upload_for_version(version_cache, cache_key, current_version):
+    """Return True when upload is needed for a version-gated entry."""
+    entries = version_cache.setdefault("entries", {})
+    return entries.get(cache_key) != current_version
+
+def set_uploaded_version(version_cache, cache_key, uploaded_version):
+    """Update cached uploaded version for an entry."""
+    entries = version_cache.setdefault("entries", {})
+    entries[cache_key] = uploaded_version
 
 def _replace_value_preserve_comment(line, key, value):
     pattern = re.compile(rf"^(\s*{re.escape(key)}\s*=\s*)([^#]*?)(\s*)(#.*)?$")
@@ -375,9 +530,15 @@ def _load_submod_metadata(mod_dir):
     if name is not None and not name:
         name = None
 
+    version = data.get("version")
+    version = str(version).strip() if version is not None else None
+    if version == "":
+        version = None
+
     return {
         "id": mod_id,
         "name": name,
+        "version": version,
         "root": mod_dir,
         "thumbnail": os.path.join(mod_dir, ".metadata", "thumbnail.png")
     }
@@ -401,19 +562,20 @@ def ensure_submod_item_id(steam, mod_id, workshop_id, config_path):
 
     return new_id
 
-def upload_submods(steam, config):
+def upload_submods(steam, config, version_gate_enabled=False, version_cache=None):
     submods_root = os.path.join(ROOT_DIR, SUBMODS_DIR_NAME)
     if not os.path.isdir(submods_root):
         print(f"Warning: submods folder not found: {submods_root}")
-        return True
+        return True, False
 
     mapping = load_submods_config(config)
     success = True
+    cache_changed = False
 
     entries = sorted(os.listdir(submods_root))
     if not entries:
         print(f"Warning: No submods found in {submods_root}.")
-        return True
+        return True, False
 
     for entry in entries:
         mod_dir = os.path.join(submods_root, entry)
@@ -426,6 +588,24 @@ def upload_submods(steam, config):
             continue
 
         mod_id = meta["id"]
+        version = meta.get("version")
+        cache_key = f"submod:{mod_id}"
+
+        if version_gate_enabled:
+            if not version:
+                print(
+                    f"Error: upload_only_on_version_change is enabled, "
+                    f"but submod '{mod_id}' is missing metadata.version."
+                )
+                success = False
+                continue
+            if version_cache is None:
+                print("Error: Internal version cache not provided for submod upload gating.")
+                return False, cache_changed
+            if not should_upload_for_version(version_cache, cache_key, version):
+                print(f"Skipping submod '{mod_id}': version '{version}' already uploaded.")
+                continue
+
         workshop_id = mapping.get(mod_id, 0)
         workshop_id = _parse_int(workshop_id, f"workshop id for {mod_id}", allow_zero=True)
         if workshop_id is None:
@@ -448,8 +628,13 @@ def upload_submods(steam, config):
 
         if not upload_release(steam.Workshop, meta["root"], preview_path, workshop_id, title):
             success = False
+            continue
 
-    return success
+        if version_gate_enabled:
+            set_uploaded_version(version_cache, cache_key, version)
+            cache_changed = True
+
+    return success, cache_changed
 
 def _normalize_release_title(raw_name):
     title = str(raw_name)
@@ -575,8 +760,224 @@ def upload_release(workshop, content_dir, preview_path, item_id, workshop_title=
     print("Workshop update submitted. Check Steam client for upload progress.")
     return True
 
+def read_text(path):
+    """Read a UTF-8 text file, returning None on missing/failed reads."""
+    try:
+        with open(path, "r", encoding="utf-8-sig") as f:
+            return f.read()
+    except FileNotFoundError:
+        return None
+    except Exception as e:
+        print(f"Warning: Failed to read '{path}': {e}")
+        return None
+
+def load_workshop_source_title(dev_mode=False, dev_name=None):
+    """Load workshop title from metadata, applying dev/release naming rules."""
+    try:
+        with open(METADATA_PATH, "r", encoding="utf-8-sig") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print(f"Warning: Metadata file not found: {METADATA_PATH}")
+        return None
+    except Exception as e:
+        print(f"Warning: Failed to read metadata file '{METADATA_PATH}': {e}")
+        return None
+
+    raw_title = data.get("name")
+    if raw_title is None:
+        print(f"Warning: Metadata 'name' not found in {METADATA_PATH}")
+        return None
+
+    raw_title = str(raw_title).strip()
+    if not raw_title:
+        print(f"Warning: Metadata 'name' is blank in {METADATA_PATH}")
+        return None
+
+    if dev_mode:
+        if dev_name:
+            return str(dev_name).strip()
+        return raw_title
+
+    return _normalize_release_title(raw_title)
+
+def parse_workshop_translation(text):
+    """Extract title/description sections from a combined workshop translation file."""
+    title = None
+    description = None
+    current = None
+    buffer = []
+
+    def flush():
+        nonlocal title, description, buffer, current
+        content = "".join(buffer)
+        if current == "title":
+            cleaned = content.strip()
+            title = cleaned if cleaned else None
+        elif current == "description":
+            description = content
+        buffer = []
+
+    for line in text.splitlines(keepends=True):
+        stripped = line.strip()
+        if stripped == WORKSHOP_TITLE_MARKER:
+            flush()
+            current = "title"
+            continue
+        if stripped == WORKSHOP_DESCRIPTION_MARKER:
+            flush()
+            current = "description"
+            continue
+        if current:
+            buffer.append(line)
+
+    flush()
+    return title, description
+
+def split_workshop_description(text):
+    """Remove the no-translate marker line while keeping remaining source text."""
+    if text is None:
+        return None
+
+    lines = text.splitlines(keepends=True)
+    for idx, line in enumerate(lines):
+        if line.strip() == WORKSHOP_NO_TRANSLATE_BELOW:
+            return "".join(lines[:idx] + lines[idx + 1:])
+    return text
+
+def apply_workshop_item_id(text, item_id):
+    """Replace the $item-id$ token when an item id is available."""
+    if text is None or item_id is None:
+        return text
+    return text.replace(WORKSHOP_ITEM_ID_TOKEN, str(item_id))
+
+def trim_description(text, lang_label):
+    """Truncate the description to MAX_DESCRIPTION_LENGTH bytes and warn if truncated."""
+    if not text:
+        return text
+
+    encoded = text.encode("utf-8")
+    if len(encoded) > MAX_DESCRIPTION_LENGTH:
+        print(f"Warning: Description for '{lang_label}' exceeds {MAX_DESCRIPTION_LENGTH} bytes. Truncating.")
+        return encoded[:MAX_DESCRIPTION_LENGTH].decode("utf-8", errors="ignore")
+    return text
+
+def build_workshop_page_updates(config, item_id, dev_mode=False, dev_name=None):
+    """Collect source and translated workshop title/description payloads."""
+    source_language = load_source_language(config)
+    if source_language is None:
+        return None
+
+    base_description = read_text(WORKSHOP_DESCRIPTION_PATH)
+    if base_description is None:
+        print(f"Error: Workshop description file not found: {WORKSHOP_DESCRIPTION_PATH}")
+        return None
+
+    base_description = split_workshop_description(base_description)
+    base_description = apply_workshop_item_id(base_description, item_id)
+    base_description = trim_description(base_description, source_language)
+    base_title = load_workshop_source_title(dev_mode=dev_mode, dev_name=dev_name)
+
+    updates = [{
+        "lang": source_language,
+        "steam_lang": LANGUAGE_TO_STEAM[source_language],
+        "title": base_title,
+        "description": base_description,
+    }]
+
+    if not os.path.exists(TRANSLATIONS_DIR):
+        print(f"Warning: Translations folder not found: {TRANSLATIONS_DIR}")
+        return updates
+
+    translations = {}
+    for filename in os.listdir(TRANSLATIONS_DIR):
+        match = WORKSHOP_TRANSLATION_FILENAME_RE.match(filename)
+        if not match:
+            continue
+        lang = match.group(1)
+        path = os.path.join(TRANSLATIONS_DIR, filename)
+        text = read_text(path)
+        if text is None:
+            continue
+
+        title_text, desc_text = parse_workshop_translation(text)
+        title_text = apply_workshop_item_id(title_text, item_id)
+        desc_text = apply_workshop_item_id(desc_text, item_id)
+        if title_text is None and desc_text is None:
+            continue
+
+        desc_text = trim_description(desc_text, lang)
+        translations[lang] = {"title": title_text, "description": desc_text}
+
+    for lang, entry in translations.items():
+        if lang == source_language:
+            continue
+        if lang not in LANGUAGE_TO_STEAM:
+            print(f"Warning: No Steam language mapping for '{lang}', skipping.")
+            continue
+        updates.append({
+            "lang": lang,
+            "steam_lang": LANGUAGE_TO_STEAM[lang],
+            "title": entry["title"],
+            "description": entry["description"],
+        })
+
+    return updates
+
+def upload_workshop_pages_for_item(steam, updates, item_id):
+    """Upload workshop title/description updates for each language entry."""
+    if updates is None:
+        return False
+
+    print("Workshop language updates:")
+    for update in updates:
+        print(
+            f"  - {update['lang']} ({update['steam_lang']}): "
+            f"{'title' if update['title'] is not None else 'no-title'}, "
+            f"{'description' if update['description'] is not None else 'no-description'}"
+        )
+
+    workshop = steam.Workshop
+    for update in updates:
+        handle = workshop.StartItemUpdate(APP_ID, item_id)
+        if not handle:
+            print("Error: StartItemUpdate failed. Check app ID and item ID.")
+            return False
+
+        lang_label = f"{update['lang']} ({update['steam_lang']})"
+        lang_result = steam.Workshop_SetItemUpdateLanguage(handle, update["steam_lang"].encode())
+        if lang_result is False:
+            print(f"Error: SetItemUpdateLanguage failed for {lang_label}.")
+            return False
+
+        if update["title"] is not None:
+            title_result = workshop.SetItemTitle(handle, update["title"])
+            if title_result is False:
+                print(f"Error: SetItemTitle failed for {lang_label}.")
+                return False
+
+        if update["description"] is not None:
+            desc_result = workshop.SetItemDescription(handle, update["description"])
+            if desc_result is False:
+                print(f"Error: SetItemDescription failed for {lang_label}.")
+                return False
+
+        workshop.SubmitItemUpdate(handle, "")
+
+    print("Workshop page updates submitted. Check Steam client for upload progress.")
+    return True
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Build and upload an EU5 mod to Steam Workshop.")
+    parser.add_argument(
+        "--mod",
+        action="store_true",
+        help="Upload mod content only. When set, config default target settings are ignored."
+    )
+    parser.add_argument(
+        "--workshop-pages",
+        action="store_true",
+        help="Upload Workshop title/description pages only. When set, config default target settings are ignored."
+    )
     parser.add_argument(
         "--dev",
         action="store_true",
@@ -595,27 +996,94 @@ def main():
     if config is None:
         return 1
 
-    item_id_key = "workshop_upload_item_id_dev" if args.dev else "workshop_upload_item_id"
-    item_label = "dev item id" if args.dev else "item id"
-    item_id = load_workshop_item_id(config, item_id_key, item_label)
-    if item_id is None:
+    upload_mod, upload_workshop_pages, upload_submods_selected = resolve_upload_targets(args, config)
+    if upload_mod is None:
         return 1
 
+    upload_only_on_version_change = load_optional_bool(config, UPLOAD_ON_VERSION_CHANGE_KEY, False)
+    if upload_only_on_version_change is None:
+        return 1
+
+    version_cache = load_upload_versions(UPLOAD_VERSIONS_PATH) if upload_only_on_version_change else None
+
+    if not upload_mod and not upload_workshop_pages and not upload_submods_selected:
+        print(
+            "No upload actions selected. "
+            "Enable defaults in config.toml or pass --mod/--workshop-pages/--submods."
+        )
+        return 0
+
+    upload_mod_effective = upload_mod
+    main_version = None
+    main_cache_key = "main:dev" if args.dev else "main:release"
+    if upload_mod and upload_only_on_version_change:
+        main_version = load_metadata_version(METADATA_PATH, "main mod")
+        if main_version is None:
+            return 1
+        if not should_upload_for_version(version_cache, main_cache_key, main_version):
+            print(f"Skipping main mod upload: version '{main_version}' already uploaded.")
+            upload_mod_effective = False
+
+    if not upload_mod_effective and not upload_workshop_pages and not upload_submods_selected:
+        print("No uploads required after version check.")
+        return 0
+
+    item_id_key = "workshop_upload_item_id_dev" if args.dev else "workshop_upload_item_id"
+    item_label = "dev item id" if args.dev else "item id"
+    item_id = None
     dev_name = load_dev_name(config) if args.dev else None
-    release_dir, preview_path, workshop_title = build_release(dev_mode=args.dev, dev_name=dev_name)
+
+    if upload_mod_effective or upload_workshop_pages:
+        item_id = load_workshop_item_id(config, item_id_key, item_label)
+        if item_id is None:
+            return 1
+
+    release_dir = None
+    preview_path = None
+    workshop_title = None
+    if upload_mod_effective:
+        release_dir, preview_path, workshop_title = build_release(dev_mode=args.dev, dev_name=dev_name)
 
     uploaded_main = False
 
     with steamworks_session() as steam:
-        item_id = ensure_item_id(steam, item_id, CONFIG_PATH, item_id_key)
-        if item_id is None:
-            return 1
-        if not upload_release(steam.Workshop, release_dir, preview_path, item_id, workshop_title):
-            return 1
-        uploaded_main = True
-        if args.submods:
-            if not upload_submods(steam, config):
+        if upload_mod_effective or upload_workshop_pages:
+            item_id = ensure_item_id(steam, item_id, CONFIG_PATH, item_id_key)
+            if item_id is None:
                 return 1
+
+        if upload_mod_effective:
+            if not upload_release(steam.Workshop, release_dir, preview_path, item_id, workshop_title):
+                return 1
+            uploaded_main = True
+            if upload_only_on_version_change:
+                set_uploaded_version(version_cache, main_cache_key, main_version)
+                save_upload_versions(UPLOAD_VERSIONS_PATH, version_cache)
+
+        if upload_submods_selected:
+            submods_ok, submod_cache_changed = upload_submods(
+                steam,
+                config,
+                version_gate_enabled=upload_only_on_version_change,
+                version_cache=version_cache
+            )
+            if not submods_ok:
+                return 1
+            if upload_only_on_version_change and submod_cache_changed:
+                save_upload_versions(UPLOAD_VERSIONS_PATH, version_cache)
+
+        if upload_workshop_pages:
+            updates = build_workshop_page_updates(
+                config,
+                item_id,
+                dev_mode=args.dev,
+                dev_name=dev_name
+            )
+            if updates is None:
+                return 1
+            if not upload_workshop_pages_for_item(steam, updates, item_id):
+                return 1
+
     if uploaded_main:
         if POST_UPLOAD_DELAY_SECONDS > 0:
             time.sleep(POST_UPLOAD_DELAY_SECONDS)
