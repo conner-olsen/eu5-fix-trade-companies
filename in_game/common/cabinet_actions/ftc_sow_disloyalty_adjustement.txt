@@ -1,0 +1,23 @@
+﻿INJECT:sow_disloyalty = {
+	select_trigger = {
+		looking_for_a = country
+		interaction_source_list = { }
+		target_flag = verification
+		name = "choose_country"
+		show_if = {
+			scope:actor = { is_subject_type = trade_company }
+		}
+		visible = {
+			always = no
+		}
+	}
+	ai_will_do = {
+		add = {
+			if = {
+				desc = "Trade Company Adjustment"
+				limit = { scope:actor = { is_subject_type = trade_company } }
+				value = -1000
+			}
+		}
+	}
+}
