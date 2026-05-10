@@ -1,6 +1,6 @@
 ﻿l_russian:
  tc_category: "Здания торговых компаний"
- tc_category_desc: "Здания, которые влияют на ваши предметы торговли trade_company."
+ tc_category_desc: "Здания, влияющие на ваши торговые субъекты trade_company."
 
  # NO-TRANSLATE BELOW
  trade_company_headquarters_temp: "$trade_company_headquarters$"

@@ -1,6 +1,6 @@
 ﻿l_turkish:
  tc_category: "Ticaret Şirketi Binaları"
- tc_category_desc: "Ticaret trade_company konularınızı etkileyen binalar."
+ tc_category_desc: "Ticaret trade_company tebaalarınızı etkileyen binalar."
 
  # NO-TRANSLATE BELOW
  trade_company_headquarters_temp: "$trade_company_headquarters$"

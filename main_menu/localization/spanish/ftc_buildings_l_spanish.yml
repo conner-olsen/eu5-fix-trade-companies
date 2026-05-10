@@ -1,6 +1,6 @@
 ﻿l_spanish:
- tc_category: "Edificios de empresas comerciales"
- tc_category_desc: "Edificios que afectan a tus asuntos comerciales trade_company."
+ tc_category: "Edificios de compañías comerciales"
+ tc_category_desc: "Edificios que afectan a tus sujetos de trade_company."
 
  # NO-TRANSLATE BELOW
  trade_company_headquarters_temp: "$trade_company_headquarters$"

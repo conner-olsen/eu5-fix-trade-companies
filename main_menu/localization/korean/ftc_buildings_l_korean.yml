@@ -1,6 +1,6 @@
 ﻿l_korean:
  tc_category: "무역 회사 건물"
- tc_category_desc: "무역에 영향을 미치는 건물 무역 회사 대상"
+ tc_category_desc: "당신의 무역 회사 종속국에 영향을 주는 건물들입니다."
 
  # NO-TRANSLATE BELOW
  trade_company_headquarters_temp: "$trade_company_headquarters$"

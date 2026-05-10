@@ -1,7 +1,7 @@
 ﻿l_japanese:
- ftc_delete_company_interaction: "クローズド・カンパニー"
+ ftc_delete_company_interaction: "会社を閉鎖"
  ftc_delete_company_interaction_desc: "貿易会社を削除します。"
- ftc_delete_company_interaction_act: "会社削除"
- ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName] が [SCOPE.sCountry('recipient').GetName] を閉じる"
- ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName] [SCOPE.sCountry('recipient').GetName] [SCOPE.sCountry('recipient').GetName] を閉じました"
- PROPOSE_ftc_delete_company_interaction: "$TARGET$を閉じる？"
+ ftc_delete_company_interaction_act: "会社を削除"
+ ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName]が[SCOPE.sCountry('recipient').GetName]を閉鎖"
+ ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName]が[SCOPE.sCountry('recipient').GetName]を閉鎖しました"
+ PROPOSE_ftc_delete_company_interaction: "$TARGET$を閉じますか？"

@@ -1,7 +1,7 @@
 ﻿l_polish:
- ftc_delete_company_interaction: "Zamknij firmę"
- ftc_delete_company_interaction_desc: "Usuwa firmę handlową."
- ftc_delete_company_interaction_act: "Usuń firmę"
+ ftc_delete_company_interaction: "Zamknij kompanię"
+ ftc_delete_company_interaction_desc: "Usuwa Kompanię Handlową."
+ ftc_delete_company_interaction_act: "Usuń kompanię"
  ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName] zamyka [SCOPE.sCountry('recipient').GetName]"
- ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName] zamknięte [SCOPE.sCountry('recipient').GetName]"
+ ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName] zamknął [SCOPE.sCountry('recipient').GetName]"
  PROPOSE_ftc_delete_company_interaction: "Zamknąć $TARGET$?"

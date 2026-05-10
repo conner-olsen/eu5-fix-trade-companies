@@ -1,7 +1,7 @@
 ﻿l_simp_chinese:
- ftc_delete_company_interaction: "闭合公司"
- ftc_delete_company_interaction_desc: "删除贸易公司。"
+ ftc_delete_company_interaction: "关闭公司"
+ ftc_delete_company_interaction_desc: "移除贸易公司。"
  ftc_delete_company_interaction_act: "删除公司"
- ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName] 关闭 [SCOPE.sCountry('recipient').GetName]"
- ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName] 已关闭 [SCOPE.sCountry('recipient').GetName]"
+ ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName]关闭了[SCOPE.sCountry('recipient').GetName]"
+ ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName]关闭了[SCOPE.sCountry('recipient').GetName]"
  PROPOSE_ftc_delete_company_interaction: "关闭 $TARGET$？"

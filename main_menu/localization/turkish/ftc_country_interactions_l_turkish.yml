@@ -1,7 +1,7 @@
 ﻿l_turkish:
- ftc_delete_company_interaction: "Yakın Şirket"
- ftc_delete_company_interaction_desc: "Ticaret Şirketini siler."
+ ftc_delete_company_interaction: "Şirketi Kapat"
+ ftc_delete_company_interaction_desc: "Ticaret Şirketi'ni siler."
  ftc_delete_company_interaction_act: "Şirketi Sil"
- ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName] kapatılır [SCOPE.sCountry('recipient').GetName]"
- ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName] kapandı [SCOPE.sCountry('recipient').GetName]"
- PROPOSE_ftc_delete_company_interaction: "$TARGET$ kapatmak ister misiniz?"
+ ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName], [SCOPE.sCountry('recipient').GetName] kapatıyor"
+ ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName], [SCOPE.sCountry('recipient').GetName] kapattı"
+ PROPOSE_ftc_delete_company_interaction: "$TARGET$ kapatılsın mı?"

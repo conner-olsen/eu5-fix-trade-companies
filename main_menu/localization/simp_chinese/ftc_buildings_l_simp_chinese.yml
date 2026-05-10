@@ -1,6 +1,6 @@
 ﻿l_simp_chinese:
- tc_category: "贸易公司大楼"
- tc_category_desc: "影响你贸易贸易公司臣民的建筑。"
+ tc_category: "贸易公司建筑"
+ tc_category_desc: "影响你的 trade_company 贸易从属国的建筑。"
 
  # NO-TRANSLATE BELOW
  trade_company_headquarters_temp: "$trade_company_headquarters$"

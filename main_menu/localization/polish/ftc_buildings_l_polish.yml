@@ -1,6 +1,6 @@
 ﻿l_polish:
- tc_category: "Budynki przedsiębiorstw handlowych"
- tc_category_desc: "Budynki, które mają wpływ na handel trade_company."
+ tc_category: "Budynki kompanii handlowej"
+ tc_category_desc: "Budynki wpływające na twoje państwa zależne trade_company."
 
  # NO-TRANSLATE BELOW
  trade_company_headquarters_temp: "$trade_company_headquarters$"

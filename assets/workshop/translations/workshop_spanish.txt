@@ -1,35 +1,35 @@
 ===WORKSHOP_TITLE===
-Corrección de Compañías Comerciales / Fix Trade Companies
+Corrección de las Compañías Comerciales / Fix Trade Companies
 ===WORKSHOP_DESCRIPTION===
 [i]You are on the DeepL-Generated Spanish Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
 
 [h1]Resumen:[/h1]
-Las compañías comerciales de EU5 claramente no estaban terminadas para el lanzamiento. Numerosos problemas las hacen completamente no funcionales. Este mod soluciona todos los problemas manteniendo las compañías comerciales tal como Paradox "pretendía".
+Las compañías comerciales de EU5 claramente no estaban terminadas para el lanzamiento. Numerosos problemas hacen que no funcionen en absoluto. Este mod corrige todos los problemas manteniendo las compañías comerciales tal y como Paradox "pretendía".
 
 [h1]Características:[/h1]
 [olist]
- [*][b]Permite al soberano construir edificios de Compañía Comercial[/b] (que se transfieren a la Compañía Comercial).
- [*][b]Hace que las compañías comerciales comiencen con el avance de Compañías Comerciales para que realmente puedan construir edificios[/b] (Paradox realmente olvidó dárselo :/)
- [*][b]Hace que la IA construya y expanda más las Compañías Comerciales[/b]
- [*][b]Reemplaza el Requisito de Preferencia de Acceso al Mercado con Relación Positiva o mayor Proyección de Poder[/b] - Las compañías comerciales nunca solicitarán acceso al mercado por su cuenta, y el acceso del soberano no cuenta a pesar de que claramente se pretendía que así fuera.
- [*][b]Permite renombrar las Compañías Comerciales[/b]
- [*][b]Corrige el problema "No podemos construir un [Company Building] en [Location] ya que ya hay [Country Pops] allí"[/b] - Para solucionar esto, tuvimos que crear edificios y poblaciones temporales duplicados que, una vez terminados, construirán los edificios reales y se destruirán a sí mismos, eludiendo este problema. Debido a esto, verás edificios de tipo "Construir [Building Type]"; una vez construidos, serán reemplazados por los edificios normales "[Building Type]". Los edificios reales deberían estar ocultos en la vista de construcción, pero consulta la nota sobre esto más abajo.
- [*][b]Corrige el error "Necesitamos haber investigado el avance de Compañías Comerciales para poder construir [Company Building]" que aparecía incluso cuando ya tenías el avance investigado.[/b]
+ [*][b]Permite al soberano construir edificios de Compañías Comerciales[/b] (que se transfieren a la Compañía Comercial).
+ [*][b]Hace que las compañías comerciales comiencen con el avance de Compañía Comercial para que realmente puedan construir edificios[/b] (a Paradox se le olvidó darles esto :/).
+ [*][b]Hace que la IA construya y expanda más las Compañías Comerciales[/b].
+ [*][b]Sustituye el requisito de preferencia de Acceso al Mercado por Relaciones Positivas o una mayor Proyección de Poder[/b] - Las compañías comerciales nunca solicitan acceso al mercado por su cuenta, y el acceso del soberano no cuenta a pesar de que claramente esa era la intención.
+ [*][b]Permite cambiar el nombre de las Compañías Comerciales[/b].
+ [*][b]Corrige el error "No podemos construir un [Company Building] en [Location] ya que ya hay [Country Pops] allí"[/b] - Para solucionar esto, tuvimos que crear edificios y poblaciones temporales duplicados que, una vez construidos, crearán los edificios reales y se destruirán a sí mismos, evitando este problema. Debido a esto, verás edificios de tipo "Construir [Building Type]"; una vez construidos, serán reemplazados por los edificios normales "[Building Type]". Los edificios reales deberían estar ocultos en la vista de construcción, pero consulta la nota sobre esto más abajo.
+ [*][b]Corrige el error "Necesitamos haber investigado el avance de Compañías Comerciales para poder construir [Company Building]" que aparecía incluso teniendo el avance investigado.[/b]
  [*][b]Corrige problemas con múltiples compañías comerciales por región[/b] - Solo una compañía comercial por soberano en la misma región. (Anteriormente, si creabas varias compañías comerciales por región, cuando las propias compañías o el soberano construían edificios, estos se transferían arbitrariamente a solo una de ellas).
- [*][b]Corrige que las Compañías Comerciales siempre siembren deslealtad[/b]
- [*][b]Añade la interacción de Cerrar Compañía[/b] - elimina una compañía comercial.
+ [*][b]Corrige que las Compañías Comerciales siempre siembren la deslealtad[/b].
+ [*][b]Añade la interacción "Cerrar compañía"[/b] - elimina una compañía comercial.
 [/olist]
-Consulta la [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]discusión sobre correcciones[/url] para obtener detalles sobre todos estos cambios y por qué se realizaron.
+Consulta el [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]hilo de discusión sobre correcciones[/url] para obtener detalles sobre todos estos cambios y por qué se realizaron.
 
 [h1]Problemas conocidos:[/h1]
 [olist]
- [*][b]Hay dos filtros de tipo de población para Burgueses, Clérigos y Nobles[/b] - Estos son los tipos de población temporales que usamos para sortear el problema de "No podemos construir un [Company Building] en [Location] ya que ya hay [Country Pops] allí".
- [*][b]Los edificios comerciales no aparecen con el filtro de Burgueses aplicado en la vista de ubicación[/b] - Siguen apareciendo sin el filtro aplicado y se pueden ver desde el macroconstructor.
+ [*][b]Hay dos filtros de tipo de población para Burgueses, Clérigos y Nobles[/b] - Estos son los tipos de población temporales que usamos para evitar el error de "No podemos construir un [Company Building] en [Location]...".
+ [*][b]Los edificios comerciales no aparecen con el filtro de Burgueses aplicado en la vista de ubicación[/b] - Siguen apareciendo sin el filtro aplicado y pueden verse desde el constructor de macro (macro builder).
 [/olist]
 
 [h1]Localizaciones nativas:[/h1]
 [list]
- [*][b]Inglés:[/b] Primario
+ [*][b]Inglés:[/b] Principal
 [/list]
 
 [h1]Localizaciones traducidas por DeepL:[/h1]
@@ -54,21 +54,21 @@ Puedes seguir el estado de estas correcciones a través de sus respectivos [url=
 [list]
  [*]No es compatible con Ironman ni Logros.
  [*]Totalmente compatible con partidas guardadas.
- [*]Funcionará con cualquier mod que no modifique los edificios comerciales, el avance de compañías comerciales o el tipo de sujeto de compañía comercial.
- [*]Podría añadir parches de compatibilidad a petición del usuario.
+ [*]Funcionará con cualquier mod que no modifique los edificios comerciales, el avance de compañía comercial o el tipo de sujeto de compañía comercial.
+ [*]Podría añadir parches de compatibilidad a petición de los usuarios.
 [/list]
 
 [h1]Nota importante:[/h1]
 [list]
- [*]Al usar mods que sobrescriben la vista de producción, verás algunos edificios comerciales duplicados, uno titulado "construir [building name]" y el otro simplemente "[building name]". Usa el de "construir [building name]" para construir los edificios. Esto fue necesario para corregir el problema de "No podemos construir un [Company Building] en [Location] ya que ya hay [Country Pops] allí".
+ [*]Al usar mods que sobrescriben la vista de producción, verás algunos edificios comerciales duplicados, uno titulado "Construir [building name]" y el otro solo "[building name]". Utiliza "Construir [building name]" para construir los edificios. Esto fue necesario para corregir el error "No podemos construir un [Company Building] en [Location] ya que ya hay [Country Pops] allí".
 [/list]
 
 [h1]Información adicional:[/h1]
-Estamos trabajando en un mod aparte de Rediseño de Compañías Comerciales (Trade Company Overhaul) que tiene como objetivo reequilibrar completamente las compañías comerciales, haciéndolas mucho más valiosas e interesantes. Actualmente, con las estadísticas base de los edificios de compañía, las compañías comerciales parecen débiles y no vale mucho la pena usarlas. Hay una [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014814/]discusión sobre el rediseño[/url] fijada en la parte inferior de la página de este mod para debatir y hacer sugerencias para el próximo rediseño.
+Estamos trabajando en un mod aparte de Rediseño de Compañías Comerciales (Trade Company Overhaul), aún por publicar, que tiene como objetivo reequilibrar completamente las compañías comerciales, haciéndolas mucho más valiosas e interesantes. Actualmente, con las estadísticas base de los edificios de las compañías, estas parecen débiles y no vale mucho la pena usarlas. Hay un [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014814/]hilo de discusión sobre el rediseño[/url] fijado en la parte inferior de esta página para debatir y hacer sugerencias para la próxima actualización.
 
-La [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]discusión sobre correcciones[/url] fijada es donde explicamos detalladamente todas las correcciones realizadas, repasamos mi lista de tareas pendientes/cosas que potencialmente no podemos arreglar, y donde puedes tener cualquier discusión o sugerencia relacionada con la corrección de problemas de las Compañías Comerciales del juego base.
+El [url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]hilo de discusión sobre correcciones[/url] fijado es donde explicamos detalladamente todas las correcciones que hemos hecho, repasamos mi lista de tareas pendientes / cosas que potencialmente no podemos arreglar, y donde puedes comentar cualquier sugerencia relacionada con la corrección de los problemas de las Compañías Comerciales del juego base.
 
-Además de las discusiones fijadas y los comentarios en esta página, también habrá canales para discutir esto y el próximo rediseño en el [url=https://discord.gg/qpStARR8uB]canal #trade-company-overhaul del servidor de Discord de la Comunidad de EU5[/url]. Si estás interesado en participar en el desarrollo del mod de correcciones o del rediseño, puedes mencionar o añadir a @arealconner en Discord. Todas las contribuciones son bienvenidas.
+Además de las discusiones fijadas y los comentarios en esta página, también habrá canales para debatir esto y el próximo rediseño en el [url=https://discord.gg/qpStARR8uB]canal #trade-company-overhaul del servidor de Discord de la Comunidad de EU5[/url]. Si estás interesado en participar en el desarrollo del mod de correcciones o del rediseño, puedes mencionar o añadir a @arealconner en Discord. Todas las contribuciones son bienvenidas.
 
-La fuente y las versiones de desarrollo del mod están disponibles en [url=https://github.com/conner-olsen/eu5-fix-trade-companies]GitHub.[/url]
+El código fuente y las versiones de desarrollo del mod están disponibles en [url=https://github.com/conner-olsen/eu5-fix-trade-companies]GitHub.[/url]
 

@@ -1,6 +1,6 @@
 ﻿l_braz_por:
- tc_category: "Edifícios de empresas comerciais"
- tc_category_desc: "Edifícios que afetam seus assuntos comerciais trade_company."
+ tc_category: "Edifícios de Companhia de Comércio"
+ tc_category_desc: "Edifícios que afetam seus sujeitos de trade_company."
 
  # NO-TRANSLATE BELOW
  trade_company_headquarters_temp: "$trade_company_headquarters$"

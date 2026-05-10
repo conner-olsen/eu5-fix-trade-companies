@@ -1,7 +1,7 @@
 ﻿l_korean:
- ftc_delete_company_interaction: "폐쇄 회사"
- ftc_delete_company_interaction_desc: "무역 회사를 삭제합니다."
+ ftc_delete_company_interaction: "회사 폐쇄"
+ ftc_delete_company_interaction_desc: "무역 회사를 제거합니다."
  ftc_delete_company_interaction_act: "회사 삭제"
- ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName]이(가) [SCOPE.sCountry('recipient').GetName] 종료합니다."
- ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName]이(가) [SCOPE.sCountry('recipient').GetName]을(를) 종료했습니다."
- PROPOSE_ftc_delete_company_interaction: "$TARGET$ 닫으시겠습니까?"
+ ftc_delete_company_interaction_effect_text: "[SCOPE.sCountry('actor').GetName]이(가) [SCOPE.sCountry('recipient').GetName]을(를) 폐쇄합니다"
+ ftc_delete_company_interaction_effect_text_past: "[SCOPE.sCountry('actor').GetName]이(가) [SCOPE.sCountry('recipient').GetName]을(를) 폐쇄했습니다"
+ PROPOSE_ftc_delete_company_interaction: "$TARGET$을(를) 닫으시겠습니까?"

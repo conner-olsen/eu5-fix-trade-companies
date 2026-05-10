@@ -1,74 +1,74 @@
 ===WORKSHOP_TITLE===
-貿易会社修正 / Fix Trade Companies
+貿易会社の修正 / Fix Trade Companies
 ===WORKSHOP_DESCRIPTION===
 [i]You are on the DeepL-Generated Japanese Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
 
 [h1]概要:[/h1]
-EU5の貿易会社は、明らかに未完成の状態でリリースされました。数多くの問題により、完全に機能不全に陥っています。このModは、Paradoxが「意図した」貿易会社の形を維持しつつ、これらすべての問題を修正します。
+EU5の貿易会社は、明らかにリリースに向けて完成していませんでした。多数の問題により、それらは完全に機能不全に陥っています。このModは、Paradoxが「意図した」貿易会社の形態を維持しつつ、すべての問題を修正します。
 
-[h1]機能:[/h1]
+[h1]特徴:[/h1]
 [olist]
- [*][b]宗主国が貿易会社（Trade Company）の建物を建設可能に[/b]（建設された建物は貿易会社に譲渡されます）。
- [*][b]貿易会社が開始時に技術「貿易会社（Trade Company）」を習得した状態に変更[/b]（Paradoxはこれを設定し忘れていたようです :/）。
- [*][b]AIが貿易会社の設立と拡張をより積極的に行うよう調整[/b]
- [*][b]市場アクセスの優先要件を「良好な関係」または「高い戦威（Power Projection）」に置き換え[/b] - 貿易会社が自ら市場アクセスを要求することはなく、また宗主国のアクセスも（意図されているはずなのに）カウントされない問題を修正。
- [*][b]貿易会社の名前を変更可能に[/b]
- [*][b]「[Location]に[Country Pops]が既に存在するため、[Company Building]を建設できません」という問題を修正[/b] - この修正のために、一時的な重複建物とPopを作成しました。これらは建設完了後に本物の建物を作成し、自身を削除することで問題を回避します。そのため、建設リストに「Build [Building Type]（[建物名]を建設）」という項目が表示されますが、これらが完成すると通常の「[Building Type]（[建物名]）」に置き換わります。本来、本物の建物は建設ビューでは非表示になるはずですが、下記の注記を確認してください。
- [*][b]技術を研究済みでも「[Company Building]を建設するには技術『貿易会社（Trade Companies）』が必要です」と表示される問題を修正。[/b]
- [*][b]同一地域内に複数の貿易会社が存在する場合の問題を修正[/b] - 同一地域内では1人の宗主国につき1つの貿易会社のみに制限されます（以前は、複数の貿易会社がある場合、宗主国や会社自身が建設した建物が一方の会社にのみ恣意的に譲渡されていました）。
+ [*][b]宗主国による貿易会社建造物の建設を可能に[/b]（建設後、貿易会社に譲渡されます）。
+ [*][b]貿易会社が初期状態で「貿易会社」の進歩（Advance）を所持するように変更[/b]（Paradoxはこれを彼らに与えるのを本当に忘れていました :/）
+ [*][b]AIによる貿易会社の建設と拡張を強化[/b]
+ [*][b]市場アクセスの優先要件を「良好な関係」または「高い国威（Power Projection）」に置き換え[/b] - 貿易会社が自ら市場アクセスを要求することはなく、宗主国側のアクセスは明らかに意図されているにもかかわらずカウントされないためです。
+ [*][b]貿易会社の名前変更を可能に[/b]
+ [*][b]「[Location]には既に[Country Pops]が存在するため、[Company Building]を建設できません」という問題を修正[/b] - これを修正するために、複製された一時的な建造物とPOPを作成しました。これらは建設されると本物の建造物を構築し、自らを削除することで問題を回避します。そのため、「Build [Building Type]」という名前の建造物が表示されますが、これらが建設されると通常の「[Building Type]」に置き換わります。本物の建造物は建設ビューで非表示になるはずですが、詳細は後述の注意点を確認してください。
+ [*][b]「貿易会社」の進歩を研究済みであるにもかかわらず、「[Company Building]を建設するには貿易会社の進歩を研究している必要があります」と表示される問題を修正。[/b]
+ [*][b]同一リージョン内に複数の貿易会社が存在する場合の問題を修正[/b] - 同一リージョン内の1つの宗主国につき、貿易会社は1つのみとなります（以前は同一リージョンに複数の貿易会社を作成した場合、貿易会社自身または宗主国が建造物を建設すると、それらが任意にそのうちの1つだけに転送されてしまう問題がありました）。
  [*][b]貿易会社が常に不忠を煽る（Sowing Disloyalty）問題を修正[/b]
- [*][b]「貿易会社の閉鎖（Close Company）」インタラクションを追加[/b] - 貿易会社を削除します。
+ [*][b]「会社の閉鎖（Close Company）」インタラクションを追加[/b] - 貿易会社を削除します。
 [/olist]
-これらの変更内容の詳細や理由については、[url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]修正に関する議論（英語）[/url]を参照してください。
+これらの変更のすべての詳細、および変更が行われた理由については、[url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]修正に関する議論（英語）[/url]を参照してください。
 
 [h1]既知の問題:[/h1]
 [olist]
- [*][b]市民（Burghers）、聖職者（Clerics）、貴族（Nobles）に2つのPopタイプフィルターが表示される[/b] - これらは、前述の建設問題を回避するために使用している一時的なPopタイプです。
- [*][b]地域ビューで市民（Burghers）フィルターを適用すると貿易建物が表示されない[/b] - フィルターを適用していない状態、またはマクロビルダーからは引き続き確認可能です。
+ [*][b]市民（Burghers）、聖職者（Clerics）、貴族（Nobles）のPOPタイプフィルターが2つずつ存在する[/b] - これらは「[Location]には既に[Country Pops]が存在するため...」の問題を回避するために使用している一時的なPOPタイプです。
+ [*][b]ロケーションビューで市民（Burghers）フィルターを適用した際、貿易建造物が表示されない[/b] - フィルターを適用していない状態では表示され、マクロビルダーからも確認可能です。
 [/olist]
 
 [h1]ネイティブ・ローカライズ:[/h1]
 [list]
- [*][b]英語（English）:[/b] プライマリ
+ [*][b]English:[/b] Primary
 [/list]
 
 [h1]DeepL翻訳によるローカライズ:[/h1]
 [list]
- [*][b]中国語 / 中文[/b]
- [*][b]フランス語 / Français[/b]
- [*][b]ドイツ語 / Deutsch[/b]
- [*][b]日本語 / 日本語[/b]
- [*][b]韓国語 / 한국어[/b]
- [*][b]ポーランド語 / Polski[/b]
- [*][b]ポルトガル語（ブラジル） / Português (Brasil)[/b]
- [*][b]ロシア語 / Русский[/b]
- [*][b]スペイン語 / Español[/b]
- [*][b]トルコ語 / Türkçe[/b]
+ [*][b]Chinese / 中文[/b]
+ [*][b]French / Français[/b]
+ [*][b]German / Deutsch[/b]
+ [*][b]Japanese / 日本語[/b]
+ [*][b]Korean / 한국어[/b]
+ [*][b]Polish / Polski[/b]
+ [*][b]Portuguese (Brazil) / Português (Brasil)[/b]
+ [*][b]Russian / Русский[/b]
+ [*][b]Spanish / Español[/b]
+ [*][b]Turkish / Türkçe[/b]
 [/list]
 
 [h1]更新履歴:[/h1]
-ワークショップページの[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3610028078]「更新履歴（Change Notes）」[/url]を参照してください。
-修正状況の詳細は、それぞれの[url=https://github.com/conner-olsen/eu5-fix-trade-companies/issues]GitHub Issues[/url]で追跡可能です。
+ワークショップページの[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3610028078]「Change Notes（更新履歴）」[/url]を参照してください。
+これらの修正状況については、それぞれの[url=https://github.com/conner-olsen/eu5-fix-trade-companies/issues]GitHub Issues[/url]から確認できます。
 
 [h1]互換性:[/h1]
 [list]
- [*]アイアンマン/実績には非対応。
- [*]セーブデータとの完全な互換性あり。
- [*]貿易建物、技術「貿易会社」、または従属国タイプ「貿易会社」を変更しない他のModと互換性があります。
- [*]リクエストがあれば互換パッチを作成する場合があります。
+ [*]アイアンマン/実績非対応。
+ [*]セーブデータとの完全な互換性。
+ [*]貿易建造物、「貿易会社」の進歩、または貿易会社の従属国タイプを変更しないModであれば、どのModとも動作します。
+ [*]リクエストがあれば互換パッチを追加する可能性があります。
 [/list]
 
 [h1]重要な注意点:[/h1]
 [list]
- [*]生産ビューを上書きするModを使用している場合、「build [建物名]」と通常の「[建物名]」という2つの重複した貿易建物が表示されることがあります。建設には「build [建物名]」の方を使用してください。これは、「[Location]に[Country Pops]が既に存在するため、[Company Building]を建設できません」という問題を修正するために必要な措置です。
+ [*]生産ビューを上書きするModを使用している場合、重複した貿易建造物が表示されます。一つは「build [building name]」というタイトルで、もう一つは単に「[building name]」です。建造物を建設する際は「build [building name]」を使用してください。これは「[Location]には既に[Country Pops]が存在するため、[Company Building]を建設できません」という問題を修正するために必要な措置でした。
 [/list]
 
 [h1]追加情報:[/h1]
-現在、貿易会社のバランスを完全に再調整し、より価値のある面白いものにすることを目的とした別のMod「Trade Company Overhaul」を開発中です。バニラの貿易建物のステータスでは、貿易会社は弱く、利用する価値があまりありません。このModページの下部にある[url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014814/]オーバーホールに関する議論[/url]で、今後のアップデートに向けた提案や議論を行っています。
+私たちは現在、別途リリース予定の「Trade Company Overhaul」Modを開発中です。これは貿易会社のバランスを完全に再調整し、より価値のある興味深いものにすることを目指しています。現状、バニラの建造物ステータスでは、貿易会社は弱く、利用する価値があまりないように見えます。このModページの下部には、今後のオーバーホールについて議論し提案を行うための[url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014814/]オーバーホールに関する議論（英語）[/url]が固定されています。
 
-固定された[url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]修正に関する議論[/url]では、実施したすべての修正の詳細や、ToDoリスト、修正不可能な可能性のある事項、およびバニラの貿易会社に関する議論を行っています。
+固定されている[url=https://steamcommunity.com/workshop/filedetails/discussion/3610028078/684112192553014734/]修正に関する議論（英語）[/url]では、私たちが行ったすべての修正を詳細に説明し、ToDoリストや修正が不可能な可能性のある事項を確認したり、バニラの貿易会社の問題に関連する議論や提案を行ったりすることができます。
 
-また、[url=https://discord.gg/qpStARR8uB]EU5 Community Discordサーバー[/url]の #trade-company-overhaul チャンネルでも議論が可能です。修正ModやオーバーホールModの開発に興味がある方は、Discordで @arealconner までメンションまたはフレンド申請を送ってください。あらゆる貢献を歓迎します。
+固定された議論やこのページのコメントに加えて、[url=https://discord.gg/qpStARR8uB]EU5 Community Discordサーバーの#trade-company-overhaulチャンネル[/url]でも、このModや今後のオーバーホールについて議論するためのチャンネルが用意されます。修正ModまたはオーバーホールModの開発に参加することに興味がある方は、Discordで @arealconner をメンションまたは追加してください。あらゆる貢献を歓迎します。
 
-Modのソースコードおよび開発版は[url=https://github.com/conner-olsen/eu5-fix-trade-companies]GitHub[/url]で公開されています。
+このModのソースおよび開発版は[url=https://github.com/conner-olsen/eu5-fix-trade-companies]GitHub[/url]で公開されています。
 

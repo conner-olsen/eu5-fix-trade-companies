@@ -1,6 +1,6 @@
 ﻿l_japanese:
- tc_category: "貿易会社ビル"
- tc_category_desc: "貿易に影響を与える建物貿易会社"
+ tc_category: "貿易会社の建物"
+ tc_category_desc: "貿易会社 trade_company 従属国に影響を与える建物。"
 
  # NO-TRANSLATE BELOW
  trade_company_headquarters_temp: "$trade_company_headquarters$"

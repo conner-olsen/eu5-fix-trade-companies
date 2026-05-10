@@ -1,6 +1,6 @@
 ﻿l_german:
- tc_category: "Gebäude von Handelsunternehmen"
- tc_category_desc: "Gebäude, die sich auf Ihre Handel trade_company-Themen auswirken."
+ tc_category: "Handelskompanie-Gebäude"
+ tc_category_desc: "Gebäude, die Eure trade_company-Untertanen beeinflussen."
 
  # NO-TRANSLATE BELOW
  trade_company_headquarters_temp: "$trade_company_headquarters$"
