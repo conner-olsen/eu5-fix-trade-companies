@@ -13,6 +13,7 @@ slave_center_temp = {
 	rural_settlement = yes
 	town = yes
 	city = yes
+	megalopolis = yes
 	location_potential = {
 		NOT = {
 			dominant_religion.group = scope:actor.religion.group
@@ -40,18 +41,20 @@ slave_center_temp = {
 	build_time = trade_company_build_time
 	unique_production_methods = {
 		slave_center_temp_maintenance = {
-			stone = 0.3
-			tools = 0.3
-			firearms = 0.33
-			paper = 0.1
+			stone = 0.1
+			tools = 0.1
+			firearms = 0.05
+			paper = 0.05
 			produced = slaves_goods
 			output = 1
+			debug_max_profit = -1
 			category = building_maintenance
 		}
 	}
 	construction_demand = simple_colony_construction
 	modifier = {
 		building_enslavement_power = 0.05
+		local_slave_pop_satisfaction = -0.05
 	}
 	on_built = {
 		ftc_temp_on_built_single_level = {
@@ -72,6 +75,7 @@ REPLACE:slave_center = {
 	rural_settlement = yes
 	town = yes
 	city = yes
+	megalopolis = yes
 	location_potential = {
 		NOT = {
 			dominant_religion.group = scope:actor.religion.group
@@ -96,18 +100,20 @@ REPLACE:slave_center = {
 	build_time = colonise_build_time
 	unique_production_methods = {
 		slave_center_maintenance = {
-			stone = 0.3
-			tools = 0.3
-			firearms = 0.33
-			paper = 0.1
+			stone = 0.1
+			tools = 0.1
+			firearms = 0.05
+			paper = 0.05
 			produced = slaves_goods
 			output = 1
+			debug_max_profit = -1
 			category = building_maintenance
 		}
 	}
 	construction_demand = simple_colony_construction
 	modifier = {
 		building_enslavement_power = 0.05
+		local_slave_pop_satisfaction = -0.05
 	}
 	on_built = {
 		ftc_perm_on_construction_ended
@@ -127,6 +133,15 @@ overseas_trading_post_temp = {
 	rural_settlement = yes
 	town = no
 	city = no
+	country_potential = {
+		NOR = {
+			AND = {
+				has_reform = government_reform:japanese_imperial_family
+				country_type = building
+			}
+			has_reform = government_reform:japanese_clan
+		}
+	}
 	location_potential = {
 		NOT = {
 			continent = scope:actor.capital.continent
@@ -169,6 +184,15 @@ REPLACE:overseas_trading_post = {
 	rural_settlement = yes
 	town = no
 	city = no
+	country_potential = {
+		NOR = {
+			AND = {
+				has_reform = government_reform:japanese_imperial_family
+				country_type = building
+			}
+			has_reform = government_reform:japanese_clan
+		}
+	}
 	location_potential = {
 		NOT = {
 			continent = scope:actor.capital.continent
